@@ -2,3 +2,12 @@
 @import "@machine-ui/tokens/css/themes/graphite.css";
 
 @source "./";
+@source "../../../packages/examples/src";
+
+@layer base {
+  body {
+    transition:
+      background-color var(--motion-normal) var(--motion-ease-standard),
+      color var(--motion-normal) var(--motion-ease-standard);
+  }
+}

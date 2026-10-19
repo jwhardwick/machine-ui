@@ -1,0 +1,40 @@
+import { getDoc, SCREENS } from '@machine-ui/examples';
+import { Badge } from '@machine-ui/ui';
+import { Link } from 'react-router';
+import { ScreenFrame } from '../site/preview-frame.tsx';
+
+export function ScreensPage() {
+  return (
+    <div className="grid grid-cols-1 gap-16">
+      <header className="grid grid-cols-1 max-w-2xl gap-4">
+        <h1 className="font-display text-4xl font-semibold">Screens</h1>
+        <p className="text-lg text-muted-foreground">
+          Complete screens built only from the kit, with no one-off styles. They follow whichever theme the site is wearing.
+        </p>
+      </header>
+      {SCREENS.map((screen) => (
+        <section key={screen.slug} id={screen.slug} className="grid grid-cols-1 scroll-mt-8 gap-4" aria-labelledby={`${screen.slug}-title`}>
+          <div className="grid grid-cols-1 max-w-2xl gap-2">
+            <h2 id={`${screen.slug}-title`} className="font-display text-2xl font-semibold">
+              {screen.name}
+            </h2>
+            <p className="text-muted-foreground">{screen.description}</p>
+            <p className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+              Built from
+              {screen.uses.map((slug) => (
+                <Link key={slug} to={`/components/${slug}`}>
+                  <Badge variant="outline" className="font-normal hover:bg-accent hover:text-accent-foreground">
+                    {getDoc(slug)?.name ?? slug}
+                  </Badge>
+                </Link>
+              ))}
+            </p>
+          </div>
+          <ScreenFrame title={`app.northwind.dev/${screen.slug}`}>
+            <screen.Component />
+          </ScreenFrame>
+        </section>
+      ))}
+    </div>
+  );
+}

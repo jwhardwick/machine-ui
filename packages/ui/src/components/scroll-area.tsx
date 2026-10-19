@@ -6,7 +6,8 @@ import { focusRing } from '../lib/styles.ts';
 export function ScrollArea({ className, children, ...props }: ComponentProps<typeof ScrollAreaPrimitive.Root>) {
   return (
     <ScrollAreaPrimitive.Root data-slot="scroll-area" className={cn('relative overflow-hidden', className)} {...props}>
-      <ScrollAreaPrimitive.Viewport data-slot="scroll-area-viewport" className={cn('size-full rounded-[inherit]', focusRing)}>
+      {/* Focusable so keyboard users can scroll it; scrollable regions must be reachable without a mouse. */}
+      <ScrollAreaPrimitive.Viewport data-slot="scroll-area-viewport" tabIndex={0} className={cn('size-full rounded-[inherit]', focusRing)}>
         {children}
       </ScrollAreaPrimitive.Viewport>
       <ScrollBar />

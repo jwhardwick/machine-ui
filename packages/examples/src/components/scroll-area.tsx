@@ -13,7 +13,7 @@ export default defineDoc({
     {
       name: 'Default',
       render: () => (
-        <ScrollArea className="h-56 w-48 rounded-md border" tabIndex={0} aria-label="Releases">
+        <ScrollArea className="h-56 w-48 rounded-md border" role="region" aria-label="Releases">
           <div className="p-4">
             <p className="mb-3 text-sm font-medium">Releases</p>
             {RELEASES.map((tag) => (

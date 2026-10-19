@@ -2,3 +2,4 @@
 @import "@machine-ui/tokens/css/themes/graphite.css";
 
 @source "./";
+@source "../../../packages/examples/src";
