@@ -1,0 +1,6 @@
+{
+  "name": "machine-ui",
+  "version": "0.1.0",
+  "description": "Install, theme and build with the machine-ui design system: registry setup, theme generation, composition patterns and migration of hand-rolled styles.",
+  "author": { "name": "machine-ui maintainers" }
+}
