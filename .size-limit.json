@@ -1,0 +1,124 @@
+[
+  {
+    "name": "ui: Button",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ Button }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "11 kB"
+  },
+  {
+    "name": "ui: Card",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ Card, CardHeader, CardTitle, CardContent }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "9 kB"
+  },
+  {
+    "name": "ui: Dialog",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ Dialog, DialogContent, DialogTrigger }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "25 kB"
+  },
+  {
+    "name": "ui: Select",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ Select, SelectContent, SelectItem, SelectTrigger, SelectValue }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "43.5 kB"
+  },
+  {
+    "name": "ui: Command",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ Command, CommandInput, CommandList, CommandItem }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "29 kB"
+  },
+  {
+    "name": "ui: Calendar",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ Calendar }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "32.5 kB"
+  },
+  {
+    "name": "ui: DataTable",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ DataTable }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "26.5 kB"
+  },
+  {
+    "name": "ui: Chart",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ ChartContainer }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "16.5 kB"
+  },
+  {
+    "name": "ui: PromptInput",
+    "path": "packages/ui/src/index.ts",
+    "import": "{ PromptInput }",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "13.5 kB"
+  },
+  {
+    "name": "ui: everything",
+    "path": "packages/ui/src/index.ts",
+    "import": "*",
+    "ignore": [
+      "react",
+      "react-dom",
+      "react/jsx-runtime"
+    ],
+    "limit": "293.5 kB"
+  },
+  {
+    "name": "theme-engine: applyTheme",
+    "path": "packages/theme-engine/src/index.ts",
+    "import": "{ applyTheme }",
+    "limit": "19.5 kB"
+  },
+  {
+    "name": "theme-engine: everything",
+    "path": "packages/theme-engine/src/index.ts",
+    "import": "*",
+    "limit": "21 kB"
+  }
+]
