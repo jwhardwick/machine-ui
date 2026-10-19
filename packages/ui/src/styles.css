@@ -13,6 +13,8 @@
   --animate-sheet-left: mui-from-left var(--motion-slow) var(--motion-ease-emphasized);
   --animate-sheet-top: mui-from-top var(--motion-slow) var(--motion-ease-emphasized);
   --animate-sheet-bottom: mui-from-bottom var(--motion-slow) var(--motion-ease-emphasized);
+  --animate-dot: mui-dot calc(var(--motion-slow) * 6) var(--motion-ease-standard) infinite;
+  --animate-caret: mui-caret calc(var(--motion-slow) * 5) steps(1) infinite;
   --animate-shimmer: mui-shimmer calc(var(--motion-slow) * 6) linear infinite;
 }
 
@@ -58,6 +60,23 @@
 
 @keyframes mui-fade {
   from {
+    opacity: 0;
+  }
+}
+
+@keyframes mui-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+@keyframes mui-caret {
+  50% {
     opacity: 0;
   }
 }
