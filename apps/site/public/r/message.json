@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "message",
+  "type": "registry:ui",
+  "title": "Message",
+  "description": "One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/message.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\n/** One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text. */\nexport function Message({ from, className, ...props }: ComponentProps<'div'> & { from: 'user' | 'assistant' }) {\n  return (\n    <div\n      data-slot=\"message\"\n      data-from={from}\n      className={cn('group/message flex w-full gap-3', from === 'user' ? 'justify-end' : 'justify-start', className)}\n      {...props}\n    />\n  );\n}\n\nexport function MessageContent({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"message-content\"\n      className={cn(\n        'grid min-w-0 gap-2 text-sm leading-relaxed',\n        'group-data-[from=user]/message:max-w-[80%] group-data-[from=user]/message:rounded-xl group-data-[from=user]/message:bg-secondary group-data-[from=user]/message:px-4 group-data-[from=user]/message:py-2.5 group-data-[from=user]/message:text-secondary-foreground',\n        'group-data-[from=assistant]/message:flex-1',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\n/** Hover actions under an assistant turn: copy, retry, feedback. Always reachable by keyboard. */\nexport function MessageActions({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"message-actions\"\n      className={cn(\n        'flex items-center gap-1 text-muted-foreground opacity-0 transition-opacity duration-(--motion-fast) group-hover/message:opacity-100 focus-within:opacity-100',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

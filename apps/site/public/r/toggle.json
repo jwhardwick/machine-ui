@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "type": "registry:ui",
+  "title": "Toggle",
+  "description": "A button that stays pressed, for one on/off option such as a filter or formatting.",
+  "dependencies": [
+    "class-variance-authority@0.7.1",
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/toggle.tsx",
+      "type": "registry:ui",
+      "content": "import { cva, type VariantProps } from 'class-variance-authority';\nimport { Toggle as TogglePrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { focusRing, transition } from '@/lib/machine-ui-styles';\n\nexport const toggleVariants = cva(\n  [\n    'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium',\n    transition,\n    focusRing,\n    'hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50',\n    'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',\n  ],\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent text-foreground',\n        outline: 'border border-input bg-transparent text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground',\n      },\n      size: {\n        sm: 'h-(--control-sm) min-w-(--control-sm) px-2',\n        md: 'h-(--control-md) min-w-(--control-md) px-2.5',\n        lg: 'h-(--control-lg) min-w-(--control-lg) px-3',\n      },\n    },\n    defaultVariants: { variant: 'default', size: 'md' },\n  },\n);\n\nexport function Toggle({\n  className,\n  variant,\n  size,\n  ...props\n}: ComponentProps<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>) {\n  return <TogglePrimitive.Root data-slot=\"toggle\" className={cn(toggleVariants({ variant, size }), className)} {...props} />;\n}\n"
+    }
+  ]
+}

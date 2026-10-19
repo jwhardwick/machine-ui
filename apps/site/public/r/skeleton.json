@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "Placeholder blocks that hold the shape of content while it loads.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/skeleton.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\n/** A placeholder that holds the shape of content while it loads. Static when motion is off. */\nexport function Skeleton({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      aria-hidden\n      className={cn(\n        'animate-shimmer rounded-md bg-muted bg-[linear-gradient(90deg,transparent_25%,color-mix(in_oklch,var(--background)_60%,transparent)_50%,transparent_75%)] bg-[length:200%_100%]',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}
