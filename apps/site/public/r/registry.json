@@ -823,6 +823,23 @@
       }
     },
     {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "The standard `cn` helper (clsx + tailwind-merge) that every component imports from `@/lib/utils`.",
+      "dependencies": [
+        "clsx@2.1.1",
+        "tailwind-merge@3.7.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/machine-ui/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "machine-ui-styles",
       "type": "registry:lib",
       "title": "Machine Ui Styles",
@@ -862,7 +879,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -881,7 +898,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -901,7 +918,7 @@
       "registryDependencies": [
         "@machine-ui/button",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -920,7 +937,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -942,7 +959,7 @@
         "@machine-ui/label",
         "@machine-ui/machine-ui-base",
         "@machine-ui/radio-group",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -979,7 +996,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -998,7 +1015,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1018,7 +1035,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1035,7 +1052,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1055,7 +1072,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1077,7 +1094,7 @@
       "registryDependencies": [
         "@machine-ui/button",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1094,7 +1111,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1115,7 +1132,7 @@
       "registryDependencies": [
         "@machine-ui/button",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1134,7 +1151,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1155,7 +1172,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1175,7 +1192,7 @@
       "registryDependencies": [
         "@machine-ui/hover-card",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1195,7 +1212,7 @@
       "registryDependencies": [
         "@machine-ui/button",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1235,7 +1252,7 @@
         "@machine-ui/command",
         "@machine-ui/machine-ui-base",
         "@machine-ui/popover",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1257,7 +1274,7 @@
       "registryDependencies": [
         "@machine-ui/dialog",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1274,7 +1291,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1295,7 +1312,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1338,7 +1355,7 @@
         "@machine-ui/input",
         "@machine-ui/machine-ui-base",
         "@machine-ui/table",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1361,7 +1378,7 @@
         "@machine-ui/calendar",
         "@machine-ui/machine-ui-base",
         "@machine-ui/popover",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1381,7 +1398,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1400,7 +1417,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1421,7 +1438,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1438,7 +1455,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1456,7 +1473,7 @@
       "registryDependencies": [
         "@machine-ui/label",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1476,7 +1493,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1495,7 +1512,7 @@
         "@machine-ui/button",
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1516,7 +1533,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1533,7 +1550,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1554,7 +1571,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1571,7 +1588,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1590,7 +1607,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1611,7 +1628,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1628,7 +1645,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1648,7 +1665,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1670,7 +1687,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1690,7 +1707,7 @@
       "registryDependencies": [
         "@machine-ui/button",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1710,7 +1727,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1729,7 +1746,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1749,7 +1766,7 @@
       "registryDependencies": [
         "@machine-ui/button",
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1769,7 +1786,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1790,7 +1807,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1810,7 +1827,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1851,7 +1868,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1870,7 +1887,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1891,7 +1908,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1917,7 +1934,7 @@
         "@machine-ui/separator",
         "@machine-ui/sheet",
         "@machine-ui/tooltip",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1934,7 +1951,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1954,7 +1971,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -1991,7 +2008,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2010,7 +2027,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2027,7 +2044,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2046,7 +2063,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2063,7 +2080,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2082,7 +2099,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2099,7 +2116,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2118,7 +2135,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2136,7 +2153,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2156,7 +2173,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/spinner",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2177,7 +2194,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/toggle",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2198,7 +2215,7 @@
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2219,7 +2236,7 @@
         "@machine-ui/machine-ui-base",
         "@machine-ui/machine-ui-styles",
         "@machine-ui/spinner",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2238,7 +2255,7 @@
       ],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {
@@ -2255,7 +2272,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
-        "utils"
+        "@machine-ui/utils"
       ],
       "files": [
         {

@@ -9,7 +9,7 @@
     "@machine-ui/button",
     "@machine-ui/machine-ui-base",
     "@machine-ui/machine-ui-styles",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {

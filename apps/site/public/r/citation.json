@@ -10,7 +10,7 @@
   "registryDependencies": [
     "@machine-ui/hover-card",
     "@machine-ui/machine-ui-base",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {

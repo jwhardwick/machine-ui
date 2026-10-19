@@ -12,7 +12,7 @@
     "@machine-ui/label",
     "@machine-ui/machine-ui-base",
     "@machine-ui/radio-group",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {
