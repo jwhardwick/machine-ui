@@ -1,3 +1,5 @@
+'use client';
+
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 import { createContext, useCallback, useContext, useEffect, useState, type ComponentProps, type KeyboardEvent } from 'react';

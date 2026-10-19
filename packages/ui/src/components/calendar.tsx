@@ -1,3 +1,5 @@
+'use client';
+
 import { format } from 'date-fns';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import type { ComponentProps } from 'react';

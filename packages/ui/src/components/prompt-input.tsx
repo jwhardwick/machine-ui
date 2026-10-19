@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowUpIcon, SquareIcon } from 'lucide-react';
 import { useRef, useState, type ComponentProps, type FormEvent, type KeyboardEvent, type ReactNode } from 'react';
 import { cn } from '../lib/cn.ts';

@@ -14,7 +14,7 @@
     {
       "path": "registry/machine-ui/ui/collapsible.tsx",
       "type": "registry:ui",
-      "content": "import { Collapsible as CollapsiblePrimitive } from 'radix-ui';\n\nexport const Collapsible = CollapsiblePrimitive.Root;\nexport const CollapsibleTrigger = CollapsiblePrimitive.Trigger;\nexport const CollapsibleContent = CollapsiblePrimitive.Content;\n"
+      "content": "'use client';\n\nimport { Collapsible as CollapsiblePrimitive } from 'radix-ui';\n\nexport const Collapsible = CollapsiblePrimitive.Root;\nexport const CollapsibleTrigger = CollapsiblePrimitive.Trigger;\nexport const CollapsibleContent = CollapsiblePrimitive.Content;\n"
     }
   ]
 }
