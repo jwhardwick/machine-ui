@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "Shows how far a task with a known length has come.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/progress.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { Progress as ProgressPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function Progress({ className, value, ...props }: ComponentProps<typeof ProgressPrimitive.Root>) {\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      value={value}\n      className={cn('relative h-2 w-full overflow-hidden rounded-full bg-muted', className)}\n      {...props}\n    >\n      <ProgressPrimitive.Indicator\n        data-slot=\"progress-indicator\"\n        className=\"h-full w-full flex-1 bg-primary transition-transform duration-(--motion-slow) ease-standard\"\n        style={{ transform: `translateX(-${100 - (value ?? 0)}%)` }}\n      />\n    </ProgressPrimitive.Root>\n  );\n}\n"
+    }
+  ]
+}

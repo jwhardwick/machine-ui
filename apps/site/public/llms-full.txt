@@ -1,0 +1,3913 @@
+# machine-ui: full reference
+
+> A theming-first design system on shadcn/ui and Radix. Components install as source through the shadcn CLI. A theme engine generates colour, type, spacing, corners and motion from a few personality settings, and solves every colour pair for WCAG 2.2 contrast in light and dark.
+
+## Rules
+
+- Build interfaces from these components; do not hand-roll equivalents.
+- Style with semantic tokens only (`bg-primary`, `text-muted-foreground`, `border-border`, `var(--primary)`): no raw colours, px values, gradients or font names.
+- Pair every surface with its `-foreground` token; use `text-link` for coloured text. These pairs are contrast-solved.
+- Use the spacing scale and `h-(--control-sm|md|lg)` for control heights, `rounded-sm|md|lg|xl` for corners.
+- Keep keyboard access, visible focus and labels: icon-only buttons need `aria-label`.
+- JavaScript-driven motion (charts, streaming text) must respect `useReducedMotion()`.
+
+## Accordion
+
+A stack of headings that each reveal a section. One or several sections can be open.
+
+Install: `npx shadcn@latest add @machine-ui/accordion`
+
+Example:
+
+```tsx
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'accordion',
+  name: 'Accordion',
+  category: 'layout',
+  description: 'A stack of headings that each reveal a section. One or several sections can be open.',
+  examples: [
+    {
+      name: 'FAQ',
+      render: () => (
+        <Accordion type="single" collapsible defaultValue="contrast" className="w-full max-w-md">
+          <AccordionItem value="contrast">
+            <AccordionTrigger>How is contrast guaranteed?</AccordionTrigger>
+            <AccordionContent>
+              The engine adjusts lightness until every text pair reaches 4.5:1 and every control boundary 3:1, in light and dark.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="fonts">
+            <AccordionTrigger>Can I use my own fonts?</AccordionTrigger>
+            <AccordionContent>Yes. Set the typeface tokens after applying a theme, or add a pairing to the token package.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="shadcn">
+            <AccordionTrigger>Does it work with existing shadcn/ui code?</AccordionTrigger>
+            <AccordionContent>Colour variables use shadcn’s names, so existing components pick up the theme unchanged.</AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      ),
+    },
+  ],
+});
+```
+
+## Agent Glyph
+
+The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.
+
+Install: `npx shadcn@latest add @machine-ui/agent-glyph`
+
+### AgentGlyph
+
+- `label?`: string
+
+Example:
+
+```tsx
+import { AgentGlyph } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'agent-glyph',
+  name: 'Agent Glyph',
+  category: 'ai',
+  description: 'The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.',
+  examples: [
+    {
+      name: 'Sizes',
+      render: () => (
+        <div className="flex items-center gap-3">
+          <AgentGlyph className="size-6" />
+          <AgentGlyph />
+          <AgentGlyph className="size-12" label="Alpha, your assistant" />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Alert
+
+An inline banner with a title and a description, in default, success, warning and destructive variants.
+
+Install: `npx shadcn@latest add @machine-ui/alert`
+
+### Alert
+
+- `variant?`: "default" | "success" | "warning" | "destructive" | null
+
+Example:
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from '@machine-ui/ui';
+import { CircleAlert, CircleCheck, Info, TriangleAlert } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'alert',
+  name: 'Alert',
+  category: 'feedback',
+  description: 'An inline banner with a title and a description, in default, success, warning and destructive variants.',
+  examples: [
+    {
+      name: 'Variants',
+      render: () => (
+        <div className="grid w-full max-w-lg gap-3">
+          <Alert>
+            <Info aria-hidden />
+            <AlertTitle>New version available</AlertTitle>
+            <AlertDescription>Reload to get the latest components.</AlertDescription>
+          </Alert>
+          <Alert variant="success">
+            <CircleCheck aria-hidden />
+            <AlertTitle>Theme published</AlertTitle>
+            <AlertDescription>Everyone with the link now sees the new colours.</AlertDescription>
+          </Alert>
+          <Alert variant="warning">
+            <TriangleAlert aria-hidden />
+            <AlertTitle>Usage at 90%</AlertTitle>
+            <AlertDescription>You have 2,000 requests left this month.</AlertDescription>
+          </Alert>
+          <Alert variant="destructive">
+            <CircleAlert aria-hidden />
+            <AlertTitle>Deploy failed</AlertTitle>
+            <AlertDescription>The build stopped at step 3. Check the logs and retry.</AlertDescription>
+          </Alert>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Alert Dialog
+
+A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.
+
+Install: `npx shadcn@latest add @machine-ui/alert-dialog @machine-ui/button`
+
+### AlertDialogAction
+
+- `variant?`: "default" | "destructive"
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  Button,
+} from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'alert-dialog',
+  name: 'Alert Dialog',
+  category: 'overlays',
+  description: 'A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.',
+  examples: [
+    {
+      name: 'Destructive',
+      render: () => (
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="destructive">Delete workspace</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete Northwind?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This removes 14 projects, their themes and history for every member. It can’t be undone.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Keep workspace</AlertDialogCancel>
+              <AlertDialogAction variant="destructive">Delete workspace</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      ),
+    },
+  ],
+});
+```
+
+## Approval Card
+
+The agent asks before it acts: a question, a few options and Confirm or Skip.
+
+Install: `npx shadcn@latest add @machine-ui/approval-card`
+
+### ApprovalCard
+
+- `defaultValue?`: string | (readonly string[] & string)
+- `onConfirm?`: ((value: string) => void)
+- `onSkip?`: (() => void)
+- `options`: ApprovalOption[]
+- `question`: string
+
+Example:
+
+```tsx
+import { ApprovalCard } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'approval-card',
+  name: 'Approval Card',
+  category: 'ai',
+  description: 'The agent asks before it acts: a question, a few options and Confirm or Skip.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <ApprovalCard
+          className="max-w-md"
+          question="How should I reply to Acme?"
+          options={[
+            { value: 'workaround', label: 'Send the workaround', description: 'Restores sync now; fix lands Thursday.' },
+            { value: 'wait', label: 'Wait for the fix', description: 'Reply Thursday with the release note.' },
+            { value: 'escalate', label: 'Escalate to engineering' },
+          ]}
+        />
+      ),
+    },
+  ],
+});
+```
+
+## Aspect Ratio
+
+Keeps media at a fixed shape as its width changes.
+
+Install: `npx shadcn@latest add @machine-ui/aspect-ratio`
+
+Example:
+
+```tsx
+import { AspectRatio } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'aspect-ratio',
+  name: 'Aspect Ratio',
+  category: 'layout',
+  description: 'Keeps media at a fixed shape as its width changes.',
+  examples: [
+    {
+      name: '16 by 9',
+      render: () => (
+        <div className="w-full max-w-sm">
+          <AspectRatio ratio={16 / 9} className="flex items-center justify-center rounded-lg bg-muted text-sm text-muted-foreground">
+            16 : 9
+          </AspectRatio>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Avatar
+
+Shows a person as a photo or initials, alone or as an overlapping group.
+
+Install: `npx shadcn@latest add @machine-ui/avatar`
+
+Example:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from '@machine-ui/ui';
+
+/** An abstract portrait as an inline SVG, so the example needs no network. */
+const PORTRAIT =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' opacity='0.12'/><circle cx='20' cy='16' r='7' opacity='0.45'/><rect x='8' y='26' width='24' height='14' rx='7' opacity='0.45'/></svg>";
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'avatar',
+  name: 'Avatar',
+  category: 'data',
+  description: 'Shows a person as a photo or initials, alone or as an overlapping group.',
+  examples: [
+    {
+      name: 'Photo and fallback',
+      render: () => (
+        <div className="flex items-center gap-4">
+          <Avatar className="size-10">
+            <AvatarImage src={PORTRAIT} alt="Ada Lovelace" />
+            <AvatarFallback>AL</AvatarFallback>
+          </Avatar>
+          <Avatar className="size-10">
+            <AvatarImage src="/missing-photo.png" alt="Grace Hopper" />
+            <AvatarFallback>GH</AvatarFallback>
+          </Avatar>
+        </div>
+      ),
+    },
+    {
+      name: 'Group',
+      render: () => (
+        <div className="flex items-center gap-6">
+          <Avatar className="size-10">
+            <AvatarFallback>AL</AvatarFallback>
+          </Avatar>
+          <AvatarGroup>
+            {['GH', 'KJ', 'MH', 'RB'].map((initials) => (
+              <Avatar key={initials}>
+                <AvatarFallback>{initials}</AvatarFallback>
+              </Avatar>
+            ))}
+          </AvatarGroup>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Badge
+
+A small label for state or category, in primary, secondary, outline and destructive styles.
+
+Install: `npx shadcn@latest add @machine-ui/badge`
+
+### Badge
+
+- `variant?`: "default" | "destructive" | "secondary" | "outline" | null
+
+Example:
+
+```tsx
+import { Badge } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'badge',
+  name: 'Badge',
+  category: 'data',
+  description: 'A small label for state or category, in primary, secondary, outline and destructive styles.',
+  examples: [
+    {
+      name: 'Variants',
+      render: () => (
+        <div className="flex flex-wrap gap-2">
+          <Badge>Live</Badge>
+          <Badge variant="secondary">Draft</Badge>
+          <Badge variant="outline">v2.4.0</Badge>
+          <Badge variant="destructive">3 failing</Badge>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Breadcrumb
+
+Shows where a page sits in the hierarchy, with a collapsed middle for long trails.
+
+Install: `npx shadcn@latest add @machine-ui/breadcrumb`
+
+### BreadcrumbLink
+
+- `asChild?`: boolean
+
+Example:
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'breadcrumb',
+  name: 'Breadcrumb',
+  category: 'navigation',
+  description: 'Shows where a page sits in the hierarchy, with a collapsed middle for long trails.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#home">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbEllipsis />
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#components">Components</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      ),
+    },
+  ],
+});
+```
+
+## Button
+
+Triggers an action. Six variants and four sizes, with icon, loading and disabled states.
+
+Install: `npx shadcn@latest add @machine-ui/button`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button } from '@machine-ui/ui';
+import { ArrowRight, Loader2, Plus } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'button',
+  name: 'Button',
+  category: 'forms',
+  description: 'Triggers an action. Six variants and four sizes, with icon, loading and disabled states.',
+  examples: [
+    { name: 'Default', render: () => <Button>Send reply</Button> },
+    {
+      name: 'Variants',
+      render: () => (
+        <div className="flex flex-wrap items-center gap-3">
+          <Button>Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="destructive">Delete</Button>
+          <Button variant="link">Read the docs</Button>
+        </div>
+      ),
+    },
+    {
+      name: 'Sizes',
+      render: () => (
+        <div className="flex flex-wrap items-center gap-3">
+          <Button size="sm">Small</Button>
+          <Button>Medium</Button>
+          <Button size="lg">Large</Button>
+          <Button size="icon" aria-label="Add">
+            <Plus aria-hidden />
+          </Button>
+        </div>
+      ),
+    },
+    {
+      name: 'With icon',
+      render: () => (
+        <Button>
+          Continue <ArrowRight aria-hidden />
+        </Button>
+      ),
+    },
+    {
+      name: 'Loading',
+      render: () => (
+        <Button disabled>
+          <Loader2 aria-hidden className="animate-spin" /> Saving
+        </Button>
+      ),
+    },
+  ],
+});
+```
+
+## Button Group
+
+Joins related buttons into one row with shared edges, including split buttons.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/button-group`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### ButtonGroup
+
+- `orientation?`: "horizontal" | "vertical"
+
+Example:
+
+```tsx
+import { Button, ButtonGroup } from '@machine-ui/ui';
+import { ChevronDown } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'button-group',
+  name: 'Button Group',
+  category: 'forms',
+  description: 'Joins related buttons into one row with shared edges, including split buttons.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <ButtonGroup aria-label="Message actions">
+          <Button variant="outline">Reply</Button>
+          <Button variant="outline">Assign</Button>
+          <Button variant="outline">Snooze</Button>
+        </ButtonGroup>
+      ),
+    },
+    {
+      name: 'Split button',
+      render: () => (
+        <ButtonGroup aria-label="Deploy">
+          <Button>Deploy</Button>
+          <Button size="icon" aria-label="More deploy options" className="border-l border-primary-foreground/20">
+            <ChevronDown aria-hidden />
+          </Button>
+        </ButtonGroup>
+      ),
+    },
+  ],
+});
+```
+
+## Calendar
+
+A month grid for picking a single date or a range, with today marked and keyboard navigation.
+
+Install: `npx shadcn@latest add @machine-ui/calendar`
+
+Example:
+
+```tsx
+import { Calendar } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+const MONTH = new Date(2026, 9, 1);
+
+export default defineDoc({
+  slug: 'calendar',
+  name: 'Calendar',
+  category: 'forms',
+  description: 'A month grid for picking a single date or a range, with today marked and keyboard navigation.',
+  examples: [
+    {
+      name: 'Single date',
+      render: () => <Calendar mode="single" defaultMonth={MONTH} selected={new Date(2026, 9, 19)} className="rounded-md border" />,
+    },
+    {
+      name: 'Range',
+      render: () => (
+        <Calendar
+          mode="range"
+          defaultMonth={MONTH}
+          selected={{ from: new Date(2026, 9, 12), to: new Date(2026, 9, 16) }}
+          className="rounded-md border"
+        />
+      ),
+    },
+  ],
+});
+```
+
+## Card
+
+Groups related content on a raised surface. Whether it uses a border or a shadow comes from the theme’s separation setting.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/card`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'card',
+  name: 'Card',
+  category: 'data',
+  description:
+    'Groups related content on a raised surface. Whether it uses a border or a shadow comes from the theme’s separation setting.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Quarterly report</CardTitle>
+            <CardDescription>Revenue and retention for Q3.</CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Net revenue grew 12% while churn held at 2.1%.</CardContent>
+          <CardFooter className="gap-2">
+            <Button size="sm">Open report</Button>
+            <Button size="sm" variant="ghost">
+              Share
+            </Button>
+          </CardFooter>
+        </Card>
+      ),
+    },
+  ],
+});
+```
+
+## Carousel
+
+A row of slides with previous and next buttons, swipe, and arrow-key support.
+
+Install: `npx shadcn@latest add @machine-ui/card @machine-ui/carousel`
+
+### Carousel
+
+- `opts?`: Partial<OptionsType>
+- `orientation?`: "horizontal" | "vertical"
+
+### CarouselNext
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### CarouselPrevious
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Card, CardContent, Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+const SLIDES = ['Graphite', 'Harbor', 'Folio', 'Console', 'Bloom'];
+
+export default defineDoc({
+  slug: 'carousel',
+  name: 'Carousel',
+  category: 'layout',
+  description: 'A row of slides with previous and next buttons, swipe, and arrow-key support.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Carousel className="w-full max-w-xs" aria-label="Themes">
+          <CarouselContent>
+            {SLIDES.map((name, i) => (
+              <CarouselItem key={name} aria-label={`${i + 1} of ${SLIDES.length}`}>
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <span className="font-display text-3xl font-semibold">{name}</span>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      ),
+    },
+  ],
+});
+```
+
+## Chart
+
+Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.
+
+Install: `npx shadcn@latest add @machine-ui/chart @machine-ui/use-reduced-motion`
+
+### ChartContainer
+
+- `config`: ChartConfig
+
+### ChartLegendContent
+
+- `payload?`: { dataKey?: string | number; value?: string; color?: string; }[]
+
+### ChartTooltipContent
+
+- `active?`: boolean
+- `hideLabel?`: boolean
+- `label?`: ReactNode
+- `payload?`: TooltipPayloadItem[]
+
+Example:
+
+```tsx
+import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, Recharts, useReducedMotion, type ChartConfig } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+const DATA = [
+  { month: 'May', visitors: 1860, signups: 420 },
+  { month: 'Jun', visitors: 3050, signups: 610 },
+  { month: 'Jul', visitors: 2370, signups: 530 },
+  { month: 'Aug', visitors: 2730, signups: 690 },
+  { month: 'Sep', visitors: 3490, signups: 880 },
+  { month: 'Oct', visitors: 4120, signups: 1020 },
+];
+
+const config = {
+  visitors: { label: 'Visitors', color: 'var(--chart-1)' },
+  signups: { label: 'Sign-ups', color: 'var(--chart-2)' },
+} satisfies ChartConfig;
+
+// Chart animations run in JavaScript, so they follow the reduced-motion preference explicitly.
+function BarExample() {
+  const animate = !useReducedMotion();
+  return (
+    <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Visitors and sign-ups by month, May to October">
+      <Recharts.BarChart data={DATA} accessibilityLayer>
+        <Recharts.CartesianGrid vertical={false} />
+        <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
+        <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+        <ChartLegend content={<ChartLegendContent />} />
+        <Recharts.Bar isAnimationActive={animate} dataKey="visitors" fill="var(--color-visitors)" radius={4} />
+        <Recharts.Bar isAnimationActive={animate} dataKey="signups" fill="var(--color-signups)" radius={4} />
+      </Recharts.BarChart>
+    </ChartContainer>
+  );
+}
+
+function AreaExample() {
+  const animate = !useReducedMotion();
+  return (
+    <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Visitors by month, rising from 1,860 to 4,120">
+      <Recharts.AreaChart data={DATA} margin={{ left: 12, right: 12 }}>
+        <Recharts.CartesianGrid vertical={false} />
+        <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
+        <ChartTooltip content={<ChartTooltipContent />} />
+        <Recharts.Area isAnimationActive={animate} dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.15} stroke="var(--color-visitors)" strokeWidth={2} />
+      </Recharts.AreaChart>
+    </ChartContainer>
+  );
+}
+
+export default defineDoc({
+  slug: 'chart',
+  name: 'Chart',
+  category: 'data',
+  description: 'Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.',
+  examples: [
+    {
+      name: 'Bar',
+      wide: true,
+      render: () => <BarExample />,
+    },
+    {
+      name: 'Area',
+      wide: true,
+      render: () => <AreaExample />,
+    },
+  ],
+});
+```
+
+## Checkbox
+
+Turns an option on or off. Supports an indeterminate state for "some selected".
+
+Install: `npx shadcn@latest add @machine-ui/checkbox @machine-ui/label`
+
+Example:
+
+```tsx
+import { Checkbox, Label } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'checkbox',
+  name: 'Checkbox',
+  category: 'forms',
+  description: 'Turns an option on or off. Supports an indeterminate state for "some selected".',
+  examples: [
+    {
+      name: 'States',
+      render: () => (
+        <div className="grid gap-3">
+          <div className="flex items-center gap-2">
+            <Checkbox id="cb-1" />
+            <Label htmlFor="cb-1">Email me about new releases</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="cb-2" defaultChecked />
+            <Label htmlFor="cb-2">Share anonymous usage data</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="cb-3" checked="indeterminate" />
+            <Label htmlFor="cb-3">Some teams selected</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox id="cb-4" disabled />
+            <Label htmlFor="cb-4">Requires admin</Label>
+          </div>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Citations
+
+Numbered markers in an answer that preview their source, and the list of sources underneath.
+
+Install: `npx shadcn@latest add @machine-ui/citation`
+
+### Citation
+
+- `className?`: string
+- `index`: number
+- `source`: Source
+
+### Sources
+
+- `sources`: Source[]
+
+Example:
+
+```tsx
+import { Citation, Sources } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+const SOURCES = [
+  { title: 'Intercom thread #8812', url: 'https://app.intercom.example/t/8812', snippet: 'Customer reports sync stopped at 14:02 UTC.' },
+  { title: 'Changelog v2.14', url: 'https://northwind.example/changelog/2-14', snippet: 'Sync interval moved to a server setting.' },
+];
+
+export default defineDoc({
+  slug: 'citation',
+  name: 'Citations',
+  category: 'ai',
+  description: 'Numbered markers in an answer that preview their source, and the list of sources underneath.',
+  examples: [
+    {
+      name: 'Inline',
+      wide: true,
+      render: () => (
+        <div className="grid max-w-xl gap-4 text-sm leading-relaxed">
+          <p>
+            Sync stopped at 14:02 UTC
+            <Citation index={1} source={SOURCES[0]!} /> after the interval became a server setting in 2.14
+            <Citation index={2} source={SOURCES[1]!} />.
+          </p>
+          <Sources sources={SOURCES} />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Code Block
+
+Code with a filename header and a copy button, for agent output and docs.
+
+Install: `npx shadcn@latest add @machine-ui/code-block`
+
+### CodeBlock
+
+- `code`: string
+- `filename?`: string
+- `language?`: string
+
+Example:
+
+```tsx
+import { CodeBlock } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'code-block',
+  name: 'Code Block',
+  category: 'ai',
+  description: 'Code with a filename header and a copy button, for agent output and docs.',
+  examples: [
+    {
+      name: 'Default',
+      wide: true,
+      render: () => (
+        <CodeBlock
+          className="w-full max-w-xl"
+          filename="theme.ts"
+          code={`import { applyTheme } from '@machine-ui/theme-engine';
+
+applyTheme({ name: 'harbor', hue: 195, chroma: 0.55, neutral: 'cool',
+  radius: 0.25, density: 0.55, separation: 0.15,
+  typePair: 'civic', typeRatio: 1.2, motion: 'subtle' });`}
+        />
+      ),
+    },
+  ],
+});
+```
+
+## Collapsible
+
+A single trigger that shows or hides the content beneath it.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/collapsible`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Collapsible, CollapsibleContent, CollapsibleTrigger } from '@machine-ui/ui';
+import { ChevronsUpDown } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'collapsible',
+  name: 'Collapsible',
+  category: 'layout',
+  description: 'A single trigger that shows or hides the content beneath it.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Collapsible className="grid w-full max-w-xs gap-2">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium">3 files changed</span>
+            <CollapsibleTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Toggle file list">
+                <ChevronsUpDown aria-hidden />
+              </Button>
+            </CollapsibleTrigger>
+          </div>
+          <div className="rounded-md border px-3 py-2 font-mono text-sm">packages/ui/src/button.tsx</div>
+          <CollapsibleContent className="grid gap-2">
+            <div className="rounded-md border px-3 py-2 font-mono text-sm">packages/tokens/theme.css</div>
+            <div className="rounded-md border px-3 py-2 font-mono text-sm">docs/decisions/0002.md</div>
+          </CollapsibleContent>
+        </Collapsible>
+      ),
+    },
+  ],
+});
+```
+
+## Combobox
+
+A select with a filter field: type to narrow the options, then pick one.
+
+Install: `npx shadcn@latest add @machine-ui/combobox @machine-ui/label`
+
+### Combobox
+
+- `aria-label?`: string
+- `className?`: string
+- `defaultValue?`: string
+- `emptyText?`: string
+- `id?`: string
+- `onChange?`: ((value: string) => void)
+- `options`: ComboboxOption[]
+- `placeholder?`: string
+- `searchPlaceholder?`: string
+- `value?`: string
+
+Example:
+
+```tsx
+import { Combobox, Label } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+const TIMEZONES = [
+  { value: 'utc', label: 'UTC' },
+  { value: 'london', label: 'London (GMT+1)' },
+  { value: 'new-york', label: 'New York (GMT−4)' },
+  { value: 'sydney', label: 'Sydney (GMT+11)' },
+  { value: 'tokyo', label: 'Tokyo (GMT+9)' },
+];
+
+export default defineDoc({
+  slug: 'combobox',
+  name: 'Combobox',
+  category: 'forms',
+  description: 'A select with a filter field: type to narrow the options, then pick one.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid gap-2">
+          <Label htmlFor="cb-tz">Time zone</Label>
+          <Combobox id="cb-tz" options={TIMEZONES} placeholder="Select a time zone" searchPlaceholder="Search time zones…" />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Command
+
+A searchable list of actions with groups and shortcuts. Use CommandDialog to open it as a palette.
+
+Install: `npx shadcn@latest add @machine-ui/command`
+
+Example:
+
+```tsx
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from '@machine-ui/ui';
+import { CreditCard, FileText, Palette, Settings, User } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'command',
+  name: 'Command',
+  category: 'overlays',
+  description: 'A searchable list of actions with groups and shortcuts. Use CommandDialog to open it as a palette.',
+  examples: [
+    {
+      name: 'Inline',
+      render: () => (
+        <Command className="w-full max-w-sm rounded-lg border shadow-md">
+          <CommandInput placeholder="Type a command or search…" />
+          <CommandList>
+            <CommandEmpty>No results.</CommandEmpty>
+            <CommandGroup heading="Suggestions">
+              <CommandItem>
+                <Palette aria-hidden /> Change theme
+              </CommandItem>
+              <CommandItem>
+                <FileText aria-hidden /> New document
+              </CommandItem>
+            </CommandGroup>
+            <CommandSeparator />
+            <CommandGroup heading="Settings">
+              <CommandItem>
+                <User aria-hidden /> Profile <CommandShortcut>⌘P</CommandShortcut>
+              </CommandItem>
+              <CommandItem>
+                <CreditCard aria-hidden /> Billing <CommandShortcut>⌘B</CommandShortcut>
+              </CommandItem>
+              <CommandItem>
+                <Settings aria-hidden /> Preferences <CommandShortcut>⌘,</CommandShortcut>
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      ),
+    },
+  ],
+});
+```
+
+## Command Palette
+
+Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/command @machine-ui/kbd`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### CommandDialog
+
+- `description?`: string
+- `title?`: string
+
+Example:
+
+```tsx
+import {
+  Button,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandShortcut,
+  Kbd,
+} from '@machine-ui/ui';
+import { FileText, Palette, Settings } from 'lucide-react';
+import { useState } from 'react';
+import { defineDoc } from '../types.ts';
+
+function Palette_() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button variant="outline" onClick={() => setOpen(true)}>
+        Open command palette <Kbd>⌘K</Kbd>
+      </Button>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Type a command or search…" />
+        <CommandList>
+          <CommandEmpty>No results.</CommandEmpty>
+          <CommandGroup heading="Actions">
+            <CommandItem onSelect={() => setOpen(false)}>
+              <Palette aria-hidden /> Change theme
+            </CommandItem>
+            <CommandItem onSelect={() => setOpen(false)}>
+              <FileText aria-hidden /> New document
+            </CommandItem>
+            <CommandItem onSelect={() => setOpen(false)}>
+              <Settings aria-hidden /> Preferences <CommandShortcut>⌘,</CommandShortcut>
+            </CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
+    </>
+  );
+}
+
+export default defineDoc({
+  slug: 'command-palette',
+  name: 'Command Palette',
+  category: 'overlays',
+  description: 'Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.',
+  examples: [{ name: 'Default', render: () => <Palette_ /> }],
+});
+```
+
+## Confidence Bar
+
+How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.
+
+Install: `npx shadcn@latest add @machine-ui/confidence-bar`
+
+### ConfidenceBar
+
+- `label?`: string
+- `value`: number
+
+Example:
+
+```tsx
+import { ConfidenceBar } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'confidence-bar',
+  name: 'Confidence Bar',
+  category: 'ai',
+  description: 'How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.',
+  examples: [
+    {
+      name: 'Levels',
+      render: () => (
+        <div className="grid w-full max-w-xs gap-4">
+          <ConfidenceBar value={92} label="Root cause" />
+          <ConfidenceBar value={64} label="Ships Thursday" />
+          <ConfidenceBar value={31} label="Affects other accounts" />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Context Menu
+
+A menu of actions that opens at the pointer when its area is right-clicked or long-pressed.
+
+Install: `npx shadcn@latest add @machine-ui/context-menu`
+
+### ContextMenuItem
+
+- `inset?`: boolean
+- `variant?`: "default" | "destructive"
+
+### ContextMenuLabel
+
+- `inset?`: boolean
+
+### ContextMenuSubTrigger
+
+- `inset?`: boolean
+
+Example:
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+} from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'context-menu',
+  name: 'Context Menu',
+  category: 'overlays',
+  description: 'A menu of actions that opens at the pointer when its area is right-clicked or long-pressed.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <ContextMenu>
+          <ContextMenuTrigger className="flex h-36 w-full max-w-sm items-center justify-center rounded-lg border border-dashed text-sm text-muted-foreground">
+            Right-click this file
+          </ContextMenuTrigger>
+          <ContextMenuContent className="w-56">
+            <ContextMenuLabel>theme.css</ContextMenuLabel>
+            <ContextMenuGroup>
+              <ContextMenuItem>
+                Open <ContextMenuShortcut>⏎</ContextMenuShortcut>
+              </ContextMenuItem>
+              <ContextMenuItem>
+                Rename <ContextMenuShortcut>F2</ContextMenuShortcut>
+              </ContextMenuItem>
+              <ContextMenuSub>
+                <ContextMenuSubTrigger>Share</ContextMenuSubTrigger>
+                <ContextMenuSubContent>
+                  <ContextMenuItem>Copy link</ContextMenuItem>
+                  <ContextMenuItem>Email to team</ContextMenuItem>
+                </ContextMenuSubContent>
+              </ContextMenuSub>
+            </ContextMenuGroup>
+            <ContextMenuSeparator />
+            <ContextMenuCheckboxItem checked>Show in sidebar</ContextMenuCheckboxItem>
+            <ContextMenuSeparator />
+            <ContextMenuLabel>Sort by</ContextMenuLabel>
+            <ContextMenuRadioGroup value="modified">
+              <ContextMenuRadioItem value="name">Name</ContextMenuRadioItem>
+              <ContextMenuRadioItem value="modified">Last modified</ContextMenuRadioItem>
+            </ContextMenuRadioGroup>
+            <ContextMenuSeparator />
+            <ContextMenuItem variant="destructive">Move to trash</ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenu>
+      ),
+    },
+  ],
+});
+```
+
+## Copy Input
+
+A read-only field with a copy button, for API keys, webhook URLs and share links.
+
+Install: `npx shadcn@latest add @machine-ui/copy-input @machine-ui/label`
+
+### CopyInput
+
+- `value`: string
+
+Example:
+
+```tsx
+import { CopyInput, Label } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'copy-input',
+  name: 'Copy Input',
+  category: 'forms',
+  description: 'A read-only field with a copy button, for API keys, webhook URLs and share links.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid w-full max-w-sm gap-2">
+          <Label htmlFor="copy-webhook">Webhook URL</Label>
+          <CopyInput id="copy-webhook" value="https://hooks.northwind.dev/t/8f2k1x" />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Data Table
+
+A table with sorting, filtering, row selection and pagination, built on TanStack Table.
+
+Install: `npx shadcn@latest add @machine-ui/badge @machine-ui/data-table`
+
+### Badge
+
+- `variant?`: "default" | "destructive" | "secondary" | "outline" | null
+
+### DataTable
+
+- `className?`: string
+- `columns`: ColumnDef<TData>[]
+- `data`: TData[]
+- `filterColumn?`: string
+- `filterPlaceholder?`: string
+- `pageSize?`: number
+- `toolbar?`: ReactNode
+
+### DataTableColumnHeader
+
+- `column`: Column<TData, unknown>
+- `title`: string
+
+Example:
+
+```tsx
+import { Badge, DataTable, DataTableColumnHeader, selectionColumn, type ColumnDef } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+interface Member {
+  name: string;
+  email: string;
+  role: 'Owner' | 'Admin' | 'Member';
+  lastActive: string;
+}
+
+const MEMBERS: Member[] = [
+  { name: 'Ada Lovelace', email: 'ada@northwind.dev', role: 'Owner', lastActive: 'Today' },
+  { name: 'Grace Hopper', email: 'grace@northwind.dev', role: 'Admin', lastActive: 'Today' },
+  { name: 'Katherine Johnson', email: 'kj@northwind.dev', role: 'Member', lastActive: 'Yesterday' },
+  { name: 'Margaret Hamilton', email: 'margaret@northwind.dev', role: 'Admin', lastActive: '3 days ago' },
+  { name: 'Radia Perlman', email: 'radia@northwind.dev', role: 'Member', lastActive: 'Last week' },
+  { name: 'Barbara Liskov', email: 'barbara@northwind.dev', role: 'Member', lastActive: 'Today' },
+  { name: 'Frances Allen', email: 'frances@northwind.dev', role: 'Member', lastActive: '2 days ago' },
+];
+
+const columns: ColumnDef<Member>[] = [
+  selectionColumn<Member>(),
+  { accessorKey: 'name', header: ({ column }) => <DataTableColumnHeader column={column} title="Name" /> },
+  { accessorKey: 'email', header: 'Email', cell: ({ getValue }) => <span className="text-muted-foreground">{getValue<string>()}</span> },
+  {
+    accessorKey: 'role',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Role" />,
+    cell: ({ getValue }) => <Badge variant={getValue() === 'Owner' ? 'default' : 'outline'}>{getValue<string>()}</Badge>,
+  },
+  { accessorKey: 'lastActive', header: 'Last active' },
+];
+
+export default defineDoc({
+  slug: 'data-table',
+  name: 'Data Table',
+  category: 'data',
+  description: 'A table with sorting, filtering, row selection and pagination, built on TanStack Table.',
+  examples: [
+    {
+      name: 'Members',
+      wide: true,
+      render: () => <DataTable className="max-w-3xl" columns={columns} data={MEMBERS} filterColumn="name" filterPlaceholder="Filter by name…" pageSize={5} />,
+    },
+  ],
+});
+```
+
+## Date Picker
+
+A button that opens a Calendar and shows the chosen date in short form.
+
+Install: `npx shadcn@latest add @machine-ui/date-picker @machine-ui/label`
+
+### DatePicker
+
+- `aria-label?`: string
+- `className?`: string
+- `defaultValue?`: Date
+- `id?`: string
+- `onChange?`: ((date: Date | undefined) => void)
+- `placeholder?`: string
+- `value?`: Date
+
+Example:
+
+```tsx
+import { DatePicker, Label } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'date-picker',
+  name: 'Date Picker',
+  category: 'forms',
+  description: 'A button that opens a Calendar and shows the chosen date in short form.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid gap-2">
+          <Label htmlFor="dp-launch">Launch date</Label>
+          <DatePicker id="dp-launch" defaultValue={new Date(2026, 10, 3)} />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Dialog
+
+A modal window over the page. Focus moves inside, Escape closes it and focus returns to the trigger.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/dialog @machine-ui/input @machine-ui/label`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### DialogContent
+
+- `showCloseButton?`: boolean
+
+Example:
+
+```tsx
+import {
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Input,
+  Label,
+} from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'dialog',
+  name: 'Dialog',
+  category: 'overlays',
+  description: 'A modal window over the page. Focus moves inside, Escape closes it and focus returns to the trigger.',
+  examples: [
+    {
+      name: 'Form',
+      render: () => (
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">Rename project</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Rename project</DialogTitle>
+              <DialogDescription>The new name appears in links and notifications.</DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-2">
+              <Label htmlFor="dialog-name">Name</Label>
+              <Input id="dialog-name" defaultValue="Northwind web" />
+            </div>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="ghost">Cancel</Button>
+              </DialogClose>
+              <Button>Save name</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      ),
+    },
+  ],
+});
+```
+
+## Drawer
+
+A bottom sheet with a drag handle, for mobile-first flows. Swipe down or press Escape to close.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/drawer`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'drawer',
+  name: 'Drawer',
+  category: 'overlays',
+  description: 'A bottom sheet with a drag handle, for mobile-first flows. Swipe down or press Escape to close.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Drawer>
+          <DrawerTrigger asChild>
+            <Button variant="outline">Set a goal</Button>
+          </DrawerTrigger>
+          <DrawerContent>
+            <div className="mx-auto w-full max-w-sm">
+              <DrawerHeader>
+                <DrawerTitle>Daily goal</DrawerTitle>
+                <DrawerDescription>How many minutes a day do you want to practise?</DrawerDescription>
+              </DrawerHeader>
+              <p className="py-6 text-center font-display text-6xl font-semibold tabular-nums">25</p>
+              <DrawerFooter>
+                <Button>Save goal</Button>
+                <DrawerClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DrawerClose>
+              </DrawerFooter>
+            </div>
+          </DrawerContent>
+        </Drawer>
+      ),
+    },
+  ],
+});
+```
+
+## Dropdown Menu
+
+A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/dropdown-menu`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### DropdownMenuItem
+
+- `inset?`: boolean
+- `variant?`: "default" | "destructive"
+
+### DropdownMenuLabel
+
+- `inset?`: boolean
+
+### DropdownMenuSubTrigger
+
+- `inset?`: boolean
+
+Example:
+
+```tsx
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from '@machine-ui/ui';
+import { LogOut, Settings, User } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'dropdown-menu',
+  name: 'Dropdown Menu',
+  category: 'overlays',
+  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.',
+  examples: [
+    {
+      name: 'Account menu',
+      render: () => (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline">Ada Lovelace</Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="start">
+            <DropdownMenuLabel>ada@northwind.dev</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <User aria-hidden /> Profile <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings aria-hidden /> Settings <DropdownMenuShortcut>⌘,</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Switch workspace</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>Northwind</DropdownMenuItem>
+                <DropdownMenuItem>Lumen Labs</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+            <DropdownMenuCheckboxItem checked>Compact mode</DropdownMenuCheckboxItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel>Panel position</DropdownMenuLabel>
+            <DropdownMenuRadioGroup value="right">
+              <DropdownMenuRadioItem value="left">Left</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem variant="destructive">
+              <LogOut aria-hidden /> Sign out
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ),
+    },
+  ],
+});
+```
+
+## Empty
+
+A placeholder for a view with nothing in it yet: what it is for, and the one action to start.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/empty`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Empty, EmptyActions, EmptyDescription, EmptyMedia, EmptyTitle } from '@machine-ui/ui';
+import { FolderOpen } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'empty',
+  name: 'Empty',
+  category: 'feedback',
+  description: 'A placeholder for a view with nothing in it yet: what it is for, and the one action to start.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Empty className="max-w-md">
+          <EmptyMedia>
+            <FolderOpen aria-hidden />
+          </EmptyMedia>
+          <EmptyTitle>No projects yet</EmptyTitle>
+          <EmptyDescription>Projects hold your themes and components. Create one to get started.</EmptyDescription>
+          <EmptyActions>
+            <Button>Create project</Button>
+            <Button variant="ghost">Import from Figma</Button>
+          </EmptyActions>
+        </Empty>
+      ),
+    },
+  ],
+});
+```
+
+## Field
+
+Lays out a label, control, help text and error for one form field, so every form reads the same way.
+
+Install: `npx shadcn@latest add @machine-ui/field @machine-ui/input @machine-ui/switch`
+
+### Field
+
+- `orientation?`: "horizontal" | "vertical"
+
+Example:
+
+```tsx
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSet, Input, Switch } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'field',
+  name: 'Field',
+  category: 'forms',
+  description: 'Lays out a label, control, help text and error for one form field, so every form reads the same way.',
+  examples: [
+    {
+      name: 'Form',
+      render: () => (
+        <FieldSet className="w-full max-w-sm">
+          <FieldLegend>Billing contact</FieldLegend>
+          <FieldGroup>
+            <Field>
+              <FieldLabel htmlFor="field-name">Full name</FieldLabel>
+              <Input id="field-name" defaultValue="Ada Lovelace" />
+            </Field>
+            <Field data-invalid>
+              <FieldLabel htmlFor="field-email">Email</FieldLabel>
+              <Input id="field-email" aria-invalid defaultValue="ada@" aria-describedby="field-email-error" />
+              <FieldError id="field-email-error">Enter an email like ada@example.com.</FieldError>
+            </Field>
+            <Field orientation="horizontal">
+              <FieldLabel htmlFor="field-receipts">Email receipts</FieldLabel>
+              <Switch id="field-receipts" defaultChecked />
+            </Field>
+            <FieldDescription>Receipts go to the billing contact, not the account owner.</FieldDescription>
+          </FieldGroup>
+        </FieldSet>
+      ),
+    },
+  ],
+});
+```
+
+## Hover Card
+
+A floating preview shown while the pointer rests on, or focus is on, its trigger.
+
+Install: `npx shadcn@latest add @machine-ui/avatar @machine-ui/button @machine-ui/hover-card`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Avatar, AvatarFallback, Button, HoverCard, HoverCardContent, HoverCardTrigger } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'hover-card',
+  name: 'Hover Card',
+  category: 'overlays',
+  description: 'A floating preview shown while the pointer rests on, or focus is on, its trigger.',
+  examples: [
+    {
+      name: 'Profile preview',
+      render: () => (
+        <HoverCard openDelay={150}>
+          <HoverCardTrigger asChild>
+            <Button variant="link">@ada</Button>
+          </HoverCardTrigger>
+          <HoverCardContent>
+            <div className="flex gap-3">
+              <Avatar>
+                <AvatarFallback>AL</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1 text-sm">
+                <p className="font-medium">Ada Lovelace</p>
+                <p className="text-muted-foreground">Design systems at Northwind. Maintains the theme engine.</p>
+              </div>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
+      ),
+    },
+  ],
+});
+```
+
+## Input
+
+A single-line text field, with invalid and disabled states.
+
+Install: `npx shadcn@latest add @machine-ui/input @machine-ui/label`
+
+Example:
+
+```tsx
+import { Input, Label } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'input',
+  name: 'Input',
+  category: 'forms',
+  description: 'A single-line text field, with invalid and disabled states.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid w-full max-w-xs gap-2">
+          <Label htmlFor="input-name">Workspace name</Label>
+          <Input id="input-name" defaultValue="Northwind" />
+        </div>
+      ),
+    },
+    {
+      name: 'Invalid',
+      render: () => (
+        <div className="grid w-full max-w-xs gap-2">
+          <Label htmlFor="input-domain">Domain</Label>
+          <Input id="input-domain" aria-invalid defaultValue="northwind" aria-describedby="input-domain-error" />
+          <p id="input-domain-error" className="text-sm text-destructive">
+            Enter a full domain, like northwind.com.
+          </p>
+        </div>
+      ),
+    },
+    {
+      name: 'Disabled',
+      render: () => <Input aria-label="Team ID" disabled defaultValue="team_8f2k" className="max-w-xs" />,
+    },
+  ],
+});
+```
+
+## Input Group
+
+A text field with a fixed prefix, suffix or icon inside one border.
+
+Install: `npx shadcn@latest add @machine-ui/input-group @machine-ui/label`
+
+### InputGroupAddon
+
+- `align?`: "start" | "end"
+
+### InputGroupButton
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, Label } from '@machine-ui/ui';
+import { AtSign } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'input-group',
+  name: 'Input Group',
+  category: 'forms',
+  description: 'A text field with a fixed prefix, suffix or icon inside one border.',
+  examples: [
+    {
+      name: 'Prefix and suffix',
+      render: () => (
+        <div className="grid w-full max-w-sm gap-4">
+          <div className="grid gap-2">
+            <Label htmlFor="ig-site">Website</Label>
+            <InputGroup>
+              <InputGroupAddon>
+                <InputGroupText>https://</InputGroupText>
+              </InputGroupAddon>
+              <InputGroupInput id="ig-site" placeholder="northwind" className="pl-1" />
+              <InputGroupAddon align="end">
+                <InputGroupText>.com</InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="ig-handle">Handle</Label>
+            <InputGroup>
+              <InputGroupAddon>
+                <AtSign aria-hidden />
+              </InputGroupAddon>
+              <InputGroupInput id="ig-handle" placeholder="ada" />
+            </InputGroup>
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="ig-invite">Invite by email</Label>
+            <InputGroup>
+              <InputGroupInput id="ig-invite" type="email" placeholder="grace@northwind.dev" />
+              <InputGroupAddon align="end">
+                <InputGroupButton variant="secondary">Send invite</InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Input OTP
+
+Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.
+
+Install: `npx shadcn@latest add @machine-ui/input-otp @machine-ui/label`
+
+### InputOTPSlot
+
+- `index`: number
+
+Example:
+
+```tsx
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot, Label } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'input-otp',
+  name: 'Input OTP',
+  category: 'forms',
+  description: 'Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.',
+  examples: [
+    {
+      name: 'Six digits',
+      render: () => (
+        <div className="grid gap-2">
+          <Label htmlFor="otp">Verification code</Label>
+          <InputOTP id="otp" maxLength={6}>
+            <InputOTPGroup>
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+              <InputOTPSlot index={2} />
+            </InputOTPGroup>
+            <InputOTPSeparator />
+            <InputOTPGroup>
+              <InputOTPSlot index={3} />
+              <InputOTPSlot index={4} />
+              <InputOTPSlot index={5} />
+            </InputOTPGroup>
+          </InputOTP>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Item
+
+A row with media, a title, a description and actions, for lists, settings and search results.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/item @machine-ui/switch`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### Item
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | null
+- `variant?`: "default" | "outline" | "muted" | null
+
+Example:
+
+```tsx
+import { Button, Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle, Switch } from '@machine-ui/ui';
+import { Bell, Shield } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'item',
+  name: 'Item',
+  category: 'data',
+  description: 'A row with media, a title, a description and actions, for lists, settings and search results.',
+  examples: [
+    {
+      name: 'Settings list',
+      render: () => (
+        <ItemGroup className="w-full max-w-md gap-2">
+          <Item variant="outline">
+            <ItemMedia>
+              <Shield aria-hidden />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Two-step verification</ItemTitle>
+              <ItemDescription>Required for admins since 1 October.</ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Button size="sm" variant="outline">
+                Manage
+              </Button>
+            </ItemActions>
+          </Item>
+          <Item variant="outline">
+            <ItemMedia>
+              <Bell aria-hidden />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Deploy notifications</ItemTitle>
+              <ItemDescription>Email me when a deploy fails.</ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Switch aria-label="Deploy notifications" defaultChecked />
+            </ItemActions>
+          </Item>
+        </ItemGroup>
+      ),
+    },
+  ],
+});
+```
+
+## Kbd
+
+Shows a keyboard key or shortcut in a small keycap.
+
+Install: `npx shadcn@latest add @machine-ui/kbd`
+
+Example:
+
+```tsx
+import { Kbd, KbdGroup } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'kbd',
+  name: 'Kbd',
+  category: 'data',
+  description: 'Shows a keyboard key or shortcut in a small keycap.',
+  examples: [
+    {
+      name: 'Shortcuts',
+      render: () => (
+        <div className="grid gap-3 text-sm">
+          <p className="flex items-center gap-2">
+            Open the command menu
+            <KbdGroup>
+              <Kbd>⌘</Kbd>
+              <Kbd>K</Kbd>
+            </KbdGroup>
+          </p>
+          <p className="flex items-center gap-2">
+            Toggle the sidebar
+            <KbdGroup>
+              <Kbd>Ctrl</Kbd>
+              <Kbd>B</Kbd>
+            </KbdGroup>
+          </p>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Label
+
+A text label for a form control. Clicking it focuses the control it names.
+
+Install: `npx shadcn@latest add @machine-ui/input @machine-ui/label`
+
+Example:
+
+```tsx
+import { Input, Label } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'label',
+  name: 'Label',
+  category: 'forms',
+  description: 'A text label for a form control. Clicking it focuses the control it names.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid w-full max-w-xs gap-2">
+          <Label htmlFor="label-email">Email address</Label>
+          <Input id="label-email" type="email" placeholder="ada@example.com" />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Menubar
+
+A row of menus like a desktop app bar. Open one, then arrow or hover across the others.
+
+Install: `npx shadcn@latest add @machine-ui/menubar`
+
+### MenubarItem
+
+- `inset?`: boolean
+
+Example:
+
+```tsx
+import {
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarLabel,
+  MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'menubar',
+  name: 'Menubar',
+  category: 'navigation',
+  description: 'A row of menus like a desktop app bar. Open one, then arrow or hover across the others.',
+  examples: [
+    {
+      name: 'Editor',
+      render: () => (
+        <Menubar>
+          <MenubarMenu>
+            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarContent>
+              <MenubarGroup>
+                <MenubarItem>
+                  New file <MenubarShortcut>⌘N</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem>
+                  Open… <MenubarShortcut>⌘O</MenubarShortcut>
+                </MenubarItem>
+              </MenubarGroup>
+              <MenubarSeparator />
+              <MenubarSub>
+                <MenubarSubTrigger>Export</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem>theme.css</MenubarItem>
+                  <MenubarItem>tokens.json</MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>Edit</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem>
+                Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>View</MenubarTrigger>
+            <MenubarContent>
+              <MenubarCheckboxItem checked>Show grid</MenubarCheckboxItem>
+              <MenubarCheckboxItem>Show rulers</MenubarCheckboxItem>
+              <MenubarSeparator />
+              <MenubarLabel>Zoom</MenubarLabel>
+              <MenubarRadioGroup value="100">
+                <MenubarRadioItem value="75">75%</MenubarRadioItem>
+                <MenubarRadioItem value="100">100%</MenubarRadioItem>
+                <MenubarRadioItem value="150">150%</MenubarRadioItem>
+              </MenubarRadioGroup>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
+      ),
+    },
+  ],
+});
+```
+
+## Message
+
+One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.
+
+Install: `npx shadcn@latest add @machine-ui/agent-glyph @machine-ui/button @machine-ui/message`
+
+### AgentGlyph
+
+- `label?`: string
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### Message
+
+- `from`: "user" | "assistant"
+
+Example:
+
+```tsx
+import { AgentGlyph, Button, Message, MessageActions, MessageContent } from '@machine-ui/ui';
+import { Copy, RotateCcw, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'message',
+  name: 'Message',
+  category: 'ai',
+  description: 'One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.',
+  examples: [
+    {
+      name: 'Exchange',
+      wide: true,
+      render: () => (
+        <div className="grid w-full max-w-xl gap-6">
+          <Message from="user">
+            <MessageContent>What happened with Acme’s outage, and what should I tell them?</MessageContent>
+          </Message>
+          <Message from="assistant">
+            <AgentGlyph className="size-7" />
+            <MessageContent>
+              <p>
+                The outage began after Tuesday’s deploy changed the sync interval. A fix ships Thursday. Until then, the workaround in
+                the help centre restores sync within a minute.
+              </p>
+              <p>I’d send them the workaround now and promise an update Thursday.</p>
+              <MessageActions>
+                <Button variant="ghost" size="icon" className="size-7" aria-label="Copy response">
+                  <Copy aria-hidden />
+                </Button>
+                <Button variant="ghost" size="icon" className="size-7" aria-label="Regenerate">
+                  <RotateCcw aria-hidden />
+                </Button>
+                <Button variant="ghost" size="icon" className="size-7" aria-label="Good response">
+                  <ThumbsUp aria-hidden />
+                </Button>
+                <Button variant="ghost" size="icon" className="size-7" aria-label="Bad response">
+                  <ThumbsDown aria-hidden />
+                </Button>
+              </MessageActions>
+            </MessageContent>
+          </Message>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Native Select
+
+The browser’s own select, styled to match the theme. Best on mobile and for long option lists.
+
+Install: `npx shadcn@latest add @machine-ui/label @machine-ui/native-select`
+
+Example:
+
+```tsx
+import { Label, NativeSelect } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'native-select',
+  name: 'Native Select',
+  category: 'forms',
+  description: 'The browser’s own select, styled to match the theme. Best on mobile and for long option lists.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid w-full max-w-xs gap-2">
+          <Label htmlFor="ns-region">Region</Label>
+          <NativeSelect id="ns-region" defaultValue="eu-west">
+            <option value="us-east">US East (Virginia)</option>
+            <option value="eu-west">EU West (Dublin)</option>
+            <option value="ap-south">Asia Pacific (Sydney)</option>
+          </NativeSelect>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Navigation Menu
+
+Site navigation with dropdown panels of links, for marketing sites and docs.
+
+Install: `npx shadcn@latest add @machine-ui/navigation-menu`
+
+Example:
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+const PRODUCTS = [
+  ['Theme engine', 'Generate a contrast-safe theme from a few settings.'],
+  ['Components', 'Sixty themed components on shadcn/ui and Radix.'],
+  ['Agent kit', 'Skills that keep coding agents on-theme.'],
+];
+
+export default defineDoc({
+  slug: 'navigation-menu',
+  name: 'Navigation Menu',
+  category: 'navigation',
+  description: 'Site navigation with dropdown panels of links, for marketing sites and docs.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-80 gap-1">
+                  {PRODUCTS.map(([title, body]) => (
+                    <li key={title}>
+                      <NavigationMenuLink href={`#${title}`}>
+                        <span className="font-medium">{title}</span>
+                        <span className="text-muted-foreground">{body}</span>
+                      </NavigationMenuLink>
+                    </li>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#docs" className={navigationMenuTriggerStyle()}>
+                Docs
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#pricing" className={navigationMenuTriggerStyle()}>
+                Pricing
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      ),
+    },
+  ],
+});
+```
+
+## Pagination
+
+Moves through pages of results with numbered links, previous and next.
+
+Install: `npx shadcn@latest add @machine-ui/pagination`
+
+### PaginationLink
+
+- `isActive?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+
+### PaginationNext
+
+- `isActive?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+
+### PaginationPrevious
+
+- `isActive?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+
+Example:
+
+```tsx
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'pagination',
+  name: 'Pagination',
+  category: 'navigation',
+  description: 'Moves through pages of results with numbered links, previous and next.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#page-1" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#page-1">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#page-2" isActive>
+                2
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#page-3">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#page-3" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      ),
+    },
+  ],
+});
+```
+
+## Popover
+
+A floating panel anchored to a trigger, for short forms, settings and details.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/popover`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Input, Label, Popover, PopoverContent, PopoverTrigger } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'popover',
+  name: 'Popover',
+  category: 'overlays',
+  description: 'A floating panel anchored to a trigger, for short forms, settings and details.',
+  examples: [
+    {
+      name: 'Settings',
+      render: () => (
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline">Dimensions</Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <div className="grid gap-3">
+              <p className="text-sm font-medium">Export size</p>
+              <div className="grid grid-cols-3 items-center gap-2">
+                <Label htmlFor="pop-w">Width</Label>
+                <Input id="pop-w" defaultValue="1440" className="col-span-2" />
+              </div>
+              <div className="grid grid-cols-3 items-center gap-2">
+                <Label htmlFor="pop-h">Height</Label>
+                <Input id="pop-h" defaultValue="900" className="col-span-2" />
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
+      ),
+    },
+  ],
+});
+```
+
+## Progress
+
+Shows how far a task with a known length has come.
+
+Install: `npx shadcn@latest add @machine-ui/label @machine-ui/progress`
+
+Example:
+
+```tsx
+import { Label, Progress } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'progress',
+  name: 'Progress',
+  category: 'feedback',
+  description: 'Shows how far a task with a known length has come.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid w-full max-w-sm gap-2">
+          <div className="flex justify-between text-sm">
+            <Label id="progress-upload">Uploading brand assets</Label>
+            <span className="tabular-nums text-muted-foreground">64%</span>
+          </div>
+          <Progress aria-labelledby="progress-upload" value={64} />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Prompt Input
+
+The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/prompt-input`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### PromptInput
+
+- `busy?`: boolean
+- `hint?`: ReactNode
+- `label?`: string
+- `onStop?`: (() => void)
+- `onSubmit?`: ((value: string) => void)
+- `placeholder?`: string
+- `tools?`: ReactNode
+
+### PromptSuggestions
+
+- `onPick?`: ((suggestion: string) => void)
+- `suggestions`: string[]
+
+Example:
+
+```tsx
+import { Button, PromptInput, PromptSuggestions } from '@machine-ui/ui';
+import { Paperclip } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'prompt-input',
+  name: 'Prompt Input',
+  category: 'ai',
+  description: 'The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.',
+  examples: [
+    {
+      name: 'With suggestions',
+      wide: true,
+      render: () => (
+        <div className="grid w-full max-w-xl gap-3">
+          <PromptSuggestions suggestions={['What’s open with Acme?', 'Close tickets idle over 30 days', 'Summarise overnight tickets']} />
+          <PromptInput
+            placeholder="Ask Alpha about your inbox…"
+            hint="Alpha can make mistakes. Check important replies before sending."
+            tools={
+              <Button type="button" variant="ghost" size="sm" className="text-muted-foreground">
+                <Paperclip aria-hidden /> Attach
+              </Button>
+            }
+          />
+        </div>
+      ),
+    },
+    {
+      name: 'Busy',
+      wide: true,
+      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="Alpha is replying…" />,
+    },
+  ],
+});
+```
+
+## Radio Group
+
+A set of options where exactly one is selected. Arrow keys move the selection.
+
+Install: `npx shadcn@latest add @machine-ui/label @machine-ui/radio-group`
+
+Example:
+
+```tsx
+import { Label, RadioGroup, RadioGroupItem } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'radio-group',
+  name: 'Radio Group',
+  category: 'forms',
+  description: 'A set of options where exactly one is selected. Arrow keys move the selection.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <RadioGroup defaultValue="weekly" aria-label="Digest frequency">
+          {[
+            ['daily', 'Every morning'],
+            ['weekly', 'Mondays only'],
+            ['never', 'Never'],
+          ].map(([value, label]) => (
+            <div key={value} className="flex items-center gap-2">
+              <RadioGroupItem value={value!} id={`rg-${value}`} />
+              <Label htmlFor={`rg-${value}`}>{label}</Label>
+            </div>
+          ))}
+        </RadioGroup>
+      ),
+    },
+  ],
+});
+```
+
+## Resizable
+
+Panels the user can resize by dragging, or with arrow keys on the focused handle.
+
+Install: `npx shadcn@latest add @machine-ui/resizable`
+
+### ResizableHandle
+
+- `withHandle?`: boolean
+
+Example:
+
+```tsx
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'resizable',
+  name: 'Resizable',
+  category: 'layout',
+  description: 'Panels the user can resize by dragging, or with arrow keys on the focused handle.',
+  examples: [
+    {
+      name: 'Editor layout',
+      wide: true,
+      render: () => (
+        <div className="h-64 w-full max-w-2xl overflow-hidden rounded-lg border">
+          <ResizablePanelGroup direction="horizontal">
+            <ResizablePanel defaultSize={28} minSize={15} className="flex items-center justify-center bg-muted text-sm text-muted-foreground">
+              Files
+            </ResizablePanel>
+            <ResizableHandle withHandle aria-label="Resize files panel" />
+            <ResizablePanel defaultSize={72}>
+              <ResizablePanelGroup direction="vertical">
+                <ResizablePanel defaultSize={65} className="flex items-center justify-center text-sm">
+                  Editor
+                </ResizablePanel>
+                <ResizableHandle aria-label="Resize terminal" />
+                <ResizablePanel defaultSize={35} className="flex items-center justify-center font-mono text-sm text-muted-foreground">
+                  Terminal
+                </ResizablePanel>
+              </ResizablePanelGroup>
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Scroll Area
+
+A fixed-height container that scrolls its content with a thin, theme-coloured scrollbar.
+
+Install: `npx shadcn@latest add @machine-ui/scroll-area @machine-ui/separator`
+
+Example:
+
+```tsx
+import { ScrollArea, ScrollBar, Separator } from '@machine-ui/ui';
+import { Fragment } from 'react';
+import { defineDoc } from '../types.ts';
+
+const RELEASES = Array.from({ length: 24 }, (_, i) => `v2.${24 - i}.0`);
+
+export default defineDoc({
+  slug: 'scroll-area',
+  name: 'Scroll Area',
+  category: 'layout',
+  description: 'A fixed-height container that scrolls its content with a thin, theme-coloured scrollbar.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <ScrollArea className="h-56 w-48 rounded-md border" role="region" aria-label="Releases">
+          <div className="p-4">
+            <p className="mb-3 text-sm font-medium">Releases</p>
+            {RELEASES.map((tag) => (
+              <Fragment key={tag}>
+                <div className="font-mono text-sm">{tag}</div>
+                <Separator className="my-2" />
+              </Fragment>
+            ))}
+          </div>
+        </ScrollArea>
+      ),
+    },
+    {
+      name: 'Horizontal',
+      render: () => (
+        <ScrollArea className="w-72 whitespace-nowrap rounded-md border" role="region" aria-label="Recent themes">
+          <div className="flex gap-3 p-4">
+            {['graphite', 'harbor', 'folio', 'console', 'bloom', 'forge', 'custom-1', 'custom-2'].map((name) => (
+              <div key={name} className="flex h-20 w-28 shrink-0 items-end rounded-md bg-muted p-2 text-sm">
+                {name}
+              </div>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+      ),
+    },
+  ],
+});
+```
+
+## Search Input
+
+A search field with a shortcut hint, and a clear button once there is a value.
+
+Install: `npx shadcn@latest add @machine-ui/search-input`
+
+### SearchInput
+
+- `defaultValue?`: string
+- `onClear?`: (() => void)
+- `shortcut?`: string
+- `value?`: string
+
+Example:
+
+```tsx
+import { SearchInput } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'search-input',
+  name: 'Search Input',
+  category: 'forms',
+  description: 'A search field with a shortcut hint, and a clear button once there is a value.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => <SearchInput aria-label="Search threads" placeholder="Search threads" shortcut="⌘K" className="max-w-xs" />,
+    },
+    {
+      name: 'With value',
+      render: () => <SearchInput aria-label="Search threads" defaultValue="refund" className="max-w-xs" />,
+    },
+  ],
+});
+```
+
+## Select
+
+A dropdown for picking one value from a short list, with groups and separators.
+
+Install: `npx shadcn@latest add @machine-ui/label @machine-ui/select`
+
+### SelectTrigger
+
+- `size?`: "sm" | "md"
+
+Example:
+
+```tsx
+import { Label, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'select',
+  name: 'Select',
+  category: 'forms',
+  description: 'A dropdown for picking one value from a short list, with groups and separators.',
+  examples: [
+    {
+      name: 'Grouped',
+      render: () => (
+        <div className="grid gap-2">
+          <Label htmlFor="select-model">Model</Label>
+          <Select defaultValue="balanced">
+            <SelectTrigger id="select-model" className="w-56">
+              <SelectValue placeholder="Choose a model" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Fast</SelectLabel>
+                <SelectItem value="mini">Mini</SelectItem>
+                <SelectItem value="balanced">Balanced</SelectItem>
+              </SelectGroup>
+              <SelectSeparator />
+              <SelectGroup>
+                <SelectLabel>Thorough</SelectLabel>
+                <SelectItem value="deep">Deep research</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Separator
+
+A hairline between groups of content, horizontal or vertical.
+
+Install: `npx shadcn@latest add @machine-ui/separator`
+
+Example:
+
+```tsx
+import { Separator } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'separator',
+  name: 'Separator',
+  category: 'layout',
+  description: 'A hairline between groups of content, horizontal or vertical.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="w-full max-w-xs text-sm">
+          <p className="font-medium">machine-ui</p>
+          <p className="text-muted-foreground">Themes that look like yours.</p>
+          <Separator className="my-4" />
+          <div className="flex h-5 items-center gap-3">
+            <span>Docs</span>
+            <Separator orientation="vertical" />
+            <span>Themes</span>
+            <Separator orientation="vertical" />
+            <span>Changelog</span>
+          </div>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Sheet
+
+A panel that slides in from any edge over a scrim. Good for edit forms and detail views.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/sheet`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+### SheetContent
+
+- `side?`: "right" | "left" | "top" | "bottom"
+
+Example:
+
+```tsx
+import {
+  Button,
+  Input,
+  Label,
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'sheet',
+  name: 'Sheet',
+  category: 'overlays',
+  description: 'A panel that slides in from any edge over a scrim. Good for edit forms and detail views.',
+  examples: [
+    {
+      name: 'Edit panel',
+      render: () => (
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline">Edit member</Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Edit member</SheetTitle>
+              <SheetDescription>Changes apply the next time they sign in.</SheetDescription>
+            </SheetHeader>
+            <div className="grid gap-4 px-4">
+              <div className="grid gap-2">
+                <Label htmlFor="sheet-name">Name</Label>
+                <Input id="sheet-name" defaultValue="Grace Hopper" />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="sheet-role">Role</Label>
+                <Input id="sheet-role" defaultValue="Admin" />
+              </div>
+            </div>
+            <SheetFooter>
+              <Button>Save member</Button>
+              <SheetClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </SheetClose>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
+      ),
+    },
+  ],
+});
+```
+
+## Sidebar
+
+App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.
+
+Install: `npx shadcn@latest add @machine-ui/sidebar`
+
+### Sidebar
+
+- `collapsible?`: "none" | "icon" | "offcanvas"
+- `side?`: "right" | "left"
+
+### SidebarMenuButton
+
+- `asChild?`: boolean
+- `isActive?`: boolean
+- `size?`: "sm" | "md" | "lg" | null
+- `tooltip?`: string
+
+### SidebarProvider
+
+- `defaultOpen?`: boolean
+- `onOpenChange?`: ((open: boolean) => void)
+- `open?`: boolean
+
+### SidebarTrigger
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarSeparator,
+  SidebarTrigger,
+} from '@machine-ui/ui';
+import { BarChart3, Home, Inbox, Settings, Users } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+const NAV = [
+  { label: 'Home', icon: Home, active: true },
+  { label: 'Inbox', icon: Inbox, badge: '12' },
+  { label: 'Analytics', icon: BarChart3 },
+  { label: 'Team', icon: Users },
+];
+
+export default defineDoc({
+  slug: 'sidebar',
+  name: 'Sidebar',
+  category: 'navigation',
+  description: 'App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.',
+  examples: [
+    {
+      name: 'App shell',
+      wide: true,
+      render: () => (
+        <div className="h-80 w-full max-w-3xl overflow-hidden rounded-lg border">
+          <SidebarProvider className="h-full">
+            <Sidebar>
+              <SidebarHeader>
+                <div className="flex h-8 items-center gap-2 px-2 font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">Northwind</div>
+              </SidebarHeader>
+              <SidebarContent>
+                <SidebarGroup>
+                  <SidebarGroupLabel>Workspace</SidebarGroupLabel>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      {NAV.map((item) => (
+                        <SidebarMenuItem key={item.label}>
+                          <SidebarMenuButton isActive={item.active} tooltip={item.label}>
+                            <item.icon aria-hidden />
+                            <span>{item.label}</span>
+                          </SidebarMenuButton>
+                          {item.badge && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}
+                        </SidebarMenuItem>
+                      ))}
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </SidebarGroup>
+              </SidebarContent>
+              <SidebarSeparator />
+              <SidebarFooter>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Settings">
+                      <Settings aria-hidden />
+                      <span>Settings</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarFooter>
+            </Sidebar>
+            <SidebarInset>
+              <header className="flex h-12 items-center gap-2 border-b px-3">
+                <SidebarTrigger />
+                <span className="text-sm font-medium">Home</span>
+              </header>
+              <div className="p-4 text-sm text-muted-foreground">Your content goes here.</div>
+            </SidebarInset>
+          </SidebarProvider>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Skeleton
+
+Placeholder blocks that hold the shape of content while it loads.
+
+Install: `npx shadcn@latest add @machine-ui/skeleton`
+
+Example:
+
+```tsx
+import { Skeleton } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'skeleton',
+  name: 'Skeleton',
+  category: 'feedback',
+  description: 'Placeholder blocks that hold the shape of content while it loads.',
+  examples: [
+    {
+      name: 'Card',
+      render: () => (
+        <div className="flex w-full max-w-sm items-center gap-4" role="status" aria-label="Loading profile">
+          <Skeleton className="size-12 rounded-full" />
+          <div className="grid flex-1 gap-2">
+            <Skeleton className="h-4 w-3/4" />
+            <Skeleton className="h-4 w-1/2" />
+          </div>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Slider
+
+Picks a number, or a range, by dragging. Arrow keys step through values.
+
+Install: `npx shadcn@latest add @machine-ui/label @machine-ui/slider`
+
+Example:
+
+```tsx
+import { Label, Slider } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'slider',
+  name: 'Slider',
+  category: 'forms',
+  description: 'Picks a number, or a range, by dragging. Arrow keys step through values.',
+  examples: [
+    {
+      name: 'Single',
+      render: () => (
+        <div className="grid w-full max-w-xs gap-3">
+          <Label id="slider-volume">Volume</Label>
+          <Slider aria-labelledby="slider-volume" defaultValue={[60]} max={100} step={1} />
+        </div>
+      ),
+    },
+    {
+      name: 'Range',
+      render: () => (
+        <div className="grid w-full max-w-xs gap-3">
+          <Label id="slider-price">Price range</Label>
+          <Slider aria-labelledby="slider-price" defaultValue={[20, 75]} max={100} step={5} />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Spinner
+
+A spinning ring for work with no known length. Announced to screen readers as loading.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/spinner`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Spinner } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'spinner',
+  name: 'Spinner',
+  category: 'feedback',
+  description: 'A spinning ring for work with no known length. Announced to screen readers as loading.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="flex items-center gap-6">
+          <Spinner />
+          <Spinner className="size-6" />
+          <Button disabled>
+            <Spinner /> Saving
+          </Button>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Stat
+
+A labelled number with an optional change, marked up or down by icon and text, not colour alone.
+
+Install: `npx shadcn@latest add @machine-ui/card @machine-ui/stat`
+
+### Stat
+
+- `change?`: string
+- `label`: string
+- `trend?`: "up" | "down"
+- `value`: string
+
+Example:
+
+```tsx
+import { Card, CardContent, Stat } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'stat',
+  name: 'Stat',
+  category: 'data',
+  description: 'A labelled number with an optional change, marked up or down by icon and text, not colour alone.',
+  examples: [
+    {
+      name: 'Row',
+      wide: true,
+      render: () => (
+        <div className="grid w-full max-w-2xl gap-4 sm:grid-cols-3">
+          <Card>
+            <CardContent className="pt-6">
+              <Stat label="Monthly revenue" value="$48.2k" change="12.4%" trend="up" />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6">
+              <Stat label="Active users" value="3,912" change="4.1%" trend="up" />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-6">
+              <Stat label="Churn" value="2.1%" change="0.3pt" trend="down" />
+            </CardContent>
+          </Card>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Status Dot
+
+A small coloured dot for presence and health, always paired with a text label.
+
+Install: `npx shadcn@latest add @machine-ui/status-dot`
+
+### StatusDot
+
+- `pulse?`: boolean
+- `tone?`: "online" | "busy" | "error" | "offline" | "accent"
+
+Example:
+
+```tsx
+import { StatusDot } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'status-dot',
+  name: 'Status Dot',
+  category: 'feedback',
+  description: 'A small coloured dot for presence and health, always paired with a text label.',
+  examples: [
+    {
+      name: 'Tones',
+      render: () => (
+        <ul className="grid gap-2 text-sm">
+          <li className="flex items-center gap-2">
+            <StatusDot tone="online" pulse /> API operational
+          </li>
+          <li className="flex items-center gap-2">
+            <StatusDot tone="busy" /> Webhooks delayed
+          </li>
+          <li className="flex items-center gap-2">
+            <StatusDot tone="error" /> Search degraded
+          </li>
+          <li className="flex items-center gap-2">
+            <StatusDot tone="offline" /> Legacy dashboard retired
+          </li>
+        </ul>
+      ),
+    },
+  ],
+});
+```
+
+## Stepper
+
+Progress through a fixed sequence of steps, with done, current and upcoming states.
+
+Install: `npx shadcn@latest add @machine-ui/stepper`
+
+### Stepper
+
+- `current`: number
+- `steps`: StepperStep[]
+
+Example:
+
+```tsx
+import { Stepper } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'stepper',
+  name: 'Stepper',
+  category: 'navigation',
+  description: 'Progress through a fixed sequence of steps, with done, current and upcoming states.',
+  examples: [
+    {
+      name: 'Onboarding',
+      wide: true,
+      render: () => (
+        <Stepper
+          className="max-w-2xl"
+          current={2}
+          steps={[
+            { title: 'Account', description: 'Name and email' },
+            { title: 'Workspace', description: 'Invite your team' },
+            { title: 'Theme', description: 'Pick a starting point' },
+            { title: 'Install', description: 'Add to your app' },
+          ]}
+        />
+      ),
+    },
+  ],
+});
+```
+
+## Streaming Text
+
+Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.
+
+Install: `npx shadcn@latest add @machine-ui/streaming-text`
+
+### StreamingText
+
+- `onDone?`: (() => void)
+- `speed?`: number
+- `text`: string
+
+Example:
+
+```tsx
+import { StreamingText } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'streaming-text',
+  name: 'Streaming Text',
+  category: 'ai',
+  description: 'Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <p className="max-w-md text-sm leading-relaxed">
+          <StreamingText text="Acme’s outage started after Tuesday’s deploy. The fix ships Thursday; until then, the workaround in the help centre restores sync." />
+        </p>
+      ),
+    },
+  ],
+});
+```
+
+## Switch
+
+Turns a setting on or off immediately, without a save step.
+
+Install: `npx shadcn@latest add @machine-ui/label @machine-ui/switch`
+
+Example:
+
+```tsx
+import { Label, Switch } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'switch',
+  name: 'Switch',
+  category: 'forms',
+  description: 'Turns a setting on or off immediately, without a save step.',
+  examples: [
+    {
+      name: 'States',
+      render: () => (
+        <div className="grid gap-3">
+          <div className="flex items-center gap-2">
+            <Switch id="sw-1" defaultChecked />
+            <Label htmlFor="sw-1">Weekly digest</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Switch id="sw-2" />
+            <Label htmlFor="sw-2">Product updates</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Switch id="sw-3" disabled />
+            <Label htmlFor="sw-3">Billing alerts (owner only)</Label>
+          </div>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Table
+
+Composable table parts for simple tabular data. Use Data Table when you need sorting or selection.
+
+Install: `npx shadcn@latest add @machine-ui/badge @machine-ui/table`
+
+### Badge
+
+- `variant?`: "default" | "destructive" | "secondary" | "outline" | null
+
+Example:
+
+```tsx
+import { Badge, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+const INVOICES = [
+  ['INV-2041', 'Paid', 'Card', '$1,250.00'],
+  ['INV-2042', 'Pending', 'Bank transfer', '$480.00'],
+  ['INV-2043', 'Overdue', 'Card', '$2,300.00'],
+  ['INV-2044', 'Paid', 'Card', '$96.00'],
+] as const;
+
+export default defineDoc({
+  slug: 'table',
+  name: 'Table',
+  category: 'data',
+  description: 'Composable table parts for simple tabular data. Use Data Table when you need sorting or selection.',
+  examples: [
+    {
+      name: 'Invoices',
+      wide: true,
+      render: () => (
+        <Table className="max-w-2xl">
+          <TableCaption>Invoices for October 2026.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Invoice</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Method</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {INVOICES.map(([id, status, method, amount]) => (
+              <TableRow key={id}>
+                <TableCell className="font-medium">{id}</TableCell>
+                <TableCell>
+                  <Badge variant={status === 'Overdue' ? 'destructive' : status === 'Paid' ? 'secondary' : 'outline'}>{status}</Badge>
+                </TableCell>
+                <TableCell>{method}</TableCell>
+                <TableCell className="text-right tabular-nums">{amount}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3}>Total</TableCell>
+              <TableCell className="text-right tabular-nums">$4,126.00</TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      ),
+    },
+  ],
+});
+```
+
+## Tabs
+
+Switches between views in the same context. Arrow keys move between tabs.
+
+Install: `npx shadcn@latest add @machine-ui/tabs`
+
+Example:
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'tabs',
+  name: 'Tabs',
+  category: 'navigation',
+  description: 'Switches between views in the same context. Arrow keys move between tabs.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <Tabs defaultValue="overview" className="w-full max-w-md">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="activity">Activity</TabsTrigger>
+            <TabsTrigger value="settings">Settings</TabsTrigger>
+          </TabsList>
+          <TabsContent value="overview" className="text-sm text-muted-foreground">
+            42 deploys this week, 2 rolled back.
+          </TabsContent>
+          <TabsContent value="activity" className="text-sm text-muted-foreground">
+            Nothing new since yesterday.
+          </TabsContent>
+          <TabsContent value="settings" className="text-sm text-muted-foreground">
+            Notifications are on for failed deploys.
+          </TabsContent>
+        </Tabs>
+      ),
+    },
+  ],
+});
+```
+
+## Textarea
+
+A multi-line text field that resizes vertically. Use it for messages, notes and descriptions.
+
+Install: `npx shadcn@latest add @machine-ui/label @machine-ui/textarea`
+
+Example:
+
+```tsx
+import { Label, Textarea } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'textarea',
+  name: 'Textarea',
+  category: 'forms',
+  description: 'A multi-line text field that resizes vertically. Use it for messages, notes and descriptions.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid w-full max-w-sm gap-2">
+          <Label htmlFor="ta-feedback">What should we improve?</Label>
+          <Textarea id="ta-feedback" placeholder="The export panel could remember my last format…" />
+        </div>
+      ),
+    },
+    {
+      name: 'Invalid',
+      render: () => <Textarea aria-label="Release notes" aria-invalid defaultValue="" placeholder="Release notes are required" className="max-w-sm" />,
+    },
+  ],
+});
+```
+
+## Thinking Indicator
+
+A short label with pulsing dots while the agent works. Announced politely; still when motion is off.
+
+Install: `npx shadcn@latest add @machine-ui/thinking`
+
+### ThinkingIndicator
+
+- `label?`: string
+
+Example:
+
+```tsx
+import { ThinkingIndicator } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'thinking-indicator',
+  name: 'Thinking Indicator',
+  category: 'ai',
+  description: 'A short label with pulsing dots while the agent works. Announced politely; still when motion is off.',
+  examples: [
+    {
+      name: 'Default',
+      render: () => (
+        <div className="grid gap-3">
+          <ThinkingIndicator />
+          <ThinkingIndicator label="Reading 14 files" />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Thinking Steps
+
+The steps an agent is working through, with done, active and upcoming states.
+
+Install: `npx shadcn@latest add @machine-ui/thinking`
+
+### ThinkingSteps
+
+- `steps`: ThinkingStep[]
+
+Example:
+
+```tsx
+import { ThinkingSteps } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'thinking-steps',
+  name: 'Thinking Steps',
+  category: 'ai',
+  description: 'The steps an agent is working through, with done, active and upcoming states.',
+  examples: [
+    {
+      name: 'In progress',
+      render: () => (
+        <ThinkingSteps
+          className="max-w-sm"
+          steps={[
+            { label: 'Read the Intercom thread', detail: 'ticket #8812', state: 'done' },
+            { label: 'Check the changelog', detail: 'last 2 releases', state: 'done' },
+            { label: 'Pull Stripe account status', state: 'active' },
+            { label: 'Draft a reply', state: 'upcoming' },
+          ]}
+        />
+      ),
+    },
+  ],
+});
+```
+
+## Toast
+
+Short, temporary messages in a stack. Mount one Toaster near the root and call toast() from anywhere.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/sonner`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Toaster, toast } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'toast',
+  name: 'Toast',
+  category: 'feedback',
+  description: 'Short, temporary messages in a stack. Mount one Toaster near the root and call toast() from anywhere.',
+  examples: [
+    {
+      name: 'Variants',
+      render: () => (
+        <div className="flex flex-wrap gap-2">
+          <Toaster position="bottom-right" />
+          <Button variant="outline" onClick={() => toast('Theme saved', { description: 'Share the link to preview it.' })}>
+            Default
+          </Button>
+          <Button variant="outline" onClick={() => toast.success('Published', { description: 'Version 2.4.0 is live.' })}>
+            Success
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => toast.error('Deploy failed', { description: 'Step 3 timed out.', action: { label: 'Retry', onClick: () => {} } })}
+          >
+            Error with action
+          </Button>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Toggle
+
+A button that stays pressed, for one on/off option such as a filter or formatting.
+
+Install: `npx shadcn@latest add @machine-ui/toggle`
+
+### Toggle
+
+- `size?`: "sm" | "md" | "lg" | null
+- `variant?`: "default" | "outline" | null
+
+Example:
+
+```tsx
+import { Toggle } from '@machine-ui/ui';
+import { Bold, Italic, Star } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'toggle',
+  name: 'Toggle',
+  category: 'forms',
+  description: 'A button that stays pressed, for one on/off option such as a filter or formatting.',
+  examples: [
+    {
+      name: 'Variants',
+      render: () => (
+        <div className="flex items-center gap-2">
+          <Toggle aria-label="Bold">
+            <Bold aria-hidden />
+          </Toggle>
+          <Toggle aria-label="Italic" defaultPressed>
+            <Italic aria-hidden />
+          </Toggle>
+          <Toggle variant="outline">
+            <Star aria-hidden /> Starred only
+          </Toggle>
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Toggle Group
+
+A joined row of toggles for picking one option, or several, from a small set.
+
+Install: `npx shadcn@latest add @machine-ui/toggle-group`
+
+### ToggleGroup
+
+- `size?`: "sm" | "md" | "lg" | null
+- `variant?`: "default" | "outline" | null
+
+### ToggleGroupItem
+
+- `size?`: "sm" | "md" | "lg" | null
+- `variant?`: "default" | "outline" | null
+
+Example:
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from '@machine-ui/ui';
+import { AlignCenter, AlignLeft, AlignRight } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'toggle-group',
+  name: 'Toggle Group',
+  category: 'forms',
+  description: 'A joined row of toggles for picking one option, or several, from a small set.',
+  examples: [
+    {
+      name: 'Single',
+      render: () => (
+        <ToggleGroup type="single" defaultValue="left" variant="outline" aria-label="Text alignment">
+          <ToggleGroupItem value="left" aria-label="Align left">
+            <AlignLeft aria-hidden />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="center" aria-label="Align centre">
+            <AlignCenter aria-hidden />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="right" aria-label="Align right">
+            <AlignRight aria-hidden />
+          </ToggleGroupItem>
+        </ToggleGroup>
+      ),
+    },
+    {
+      name: 'Multiple',
+      render: () => (
+        <ToggleGroup type="multiple" defaultValue={['open']} aria-label="Issue filters">
+          <ToggleGroupItem value="open">Open</ToggleGroupItem>
+          <ToggleGroupItem value="assigned">Assigned to me</ToggleGroupItem>
+          <ToggleGroupItem value="blocked">Blocked</ToggleGroupItem>
+        </ToggleGroup>
+      ),
+    },
+  ],
+});
+```
+
+## Tool Call
+
+A tool the agent called, with its status and, on demand, its input and output.
+
+Install: `npx shadcn@latest add @machine-ui/tool-call`
+
+### ToolCall
+
+- `defaultOpen?`: boolean
+- `input?`: string
+- `name`: string
+- `output?`: string
+- `status`: "done" | "error" | "running"
+
+Example:
+
+```tsx
+import { ToolCall } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'tool-call',
+  name: 'Tool Call',
+  category: 'ai',
+  description: 'A tool the agent called, with its status and, on demand, its input and output.',
+  examples: [
+    {
+      name: 'States',
+      wide: true,
+      render: () => (
+        <div className="grid w-full max-w-md gap-2">
+          <ToolCall name="stripe.get_account" status="done" input={'{ "customer": "acme" }'} output={'{ "status": "active", "plan": "scale" }'} defaultOpen />
+          <ToolCall name="intercom.search" status="running" />
+          <ToolCall name="github.create_issue" status="error" output="403: token lacks repo scope" />
+        </div>
+      ),
+    },
+  ],
+});
+```
+
+## Tooltip
+
+A short label shown on hover or focus. Never put essential information only in a tooltip.
+
+Install: `npx shadcn@latest add @machine-ui/button @machine-ui/tooltip`
+
+### Button
+
+- `asChild?`: boolean
+- `size?`: "sm" | "md" | "lg" | "icon" | null
+- `variant?`: "link" | "default" | "destructive" | "secondary" | "outline" | "ghost" | null
+
+Example:
+
+```tsx
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@machine-ui/ui';
+import { Bell } from 'lucide-react';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'tooltip',
+  name: 'Tooltip',
+  category: 'overlays',
+  description: 'A short label shown on hover or focus. Never put essential information only in a tooltip.',
+  examples: [
+    {
+      name: 'Icon button',
+      render: () => (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline" size="icon" aria-label="Notifications">
+              <Bell aria-hidden />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>3 unread notifications</TooltipContent>
+        </Tooltip>
+      ),
+    },
+  ],
+});
+```
+
+## Typography
+
+Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.
+
+Install: `npx shadcn@latest add @machine-ui/typography`
+
+Example:
+
+```tsx
+import { Blockquote, H1, H2, H3, H4, InlineCode, Lead, List, Muted, P } from '@machine-ui/ui';
+import { defineDoc } from '../types.ts';
+
+export default defineDoc({
+  slug: 'typography',
+  name: 'Typography',
+  category: 'data',
+  description: 'Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.',
+  examples: [
+    {
+      name: 'Article',
+      wide: true,
+      render: () => (
+        <article className="max-w-prose">
+          <H1>Make it look like yours</H1>
+          <Lead className="mt-3">A theme is a handful of decisions, expanded into hundreds of consistent ones.</Lead>
+          <H2 className="mt-8">Why seeds</H2>
+          <P>
+            Picking 19 colours by hand invites mistakes. Picking a hue, a temperature and a few personality settings does not. Run{' '}
+            <InlineCode>applyTheme(seed)</InlineCode> and the rest follows.
+          </P>
+          <H3 className="mt-6">Light and dark together</H3>
+          <P>Both modes come from one seed, so they always feel like the same product.</P>
+          <H4 className="mt-6">Fluid sizes</H4>
+          <P>Headings scale with the viewport; body text never drops below 1rem.</P>
+          <Blockquote>Every text pair is solved for contrast before you ever see it.</Blockquote>
+          <List>
+            <li>Light and dark from the same seed</li>
+            <li>Fluid type that never shrinks body text below 1rem</li>
+            <li>Motion that turns off for people who ask for less</li>
+          </List>
+          <Muted>Updated 19 October 2026</Muted>
+        </article>
+      ),
+    },
+  ],
+});
+```
+

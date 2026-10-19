@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography",
+  "type": "registry:ui",
+  "title": "Typography",
+  "description": "Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/typography.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function H1({ className, ...props }: ComponentProps<'h1'>) {\n  return <h1 className={cn('font-display text-4xl font-semibold leading-tight text-balance', className)} {...props} />;\n}\n\nexport function H2({ className, ...props }: ComponentProps<'h2'>) {\n  return <h2 className={cn('font-display text-3xl font-semibold leading-tight', className)} {...props} />;\n}\n\nexport function H3({ className, ...props }: ComponentProps<'h3'>) {\n  return <h3 className={cn('font-display text-2xl font-semibold leading-snug', className)} {...props} />;\n}\n\nexport function H4({ className, ...props }: ComponentProps<'h4'>) {\n  return <h4 className={cn('font-display text-xl font-semibold leading-snug', className)} {...props} />;\n}\n\nexport function P({ className, ...props }: ComponentProps<'p'>) {\n  return <p className={cn('leading-relaxed [&:not(:first-child)]:mt-4', className)} {...props} />;\n}\n\nexport function Lead({ className, ...props }: ComponentProps<'p'>) {\n  return <p className={cn('text-xl text-muted-foreground', className)} {...props} />;\n}\n\nexport function Muted({ className, ...props }: ComponentProps<'p'>) {\n  return <p className={cn('text-sm text-muted-foreground', className)} {...props} />;\n}\n\nexport function Blockquote({ className, ...props }: ComponentProps<'blockquote'>) {\n  return <blockquote className={cn('mt-4 border-l-2 pl-4 italic', className)} {...props} />;\n}\n\nexport function List({ className, ...props }: ComponentProps<'ul'>) {\n  return <ul className={cn('my-4 ml-6 list-disc [&>li]:mt-2', className)} {...props} />;\n}\n\nexport function InlineCode({ className, ...props }: ComponentProps<'code'>) {\n  return <code className={cn('rounded-sm bg-muted px-1 py-0.5 font-mono text-sm', className)} {...props} />;\n}\n"
+    }
+  ]
+}

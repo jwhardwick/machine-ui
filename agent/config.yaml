@@ -1,0 +1,20 @@
+# machine-ui's own settings for the maintainer agent. Only maintainers edit this file; the agent's
+# hooks refuse to.
+target:
+  packages: [packages/tokens, packages/theme-engine, packages/ui]
+  storybook: apps/storybook
+  site: apps/site
+issues:
+  source: github
+  readyLabel: agent:ready
+  escalateLabel: needs-human
+planWaitHours: 2
+retries: 3
+autonomy:
+  patch: auto-merge
+  minor: review
+  major: approval
+gates:
+  - pnpm check
+  - pnpm release:bump --check-changeset
+referenceThemes: [console, graphite, harbor, folio, bloom, forge]

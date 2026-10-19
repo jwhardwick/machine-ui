@@ -1,0 +1,2126 @@
+{
+  "exports": {
+    "Accordion": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<(AccordionPrimitive.AccordionSingleProps | AccordionPrimitive.AccordionMultipleProps) & React.RefAttributes<HTMLDivElement>>"
+    },
+    "AccordionContent": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof AccordionPrimitive.Content>): React.JSX.Element"
+    },
+    "AccordionItem": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AccordionPrimitive.Item>): React.JSX.Element"
+    },
+    "AccordionTrigger": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof AccordionPrimitive.Trigger>): React.JSX.Element"
+    },
+    "AgentGlyph": {
+      "kind": "function",
+      "signature": "({ className, label, ...props }: ComponentProps<\"span\"> & { label?: string; }): React.JSX.Element",
+      "members": {
+        "label": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Alert": {
+      "kind": "function",
+      "signature": "({ className, variant, ...props }: AlertProps): React.JSX.Element",
+      "members": {
+        "variant": {
+          "type": "\"default\" | \"success\" | \"warning\" | \"destructive\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "AlertDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "AlertDialog": {
+      "kind": "const",
+      "signature": "React.FC<AlertDialogPrimitive.AlertDialogProps>"
+    },
+    "AlertDialogAction": {
+      "kind": "function",
+      "signature": "({ className, variant, ...props }: ComponentProps<typeof AlertDialogPrimitive.Action> & { variant?: \"default\" | \"destructive\"; }): React.JSX.Element",
+      "members": {
+        "variant": {
+          "type": "\"default\" | \"destructive\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "AlertDialogCancel": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Cancel>): React.JSX.Element"
+    },
+    "AlertDialogContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Content>): React.JSX.Element"
+    },
+    "AlertDialogDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Description>): React.JSX.Element"
+    },
+    "AlertDialogFooter": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "AlertDialogHeader": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "AlertDialogTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Title>): React.JSX.Element"
+    },
+    "AlertDialogTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<AlertDialogPrimitive.AlertDialogTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "AlertProps": {
+      "kind": "interface",
+      "signature": "extends ComponentProps<'div'>, VariantProps<typeof alertVariants>",
+      "members": {
+        "variant": {
+          "type": "\"default\" | \"success\" | \"warning\" | \"destructive\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "AlertTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "ApprovalCard": {
+      "kind": "function",
+      "signature": "({ question, options, defaultValue, onConfirm, onSkip, className, ...props }: Omit<ComponentProps<\"div\">, \"onChange\"> & { question: string; options: ApprovalOption[]; defaultValue?: string; onConfirm?: (value: string) => void; onSkip?: () => void; }): React.JSX.Element",
+      "members": {
+        "defaultValue": {
+          "type": "string | (readonly string[] & string) | undefined",
+          "optional": true
+        },
+        "onConfirm": {
+          "type": "((value: string) => void) | undefined",
+          "optional": true
+        },
+        "onSkip": {
+          "type": "(() => void) | undefined",
+          "optional": true
+        },
+        "options": {
+          "type": "ApprovalOption[]",
+          "optional": false
+        },
+        "question": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "ApprovalOption": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "description": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "label": {
+          "type": "string",
+          "optional": false
+        },
+        "value": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "AspectRatio": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<typeof AspectRatioPrimitive.Root>): React.JSX.Element"
+    },
+    "Avatar": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AvatarPrimitive.Root>): React.JSX.Element"
+    },
+    "AvatarFallback": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AvatarPrimitive.Fallback>): React.JSX.Element"
+    },
+    "AvatarGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "AvatarImage": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof AvatarPrimitive.Image>): React.JSX.Element"
+    },
+    "Badge": {
+      "kind": "function",
+      "signature": "({ className, variant, ...props }: BadgeProps): React.JSX.Element",
+      "members": {
+        "variant": {
+          "type": "\"default\" | \"destructive\" | \"secondary\" | \"outline\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "BadgeProps": {
+      "kind": "interface",
+      "signature": "extends ComponentProps<'span'>, VariantProps<typeof badgeVariants>",
+      "members": {
+        "variant": {
+          "type": "\"default\" | \"destructive\" | \"secondary\" | \"outline\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "badgeVariants": {
+      "kind": "const",
+      "signature": "(props?: (ConfigVariants<{ variant: { default: string; secondary: string; outline: string; destructive: string; }; }> & ClassProp) | undefined) => string"
+    },
+    "Blockquote": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"blockquote\">): React.JSX.Element"
+    },
+    "Breadcrumb": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<\"nav\">): React.JSX.Element"
+    },
+    "BreadcrumbEllipsis": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "BreadcrumbItem": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"li\">): React.JSX.Element"
+    },
+    "BreadcrumbLink": {
+      "kind": "function",
+      "signature": "({ asChild, className, ...props }: ComponentProps<\"a\"> & { asChild?: boolean; }): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "BreadcrumbList": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"ol\">): React.JSX.Element"
+    },
+    "BreadcrumbPage": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "BreadcrumbSeparator": {
+      "kind": "function",
+      "signature": "({ children, className, ...props }: ComponentProps<\"li\">): React.JSX.Element"
+    },
+    "Button": {
+      "kind": "function",
+      "signature": "({ className, variant, size, asChild, ...props }: ButtonProps): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"link\" | \"default\" | \"destructive\" | \"secondary\" | \"outline\" | \"ghost\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ButtonGroup": {
+      "kind": "function",
+      "signature": "({ className, orientation, ...props }: ComponentProps<\"div\"> & { orientation?: \"horizontal\" | \"vertical\"; }): React.JSX.Element",
+      "members": {
+        "orientation": {
+          "type": "\"horizontal\" | \"vertical\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ButtonProps": {
+      "kind": "interface",
+      "signature": "extends ComponentProps<'button'>, VariantProps<typeof buttonVariants>",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"link\" | \"default\" | \"destructive\" | \"secondary\" | \"outline\" | \"ghost\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "buttonVariants": {
+      "kind": "const",
+      "signature": "(props?: (ConfigVariants<{ variant: { default: string; secondary: string; outline: string; ghost: string; destructive: string; link: string; }; size: { sm: string; md: string; lg: string; icon: string; }; }> & ClassProp) | undefined) => string"
+    },
+    "Calendar": {
+      "kind": "function",
+      "signature": "({ className, classNames, showOutsideDays, ...props }: ComponentProps<typeof DayPicker>): React.JSX.Element"
+    },
+    "Card": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CardContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CardDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CardFooter": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CardHeader": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CardTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "Carousel": {
+      "kind": "function",
+      "signature": "({ orientation, opts, className, children, ...props }: ComponentProps<\"div\"> & { orientation?: \"horizontal\" | \"vertical\"; opts?: CarouselOptions; }): React.JSX.Element",
+      "members": {
+        "opts": {
+          "type": "Partial<OptionsType> | undefined",
+          "optional": true
+        },
+        "orientation": {
+          "type": "\"horizontal\" | \"vertical\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "CarouselApi": {
+      "kind": "type",
+      "signature": "EmblaCarouselType | undefined"
+    },
+    "CarouselContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CarouselItem": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CarouselNext": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof Button>): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"link\" | \"default\" | \"destructive\" | \"secondary\" | \"outline\" | \"ghost\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "CarouselPrevious": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof Button>): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"link\" | \"default\" | \"destructive\" | \"secondary\" | \"outline\" | \"ghost\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ChartConfig": {
+      "kind": "type",
+      "signature": "{ [x: string]: { label: ReactNode; color: string; }; }"
+    },
+    "ChartContainer": {
+      "kind": "function",
+      "signature": "({ config, className, children, style, ...props }: ComponentProps<\"div\"> & { config: ChartConfig; children: ComponentProps<typeof Recharts.ResponsiveContainer>[\"children\"]; }): React.JSX.Element",
+      "members": {
+        "config": {
+          "type": "ChartConfig",
+          "optional": false
+        }
+      }
+    },
+    "ChartLegend": {
+      "kind": "const",
+      "signature": "typeof Recharts.Legend"
+    },
+    "ChartLegendContent": {
+      "kind": "function",
+      "signature": "({ payload }: { payload?: { dataKey?: string | number; value?: string; color?: string; }[]; }): React.JSX.Element | null",
+      "members": {
+        "payload": {
+          "type": "{ dataKey?: string | number; value?: string; color?: string; }[] | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ChartTooltip": {
+      "kind": "const",
+      "signature": "typeof Recharts.Tooltip"
+    },
+    "ChartTooltipContent": {
+      "kind": "function",
+      "signature": "({ active, payload, label, hideLabel, }: { active?: boolean; payload?: TooltipPayloadItem[]; label?: ReactNode; hideLabel?: boolean; }): React.JSX.Element | null",
+      "members": {
+        "active": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "hideLabel": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "label": {
+          "type": "ReactNode",
+          "optional": true
+        },
+        "payload": {
+          "type": "TooltipPayloadItem[] | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Checkbox": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof CheckboxPrimitive.Root>): React.JSX.Element"
+    },
+    "Citation": {
+      "kind": "function",
+      "signature": "({ index, source, className }: { index: number; source: Source; className?: string; }): React.JSX.Element",
+      "members": {
+        "className": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "index": {
+          "type": "number",
+          "optional": false
+        },
+        "source": {
+          "type": "Source",
+          "optional": false
+        }
+      }
+    },
+    "cn": {
+      "kind": "function",
+      "signature": "(...inputs: ClassValue[]): string"
+    },
+    "CodeBlock": {
+      "kind": "function",
+      "signature": "({ code, filename, language, className, ...props }: ComponentProps<\"div\"> & { code: string; filename?: string; language?: string; }): React.JSX.Element",
+      "members": {
+        "code": {
+          "type": "string",
+          "optional": false
+        },
+        "filename": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "language": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Collapsible": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<CollapsiblePrimitive.CollapsibleProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "CollapsibleContent": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<CollapsiblePrimitive.CollapsibleContentProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "CollapsibleTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<CollapsiblePrimitive.CollapsibleTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "ColumnDef": {
+      "kind": "type",
+      "signature": "DisplayColumnDef<TData, TValue> | GroupColumnDef<TData, TValue> | AccessorColumnDef<TData, TValue>"
+    },
+    "Combobox": {
+      "kind": "function",
+      "signature": "({ options, value, defaultValue, onChange, placeholder, searchPlaceholder, emptyText, id, className, ...aria }: ComboboxProps): React.JSX.Element",
+      "members": {
+        "aria-label": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "className": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "defaultValue": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "emptyText": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "id": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "onChange": {
+          "type": "((value: string) => void) | undefined",
+          "optional": true
+        },
+        "options": {
+          "type": "ComboboxOption[]",
+          "optional": false
+        },
+        "placeholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "searchPlaceholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "value": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ComboboxOption": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "label": {
+          "type": "string",
+          "optional": false
+        },
+        "value": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "ComboboxProps": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "aria-label": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "className": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "defaultValue": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "emptyText": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "id": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "onChange": {
+          "type": "((value: string) => void) | undefined",
+          "optional": true
+        },
+        "options": {
+          "type": "ComboboxOption[]",
+          "optional": false
+        },
+        "placeholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "searchPlaceholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "value": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Command": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof CommandPrimitive>): React.JSX.Element"
+    },
+    "CommandDialog": {
+      "kind": "function",
+      "signature": "({ title, description, children, open, ...props }: ComponentProps<typeof Dialog> & { title?: string; description?: string; }): React.JSX.Element",
+      "members": {
+        "description": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "title": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "CommandEmpty": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<typeof CommandPrimitive.Empty>): React.JSX.Element"
+    },
+    "CommandGroup": {
+      "kind": "function",
+      "signature": "({ className, ref, ...props }: ComponentProps<typeof CommandPrimitive.Group>): React.JSX.Element"
+    },
+    "CommandInput": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof CommandPrimitive.Input>): React.JSX.Element"
+    },
+    "CommandItem": {
+      "kind": "function",
+      "signature": "({ className, ref, ...props }: ComponentProps<typeof CommandPrimitive.Item>): React.JSX.Element"
+    },
+    "CommandList": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof CommandPrimitive.List>): React.JSX.Element"
+    },
+    "CommandSeparator": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "CommandShortcut": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "ConfidenceBar": {
+      "kind": "function",
+      "signature": "({ value, label, className, ...props }: ComponentProps<\"div\"> & { value: number; label?: string; }): React.JSX.Element",
+      "members": {
+        "label": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "value": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "ContextMenu": {
+      "kind": "const",
+      "signature": "React.FC<ContextMenuPrimitive.ContextMenuProps>"
+    },
+    "ContextMenuCheckboxItem": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>): React.JSX.Element"
+    },
+    "ContextMenuContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof ContextMenuPrimitive.Content>): React.JSX.Element"
+    },
+    "ContextMenuGroup": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<ContextMenuPrimitive.ContextMenuGroupProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "ContextMenuItem": {
+      "kind": "function",
+      "signature": "({ className, inset, variant, ...props }: ComponentProps<typeof ContextMenuPrimitive.Item> & { inset?: boolean; variant?: \"default\" | \"destructive\"; }): React.JSX.Element",
+      "members": {
+        "inset": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"default\" | \"destructive\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ContextMenuLabel": {
+      "kind": "function",
+      "signature": "({ className, inset, ...props }: ComponentProps<typeof ContextMenuPrimitive.Label> & { inset?: boolean; }): React.JSX.Element",
+      "members": {
+        "inset": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ContextMenuPortal": {
+      "kind": "const",
+      "signature": "React.FC<ContextMenuPrimitive.ContextMenuPortalProps>"
+    },
+    "ContextMenuRadioGroup": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<ContextMenuPrimitive.ContextMenuRadioGroupProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "ContextMenuRadioItem": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof ContextMenuPrimitive.RadioItem>): React.JSX.Element"
+    },
+    "ContextMenuSeparator": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof ContextMenuPrimitive.Separator>): React.JSX.Element"
+    },
+    "ContextMenuShortcut": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "ContextMenuSub": {
+      "kind": "const",
+      "signature": "React.FC<ContextMenuPrimitive.ContextMenuSubProps>"
+    },
+    "ContextMenuSubContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof ContextMenuPrimitive.SubContent>): React.JSX.Element"
+    },
+    "ContextMenuSubTrigger": {
+      "kind": "function",
+      "signature": "({ className, inset, children, ...props }: ComponentProps<typeof ContextMenuPrimitive.SubTrigger> & { inset?: boolean; }): React.JSX.Element",
+      "members": {
+        "inset": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ContextMenuTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<ContextMenuPrimitive.ContextMenuTriggerProps & React.RefAttributes<HTMLSpanElement>>"
+    },
+    "CopyInput": {
+      "kind": "function",
+      "signature": "({ value, className, ...props }: Omit<ComponentProps<\"input\">, \"value\"> & { value: string; }): React.JSX.Element",
+      "members": {
+        "value": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "DataTable": {
+      "kind": "function",
+      "signature": "<TData>({ columns, data, filterColumn, filterPlaceholder, pageSize, toolbar, className, }: DataTableProps<TData>): React.JSX.Element",
+      "members": {
+        "className": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "columns": {
+          "type": "ColumnDef<TData>[]",
+          "optional": false
+        },
+        "data": {
+          "type": "TData[]",
+          "optional": false
+        },
+        "filterColumn": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "filterPlaceholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "pageSize": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "toolbar": {
+          "type": "ReactNode",
+          "optional": true
+        }
+      }
+    },
+    "DataTableColumnHeader": {
+      "kind": "function",
+      "signature": "<TData>({ column, title }: { column: Column<TData>; title: string; }): React.JSX.Element",
+      "members": {
+        "column": {
+          "type": "Column<TData, unknown>",
+          "optional": false
+        },
+        "title": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "DataTableProps": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "className": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "columns": {
+          "type": "ColumnDef<TData>[]",
+          "optional": false
+        },
+        "data": {
+          "type": "TData[]",
+          "optional": false
+        },
+        "filterColumn": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "filterPlaceholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "pageSize": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "toolbar": {
+          "type": "ReactNode",
+          "optional": true
+        }
+      }
+    },
+    "DatePicker": {
+      "kind": "function",
+      "signature": "({ value, defaultValue, onChange, placeholder, id, className, ...aria }: DatePickerProps): React.JSX.Element",
+      "members": {
+        "aria-label": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "className": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "defaultValue": {
+          "type": "Date | undefined",
+          "optional": true
+        },
+        "id": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "onChange": {
+          "type": "((date: Date | undefined) => void) | undefined",
+          "optional": true
+        },
+        "placeholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "value": {
+          "type": "Date | undefined",
+          "optional": true
+        }
+      }
+    },
+    "DatePickerProps": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "aria-label": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "className": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "defaultValue": {
+          "type": "Date | undefined",
+          "optional": true
+        },
+        "id": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "onChange": {
+          "type": "((date: Date | undefined) => void) | undefined",
+          "optional": true
+        },
+        "placeholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "value": {
+          "type": "Date | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Dialog": {
+      "kind": "const",
+      "signature": "React.FC<DialogPrimitive.DialogProps>"
+    },
+    "DialogClose": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<DialogPrimitive.DialogCloseProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "DialogContent": {
+      "kind": "function",
+      "signature": "({ className, children, showCloseButton, ...props }: ComponentProps<typeof DialogPrimitive.Content> & { showCloseButton?: boolean; }): React.JSX.Element",
+      "members": {
+        "showCloseButton": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "DialogDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof DialogPrimitive.Description>): React.JSX.Element"
+    },
+    "DialogFooter": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "DialogHeader": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "DialogOverlay": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof DialogPrimitive.Overlay>): React.JSX.Element"
+    },
+    "DialogPortal": {
+      "kind": "const",
+      "signature": "React.FC<DialogPrimitive.DialogPortalProps>"
+    },
+    "DialogTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof DialogPrimitive.Title>): React.JSX.Element"
+    },
+    "DialogTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<DialogPrimitive.DialogTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "Drawer": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<typeof DrawerPrimitive.Root>): React.JSX.Element"
+    },
+    "DrawerClose": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<DialogCloseProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "DrawerContent": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof DrawerPrimitive.Content>): React.JSX.Element"
+    },
+    "DrawerDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof DrawerPrimitive.Description>): React.JSX.Element"
+    },
+    "DrawerFooter": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "DrawerHeader": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "DrawerTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof DrawerPrimitive.Title>): React.JSX.Element"
+    },
+    "DrawerTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<DialogTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "DropdownMenu": {
+      "kind": "const",
+      "signature": "React.FC<DropdownMenuPrimitive.DropdownMenuProps>"
+    },
+    "DropdownMenuCheckboxItem": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>): React.JSX.Element"
+    },
+    "DropdownMenuContent": {
+      "kind": "function",
+      "signature": "({ className, sideOffset, ...props }: ComponentProps<typeof DropdownMenuPrimitive.Content>): React.JSX.Element"
+    },
+    "DropdownMenuGroup": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<DropdownMenuPrimitive.DropdownMenuGroupProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "DropdownMenuItem": {
+      "kind": "function",
+      "signature": "({ className, inset, variant, ...props }: ComponentProps<typeof DropdownMenuPrimitive.Item> & { inset?: boolean; variant?: \"default\" | \"destructive\"; }): React.JSX.Element",
+      "members": {
+        "inset": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"default\" | \"destructive\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "DropdownMenuLabel": {
+      "kind": "function",
+      "signature": "({ className, inset, ...props }: ComponentProps<typeof DropdownMenuPrimitive.Label> & { inset?: boolean; }): React.JSX.Element",
+      "members": {
+        "inset": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "DropdownMenuPortal": {
+      "kind": "const",
+      "signature": "React.FC<DropdownMenuPrimitive.DropdownMenuPortalProps>"
+    },
+    "DropdownMenuRadioGroup": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<DropdownMenuPrimitive.DropdownMenuRadioGroupProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "DropdownMenuRadioItem": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof DropdownMenuPrimitive.RadioItem>): React.JSX.Element"
+    },
+    "DropdownMenuSeparator": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof DropdownMenuPrimitive.Separator>): React.JSX.Element"
+    },
+    "DropdownMenuShortcut": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "DropdownMenuSub": {
+      "kind": "const",
+      "signature": "React.FC<DropdownMenuPrimitive.DropdownMenuSubProps>"
+    },
+    "DropdownMenuSubContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof DropdownMenuPrimitive.SubContent>): React.JSX.Element"
+    },
+    "DropdownMenuSubTrigger": {
+      "kind": "function",
+      "signature": "({ className, inset, children, ...props }: ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & { inset?: boolean; }): React.JSX.Element",
+      "members": {
+        "inset": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "DropdownMenuTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<DropdownMenuPrimitive.DropdownMenuTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "Empty": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "EmptyActions": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "EmptyDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"p\">): React.JSX.Element"
+    },
+    "EmptyMedia": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "EmptyTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "Field": {
+      "kind": "function",
+      "signature": "({ className, orientation, ...props }: ComponentProps<\"div\"> & { orientation?: \"vertical\" | \"horizontal\"; }): React.JSX.Element",
+      "members": {
+        "orientation": {
+          "type": "\"horizontal\" | \"vertical\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "FieldDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"p\">): React.JSX.Element"
+    },
+    "FieldError": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<\"p\">): React.JSX.Element | null"
+    },
+    "FieldGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "FieldLabel": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof Label>): React.JSX.Element"
+    },
+    "FieldLegend": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"legend\">): React.JSX.Element"
+    },
+    "FieldSet": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"fieldset\">): React.JSX.Element"
+    },
+    "H1": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"h1\">): React.JSX.Element"
+    },
+    "H2": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"h2\">): React.JSX.Element"
+    },
+    "H3": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"h3\">): React.JSX.Element"
+    },
+    "H4": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"h4\">): React.JSX.Element"
+    },
+    "HoverCard": {
+      "kind": "const",
+      "signature": "React.FC<HoverCardPrimitive.HoverCardProps>"
+    },
+    "HoverCardContent": {
+      "kind": "function",
+      "signature": "({ className, align, sideOffset, ...props }: ComponentProps<typeof HoverCardPrimitive.Content>): React.JSX.Element"
+    },
+    "HoverCardTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<HoverCardPrimitive.HoverCardTriggerProps & React.RefAttributes<HTMLAnchorElement>>"
+    },
+    "InlineCode": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"code\">): React.JSX.Element"
+    },
+    "Input": {
+      "kind": "function",
+      "signature": "({ className, type, ...props }: ComponentProps<\"input\">): React.JSX.Element"
+    },
+    "InputGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "InputGroupAddon": {
+      "kind": "function",
+      "signature": "({ className, align, ...props }: ComponentProps<\"div\"> & { align?: \"start\" | \"end\"; }): React.JSX.Element",
+      "members": {
+        "align": {
+          "type": "\"start\" | \"end\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "InputGroupButton": {
+      "kind": "function",
+      "signature": "({ className, size, variant, ...props }: ComponentProps<typeof Button>): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"link\" | \"default\" | \"destructive\" | \"secondary\" | \"outline\" | \"ghost\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "InputGroupInput": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"input\">): React.JSX.Element"
+    },
+    "InputGroupText": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "InputOTP": {
+      "kind": "function",
+      "signature": "({ className, containerClassName, ...props }: ComponentProps<typeof OTPInput> & { containerClassName?: string; }): React.JSX.Element"
+    },
+    "InputOTPGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "InputOTPSeparator": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "InputOTPSlot": {
+      "kind": "function",
+      "signature": "({ index, className, ...props }: ComponentProps<\"div\"> & { index: number; }): React.JSX.Element",
+      "members": {
+        "index": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "Item": {
+      "kind": "function",
+      "signature": "({ className, variant, size, asChild, ...props }: ComponentProps<\"div\"> & VariantProps<typeof itemVariants> & { asChild?: boolean; }): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"default\" | \"outline\" | \"muted\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ItemActions": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "ItemContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "ItemDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"p\">): React.JSX.Element"
+    },
+    "ItemGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "ItemMedia": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "ItemTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "Kbd": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"kbd\">): React.JSX.Element"
+    },
+    "KbdGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "Label": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>): React.JSX.Element"
+    },
+    "Lead": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"p\">): React.JSX.Element"
+    },
+    "List": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"ul\">): React.JSX.Element"
+    },
+    "Menubar": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof MenubarPrimitive.Root>): React.JSX.Element"
+    },
+    "MenubarCheckboxItem": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof MenubarPrimitive.CheckboxItem>): React.JSX.Element"
+    },
+    "MenubarContent": {
+      "kind": "function",
+      "signature": "({ className, align, alignOffset, sideOffset, ...props }: ComponentProps<typeof MenubarPrimitive.Content>): React.JSX.Element"
+    },
+    "MenubarGroup": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<MenubarPrimitive.MenubarGroupProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "MenubarItem": {
+      "kind": "function",
+      "signature": "({ className, inset, ...props }: ComponentProps<typeof MenubarPrimitive.Item> & { inset?: boolean; }): React.JSX.Element",
+      "members": {
+        "inset": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "MenubarLabel": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof MenubarPrimitive.Label>): React.JSX.Element"
+    },
+    "MenubarMenu": {
+      "kind": "const",
+      "signature": "(props: ScopedProps<MenubarPrimitive.MenubarMenuProps>) => React.JSX.Element"
+    },
+    "MenubarRadioGroup": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<MenubarPrimitive.MenubarRadioGroupProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "MenubarRadioItem": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof MenubarPrimitive.RadioItem>): React.JSX.Element"
+    },
+    "MenubarSeparator": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof MenubarPrimitive.Separator>): React.JSX.Element"
+    },
+    "MenubarShortcut": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "MenubarSub": {
+      "kind": "const",
+      "signature": "React.FC<MenubarPrimitive.MenubarSubProps>"
+    },
+    "MenubarSubContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof MenubarPrimitive.SubContent>): React.JSX.Element"
+    },
+    "MenubarSubTrigger": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof MenubarPrimitive.SubTrigger>): React.JSX.Element"
+    },
+    "MenubarTrigger": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof MenubarPrimitive.Trigger>): React.JSX.Element"
+    },
+    "Message": {
+      "kind": "function",
+      "signature": "({ from, className, ...props }: ComponentProps<\"div\"> & { from: \"user\" | \"assistant\"; }): React.JSX.Element",
+      "members": {
+        "from": {
+          "type": "\"user\" | \"assistant\"",
+          "optional": false
+        }
+      }
+    },
+    "MessageActions": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "MessageContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "Muted": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"p\">): React.JSX.Element"
+    },
+    "NativeSelect": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<\"select\">): React.JSX.Element"
+    },
+    "NavigationMenu": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof NavigationMenuPrimitive.Root>): React.JSX.Element"
+    },
+    "NavigationMenuContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof NavigationMenuPrimitive.Content>): React.JSX.Element"
+    },
+    "NavigationMenuItem": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<NavigationMenuPrimitive.NavigationMenuItemProps & React.RefAttributes<HTMLLIElement>>"
+    },
+    "NavigationMenuLink": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof NavigationMenuPrimitive.Link>): React.JSX.Element"
+    },
+    "NavigationMenuList": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof NavigationMenuPrimitive.List>): React.JSX.Element"
+    },
+    "NavigationMenuTrigger": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof NavigationMenuPrimitive.Trigger>): React.JSX.Element"
+    },
+    "navigationMenuTriggerStyle": {
+      "kind": "const",
+      "signature": "(props?: ClassProp | undefined) => string"
+    },
+    "P": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"p\">): React.JSX.Element"
+    },
+    "Pagination": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"nav\">): React.JSX.Element"
+    },
+    "PaginationContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"ul\">): React.JSX.Element"
+    },
+    "PaginationEllipsis": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"span\">): React.JSX.Element"
+    },
+    "PaginationItem": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<\"li\">): React.JSX.Element"
+    },
+    "PaginationLink": {
+      "kind": "function",
+      "signature": "({ className, isActive, size, ...props }: ComponentProps<\"a\"> & { isActive?: boolean; size?: ButtonProps[\"size\"]; }): React.JSX.Element",
+      "members": {
+        "isActive": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "PaginationNext": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof PaginationLink>): React.JSX.Element",
+      "members": {
+        "isActive": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "PaginationPrevious": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof PaginationLink>): React.JSX.Element",
+      "members": {
+        "isActive": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Popover": {
+      "kind": "const",
+      "signature": "React.FC<PopoverPrimitive.PopoverProps>"
+    },
+    "PopoverAnchor": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<PopoverPrimitive.PopoverAnchorProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "PopoverContent": {
+      "kind": "function",
+      "signature": "({ className, align, sideOffset, ...props }: ComponentProps<typeof PopoverPrimitive.Content>): React.JSX.Element"
+    },
+    "PopoverTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<PopoverPrimitive.PopoverTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "Progress": {
+      "kind": "function",
+      "signature": "({ className, value, ...props }: ComponentProps<typeof ProgressPrimitive.Root>): React.JSX.Element"
+    },
+    "PromptInput": {
+      "kind": "function",
+      "signature": "({ onSubmit, onStop, busy, placeholder, tools, hint, label, className, ...props }: PromptInputProps): React.JSX.Element",
+      "members": {
+        "busy": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "hint": {
+          "type": "ReactNode",
+          "optional": true
+        },
+        "label": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "onStop": {
+          "type": "(() => void) | undefined",
+          "optional": true
+        },
+        "onSubmit": {
+          "type": "((value: string) => void) | undefined",
+          "optional": true
+        },
+        "placeholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "tools": {
+          "type": "ReactNode",
+          "optional": true
+        }
+      }
+    },
+    "PromptInputProps": {
+      "kind": "interface",
+      "signature": "extends Omit<ComponentProps<'form'>, 'onSubmit'>",
+      "members": {
+        "busy": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "hint": {
+          "type": "ReactNode",
+          "optional": true
+        },
+        "label": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "onStop": {
+          "type": "(() => void) | undefined",
+          "optional": true
+        },
+        "onSubmit": {
+          "type": "((value: string) => void) | undefined",
+          "optional": true
+        },
+        "placeholder": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "tools": {
+          "type": "ReactNode",
+          "optional": true
+        }
+      }
+    },
+    "PromptSuggestions": {
+      "kind": "function",
+      "signature": "({ suggestions, onPick, className, ...props }: Omit<ComponentProps<\"div\">, \"onClick\"> & { suggestions: string[]; onPick?: (suggestion: string) => void; }): React.JSX.Element",
+      "members": {
+        "onPick": {
+          "type": "((suggestion: string) => void) | undefined",
+          "optional": true
+        },
+        "suggestions": {
+          "type": "string[]",
+          "optional": false
+        }
+      }
+    },
+    "RadioGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Root>): React.JSX.Element"
+    },
+    "RadioGroupItem": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Item>): React.JSX.Element"
+    },
+    "Recharts": {
+      "kind": "const",
+      "signature": "typeof import(\".pnpm/recharts@2.15.4_react-dom@19.3.1_react@19.3.1__react@19.3.1/node_modules/recharts\")"
+    },
+    "ResizableHandle": {
+      "kind": "function",
+      "signature": "({ withHandle, className, ...props }: ComponentProps<typeof PanelResizeHandle> & { withHandle?: boolean; }): React.JSX.Element",
+      "members": {
+        "withHandle": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ResizablePanel": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<typeof Panel>): React.JSX.Element"
+    },
+    "ResizablePanelGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof PanelGroup>): React.JSX.Element"
+    },
+    "ScrollArea": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof ScrollAreaPrimitive.Root>): React.JSX.Element"
+    },
+    "ScrollBar": {
+      "kind": "function",
+      "signature": "({ className, orientation, ...props }: ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>): React.JSX.Element"
+    },
+    "SearchInput": {
+      "kind": "function",
+      "signature": "({ shortcut, className, value, defaultValue, onChange, onClear, ...props }: Omit<ComponentProps<\"input\">, \"value\" | \"defaultValue\"> & { shortcut?: string; value?: string; defaultValue?: string; onClear?: () => void; }): React.JSX.Element",
+      "members": {
+        "defaultValue": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "onClear": {
+          "type": "(() => void) | undefined",
+          "optional": true
+        },
+        "shortcut": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "value": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Select": {
+      "kind": "const",
+      "signature": "React.FC<SelectPrimitive.SelectProps>"
+    },
+    "SelectContent": {
+      "kind": "function",
+      "signature": "({ className, children, position, ...props }: ComponentProps<typeof SelectPrimitive.Content>): React.JSX.Element"
+    },
+    "SelectGroup": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<SelectPrimitive.SelectGroupProps & React.RefAttributes<HTMLDivElement>>"
+    },
+    "selectionColumn": {
+      "kind": "function",
+      "signature": "<TData>(): ColumnDef<TData>"
+    },
+    "SelectItem": {
+      "kind": "function",
+      "signature": "({ className, children, ...props }: ComponentProps<typeof SelectPrimitive.Item>): React.JSX.Element"
+    },
+    "SelectLabel": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof SelectPrimitive.Label>): React.JSX.Element"
+    },
+    "SelectSeparator": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof SelectPrimitive.Separator>): React.JSX.Element"
+    },
+    "SelectTrigger": {
+      "kind": "function",
+      "signature": "({ className, size, children, ...props }: ComponentProps<typeof SelectPrimitive.Trigger> & { size?: \"sm\" | \"md\"; }): React.JSX.Element",
+      "members": {
+        "size": {
+          "type": "\"sm\" | \"md\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "SelectValue": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<SelectPrimitive.SelectValueProps & React.RefAttributes<HTMLSpanElement>>"
+    },
+    "Separator": {
+      "kind": "function",
+      "signature": "({ className, orientation, decorative, ...props }: ComponentProps<typeof SeparatorPrimitive.Root>): React.JSX.Element"
+    },
+    "Sheet": {
+      "kind": "const",
+      "signature": "React.FC<SheetPrimitive.DialogProps>"
+    },
+    "SheetClose": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<SheetPrimitive.DialogCloseProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "SheetContent": {
+      "kind": "function",
+      "signature": "({ className, children, side, ...props }: ComponentProps<typeof SheetPrimitive.Content> & { side?: keyof typeof SIDES; }): React.JSX.Element",
+      "members": {
+        "side": {
+          "type": "\"right\" | \"left\" | \"top\" | \"bottom\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "SheetDescription": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof SheetPrimitive.Description>): React.JSX.Element"
+    },
+    "SheetFooter": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SheetHeader": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SheetTitle": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof SheetPrimitive.Title>): React.JSX.Element"
+    },
+    "SheetTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<SheetPrimitive.DialogTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "Sidebar": {
+      "kind": "function",
+      "signature": "({ side, collapsible, className, children, ...props }: ComponentProps<\"div\"> & { side?: \"left\" | \"right\"; collapsible?: \"offcanvas\" | \"icon\" | \"none\"; }): React.JSX.Element",
+      "members": {
+        "collapsible": {
+          "type": "\"none\" | \"icon\" | \"offcanvas\" | undefined",
+          "optional": true
+        },
+        "side": {
+          "type": "\"right\" | \"left\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "SidebarContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SidebarFooter": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SidebarGroup": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SidebarGroupContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SidebarGroupLabel": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SidebarHeader": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SidebarInset": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"main\">): React.JSX.Element"
+    },
+    "SidebarMenu": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"ul\">): React.JSX.Element"
+    },
+    "SidebarMenuBadge": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "SidebarMenuButton": {
+      "kind": "function",
+      "signature": "({ asChild, isActive, tooltip, size, className, ...props }: ComponentProps<\"button\"> & { asChild?: boolean; isActive?: boolean; tooltip?: string; } & VariantProps<typeof sidebarMenuButtonVariants>): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "isActive": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | null | undefined",
+          "optional": true
+        },
+        "tooltip": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "SidebarMenuItem": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"li\">): React.JSX.Element"
+    },
+    "SidebarProvider": {
+      "kind": "function",
+      "signature": "({ defaultOpen, open: openProp, onOpenChange, className, style, children, ...props }: ComponentProps<\"div\"> & { defaultOpen?: boolean; open?: boolean; onOpenChange?: (open: boolean) => void; }): React.JSX.Element",
+      "members": {
+        "defaultOpen": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "onOpenChange": {
+          "type": "((open: boolean) => void) | undefined",
+          "optional": true
+        },
+        "open": {
+          "type": "boolean | undefined",
+          "optional": true
+        }
+      }
+    },
+    "SidebarSeparator": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof Separator>): React.JSX.Element"
+    },
+    "SidebarTrigger": {
+      "kind": "function",
+      "signature": "({ className, onClick, ...props }: ComponentProps<typeof Button>): React.JSX.Element",
+      "members": {
+        "asChild": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | \"icon\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"link\" | \"default\" | \"destructive\" | \"secondary\" | \"outline\" | \"ghost\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Skeleton": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"div\">): React.JSX.Element"
+    },
+    "Slider": {
+      "kind": "function",
+      "signature": "({ className, defaultValue, value, min, max, \"aria-label\": ariaLabel, \"aria-labelledby\": ariaLabelledBy, ...props }: ComponentProps<typeof SliderPrimitive.Root>): React.JSX.Element"
+    },
+    "Source": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "snippet": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "title": {
+          "type": "string",
+          "optional": false
+        },
+        "url": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "Sources": {
+      "kind": "function",
+      "signature": "({ sources, className, ...props }: ComponentProps<\"div\"> & { sources: Source[]; }): React.JSX.Element",
+      "members": {
+        "sources": {
+          "type": "Source[]",
+          "optional": false
+        }
+      }
+    },
+    "Spinner": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"svg\">): React.JSX.Element"
+    },
+    "Stat": {
+      "kind": "function",
+      "signature": "({ label, value, change, trend, className, ...props }: ComponentProps<\"div\"> & { label: string; value: string; change?: string; trend?: \"up\" | \"down\"; }): React.JSX.Element",
+      "members": {
+        "change": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "label": {
+          "type": "string",
+          "optional": false
+        },
+        "trend": {
+          "type": "\"up\" | \"down\" | undefined",
+          "optional": true
+        },
+        "value": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "StatusDot": {
+      "kind": "function",
+      "signature": "({ tone, pulse, className, ...props }: ComponentProps<\"span\"> & { tone?: keyof typeof TONES; pulse?: boolean; }): React.JSX.Element",
+      "members": {
+        "pulse": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "tone": {
+          "type": "\"online\" | \"busy\" | \"error\" | \"offline\" | \"accent\" | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Stepper": {
+      "kind": "function",
+      "signature": "({ steps, current, className, ...props }: ComponentProps<\"ol\"> & { steps: StepperStep[]; current: number; }): React.JSX.Element",
+      "members": {
+        "current": {
+          "type": "number",
+          "optional": false
+        },
+        "steps": {
+          "type": "StepperStep[]",
+          "optional": false
+        }
+      }
+    },
+    "StepperStep": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "description": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "title": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "StreamingText": {
+      "kind": "function",
+      "signature": "({ text, speed, onDone, className, ...props }: ComponentProps<\"span\"> & { text: string; speed?: number; onDone?: () => void; }): React.JSX.Element",
+      "members": {
+        "onDone": {
+          "type": "(() => void) | undefined",
+          "optional": true
+        },
+        "speed": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "text": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "Switch": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof SwitchPrimitive.Root>): React.JSX.Element"
+    },
+    "Table": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"table\">): React.JSX.Element"
+    },
+    "TableBody": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"tbody\">): React.JSX.Element"
+    },
+    "TableCaption": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"caption\">): React.JSX.Element"
+    },
+    "TableCell": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"td\">): React.JSX.Element"
+    },
+    "TableFooter": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"tfoot\">): React.JSX.Element"
+    },
+    "TableHead": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"th\">): React.JSX.Element"
+    },
+    "TableHeader": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"thead\">): React.JSX.Element"
+    },
+    "TableRow": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"tr\">): React.JSX.Element"
+    },
+    "Tabs": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof TabsPrimitive.Root>): React.JSX.Element"
+    },
+    "TabsContent": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof TabsPrimitive.Content>): React.JSX.Element"
+    },
+    "TabsList": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof TabsPrimitive.List>): React.JSX.Element"
+    },
+    "TabsTrigger": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<typeof TabsPrimitive.Trigger>): React.JSX.Element"
+    },
+    "Textarea": {
+      "kind": "function",
+      "signature": "({ className, ...props }: ComponentProps<\"textarea\">): React.JSX.Element"
+    },
+    "ThinkingIndicator": {
+      "kind": "function",
+      "signature": "({ label, className, ...props }: ComponentProps<\"div\"> & { label?: string; }): React.JSX.Element",
+      "members": {
+        "label": {
+          "type": "string | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ThinkingStep": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "detail": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "label": {
+          "type": "string",
+          "optional": false
+        },
+        "state": {
+          "type": "\"done\" | \"active\" | \"upcoming\"",
+          "optional": false
+        }
+      }
+    },
+    "ThinkingSteps": {
+      "kind": "function",
+      "signature": "({ steps, className, ...props }: ComponentProps<\"ol\"> & { steps: ThinkingStep[]; }): React.JSX.Element",
+      "members": {
+        "steps": {
+          "type": "ThinkingStep[]",
+          "optional": false
+        }
+      }
+    },
+    "toast": {
+      "kind": "const",
+      "signature": "((message: titleT, data?: ExternalToast) => string | number) & { success: (message: titleT | React.ReactNode, data?: ExternalToast) => string | number; info: (message: titleT | React.ReactNode, data?: ExternalToast) => string | number; warning: (message: titleT | React.ReactNode, data?: ExternalToast) => string | number; error: (message: titleT | React.ReactNode, data?: ExternalToast) => string | number; custom: (jsx: (id: number | string) => React.ReactElement, data?: ExternalToast) => string | number; message: (message: titleT | React.ReactNode, data?: ExternalToast) => string | number; promise: <ToastData>(promise: PromiseT<ToastData>, data?: PromiseData<ToastData>) => (string & { unwrap: () => Promise<ToastData>; }) | (number & { unwrap: () => Promise<ToastData>; }) | { unwrap: () => Promise<ToastData>; }; dismiss: (id?: number | string) => string | number; loading: (message: titleT | React.ReactNode, data?: ExternalToast) => string | number; } & { getHistory: () => (ToastT | ToastToDismiss)[]; getToasts: () => (ToastT | ToastToDismiss)[]; }"
+    },
+    "Toaster": {
+      "kind": "function",
+      "signature": "(props: ToasterProps): React.JSX.Element"
+    },
+    "Toggle": {
+      "kind": "function",
+      "signature": "({ className, variant, size, ...props }: ComponentProps<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>): React.JSX.Element",
+      "members": {
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"default\" | \"outline\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ToggleGroup": {
+      "kind": "function",
+      "signature": "({ className, variant, size, children, ...props }: ComponentProps<typeof ToggleGroupPrimitive.Root> & ToggleStyle): React.JSX.Element",
+      "members": {
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"default\" | \"outline\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "ToggleGroupItem": {
+      "kind": "function",
+      "signature": "({ className, variant, size, ...props }: ComponentProps<typeof ToggleGroupPrimitive.Item> & ToggleStyle): React.JSX.Element",
+      "members": {
+        "size": {
+          "type": "\"sm\" | \"md\" | \"lg\" | null | undefined",
+          "optional": true
+        },
+        "variant": {
+          "type": "\"default\" | \"outline\" | null | undefined",
+          "optional": true
+        }
+      }
+    },
+    "toggleVariants": {
+      "kind": "const",
+      "signature": "(props?: (ConfigVariants<{ variant: { default: string; outline: string; }; size: { sm: string; md: string; lg: string; }; }> & ClassProp) | undefined) => string"
+    },
+    "ToolCall": {
+      "kind": "function",
+      "signature": "({ name, status, input, output, defaultOpen, className, ...props }: ComponentProps<\"div\"> & { name: string; status: \"running\" | \"done\" | \"error\"; input?: string; output?: string; defaultOpen?: boolean; }): React.JSX.Element",
+      "members": {
+        "defaultOpen": {
+          "type": "boolean | undefined",
+          "optional": true
+        },
+        "input": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "output": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "status": {
+          "type": "\"done\" | \"error\" | \"running\"",
+          "optional": false
+        }
+      }
+    },
+    "Tooltip": {
+      "kind": "function",
+      "signature": "(props: ComponentProps<typeof TooltipPrimitive.Root>): React.JSX.Element"
+    },
+    "TooltipContent": {
+      "kind": "function",
+      "signature": "({ className, sideOffset, children, ...props }: ComponentProps<typeof TooltipPrimitive.Content>): React.JSX.Element"
+    },
+    "TooltipProvider": {
+      "kind": "function",
+      "signature": "({ delayDuration, ...props }: ComponentProps<typeof TooltipPrimitive.Provider>): React.JSX.Element"
+    },
+    "TooltipTrigger": {
+      "kind": "const",
+      "signature": "React.ForwardRefExoticComponent<TooltipPrimitive.TooltipTriggerProps & React.RefAttributes<HTMLButtonElement>>"
+    },
+    "useReducedMotion": {
+      "kind": "function",
+      "signature": "(): boolean"
+    },
+    "useSidebar": {
+      "kind": "function",
+      "signature": "(): SidebarContextValue"
+    }
+  }
+}

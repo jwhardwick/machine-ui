@@ -1,0 +1,20 @@
+{
+  "name": "@machine-ui/theme-engine",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "build:css": "node scripts/build-css.ts"
+  },
+  "dependencies": {
+    "@machine-ui/tokens": "workspace:*",
+    "culori": "4.0.2"
+  },
+  "devDependencies": {
+    "@types/culori": "4.0.1"
+  }
+}

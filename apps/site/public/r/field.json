@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "Lays out a label, control, help text and error for one form field, so every form reads the same way.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/label",
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/field.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { Label } from '@/components/ui/label';\n\n/** Groups a label, control, description and error for one form field. */\nexport function Field({\n  className,\n  orientation = 'vertical',\n  ...props\n}: ComponentProps<'div'> & { orientation?: 'vertical' | 'horizontal' }) {\n  return (\n    <div\n      role=\"group\"\n      data-slot=\"field\"\n      data-orientation={orientation}\n      className={cn(\n        'group/field flex w-full gap-2 data-[invalid=true]:text-destructive',\n        orientation === 'vertical' ? 'flex-col' : 'flex-row items-center [&>[data-slot=field-label]]:flex-auto',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function FieldLabel({ className, ...props }: ComponentProps<typeof Label>) {\n  return <Label data-slot=\"field-label\" className={cn('group-data-[disabled=true]/field:opacity-50', className)} {...props} />;\n}\n\nexport function FieldDescription({ className, ...props }: ComponentProps<'p'>) {\n  return <p data-slot=\"field-description\" className={cn('text-sm text-muted-foreground', className)} {...props} />;\n}\n\nexport function FieldError({ className, children, ...props }: ComponentProps<'p'>) {\n  if (!children) return null;\n  return (\n    <p role=\"alert\" data-slot=\"field-error\" className={cn('text-sm text-destructive', className)} {...props}>\n      {children}\n    </p>\n  );\n}\n\nexport function FieldGroup({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"field-group\" className={cn('flex w-full flex-col gap-6', className)} {...props} />;\n}\n\nexport function FieldSet({ className, ...props }: ComponentProps<'fieldset'>) {\n  return <fieldset data-slot=\"field-set\" className={cn('flex flex-col gap-4', className)} {...props} />;\n}\n\nexport function FieldLegend({ className, ...props }: ComponentProps<'legend'>) {\n  return <legend data-slot=\"field-legend\" className={cn('mb-1 font-medium', className)} {...props} />;\n}\n"
+    }
+  ]
+}

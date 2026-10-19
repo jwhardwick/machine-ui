@@ -1,0 +1,7 @@
+[
+  { "id": "settings", "prompt": "Build a workspace settings page in src/pages/settings.tsx: a profile form (name, email, timezone), notification switches, and a danger zone that deletes the workspace after confirmation." },
+  { "id": "dashboard", "prompt": "Build a sales dashboard page in src/pages/dashboard.tsx: four metric cards with week-on-week change, a revenue trend chart, and a sortable table of recent orders." },
+  { "id": "pricing", "prompt": "Build a pricing page in src/pages/pricing.tsx with three plans, a monthly/yearly switch, and a FAQ." },
+  { "id": "inbox", "prompt": "Build a support inbox page in src/pages/inbox.tsx: a list of conversations on the left, the selected conversation on the right, and a reply composer." },
+  { "id": "onboarding", "prompt": "Build a three-step onboarding flow in src/pages/onboarding.tsx: account details, invite teammates, pick a plan, with progress shown and back/next navigation." }
+]

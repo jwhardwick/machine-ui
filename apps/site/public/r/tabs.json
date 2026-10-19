@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "type": "registry:ui",
+  "title": "Tabs",
+  "description": "Switches between views in the same context. Arrow keys move between tabs.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/tabs.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { Tabs as TabsPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function Tabs({ className, ...props }: ComponentProps<typeof TabsPrimitive.Root>) {\n  return <TabsPrimitive.Root data-slot=\"tabs\" className={cn('flex flex-col gap-2', className)} {...props} />;\n}\n\nexport function TabsList({ className, ...props }: ComponentProps<typeof TabsPrimitive.List>) {\n  return (\n    <TabsPrimitive.List\n      data-slot=\"tabs-list\"\n      className={cn(\n        'inline-flex h-(--control-md) w-fit items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function TabsTrigger({ className, ...props }: ComponentProps<typeof TabsPrimitive.Trigger>) {\n  return (\n    <TabsPrimitive.Trigger\n      data-slot=\"tabs-trigger\"\n      className={cn(\n        'inline-flex h-full flex-1 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-3 text-sm font-medium',\n        'transition-[color,background-color,box-shadow] duration-(--motion-fast) ease-standard',\n        'hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',\n        'data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',\n        'disabled:pointer-events-none disabled:opacity-50',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function TabsContent({ className, ...props }: ComponentProps<typeof TabsPrimitive.Content>) {\n  return (\n    <TabsPrimitive.Content\n      data-slot=\"tabs-content\"\n      className={cn('flex-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring', className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

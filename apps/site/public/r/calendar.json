@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "type": "registry:ui",
+  "title": "Calendar",
+  "description": "A month grid for picking a single date or a range, with today marked and keyboard navigation.",
+  "dependencies": [
+    "date-fns@4.4.0",
+    "lucide-react@1.59.0",
+    "react-day-picker@9.14.0"
+  ],
+  "registryDependencies": [
+    "@machine-ui/button",
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/calendar.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { format } from 'date-fns';\nimport { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';\nimport type { ComponentProps } from 'react';\nimport { DayPicker } from 'react-day-picker';\nimport { cn } from '@/lib/utils';\nimport { buttonVariants } from '@/components/ui/button';\n\n/** A month grid for picking a date or a range. Wraps react-day-picker. */\nexport function Calendar({ className, classNames, showOutsideDays = true, ...props }: ComponentProps<typeof DayPicker>) {\n  return (\n    <DayPicker\n      data-slot=\"calendar\"\n      showOutsideDays={showOutsideDays}\n      className={cn('w-fit p-3 text-foreground', className)}\n      classNames={{\n        root: 'relative',\n        months: 'relative flex flex-col gap-4 sm:flex-row',\n        month: 'flex w-full flex-col gap-4',\n        nav: 'absolute inset-x-0 top-0 flex items-center justify-between',\n        button_previous: cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'size-(--control-sm) aria-disabled:opacity-50'),\n        button_next: cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'size-(--control-sm) aria-disabled:opacity-50'),\n        month_caption: 'flex h-(--control-sm) items-center justify-center px-8',\n        caption_label: 'text-sm font-medium',\n        month_grid: 'w-full border-collapse',\n        weekdays: 'flex',\n        weekday: 'flex-1 select-none text-xs font-normal text-muted-foreground',\n        week: 'mt-1 flex w-full',\n        day: 'relative aspect-square size-(--control-sm) p-0 text-center text-sm',\n        day_button: cn(\n          buttonVariants({ variant: 'ghost', size: 'icon' }),\n          'size-full rounded-md font-normal aria-selected:opacity-100',\n        ),\n        selected:\n          '[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground',\n        range_start: 'rounded-l-md bg-accent',\n        range_middle: 'bg-accent [&>button]:bg-transparent! [&>button]:text-accent-foreground!',\n        range_end: 'rounded-r-md bg-accent',\n        today: '[&>button]:font-semibold [&>button]:underline [&>button]:underline-offset-4',\n        outside: 'text-muted-foreground [&>button]:text-muted-foreground',\n        disabled: 'text-muted-foreground opacity-50',\n        hidden: 'invisible',\n        ...classNames,\n      }}\n      labels={{\n        // Lead with the visible day number so the accessible name contains what sighted users see.\n        labelDayButton: (date, modifiers) =>\n          `${format(date, 'd MMMM yyyy, EEEE')}${modifiers.today ? ', today' : ''}${modifiers.selected ? ', selected' : ''}`,\n      }}\n      components={{\n        Chevron: ({ orientation, className: chevronClass }) =>\n          orientation === 'left' ? (\n            <ChevronLeftIcon aria-hidden className={cn('size-4', chevronClass)} />\n          ) : (\n            <ChevronRightIcon aria-hidden className={cn('size-4', chevronClass)} />\n          ),\n      }}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

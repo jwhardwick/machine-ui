@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "type": "registry:ui",
+  "title": "Slider",
+  "description": "Picks a number, or a range, by dragging. Arrow keys step through values.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/slider.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { Slider as SliderPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { focusRing, transition } from '@/lib/machine-ui-styles';\n\nexport function Slider({\n  className,\n  defaultValue,\n  value,\n  min = 0,\n  max = 100,\n  'aria-label': ariaLabel,\n  'aria-labelledby': ariaLabelledBy,\n  ...props\n}: ComponentProps<typeof SliderPrimitive.Root>) {\n  const thumbs = value ?? defaultValue ?? [min];\n  return (\n    <SliderPrimitive.Root\n      data-slot=\"slider\"\n      defaultValue={defaultValue}\n      value={value}\n      min={min}\n      max={max}\n      className={cn(\n        'relative flex w-full touch-none select-none items-center data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',\n        className,\n      )}\n      {...props}\n    >\n      <SliderPrimitive.Track\n        data-slot=\"slider-track\"\n        className=\"relative grow overflow-hidden rounded-full bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5\"\n      >\n        <SliderPrimitive.Range\n          data-slot=\"slider-range\"\n          className=\"absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full\"\n        />\n      </SliderPrimitive.Track>\n      {thumbs.map((_, i) => (\n        <SliderPrimitive.Thumb\n          key={i}\n          // The thumbs carry role=\"slider\", so the label belongs on them, not the root.\n          aria-label={ariaLabel}\n          aria-labelledby={ariaLabelledBy}\n          data-slot=\"slider-thumb\"\n          className={cn(\n            'block size-4 shrink-0 cursor-grab rounded-full border border-primary bg-background shadow-sm active:cursor-grabbing',\n            transition,\n            focusRing,\n          )}\n        />\n      ))}\n    </SliderPrimitive.Root>\n  );\n}\n"
+    }
+  ]
+}
