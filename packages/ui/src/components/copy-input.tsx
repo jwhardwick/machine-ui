@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { useState, type ComponentProps } from 'react';
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from './input-group.tsx';

@@ -1,3 +1,5 @@
+'use client';
+
 import type { CSSProperties } from 'react';
 import { Toaster as Sonner, toast, type ToasterProps } from 'sonner';
 

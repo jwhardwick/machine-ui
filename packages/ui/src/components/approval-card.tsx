@@ -1,3 +1,5 @@
+'use client';
+
 import { ShieldQuestionIcon } from 'lucide-react';
 import { useId, useState, type ComponentProps } from 'react';
 import { cn } from '../lib/cn.ts';
