@@ -32,6 +32,9 @@ Set these up in the first task, then keep them working:
 - `pnpm typecheck`
 - `pnpm lint`
 - `pnpm test`
+- `pnpm size` (bundle budgets in `.size-limit.json`)
+- `pnpm api:report` (regenerate `api/`; required after any public API or token change)
+- `pnpm release:bump --check-changeset` (computed version bump; fails if changesets under-declare it)
 - `pnpm storybook`
 - `pnpm test:storybook` (interaction + axe on every example and screen)
 - `pnpm test:site` (builds the docs site, runs axe on every route in several themes and both modes, then the end-to-end suite in `apps/site/e2e`)

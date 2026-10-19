@@ -12,12 +12,13 @@
     "test": "vitest run",
     "storybook": "pnpm --filter @machine-ui/storybook storybook",
     "test:storybook": "pnpm --filter @machine-ui/storybook test",
-    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm test:storybook && pnpm test:site",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm size && pnpm test:storybook && pnpm test:site",
     "changeset": "changeset",
     "test:site": "pnpm --filter @machine-ui/site test",
     "build:site": "pnpm --filter @machine-ui/site build",
     "api:report": "node tooling/release/src/cli/report.ts",
-    "release:bump": "node tooling/release/src/cli/bump.ts"
+    "release:bump": "node tooling/release/src/cli/bump.ts",
+    "size": "size-limit"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
@@ -31,6 +32,9 @@
     "typescript-eslint": "8.71.2",
     "vitest": "5.0.5",
     "@machine-ui/eslint-plugin": "workspace:*",
-    "@machine-ui/release-tools": "workspace:*"
+    "@machine-ui/release-tools": "workspace:*",
+    "size-limit": "14.2.0",
+    "@size-limit/esbuild": "14.2.0",
+    "@size-limit/file": "14.2.0"
   }
 }
