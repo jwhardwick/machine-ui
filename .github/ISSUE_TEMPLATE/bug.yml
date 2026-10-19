@@ -1,0 +1,22 @@
+name: Bug
+description: Something behaves wrongly. A maintainer adds `agent:ready` when it's ready to pick up.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happens
+      description: Steps to reproduce, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What must be true when it's fixed, including the test that should cover it.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Component, theme or page

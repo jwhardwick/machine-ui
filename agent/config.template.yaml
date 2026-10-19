@@ -1,0 +1,16 @@
+# Copy to your design-system repo as agent/config.yaml. Start with everything review-required and
+# loosen autonomy as the agent earns trust. Major changes always need approval.
+target:
+  packages: [packages/ui]
+issues:
+  source: github
+  readyLabel: agent:ready
+  escalateLabel: needs-human
+planWaitHours: 2
+retries: 3
+autonomy:
+  patch: review
+  minor: review
+  major: approval
+gates:
+  - pnpm check

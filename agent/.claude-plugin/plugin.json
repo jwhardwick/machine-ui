@@ -1,0 +1,8 @@
+{
+  "name": "machine-ui-maintainer",
+  "version": "0.1.0",
+  "description": "Maintains a shadcn-based design system from an issue board: plans, implements and opens PRs that pass deterministic gates, within a strict trust boundary.",
+  "author": {
+    "name": "machine-ui maintainers"
+  }
+}
