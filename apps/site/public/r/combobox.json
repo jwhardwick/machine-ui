@@ -12,7 +12,7 @@
     "@machine-ui/command",
     "@machine-ui/machine-ui-base",
     "@machine-ui/popover",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {

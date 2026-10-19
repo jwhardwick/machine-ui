@@ -52,7 +52,8 @@ describe('registry', () => {
     const uiPackage = JSON.parse(readFileSync(join(UI_DIR, '../package.json'), 'utf8'));
     for (const item of items) {
       for (const dep of item.registryDependencies ?? []) {
-        if (dep === 'utils') continue;
+        // Only our own items: shadcn's generic "utils" resolves differently per consumer style.
+        expect(dep.startsWith('@machine-ui/'), `${item.name} → ${dep}`).toBe(true);
         expect(byName.has(dep.replace('@machine-ui/', '')), `${item.name} → ${dep}`).toBe(true);
       }
       for (const dep of item.dependencies ?? []) {
@@ -61,7 +62,11 @@ describe('registry', () => {
       }
     }
     const datePicker = byName.get('date-picker')!;
-    expect(datePicker.registryDependencies).toEqual(expect.arrayContaining(['@machine-ui/calendar', '@machine-ui/popover', '@machine-ui/button', 'utils', '@machine-ui/machine-ui-base']));
+    expect(datePicker.registryDependencies).toEqual(expect.arrayContaining(['@machine-ui/calendar', '@machine-ui/popover', '@machine-ui/button', '@machine-ui/utils', '@machine-ui/machine-ui-base']));
+    const utils = byName.get('utils')!;
+    expect(utils.type).toBe('registry:lib');
+    expect(utils.files![0]!.content).toContain('twMerge(clsx(inputs))');
+    expect(utils.dependencies).toEqual([expect.stringMatching(/^clsx@/), expect.stringMatching(/^tailwind-merge@/)]);
     expect(datePicker.dependencies).toEqual(expect.arrayContaining([expect.stringMatching(/^date-fns@/), expect.stringMatching(/^lucide-react@/)]));
   });
 

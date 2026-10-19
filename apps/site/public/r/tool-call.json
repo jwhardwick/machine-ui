@@ -11,7 +11,7 @@
     "@machine-ui/machine-ui-base",
     "@machine-ui/machine-ui-styles",
     "@machine-ui/spinner",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {

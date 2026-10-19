@@ -16,7 +16,7 @@
     "@machine-ui/separator",
     "@machine-ui/sheet",
     "@machine-ui/tooltip",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {

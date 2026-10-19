@@ -23,7 +23,9 @@ const uiPackage = JSON.parse(readFileSync(join(UI_DIR, '../package.json'), 'utf8
 
 /** How each relative import in packages/ui maps onto a consumer's shadcn aliases. */
 function rewriteRelative(specifier: string): { to: string; dependency: string } {
-  if (specifier === '../lib/cn.ts') return { to: '@/lib/utils', dependency: 'utils' };
+  // Our own utils item (the standard clsx + tailwind-merge `cn`), never shadcn's generic "utils",
+  // which resolves differently per consumer style and can replace a project's own helper.
+  if (specifier === '../lib/cn.ts') return { to: '@/lib/utils', dependency: `${NS}/utils` };
   if (specifier === '../lib/styles.ts') return { to: '@/lib/machine-ui-styles', dependency: `${NS}/machine-ui-styles` };
   if (specifier === '../lib/motion.ts') return { to: '@/hooks/use-reduced-motion', dependency: `${NS}/use-reduced-motion` };
   const component = /^\.\/([\w-]+)\.tsx$/.exec(specifier)?.[1];
@@ -153,6 +155,7 @@ export function buildRegistry(): Record<string, Json> {
   const items: Json[] = [
     baseItem(),
     ...REFERENCE_THEMES.map(themeItem),
+    libItem('utils', 'lib/cn.ts', 'registry:lib', 'registry/machine-ui/lib/utils.ts', 'The standard `cn` helper (clsx + tailwind-merge) that every component imports from `@/lib/utils`.'),
     libItem('machine-ui-styles', 'lib/styles.ts', 'registry:lib', 'registry/machine-ui/lib/machine-ui-styles.ts', 'Shared class fragments machine-ui components use for focus, fields, menus and floating surfaces.'),
     libItem('use-reduced-motion', 'lib/motion.ts', 'registry:hook', 'registry/machine-ui/hooks/use-reduced-motion.ts', 'True when the person prefers reduced motion; use it for motion driven from JavaScript.'),
     ...readdirSync(join(UI_DIR, 'components'))

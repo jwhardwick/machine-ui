@@ -14,7 +14,7 @@
     "@machine-ui/input",
     "@machine-ui/machine-ui-base",
     "@machine-ui/table",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {

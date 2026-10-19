@@ -13,7 +13,7 @@
     "@machine-ui/calendar",
     "@machine-ui/machine-ui-base",
     "@machine-ui/popover",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {
