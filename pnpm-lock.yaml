@@ -87,6 +87,9 @@ importers:
 
   apps/storybook:
     dependencies:
+      '@machine-ui/examples':
+        specifier: workspace:*
+        version: link:../../packages/examples
       '@machine-ui/theme-engine':
         specifier: workspace:*
         version: link:../../packages/theme-engine
