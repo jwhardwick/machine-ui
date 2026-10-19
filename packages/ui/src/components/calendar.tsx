@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import type { ComponentProps } from 'react';
 import { DayPicker } from 'react-day-picker';
@@ -32,13 +33,18 @@ export function Calendar({ className, classNames, showOutsideDays = true, ...pro
         selected:
           '[&>button]:bg-primary [&>button]:text-primary-foreground [&>button]:hover:bg-primary [&>button]:hover:text-primary-foreground',
         range_start: 'rounded-l-md bg-accent',
-        range_middle: 'bg-accent [&>button]:bg-transparent [&>button]:text-accent-foreground',
+        range_middle: 'bg-accent [&>button]:bg-transparent! [&>button]:text-accent-foreground!',
         range_end: 'rounded-r-md bg-accent',
         today: '[&>button]:font-semibold [&>button]:underline [&>button]:underline-offset-4',
         outside: 'text-muted-foreground [&>button]:text-muted-foreground',
         disabled: 'text-muted-foreground opacity-50',
         hidden: 'invisible',
         ...classNames,
+      }}
+      labels={{
+        // Lead with the visible day number so the accessible name contains what sighted users see.
+        labelDayButton: (date, modifiers) =>
+          `${format(date, 'd MMMM yyyy, EEEE')}${modifiers.today ? ', today' : ''}${modifiers.selected ? ', selected' : ''}`,
       }}
       components={{
         Chevron: ({ orientation, className: chevronClass }) =>

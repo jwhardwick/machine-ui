@@ -12,7 +12,11 @@ export function CopyInput({ value, className, ...props }: Omit<ComponentProps<'i
         <InputGroupButton
           aria-label={copied ? 'Copied' : 'Copy to clipboard'}
           onClick={async () => {
-            await navigator.clipboard?.writeText(value);
+            try {
+              await navigator.clipboard.writeText(value);
+            } catch {
+              return; // Clipboard refused (permissions, insecure context): don't claim success.
+            }
             setCopied(true);
             setTimeout(() => setCopied(false), 1500);
           }}

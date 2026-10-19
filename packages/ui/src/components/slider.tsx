@@ -9,6 +9,8 @@ export function Slider({
   value,
   min = 0,
   max = 100,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   ...props
 }: ComponentProps<typeof SliderPrimitive.Root>) {
   const thumbs = value ?? defaultValue ?? [min];
@@ -37,6 +39,9 @@ export function Slider({
       {thumbs.map((_, i) => (
         <SliderPrimitive.Thumb
           key={i}
+          // The thumbs carry role="slider", so the label belongs on them, not the root.
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
           data-slot="slider-thumb"
           className={cn(
             'block size-4 shrink-0 cursor-grab rounded-full border border-primary bg-background shadow-sm active:cursor-grabbing',
