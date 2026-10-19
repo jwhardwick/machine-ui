@@ -8,7 +8,8 @@ const COLOR_UTILITY =
 const BANNED_FONTS = ['Inter', 'Arial', 'Helvetica', 'Roboto', 'system-ui', 'Segoe UI', ...CURATED_FONT_FAMILIES];
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const CHECKS = [
+/** Off-system patterns, shared with the eval scorer so both mean the same thing. */
+export const CHECKS = [
   // Hex with a letter is a colour wherever it appears; all-digit hex (#8812) only in a colour position,
   // so issue and ticket numbers in copy don't trip the rule.
   [
