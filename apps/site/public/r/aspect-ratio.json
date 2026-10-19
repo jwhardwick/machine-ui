@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect Ratio",
+  "description": "Keeps media at a fixed shape as its width changes.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/aspect-ratio.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { AspectRatio as AspectRatioPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\n\nexport function AspectRatio(props: ComponentProps<typeof AspectRatioPrimitive.Root>) {\n  return <AspectRatioPrimitive.Root data-slot=\"aspect-ratio\" {...props} />;\n}\n"
+    }
+  ]
+}

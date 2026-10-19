@@ -1,0 +1,42 @@
+{
+  "name": "@machine-ui/storybook",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "pnpm gen && storybook dev -p 6006",
+    "build": "pnpm gen && storybook build",
+    "test": "pnpm gen && vitest run",
+    "typecheck": "pnpm gen && tsc --noEmit -p .",
+    "gen": "node scripts/gen-stories.ts",
+    "test:visual": "vitest run --config vitest.visual.config.ts",
+    "test:visual:update": "vitest run --config vitest.visual.config.ts --update"
+  },
+  "dependencies": {
+    "@machine-ui/theme-engine": "workspace:*",
+    "@machine-ui/tokens": "workspace:*",
+    "@machine-ui/ui": "workspace:*",
+    "lucide-react": "1.59.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "@machine-ui/examples": "workspace:*"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "10.6.2",
+    "@storybook/addon-docs": "10.6.2",
+    "@storybook/addon-vitest": "10.6.2",
+    "@storybook/react-vite": "10.6.2",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "@vitest/browser": "5.0.5",
+    "@vitest/browser-playwright": "5.0.5",
+    "playwright": "1.64.1",
+    "storybook": "10.6.2",
+    "tailwindcss": "4.3.3",
+    "vite": "8.3.4",
+    "vitest": "5.0.5",
+    "vitest-browser-react": "2.3.0"
+  }
+}

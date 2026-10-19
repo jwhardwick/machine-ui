@@ -2,7 +2,7 @@
 
 A theming-first design system on shadcn/ui, maintained by an autonomous agent. The full spec is in `docs/SPEC.md`. Read it before starting any task.
 
-**Current milestone: M1, theme engine + live Storybook.** Do not start M2 or M3 work unless asked.
+**Current milestone: M2 + M3, repo-side** (see `docs/decisions/0003-m2-m3-scope.md` and `docs/plans/m2-m3.md`). The VPS runner and Jira adapter are out of scope until asked.
 
 ## Stack
 
@@ -32,8 +32,17 @@ Set these up in the first task, then keep them working:
 - `pnpm typecheck`
 - `pnpm lint`
 - `pnpm test`
+- `pnpm size` (bundle budgets in `.size-limit.json`)
+- `pnpm api:report` (regenerate `api/`; required after any public API or token change)
+- `pnpm registry:build` (regenerate the shadcn registry in `apps/site/public/r`; required after any component change)
+- `pnpm docs:build` (regenerate `llms.txt`, `llms-full.txt`, `install.md` in `apps/site/public`)
+- `pnpm eval:run` (skill eval; live runs use model credits, `--dry-run` shows the commands)
+- `pnpm test:registry-install` (opt-in, needs network: installs registry items into a fresh project, typechecks and builds it)
+- `pnpm release:bump --check-changeset` (computed version bump; fails if changesets under-declare it)
 - `pnpm storybook`
-- `pnpm test:storybook` (interaction + axe)
+- `pnpm test:storybook` (interaction + axe on every example and screen)
+- `pnpm test:visual` (screenshot regression of the theme matrix and screens; approve intended changes with `pnpm --filter @machine-ui/storybook test:visual:update` and review the images)
+- `pnpm test:site` (builds the docs site, runs axe on every route in several themes and both modes, then the end-to-end suite in `apps/site/e2e`)
 - `pnpm check` (runs all of the above; must pass before saying a task is done)
 
 ## Hard rules

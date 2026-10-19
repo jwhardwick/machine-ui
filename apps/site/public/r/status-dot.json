@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-dot",
+  "type": "registry:ui",
+  "title": "Status Dot",
+  "description": "A small coloured dot for presence and health, always paired with a text label.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/status-dot.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nconst TONES = {\n  online: 'bg-success',\n  busy: 'bg-warning',\n  error: 'bg-destructive',\n  offline: 'bg-muted-foreground',\n  accent: 'bg-primary',\n} as const;\n\n/** A small status dot. Pair it with text: colour alone never carries the meaning. */\nexport function StatusDot({\n  tone = 'online',\n  pulse = false,\n  className,\n  ...props\n}: ComponentProps<'span'> & { tone?: keyof typeof TONES; pulse?: boolean }) {\n  return (\n    <span data-slot=\"status-dot\" data-tone={tone} aria-hidden className={cn('relative inline-flex size-2 shrink-0', className)} {...props}>\n      {pulse && <span className={cn('absolute inline-flex size-full animate-ping rounded-full opacity-60', TONES[tone])} />}\n      <span className={cn('relative inline-flex size-2 rounded-full', TONES[tone])} />\n    </span>\n  );\n}\n"
+    }
+  ]
+}

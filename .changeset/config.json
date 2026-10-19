@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "@machine-ui/agent",
+    "@machine-ui/consumer-skills",
+    "@machine-ui/eslint-plugin",
+    "@machine-ui/eval",
+    "@machine-ui/examples",
+    "@machine-ui/registry-builder",
+    "@machine-ui/release-tools",
+    "@machine-ui/site",
+    "@machine-ui/storybook"
+  ]
+}

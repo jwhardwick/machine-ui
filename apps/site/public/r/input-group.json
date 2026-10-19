@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group",
+  "type": "registry:ui",
+  "title": "Input Group",
+  "description": "A text field with a fixed prefix, suffix or icon inside one border.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/button",
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/input-group.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { transition } from '@/lib/machine-ui-styles';\nimport { Button } from '@/components/ui/button';\n\n/** A text field with prefix or suffix content (icons, text, buttons) inside one border. */\nexport function InputGroup({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"input-group\"\n      role=\"group\"\n      className={cn(\n        'flex h-(--control-md) w-full min-w-0 items-center rounded-md border border-input bg-background text-foreground shadow-sm',\n        transition,\n        'has-[[data-slot=input-group-control]:focus-visible]:outline-2 has-[[data-slot=input-group-control]:focus-visible]:outline-offset-2 has-[[data-slot=input-group-control]:focus-visible]:outline-ring',\n        'has-[[aria-invalid=true]]:border-destructive has-[:disabled]:opacity-50',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function InputGroupAddon({\n  className,\n  align = 'start',\n  ...props\n}: ComponentProps<'div'> & { align?: 'start' | 'end' }) {\n  return (\n    <div\n      data-slot=\"input-group-addon\"\n      data-align={align}\n      className={cn(\n        'flex h-full shrink-0 select-none items-center gap-1.5 text-sm text-muted-foreground [&>svg]:size-4',\n        align === 'start' ? 'order-first pl-3' : 'order-last pr-1.5 has-[>span]:pr-3',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function InputGroupText({ className, ...props }: ComponentProps<'span'>) {\n  return <span data-slot=\"input-group-text\" className={cn('text-sm text-muted-foreground', className)} {...props} />;\n}\n\nexport function InputGroupInput({ className, ...props }: ComponentProps<'input'>) {\n  return (\n    <input\n      data-slot=\"input-group-control\"\n      className={cn(\n        'h-full min-w-0 flex-1 bg-transparent px-3 text-base outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed sm:text-sm',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function InputGroupButton({ className, size = 'sm', variant = 'ghost', ...props }: ComponentProps<typeof Button>) {\n  return <Button data-slot=\"input-group-button\" size={size} variant={variant} className={cn('h-(--control-sm) px-2', className)} {...props} />;\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "type": "registry:ui",
+  "title": "Hover Card",
+  "description": "A floating preview shown while the pointer rests on, or focus is on, its trigger.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/hover-card.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { HoverCard as HoverCardPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { floatingSurface } from '@/lib/machine-ui-styles';\n\nexport const HoverCard = HoverCardPrimitive.Root;\nexport const HoverCardTrigger = HoverCardPrimitive.Trigger;\n\nexport function HoverCardContent({ className, align = 'center', sideOffset = 6, ...props }: ComponentProps<typeof HoverCardPrimitive.Content>) {\n  return (\n    <HoverCardPrimitive.Portal>\n      <HoverCardPrimitive.Content\n        data-slot=\"hover-card-content\"\n        align={align}\n        sideOffset={sideOffset}\n        className={cn(floatingSurface, 'w-64 origin-(--radix-hover-card-content-transform-origin) p-4 outline-none', className)}\n        {...props}\n      />\n    </HoverCardPrimitive.Portal>\n  );\n}\n"
+    }
+  ]
+}

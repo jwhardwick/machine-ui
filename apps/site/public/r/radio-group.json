@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:ui",
+  "title": "Radio Group",
+  "description": "A set of options where exactly one is selected. Arrow keys move the selection.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/radio-group.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { RadioGroup as RadioGroupPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { disabledControl, focusRing, transition } from '@/lib/machine-ui-styles';\n\nexport function RadioGroup({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Root>) {\n  return <RadioGroupPrimitive.Root data-slot=\"radio-group\" className={cn('grid gap-3', className)} {...props} />;\n}\n\nexport function RadioGroupItem({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Item>) {\n  return (\n    <RadioGroupPrimitive.Item\n      data-slot=\"radio-group-item\"\n      className={cn(\n        'peer aspect-square size-4 shrink-0 cursor-pointer rounded-full border border-input bg-background text-primary shadow-sm',\n        transition,\n        focusRing,\n        disabledControl,\n        'data-[state=checked]:border-primary aria-invalid:border-destructive',\n        className,\n      )}\n      {...props}\n    >\n      <RadioGroupPrimitive.Indicator data-slot=\"radio-group-indicator\" className=\"flex items-center justify-center\">\n        <span className=\"block size-2 rounded-full bg-primary\" />\n      </RadioGroupPrimitive.Indicator>\n    </RadioGroupPrimitive.Item>\n  );\n}\n"
+    }
+  ]
+}

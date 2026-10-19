@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "Shows a person as a photo or initials, alone or as an overlapping group.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/avatar.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { Avatar as AvatarPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function Avatar({ className, ...props }: ComponentProps<typeof AvatarPrimitive.Root>) {\n  return (\n    <AvatarPrimitive.Root\n      data-slot=\"avatar\"\n      className={cn('relative flex size-8 shrink-0 overflow-hidden rounded-full', className)}\n      {...props}\n    />\n  );\n}\n\nexport function AvatarImage({ className, ...props }: ComponentProps<typeof AvatarPrimitive.Image>) {\n  return <AvatarPrimitive.Image data-slot=\"avatar-image\" className={cn('aspect-square size-full object-cover', className)} {...props} />;\n}\n\nexport function AvatarFallback({ className, ...props }: ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      data-slot=\"avatar-fallback\"\n      className={cn('flex size-full items-center justify-center bg-secondary text-xs font-medium text-secondary-foreground', className)}\n      {...props}\n    />\n  );\n}\n\n/** Overlapping avatars, with a ring in the page colour so edges stay distinct. */\nexport function AvatarGroup({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"avatar-group\"\n      className={cn('flex -space-x-2 [&>[data-slot=avatar]]:ring-2 [&>[data-slot=avatar]]:ring-background', className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

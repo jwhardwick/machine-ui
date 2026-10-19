@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "machine-ui-styles",
+  "type": "registry:lib",
+  "title": "Machine Ui Styles",
+  "description": "Shared class fragments machine-ui components use for focus, fields, menus and floating surfaces.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/machine-ui/lib/machine-ui-styles.ts",
+      "type": "registry:lib",
+      "content": "/** Shared class fragments so every control focuses, disables and animates the same way. */\nexport const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring';\n\nexport const disabledControl = 'disabled:cursor-not-allowed disabled:opacity-50';\n\nexport const transition = 'transition-[color,background-color,border-color,box-shadow,opacity] duration-(--motion-fast) ease-standard';\n\n/** Floating surfaces: popovers, menus, tooltips, hover cards. */\nexport const floatingSurface =\n  'z-50 rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-enter';\n\n/** Field chrome shared by inputs, selects and textareas. */\nexport const fieldChrome =\n  'w-full min-w-0 rounded-md border border-input bg-background text-foreground shadow-sm placeholder:text-muted-foreground aria-invalid:border-destructive';\n\n/** One row in a menu-like list. */\nexport const menuItem =\n  'relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0';\n"
+    }
+  ]
+}

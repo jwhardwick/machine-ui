@@ -1,0 +1,2286 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "machine-ui",
+  "homepage": "https://github.com/machine-ui/machine-ui",
+  "items": [
+    {
+      "name": "machine-ui-base",
+      "type": "registry:theme",
+      "title": "machine-ui base",
+      "description": "Maps machine-ui tokens onto Tailwind utilities and adds base styles and animations. Pair it with a theme-* item.",
+      "cssVars": {
+        "theme": {
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "color-card": "var(--card)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-popover": "var(--popover)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-primary": "var(--primary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-link": "var(--link)",
+          "color-secondary": "var(--secondary)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-muted": "var(--muted)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-accent": "var(--accent)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-destructive": "var(--destructive)",
+          "color-destructive-foreground": "var(--destructive-foreground)",
+          "color-border": "var(--border)",
+          "color-input": "var(--input)",
+          "color-ring": "var(--ring)",
+          "color-success": "var(--success)",
+          "color-success-foreground": "var(--success-foreground)",
+          "color-warning": "var(--warning)",
+          "color-warning-foreground": "var(--warning-foreground)",
+          "color-chart-1": "var(--chart-1)",
+          "color-chart-2": "var(--chart-2)",
+          "color-chart-3": "var(--chart-3)",
+          "color-chart-4": "var(--chart-4)",
+          "color-chart-5": "var(--chart-5)",
+          "color-sidebar": "var(--sidebar)",
+          "color-sidebar-foreground": "var(--sidebar-foreground)",
+          "spacing": "var(--space-unit)",
+          "font-display": "var(--typeface-display)",
+          "font-sans": "var(--typeface-text)",
+          "font-mono": "var(--typeface-code)",
+          "radius-sm": "var(--corner-sm)",
+          "radius-md": "var(--corner-md)",
+          "radius-lg": "var(--corner-lg)",
+          "radius-xl": "var(--corner-xl)",
+          "shadow-sm": "var(--elevation-sm)",
+          "shadow-md": "var(--elevation-md)",
+          "shadow-lg": "var(--elevation-lg)",
+          "text-xs": "var(--type-xs)",
+          "text-sm": "var(--type-sm)",
+          "text-base": "var(--type-base)",
+          "text-lg": "var(--type-lg)",
+          "text-xl": "var(--type-xl)",
+          "text-2xl": "var(--type-2xl)",
+          "text-3xl": "var(--type-3xl)",
+          "text-4xl": "var(--type-4xl)",
+          "ease-standard": "var(--motion-ease-standard)",
+          "ease-emphasized": "var(--motion-ease-emphasized)",
+          "animate-enter": "mui-enter var(--motion-normal) var(--motion-ease-emphasized)",
+          "animate-overlay": "mui-fade var(--motion-normal) var(--motion-ease-standard)",
+          "animate-sheet-right": "mui-from-right var(--motion-slow) var(--motion-ease-emphasized)",
+          "animate-sheet-left": "mui-from-left var(--motion-slow) var(--motion-ease-emphasized)",
+          "animate-sheet-top": "mui-from-top var(--motion-slow) var(--motion-ease-emphasized)",
+          "animate-sheet-bottom": "mui-from-bottom var(--motion-slow) var(--motion-ease-emphasized)",
+          "animate-dot": "mui-dot calc(var(--motion-slow) * 6) var(--motion-ease-standard) infinite",
+          "animate-caret": "mui-caret calc(var(--motion-slow) * 5) steps(1) infinite",
+          "animate-shimmer": "mui-shimmer calc(var(--motion-slow) * 6) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes mui-from-right": {
+          "from": {
+            "translate": "100% 0"
+          }
+        },
+        "@keyframes mui-from-left": {
+          "from": {
+            "translate": "-100% 0"
+          }
+        },
+        "@keyframes mui-from-top": {
+          "from": {
+            "translate": "0 -100%"
+          }
+        },
+        "@keyframes mui-from-bottom": {
+          "from": {
+            "translate": "0 100%"
+          }
+        },
+        "@keyframes mui-shimmer": {
+          "from": {
+            "background-position": "200% 0"
+          },
+          "to": {
+            "background-position": "-200% 0"
+          }
+        },
+        "@keyframes mui-enter": {
+          "from": {
+            "opacity": "0",
+            "scale": "0.96"
+          }
+        },
+        "@keyframes mui-fade": {
+          "from": {
+            "opacity": "0"
+          }
+        },
+        "@keyframes mui-dot": {
+          "0%,\n  80%,\n  100%": {
+            "opacity": "0.25"
+          },
+          "40%": {
+            "opacity": "1"
+          }
+        },
+        "@keyframes mui-caret": {
+          "50%": {
+            "opacity": "0"
+          }
+        },
+        "@layer base": {
+          "*, ::before, ::after": {
+            "border-color": "var(--border)"
+          },
+          "html": {
+            "color-scheme": "light"
+          },
+          "html.dark, html[data-mode=\"dark\"]": {
+            "color-scheme": "dark"
+          },
+          "body": {
+            "background-color": "var(--background)",
+            "color": "var(--foreground)",
+            "font-family": "var(--typeface-text)",
+            "font-size": "var(--type-base)",
+            "line-height": "1.55",
+            "-webkit-font-smoothing": "antialiased"
+          },
+          "h1, h2, h3, h4": {
+            "font-family": "var(--typeface-display)",
+            "line-height": "1.15"
+          },
+          ":focus-visible": {
+            "outline": "2px solid var(--ring)",
+            "outline-offset": "2px"
+          }
+        },
+        "@media (prefers-reduced-motion: reduce)": {
+          ":root": {
+            "--motion-fast": "0ms",
+            "--motion-normal": "0ms",
+            "--motion-slow": "0ms"
+          }
+        }
+      }
+    },
+    {
+      "name": "theme-console",
+      "type": "registry:theme",
+      "title": "Console theme",
+      "description": "The console preset (IBM Plex Mono + IBM Plex Sans), light and dark, with every colour pair contrast-solved. Load its fonts separately.",
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "cssVars": {
+        "light": {
+          "radius": "0.45rem",
+          "corner-sm": "0.225rem",
+          "corner-md": "0.45rem",
+          "corner-lg": "0.675rem",
+          "corner-xl": "0.9rem",
+          "typeface-display": "\"IBM Plex Mono\", ui-monospace, Menlo, monospace",
+          "typeface-text": "\"IBM Plex Sans\", \"Helvetica Neue\", Arial, sans-serif",
+          "typeface-code": "\"IBM Plex Mono\", ui-monospace, Menlo, monospace",
+          "type-xs": "clamp(0.79rem, 0.771rem + 0.086vw, 0.84rem)",
+          "type-sm": "clamp(0.889rem, 0.867rem + 0.097vw, 0.944rem)",
+          "type-base": "clamp(1rem, 0.976rem + 0.109vw, 1.063rem)",
+          "type-lg": "clamp(1.099rem, 1.061rem + 0.168vw, 1.195rem)",
+          "type-xl": "clamp(1.207rem, 1.154rem + 0.239vw, 1.345rem)",
+          "type-2xl": "clamp(1.327rem, 1.254rem + 0.324vw, 1.513rem)",
+          "type-3xl": "clamp(1.458rem, 1.362rem + 0.425vw, 1.702rem)",
+          "type-4xl": "clamp(1.602rem, 1.479rem + 0.544vw, 1.915rem)",
+          "space-unit": "0.239rem",
+          "control-sm": "1.673rem",
+          "control-md": "2.151rem",
+          "control-lg": "2.629rem",
+          "border-width": "1px",
+          "card-border-width": "1px",
+          "motion-fast": "100ms",
+          "motion-normal": "150ms",
+          "motion-slow": "200ms",
+          "motion-ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "motion-ease-emphasized": "cubic-bezier(0.2, 0, 0, 1)",
+          "background": "oklch(0.985 0.005 70)",
+          "foreground": "oklch(0.18 0.007 70)",
+          "card": "oklch(0.998 0.001 70)",
+          "card-foreground": "oklch(0.18 0.007 70)",
+          "popover": "oklch(0.998 0.001 70)",
+          "popover-foreground": "oklch(0.18 0.007 70)",
+          "primary": "oklch(0.49 0.08 101)",
+          "primary-foreground": "oklch(0.99 0.01 101)",
+          "link": "oklch(0.49 0.08 101)",
+          "secondary": "oklch(0.93 0.01 70)",
+          "secondary-foreground": "oklch(0.25 0.01 70)",
+          "muted": "oklch(0.93 0.01 70)",
+          "muted-foreground": "oklch(0.49 0.014 70)",
+          "accent": "oklch(0.93 0.039 131)",
+          "accent-foreground": "oklch(0.25 0.039 131)",
+          "destructive": "oklch(0.49 0.196 27)",
+          "destructive-foreground": "oklch(0.99 0.005 27)",
+          "success": "oklch(0.49 0.135 150)",
+          "success-foreground": "oklch(0.99 0.01 150)",
+          "warning": "oklch(0.66 0.139 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.87 0.012 70)",
+          "input": "oklch(0.58 0.014 70)",
+          "ring": "oklch(0.58 0.082 101)",
+          "chart-1": "oklch(0.58 0.121 101)",
+          "chart-2": "oklch(0.58 0.114 171)",
+          "chart-3": "oklch(0.58 0.13 251)",
+          "chart-4": "oklch(0.58 0.13 311)",
+          "chart-5": "oklch(0.58 0.13 31)",
+          "sidebar": "oklch(0.97 0.008 70)",
+          "sidebar-foreground": "oklch(0.25 0.01 70)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        },
+        "dark": {
+          "background": "oklch(0.17 0.014 70)",
+          "foreground": "oklch(0.97 0.007 70)",
+          "card": "oklch(0.21 0.014 70)",
+          "card-foreground": "oklch(0.97 0.007 70)",
+          "popover": "oklch(0.21 0.014 70)",
+          "popover-foreground": "oklch(0.97 0.007 70)",
+          "primary": "oklch(0.68 0.08 101)",
+          "primary-foreground": "oklch(0.16 0.02 101)",
+          "link": "oklch(0.78 0.075 101)",
+          "secondary": "oklch(0.33 0.012 70)",
+          "secondary-foreground": "oklch(0.93 0.01 70)",
+          "muted": "oklch(0.33 0.012 70)",
+          "muted-foreground": "oklch(0.699 0.014 70)",
+          "accent": "oklch(0.33 0.047 131)",
+          "accent-foreground": "oklch(0.93 0.039 131)",
+          "destructive": "oklch(0.68 0.196 27)",
+          "destructive-foreground": "oklch(0.16 0.02 27)",
+          "success": "oklch(0.68 0.157 150)",
+          "success-foreground": "oklch(0.16 0.02 150)",
+          "warning": "oklch(0.78 0.165 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.33 0.012 70)",
+          "input": "oklch(0.508 0.014 70)",
+          "ring": "oklch(0.68 0.08 101)",
+          "chart-1": "oklch(0.68 0.127 101)",
+          "chart-2": "oklch(0.68 0.127 171)",
+          "chart-3": "oklch(0.68 0.127 251)",
+          "chart-4": "oklch(0.68 0.127 311)",
+          "chart-5": "oklch(0.68 0.127 31)",
+          "sidebar": "oklch(0.14 0.014 70)",
+          "sidebar-foreground": "oklch(0.93 0.01 70)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        }
+      }
+    },
+    {
+      "name": "theme-graphite",
+      "type": "registry:theme",
+      "title": "Graphite theme",
+      "description": "The graphite preset (Geist), light and dark, with every colour pair contrast-solved. Load its fonts separately.",
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "cssVars": {
+        "light": {
+          "radius": "0.45rem",
+          "corner-sm": "0.225rem",
+          "corner-md": "0.45rem",
+          "corner-lg": "0.675rem",
+          "corner-xl": "0.9rem",
+          "typeface-display": "\"Geist\", \"Helvetica Neue\", Arial, sans-serif",
+          "typeface-text": "\"Geist\", \"Helvetica Neue\", Arial, sans-serif",
+          "typeface-code": "\"Geist Mono\", ui-monospace, Menlo, monospace",
+          "type-xs": "clamp(0.75rem, 0.75rem + 0vw, 0.75rem)",
+          "type-sm": "clamp(0.875rem, 0.871rem + 0.018vw, 0.885rem)",
+          "type-base": "clamp(1rem, 0.976rem + 0.109vw, 1.063rem)",
+          "type-lg": "clamp(1.157rem, 1.111rem + 0.205vw, 1.275rem)",
+          "type-xl": "clamp(1.339rem, 1.264rem + 0.333vw, 1.53rem)",
+          "type-2xl": "clamp(1.549rem, 1.437rem + 0.499vw, 1.836rem)",
+          "type-3xl": "clamp(1.792rem, 1.631rem + 0.715vw, 2.203rem)",
+          "type-4xl": "clamp(2.074rem, 1.85rem + 0.992vw, 2.644rem)",
+          "space-unit": "0.245rem",
+          "control-sm": "1.715rem",
+          "control-md": "2.205rem",
+          "control-lg": "2.695rem",
+          "border-width": "1px",
+          "card-border-width": "1px",
+          "motion-fast": "100ms",
+          "motion-normal": "150ms",
+          "motion-slow": "200ms",
+          "motion-ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "motion-ease-emphasized": "cubic-bezier(0.2, 0, 0, 1)",
+          "background": "oklch(0.985 0.004 250)",
+          "foreground": "oklch(0.18 0.006 250)",
+          "card": "oklch(0.998 0.001 250)",
+          "card-foreground": "oklch(0.18 0.006 250)",
+          "popover": "oklch(0.998 0.001 250)",
+          "popover-foreground": "oklch(0.18 0.006 250)",
+          "primary": "oklch(0.25 0.03 255)",
+          "primary-foreground": "oklch(0.99 0.005 255)",
+          "link": "oklch(0.49 0.043 255)",
+          "secondary": "oklch(0.93 0.008 250)",
+          "secondary-foreground": "oklch(0.25 0.008 250)",
+          "muted": "oklch(0.93 0.008 250)",
+          "muted-foreground": "oklch(0.49 0.012 250)",
+          "accent": "oklch(0.93 0.023 285)",
+          "accent-foreground": "oklch(0.25 0.023 285)",
+          "destructive": "oklch(0.49 0.196 27)",
+          "destructive-foreground": "oklch(0.99 0.005 27)",
+          "success": "oklch(0.49 0.135 150)",
+          "success-foreground": "oklch(0.99 0.01 150)",
+          "warning": "oklch(0.66 0.139 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.87 0.01 250)",
+          "input": "oklch(0.58 0.012 250)",
+          "ring": "oklch(0.58 0.044 255)",
+          "chart-1": "oklch(0.58 0.13 255)",
+          "chart-2": "oklch(0.58 0.13 325)",
+          "chart-3": "oklch(0.58 0.13 45)",
+          "chart-4": "oklch(0.58 0.123 105)",
+          "chart-5": "oklch(0.58 0.102 185)",
+          "sidebar": "oklch(0.97 0.007 250)",
+          "sidebar-foreground": "oklch(0.25 0.008 250)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        },
+        "dark": {
+          "background": "oklch(0.17 0.012 250)",
+          "foreground": "oklch(0.97 0.006 250)",
+          "card": "oklch(0.21 0.012 250)",
+          "card-foreground": "oklch(0.97 0.006 250)",
+          "popover": "oklch(0.21 0.012 250)",
+          "popover-foreground": "oklch(0.97 0.006 250)",
+          "primary": "oklch(0.93 0.03 255)",
+          "primary-foreground": "oklch(0.16 0.02 255)",
+          "link": "oklch(0.78 0.041 255)",
+          "secondary": "oklch(0.33 0.01 250)",
+          "secondary-foreground": "oklch(0.93 0.008 250)",
+          "muted": "oklch(0.33 0.01 250)",
+          "muted-foreground": "oklch(0.699 0.012 250)",
+          "accent": "oklch(0.33 0.028 285)",
+          "accent-foreground": "oklch(0.93 0.023 285)",
+          "destructive": "oklch(0.68 0.196 27)",
+          "destructive-foreground": "oklch(0.16 0.02 27)",
+          "success": "oklch(0.68 0.157 150)",
+          "success-foreground": "oklch(0.16 0.02 150)",
+          "warning": "oklch(0.78 0.165 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.33 0.01 250)",
+          "input": "oklch(0.507 0.012 250)",
+          "ring": "oklch(0.68 0.043 255)",
+          "chart-1": "oklch(0.68 0.127 255)",
+          "chart-2": "oklch(0.68 0.127 325)",
+          "chart-3": "oklch(0.68 0.127 45)",
+          "chart-4": "oklch(0.68 0.127 105)",
+          "chart-5": "oklch(0.68 0.12 185)",
+          "sidebar": "oklch(0.14 0.012 250)",
+          "sidebar-foreground": "oklch(0.93 0.008 250)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        }
+      }
+    },
+    {
+      "name": "theme-harbor",
+      "type": "registry:theme",
+      "title": "Harbor theme",
+      "description": "The harbor preset (Public Sans), light and dark, with every colour pair contrast-solved. Load its fonts separately.",
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "cssVars": {
+        "light": {
+          "radius": "0.25rem",
+          "corner-sm": "0.125rem",
+          "corner-md": "0.25rem",
+          "corner-lg": "0.375rem",
+          "corner-xl": "0.5rem",
+          "typeface-display": "\"Public Sans\", \"Helvetica Neue\", Arial, sans-serif",
+          "typeface-text": "\"Public Sans\", \"Helvetica Neue\", Arial, sans-serif",
+          "typeface-code": "\"IBM Plex Mono\", ui-monospace, Menlo, monospace",
+          "type-xs": "clamp(0.75rem, 0.75rem + 0vw, 0.75rem)",
+          "type-sm": "clamp(0.875rem, 0.871rem + 0.018vw, 0.885rem)",
+          "type-base": "clamp(1rem, 0.976rem + 0.109vw, 1.063rem)",
+          "type-lg": "clamp(1.157rem, 1.111rem + 0.205vw, 1.275rem)",
+          "type-xl": "clamp(1.339rem, 1.264rem + 0.333vw, 1.53rem)",
+          "type-2xl": "clamp(1.549rem, 1.437rem + 0.499vw, 1.836rem)",
+          "type-3xl": "clamp(1.792rem, 1.631rem + 0.715vw, 2.203rem)",
+          "type-4xl": "clamp(2.074rem, 1.85rem + 0.992vw, 2.644rem)",
+          "space-unit": "0.255rem",
+          "control-sm": "1.785rem",
+          "control-md": "2.295rem",
+          "control-lg": "2.805rem",
+          "border-width": "1px",
+          "card-border-width": "1px",
+          "motion-fast": "100ms",
+          "motion-normal": "150ms",
+          "motion-slow": "200ms",
+          "motion-ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "motion-ease-emphasized": "cubic-bezier(0.2, 0, 0, 1)",
+          "background": "oklch(0.985 0.004 250)",
+          "foreground": "oklch(0.18 0.006 250)",
+          "card": "oklch(0.998 0.001 250)",
+          "card-foreground": "oklch(0.18 0.006 250)",
+          "popover": "oklch(0.998 0.001 250)",
+          "popover-foreground": "oklch(0.18 0.006 250)",
+          "primary": "oklch(0.68 0.116 195)",
+          "primary-foreground": "oklch(0.16 0.02 195)",
+          "link": "oklch(0.49 0.084 195)",
+          "secondary": "oklch(0.93 0.008 250)",
+          "secondary-foreground": "oklch(0.25 0.008 250)",
+          "muted": "oklch(0.93 0.008 250)",
+          "muted-foreground": "oklch(0.49 0.012 250)",
+          "accent": "oklch(0.93 0.045 225)",
+          "accent-foreground": "oklch(0.25 0.047 225)",
+          "destructive": "oklch(0.49 0.196 27)",
+          "destructive-foreground": "oklch(0.99 0.005 27)",
+          "success": "oklch(0.49 0.135 150)",
+          "success-foreground": "oklch(0.99 0.01 150)",
+          "warning": "oklch(0.66 0.139 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.87 0.01 250)",
+          "input": "oklch(0.58 0.012 250)",
+          "ring": "oklch(0.58 0.099 195)",
+          "chart-1": "oklch(0.58 0.099 195)",
+          "chart-2": "oklch(0.58 0.13 265)",
+          "chart-3": "oklch(0.58 0.13 345)",
+          "chart-4": "oklch(0.58 0.13 45)",
+          "chart-5": "oklch(0.58 0.13 125)",
+          "sidebar": "oklch(0.97 0.007 250)",
+          "sidebar-foreground": "oklch(0.25 0.008 250)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        },
+        "dark": {
+          "background": "oklch(0.17 0.012 250)",
+          "foreground": "oklch(0.97 0.006 250)",
+          "card": "oklch(0.21 0.012 250)",
+          "card-foreground": "oklch(0.97 0.006 250)",
+          "popover": "oklch(0.21 0.012 250)",
+          "popover-foreground": "oklch(0.97 0.006 250)",
+          "primary": "oklch(0.68 0.116 195)",
+          "primary-foreground": "oklch(0.16 0.02 195)",
+          "link": "oklch(0.78 0.12 195)",
+          "secondary": "oklch(0.33 0.01 250)",
+          "secondary-foreground": "oklch(0.93 0.008 250)",
+          "muted": "oklch(0.33 0.01 250)",
+          "muted-foreground": "oklch(0.699 0.012 250)",
+          "accent": "oklch(0.33 0.063 225)",
+          "accent-foreground": "oklch(0.93 0.045 225)",
+          "destructive": "oklch(0.68 0.196 27)",
+          "destructive-foreground": "oklch(0.16 0.02 27)",
+          "success": "oklch(0.68 0.157 150)",
+          "success-foreground": "oklch(0.16 0.02 150)",
+          "warning": "oklch(0.78 0.165 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.33 0.01 250)",
+          "input": "oklch(0.507 0.012 250)",
+          "ring": "oklch(0.68 0.116 195)",
+          "chart-1": "oklch(0.68 0.116 195)",
+          "chart-2": "oklch(0.68 0.127 265)",
+          "chart-3": "oklch(0.68 0.127 345)",
+          "chart-4": "oklch(0.68 0.127 45)",
+          "chart-5": "oklch(0.68 0.127 125)",
+          "sidebar": "oklch(0.14 0.012 250)",
+          "sidebar-foreground": "oklch(0.93 0.008 250)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        }
+      }
+    },
+    {
+      "name": "theme-folio",
+      "type": "registry:theme",
+      "title": "Folio theme",
+      "description": "The folio preset (Instrument Serif + Instrument Sans), light and dark, with every colour pair contrast-solved. Load its fonts separately.",
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "cssVars": {
+        "light": {
+          "radius": "0.15rem",
+          "corner-sm": "0.075rem",
+          "corner-md": "0.15rem",
+          "corner-lg": "0.225rem",
+          "corner-xl": "0.3rem",
+          "typeface-display": "\"Instrument Serif\", \"Iowan Old Style\", Georgia, serif",
+          "typeface-text": "\"Instrument Sans\", \"Helvetica Neue\", Arial, sans-serif",
+          "typeface-code": "\"JetBrains Mono\", ui-monospace, Menlo, monospace",
+          "type-xs": "clamp(0.75rem, 0.75rem + 0vw, 0.75rem)",
+          "type-sm": "clamp(0.875rem, 0.875rem + 0vw, 0.875rem)",
+          "type-base": "clamp(1rem, 0.976rem + 0.109vw, 1.063rem)",
+          "type-lg": "clamp(1.259rem, 1.197rem + 0.274vw, 1.416rem)",
+          "type-xl": "clamp(1.584rem, 1.465rem + 0.529vw, 1.888rem)",
+          "type-2xl": "clamp(1.993rem, 1.789rem + 0.91vw, 2.517rem)",
+          "type-3xl": "clamp(2.509rem, 2.178rem + 1.471vw, 3.355rem)",
+          "type-4xl": "clamp(3.157rem, 2.643rem + 2.286vw, 4.472rem)",
+          "space-unit": "0.275rem",
+          "control-sm": "1.925rem",
+          "control-md": "2.475rem",
+          "control-lg": "3.025rem",
+          "border-width": "1px",
+          "card-border-width": "1px",
+          "motion-fast": "100ms",
+          "motion-normal": "150ms",
+          "motion-slow": "200ms",
+          "motion-ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "motion-ease-emphasized": "cubic-bezier(0.2, 0, 0, 1)",
+          "background": "oklch(0.985 0.001 285)",
+          "foreground": "oklch(0.18 0.002 285)",
+          "card": "oklch(0.998 0.001 285)",
+          "card-foreground": "oklch(0.18 0.002 285)",
+          "popover": "oklch(0.998 0.001 285)",
+          "popover-foreground": "oklch(0.18 0.002 285)",
+          "primary": "oklch(0.49 0.098 285)",
+          "primary-foreground": "oklch(0.99 0.005 285)",
+          "link": "oklch(0.49 0.098 285)",
+          "secondary": "oklch(0.93 0.003 285)",
+          "secondary-foreground": "oklch(0.25 0.003 285)",
+          "muted": "oklch(0.93 0.003 285)",
+          "muted-foreground": "oklch(0.49 0.004 285)",
+          "accent": "oklch(0.93 0.046 315)",
+          "accent-foreground": "oklch(0.25 0.046 315)",
+          "destructive": "oklch(0.49 0.196 27)",
+          "destructive-foreground": "oklch(0.99 0.005 27)",
+          "success": "oklch(0.49 0.135 150)",
+          "success-foreground": "oklch(0.99 0.01 150)",
+          "warning": "oklch(0.66 0.139 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.87 0.003 285)",
+          "input": "oklch(0.58 0.004 285)",
+          "ring": "oklch(0.58 0.1 285)",
+          "chart-1": "oklch(0.58 0.13 285)",
+          "chart-2": "oklch(0.58 0.13 355)",
+          "chart-3": "oklch(0.58 0.122 75)",
+          "chart-4": "oklch(0.58 0.13 135)",
+          "chart-5": "oklch(0.58 0.102 215)",
+          "sidebar": "oklch(0.97 0.002 285)",
+          "sidebar-foreground": "oklch(0.25 0.003 285)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        },
+        "dark": {
+          "background": "oklch(0.17 0.004 285)",
+          "foreground": "oklch(0.97 0.002 285)",
+          "card": "oklch(0.21 0.004 285)",
+          "card-foreground": "oklch(0.97 0.002 285)",
+          "popover": "oklch(0.21 0.004 285)",
+          "popover-foreground": "oklch(0.97 0.002 285)",
+          "primary": "oklch(0.68 0.098 285)",
+          "primary-foreground": "oklch(0.16 0.02 285)",
+          "link": "oklch(0.78 0.092 285)",
+          "secondary": "oklch(0.33 0.003 285)",
+          "secondary-foreground": "oklch(0.93 0.003 285)",
+          "muted": "oklch(0.33 0.003 285)",
+          "muted-foreground": "oklch(0.699 0.004 285)",
+          "accent": "oklch(0.33 0.056 315)",
+          "accent-foreground": "oklch(0.93 0.046 315)",
+          "destructive": "oklch(0.68 0.196 27)",
+          "destructive-foreground": "oklch(0.16 0.02 27)",
+          "success": "oklch(0.68 0.157 150)",
+          "success-foreground": "oklch(0.16 0.02 150)",
+          "warning": "oklch(0.78 0.165 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.33 0.003 285)",
+          "input": "oklch(0.508 0.004 285)",
+          "ring": "oklch(0.68 0.098 285)",
+          "chart-1": "oklch(0.68 0.127 285)",
+          "chart-2": "oklch(0.68 0.127 355)",
+          "chart-3": "oklch(0.68 0.127 75)",
+          "chart-4": "oklch(0.68 0.127 135)",
+          "chart-5": "oklch(0.68 0.12 215)",
+          "sidebar": "oklch(0.14 0.004 285)",
+          "sidebar-foreground": "oklch(0.93 0.003 285)",
+          "elevation-sm": "none",
+          "elevation-md": "none",
+          "elevation-lg": "none"
+        }
+      }
+    },
+    {
+      "name": "theme-bloom",
+      "type": "registry:theme",
+      "title": "Bloom theme",
+      "description": "The bloom preset (Bricolage Grotesque + Figtree), light and dark, with every colour pair contrast-solved. Load its fonts separately.",
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "cssVars": {
+        "light": {
+          "radius": "0.85rem",
+          "corner-sm": "0.425rem",
+          "corner-md": "0.85rem",
+          "corner-lg": "1.275rem",
+          "corner-xl": "1.7rem",
+          "typeface-display": "\"Bricolage Grotesque\", \"Trebuchet MS\", sans-serif",
+          "typeface-text": "\"Figtree\", \"Trebuchet MS\", sans-serif",
+          "typeface-code": "\"JetBrains Mono\", ui-monospace, Menlo, monospace",
+          "type-xs": "clamp(0.75rem, 0.75rem + 0vw, 0.75rem)",
+          "type-sm": "clamp(0.875rem, 0.871rem + 0.018vw, 0.885rem)",
+          "type-base": "clamp(1rem, 0.976rem + 0.109vw, 1.063rem)",
+          "type-lg": "clamp(1.157rem, 1.111rem + 0.205vw, 1.275rem)",
+          "type-xl": "clamp(1.339rem, 1.264rem + 0.333vw, 1.53rem)",
+          "type-2xl": "clamp(1.549rem, 1.437rem + 0.499vw, 1.836rem)",
+          "type-3xl": "clamp(1.792rem, 1.631rem + 0.715vw, 2.203rem)",
+          "type-4xl": "clamp(2.074rem, 1.85rem + 0.992vw, 2.644rem)",
+          "space-unit": "0.28rem",
+          "control-sm": "1.96rem",
+          "control-md": "2.52rem",
+          "control-lg": "3.08rem",
+          "border-width": "1px",
+          "card-border-width": "0px",
+          "motion-fast": "150ms",
+          "motion-normal": "250ms",
+          "motion-slow": "400ms",
+          "motion-ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "motion-ease-emphasized": "cubic-bezier(0.3, 1.4, 0.5, 1)",
+          "background": "oklch(0.985 0.005 70)",
+          "foreground": "oklch(0.18 0.007 70)",
+          "card": "oklch(0.998 0.001 70)",
+          "card-foreground": "oklch(0.18 0.007 70)",
+          "popover": "oklch(0.998 0.001 70)",
+          "popover-foreground": "oklch(0.18 0.007 70)",
+          "primary": "oklch(0.49 0.167 350)",
+          "primary-foreground": "oklch(0.99 0.006 350)",
+          "link": "oklch(0.49 0.167 350)",
+          "secondary": "oklch(0.93 0.01 70)",
+          "secondary-foreground": "oklch(0.25 0.01 70)",
+          "muted": "oklch(0.93 0.01 70)",
+          "muted-foreground": "oklch(0.49 0.014 70)",
+          "accent": "oklch(0.93 0.035 20)",
+          "accent-foreground": "oklch(0.25 0.075 20)",
+          "destructive": "oklch(0.49 0.196 27)",
+          "destructive-foreground": "oklch(0.99 0.005 27)",
+          "success": "oklch(0.49 0.135 150)",
+          "success-foreground": "oklch(0.99 0.01 150)",
+          "warning": "oklch(0.66 0.139 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.87 0.012 70)",
+          "input": "oklch(0.58 0.014 70)",
+          "ring": "oklch(0.58 0.17 350)",
+          "chart-1": "oklch(0.58 0.17 350)",
+          "chart-2": "oklch(0.58 0.136 60)",
+          "chart-3": "oklch(0.58 0.17 140)",
+          "chart-4": "oklch(0.58 0.099 200)",
+          "chart-5": "oklch(0.58 0.17 280)",
+          "sidebar": "oklch(0.97 0.008 70)",
+          "sidebar-foreground": "oklch(0.25 0.01 70)",
+          "elevation-sm": "0 1px 2px oklch(0 0 0 / 0.116)",
+          "elevation-md": "0 1px 3px oklch(0 0 0 / 0.116), 0 4px 12px -2px oklch(0 0 0 / 0.162)",
+          "elevation-lg": "0 2px 6px oklch(0 0 0 / 0.116), 0 16px 40px -8px oklch(0 0 0 / 0.209)"
+        },
+        "dark": {
+          "background": "oklch(0.17 0.014 70)",
+          "foreground": "oklch(0.97 0.007 70)",
+          "card": "oklch(0.21 0.014 70)",
+          "card-foreground": "oklch(0.97 0.007 70)",
+          "popover": "oklch(0.21 0.014 70)",
+          "popover-foreground": "oklch(0.97 0.007 70)",
+          "primary": "oklch(0.68 0.167 350)",
+          "primary-foreground": "oklch(0.16 0.02 350)",
+          "link": "oklch(0.78 0.154 350)",
+          "secondary": "oklch(0.33 0.012 70)",
+          "secondary-foreground": "oklch(0.93 0.01 70)",
+          "muted": "oklch(0.33 0.012 70)",
+          "muted-foreground": "oklch(0.699 0.014 70)",
+          "accent": "oklch(0.33 0.09 20)",
+          "accent-foreground": "oklch(0.93 0.035 20)",
+          "destructive": "oklch(0.68 0.196 27)",
+          "destructive-foreground": "oklch(0.16 0.02 27)",
+          "success": "oklch(0.68 0.157 150)",
+          "success-foreground": "oklch(0.16 0.02 150)",
+          "warning": "oklch(0.78 0.165 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.33 0.012 70)",
+          "input": "oklch(0.508 0.014 70)",
+          "ring": "oklch(0.68 0.167 350)",
+          "chart-1": "oklch(0.68 0.167 350)",
+          "chart-2": "oklch(0.68 0.159 60)",
+          "chart-3": "oklch(0.68 0.167 140)",
+          "chart-4": "oklch(0.68 0.116 200)",
+          "chart-5": "oklch(0.68 0.167 280)",
+          "sidebar": "oklch(0.14 0.014 70)",
+          "sidebar-foreground": "oklch(0.93 0.01 70)",
+          "elevation-sm": "0 1px 2px oklch(0 0 0 / 0.29)",
+          "elevation-md": "0 1px 3px oklch(0 0 0 / 0.29), 0 4px 12px -2px oklch(0 0 0 / 0.406)",
+          "elevation-lg": "0 2px 6px oklch(0 0 0 / 0.29), 0 16px 40px -8px oklch(0 0 0 / 0.522)"
+        }
+      }
+    },
+    {
+      "name": "theme-forge",
+      "type": "registry:theme",
+      "title": "Forge theme",
+      "description": "The forge preset (Archivo Black + Archivo), light and dark, with every colour pair contrast-solved. Load its fonts separately.",
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "cssVars": {
+        "light": {
+          "radius": "0.3rem",
+          "corner-sm": "0.15rem",
+          "corner-md": "0.3rem",
+          "corner-lg": "0.45rem",
+          "corner-xl": "0.6rem",
+          "typeface-display": "\"Archivo Black\", \"Arial Black\", sans-serif",
+          "typeface-text": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif",
+          "typeface-code": "\"Space Mono\", ui-monospace, Menlo, monospace",
+          "type-xs": "clamp(0.75rem, 0.75rem + 0vw, 0.75rem)",
+          "type-sm": "clamp(0.875rem, 0.875rem + 0vw, 0.875rem)",
+          "type-base": "clamp(1rem, 0.976rem + 0.109vw, 1.063rem)",
+          "type-lg": "clamp(1.259rem, 1.197rem + 0.274vw, 1.416rem)",
+          "type-xl": "clamp(1.584rem, 1.465rem + 0.529vw, 1.888rem)",
+          "type-2xl": "clamp(1.993rem, 1.789rem + 0.91vw, 2.517rem)",
+          "type-3xl": "clamp(2.509rem, 2.178rem + 1.471vw, 3.355rem)",
+          "type-4xl": "clamp(3.157rem, 2.643rem + 2.286vw, 4.472rem)",
+          "space-unit": "0.235rem",
+          "control-sm": "1.645rem",
+          "control-md": "2.115rem",
+          "control-lg": "2.585rem",
+          "border-width": "1px",
+          "card-border-width": "0px",
+          "motion-fast": "150ms",
+          "motion-normal": "250ms",
+          "motion-slow": "400ms",
+          "motion-ease-standard": "cubic-bezier(0.2, 0, 0, 1)",
+          "motion-ease-emphasized": "cubic-bezier(0.3, 1.4, 0.5, 1)",
+          "background": "oklch(0.985 0.001 55)",
+          "foreground": "oklch(0.18 0.002 55)",
+          "card": "oklch(0.998 0.001 55)",
+          "card-foreground": "oklch(0.18 0.002 55)",
+          "popover": "oklch(0.998 0.001 55)",
+          "popover-foreground": "oklch(0.18 0.002 55)",
+          "primary": "oklch(0.68 0.168 55)",
+          "primary-foreground": "oklch(0.16 0.02 55)",
+          "link": "oklch(0.49 0.121 55)",
+          "secondary": "oklch(0.93 0.003 55)",
+          "secondary-foreground": "oklch(0.25 0.003 55)",
+          "muted": "oklch(0.93 0.003 55)",
+          "muted-foreground": "oklch(0.49 0.004 55)",
+          "accent": "oklch(0.93 0.075 85)",
+          "accent-foreground": "oklch(0.25 0.051 85)",
+          "destructive": "oklch(0.49 0.196 27)",
+          "destructive-foreground": "oklch(0.99 0.005 27)",
+          "success": "oklch(0.49 0.135 150)",
+          "success-foreground": "oklch(0.99 0.01 150)",
+          "warning": "oklch(0.66 0.139 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.87 0.003 55)",
+          "input": "oklch(0.58 0.004 55)",
+          "ring": "oklch(0.58 0.144 55)",
+          "chart-1": "oklch(0.58 0.144 55)",
+          "chart-2": "oklch(0.58 0.146 125)",
+          "chart-3": "oklch(0.58 0.099 205)",
+          "chart-4": "oklch(0.58 0.21 265)",
+          "chart-5": "oklch(0.58 0.21 345)",
+          "sidebar": "oklch(0.97 0.002 55)",
+          "sidebar-foreground": "oklch(0.25 0.003 55)",
+          "elevation-sm": "0 1px 2px oklch(0 0 0 / 0.076)",
+          "elevation-md": "0 1px 3px oklch(0 0 0 / 0.076), 0 4px 12px -2px oklch(0 0 0 / 0.106)",
+          "elevation-lg": "0 2px 6px oklch(0 0 0 / 0.076), 0 16px 40px -8px oklch(0 0 0 / 0.137)"
+        },
+        "dark": {
+          "background": "oklch(0.17 0.004 55)",
+          "foreground": "oklch(0.97 0.002 55)",
+          "card": "oklch(0.21 0.004 55)",
+          "card-foreground": "oklch(0.97 0.002 55)",
+          "popover": "oklch(0.21 0.004 55)",
+          "popover-foreground": "oklch(0.97 0.002 55)",
+          "primary": "oklch(0.68 0.168 55)",
+          "primary-foreground": "oklch(0.16 0.02 55)",
+          "link": "oklch(0.78 0.149 55)",
+          "secondary": "oklch(0.33 0.003 55)",
+          "secondary-foreground": "oklch(0.93 0.003 55)",
+          "muted": "oklch(0.33 0.003 55)",
+          "muted-foreground": "oklch(0.699 0.004 55)",
+          "accent": "oklch(0.33 0.068 85)",
+          "accent-foreground": "oklch(0.93 0.075 85)",
+          "destructive": "oklch(0.68 0.196 27)",
+          "destructive-foreground": "oklch(0.16 0.02 27)",
+          "success": "oklch(0.68 0.157 150)",
+          "success-foreground": "oklch(0.16 0.02 150)",
+          "warning": "oklch(0.78 0.165 75)",
+          "warning-foreground": "oklch(0.16 0.02 75)",
+          "border": "oklch(0.33 0.003 55)",
+          "input": "oklch(0.508 0.004 55)",
+          "ring": "oklch(0.68 0.168 55)",
+          "chart-1": "oklch(0.68 0.168 55)",
+          "chart-2": "oklch(0.68 0.171 125)",
+          "chart-3": "oklch(0.68 0.116 205)",
+          "chart-4": "oklch(0.68 0.168 265)",
+          "chart-5": "oklch(0.68 0.206 345)",
+          "sidebar": "oklch(0.14 0.004 55)",
+          "sidebar-foreground": "oklch(0.93 0.003 55)",
+          "elevation-sm": "0 1px 2px oklch(0 0 0 / 0.19)",
+          "elevation-md": "0 1px 3px oklch(0 0 0 / 0.19), 0 4px 12px -2px oklch(0 0 0 / 0.266)",
+          "elevation-lg": "0 2px 6px oklch(0 0 0 / 0.19), 0 16px 40px -8px oklch(0 0 0 / 0.342)"
+        }
+      }
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "The standard `cn` helper (clsx + tailwind-merge) that every component imports from `@/lib/utils`.",
+      "dependencies": [
+        "clsx@2.1.1",
+        "tailwind-merge@3.7.0"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/machine-ui/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "machine-ui-styles",
+      "type": "registry:lib",
+      "title": "Machine Ui Styles",
+      "description": "Shared class fragments machine-ui components use for focus, fields, menus and floating surfaces.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/machine-ui/lib/machine-ui-styles.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-reduced-motion",
+      "type": "registry:hook",
+      "title": "Use Reduced Motion",
+      "description": "True when the person prefers reduced motion; use it for motion driven from JavaScript.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/machine-ui/hooks/use-reduced-motion.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A stack of headings that each reveal a section. One or several sections can be open.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "agent-glyph",
+      "type": "registry:ui",
+      "title": "Agent Glyph",
+      "description": "The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/agent-glyph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "An inline banner with a title and a description, in default, success, warning and destructive variants.",
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "approval-card",
+      "type": "registry:ui",
+      "title": "Approval Card",
+      "description": "The agent asks before it acts: a question, a few options and Confirm or Skip.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/label",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/radio-group",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/approval-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Keeps media at a fixed shape as its width changes.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Shows a person as a photo or initials, alone or as an overlapping group.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small label for state or category, in primary, secondary, outline and destructive styles.",
+      "dependencies": [
+        "class-variance-authority@0.7.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Shows where a page sits in the hierarchy, with a collapsed middle for long trails.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Joins related buttons into one row with shared edges, including split buttons.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Triggers an action. Six variants and four sizes, with icon, loading and disabled states.",
+      "dependencies": [
+        "class-variance-authority@0.7.1",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A month grid for picking a single date or a range, with today marked and keyboard navigation.",
+      "dependencies": [
+        "date-fns@4.4.0",
+        "lucide-react@1.59.0",
+        "react-day-picker@9.14.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Groups related content on a raised surface. Whether it uses a border or a shadow comes from the theme’s separation setting.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "A row of slides with previous and next buttons, swipe, and arrow-key support.",
+      "dependencies": [
+        "embla-carousel-react@8.6.0",
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.",
+      "dependencies": [
+        "recharts@2.15.4"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Turns an option on or off. Supports an indeterminate state for \"some selected\".",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "citation",
+      "type": "registry:ui",
+      "title": "Citation",
+      "description": "Numbered markers in an answer that preview their source, and the list of sources underneath.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/hover-card",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/citation.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Code with a filename header and a copy button, for agent output and docs.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "A single trigger that shows or hides the content beneath it.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "A select with a filter field: type to narrow the options, then pick one.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/command",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/popover",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "A searchable list of actions with groups and shortcuts. Use CommandDialog to open it as a palette.",
+      "dependencies": [
+        "cmdk@1.1.1",
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/dialog",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "confidence-bar",
+      "type": "registry:ui",
+      "title": "Confidence Bar",
+      "description": "How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/confidence-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "A menu of actions that opens at the pointer when its area is right-clicked or long-pressed.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "copy-input",
+      "type": "registry:ui",
+      "title": "Copy Input",
+      "description": "A read-only field with a copy button, for API keys, webhook URLs and share links.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/input-group",
+        "@machine-ui/machine-ui-base"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/copy-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "A table with sorting, filtering, row selection and pagination, built on TanStack Table.",
+      "dependencies": [
+        "@tanstack/react-table@8.21.3",
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/checkbox",
+        "@machine-ui/input",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/table",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "A button that opens a Calendar and shows the chosen date in short form.",
+      "dependencies": [
+        "date-fns@4.4.0",
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/calendar",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/popover",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal window over the page. Focus moves inside, Escape closes it and focus returns to the trigger.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A bottom sheet with a drag handle, for mobile-first flows. Swipe down or press Escape to close.",
+      "dependencies": [
+        "vaul@1.1.2"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "A placeholder for a view with nothing in it yet: what it is for, and the one action to start.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Lays out a label, control, help text and error for one form field, so every form reads the same way.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/label",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "A floating preview shown while the pointer rests on, or focus is on, its trigger.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "A text field with a fixed prefix, suffix or icon inside one border.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.",
+      "dependencies": [
+        "input-otp@1.5.0",
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A single-line text field, with invalid and disabled states.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "A row with media, a title, a description and actions, for lists, settings and search results.",
+      "dependencies": [
+        "class-variance-authority@0.7.1",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Shows a keyboard key or shortcut in a small keycap.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "A text label for a form control. Clicking it focuses the control it names.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A row of menus like a desktop app bar. Open one, then arrow or hover across the others.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "The browser’s own select, styled to match the theme. Best on mobile and for long option lists.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Site navigation with dropdown panels of links, for marketing sites and docs.",
+      "dependencies": [
+        "class-variance-authority@0.7.1",
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Moves through pages of results with numbered links, previous and next.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A floating panel anchored to a trigger, for short forms, settings and details.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Shows how far a task with a known length has come.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "prompt-input",
+      "type": "registry:ui",
+      "title": "Prompt Input",
+      "description": "The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/prompt-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A set of options where exactly one is selected. Arrow keys move the selection.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Panels the user can resize by dragging, or with arrow keys on the focused handle.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "react-resizable-panels@2.1.9"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A fixed-height container that scrolls its content with a thin, theme-coloured scrollbar.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "search-input",
+      "type": "registry:ui",
+      "title": "Search Input",
+      "description": "A search field with a shortcut hint, and a clear button once there is a value.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/input-group",
+        "@machine-ui/kbd",
+        "@machine-ui/machine-ui-base"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/search-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A dropdown for picking one value from a short list, with groups and separators.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A hairline between groups of content, horizontal or vertical.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A panel that slides in from any edge over a scrim. Good for edit forms and detail views.",
+      "dependencies": [
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.",
+      "dependencies": [
+        "class-variance-authority@0.7.1",
+        "lucide-react@1.59.0",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/button",
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/separator",
+        "@machine-ui/sheet",
+        "@machine-ui/tooltip",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Placeholder blocks that hold the shape of content while it loads.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Picks a number, or a range, by dragging. Arrow keys step through values.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "The Sonner component from machine-ui, styled with theme tokens only.",
+      "dependencies": [
+        "sonner@2.0.8"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A spinning ring for work with no known length. Announced to screen readers as loading.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stat",
+      "type": "registry:ui",
+      "title": "Stat",
+      "description": "A labelled number with an optional change, marked up or down by icon and text, not colour alone.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/stat.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status-dot",
+      "type": "registry:ui",
+      "title": "Status Dot",
+      "description": "A small coloured dot for presence and health, always paired with a text label.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/status-dot.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "Progress through a fixed sequence of steps, with done, current and upcoming states.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "streaming-text",
+      "type": "registry:ui",
+      "title": "Streaming Text",
+      "description": "Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/use-reduced-motion",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/streaming-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Turns a setting on or off immediately, without a save step.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Composable table parts for simple tabular data. Use Data Table when you need sorting or selection.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switches between views in the same context. Arrow keys move between tabs.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A multi-line text field that resizes vertically. Use it for messages, notes and descriptions.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "thinking",
+      "type": "registry:ui",
+      "title": "Thinking",
+      "description": "The Thinking component from machine-ui, styled with theme tokens only.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/spinner",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/thinking.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A joined row of toggles for picking one option, or several, from a small set.",
+      "dependencies": [
+        "class-variance-authority@0.7.1",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/toggle",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A button that stays pressed, for one on/off option such as a filter or formatting.",
+      "dependencies": [
+        "class-variance-authority@0.7.1",
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tool-call",
+      "type": "registry:ui",
+      "title": "Tool Call",
+      "description": "A tool the agent called, with its status and, on demand, its input and output.",
+      "dependencies": [
+        "lucide-react@1.59.0"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/machine-ui-styles",
+        "@machine-ui/spinner",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/tool-call.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A short label shown on hover or focus. Never put essential information only in a tooltip.",
+      "dependencies": [
+        "radix-ui@1.8.1"
+      ],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.",
+      "dependencies": [],
+      "registryDependencies": [
+        "@machine-ui/machine-ui-base",
+        "@machine-ui/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/machine-ui/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

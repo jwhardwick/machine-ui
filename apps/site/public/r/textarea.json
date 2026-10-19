@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "A multi-line text field that resizes vertically. Use it for messages, notes and descriptions.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/textarea.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { disabledControl, fieldChrome, focusRing, transition } from '@/lib/machine-ui-styles';\n\nexport function Textarea({ className, ...props }: ComponentProps<'textarea'>) {\n  return (\n    <textarea\n      data-slot=\"textarea\"\n      className={cn(fieldChrome, transition, focusRing, disabledControl, 'min-h-20 resize-y px-3 py-2 text-base sm:text-sm', className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

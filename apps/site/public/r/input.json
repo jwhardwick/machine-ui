@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "A single-line text field, with invalid and disabled states.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/input.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function Input({ className, type, ...props }: ComponentProps<'input'>) {\n  return (\n    <input\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        'flex h-(--control-md) w-full min-w-0 rounded-md border border-input bg-background px-3 text-base text-foreground shadow-sm sm:text-sm',\n        'transition-[border-color,box-shadow] duration-(--motion-fast) ease-standard',\n        'placeholder:text-muted-foreground file:border-0 file:bg-transparent file:font-medium',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',\n        'disabled:cursor-not-allowed disabled:opacity-50',\n        'aria-invalid:border-destructive aria-invalid:focus-visible:outline-destructive',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

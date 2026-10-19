@@ -1,0 +1,10 @@
+{
+  "name": "@machine-ui/agent",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code plugin that maintains a shadcn-based design system from an issue board.",
+  "scripts": { "typecheck": "tsc --noEmit -p ." },
+  "dependencies": { "yaml": "2.9.1", "zod": "4.6.7" },
+  "devDependencies": { "@types/node": "26.6.5", "vitest": "5.0.5" }
+}
