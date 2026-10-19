@@ -42,10 +42,22 @@ export default mergeConfig(
     },
     test: {
       name: 'storybook',
+      // The first story in each file pays for a cold browser page; on a loaded machine that alone can
+      // exceed the 15s default. A genuinely hung story still fails, just later.
+      testTimeout: 60_000,
+      // Browser pages compete for one CPU and GPU; a few at a time keeps timing-sensitive stories
+      // (streaming text, animated closes) honest on a busy machine.
+      maxWorkers: 3,
       browser: {
         enabled: true,
         headless: true,
-        provider: playwright(),
+        // Parallel pages count as background pages, and Chromium throttles their timers and pauses
+        // animation frames, which stalls animated closes and streamed text. Tests need full speed.
+        provider: playwright({
+          launchOptions: {
+            args: ['--disable-background-timer-throttling', '--disable-renderer-backgrounding', '--disable-backgrounding-occluded-windows'],
+          },
+        }),
         instances: [{ browser: 'chromium' }],
       },
       setupFiles: ['.storybook/vitest.setup.ts'],

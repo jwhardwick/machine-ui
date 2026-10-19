@@ -22,7 +22,9 @@ const withTheme: Decorator = (Story, context) => {
   return <Story />;
 };
 
-loadFonts();
+// Tests must not depend on the network, so web fonts load only in the interactive Storybook.
+// Under Vitest, components render with each pair's fallback stack.
+if (!import.meta.env.VITEST) loadFonts();
 
 const preview: Preview = {
   decorators: [withTheme],

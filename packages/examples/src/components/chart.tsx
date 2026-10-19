@@ -28,7 +28,7 @@ export default defineDoc({
         <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Visitors and sign-ups by month, May to October">
           <Recharts.BarChart data={DATA} accessibilityLayer>
             <Recharts.CartesianGrid vertical={false} />
-            <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
+            <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <ChartLegend content={<ChartLegendContent />} />
             <Recharts.Bar dataKey="visitors" fill="var(--color-visitors)" radius={4} />
@@ -44,7 +44,7 @@ export default defineDoc({
         <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Visitors by month, rising from 1,860 to 4,120">
           <Recharts.AreaChart data={DATA} margin={{ left: 12, right: 12 }}>
             <Recharts.CartesianGrid vertical={false} />
-            <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
+            <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
             <ChartTooltip content={<ChartTooltipContent />} />
             <Recharts.Area dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.15} stroke="var(--color-visitors)" strokeWidth={2} />
           </Recharts.AreaChart>
