@@ -3,7 +3,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { PanelLeftIcon } from 'lucide-react';
 import { Slot } from 'radix-ui';
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type CSSProperties, type ComponentProps } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties, type ComponentProps } from 'react';
 import { cn } from '../lib/cn.ts';
 import { focusRing, transition } from '../lib/styles.ts';
 import { Button } from './button.tsx';
@@ -34,16 +34,22 @@ export function useSidebar() {
   return context;
 }
 
+function subscribeMobile(onChange: () => void) {
+  const query = window.matchMedia?.(MOBILE_QUERY);
+  query?.addEventListener('change', onChange);
+  return () => query?.removeEventListener('change', onChange);
+}
+
+/**
+ * Whether the viewport is phone-sized. The server (and hydration) always sees desktop, then React
+ * re-renders with the real answer, so phone visitors don't get a hydration mismatch.
+ */
 function useIsMobile() {
-  const [mobile, setMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia?.(MOBILE_QUERY).matches);
-  useEffect(() => {
-    const query = window.matchMedia?.(MOBILE_QUERY);
-    if (!query) return;
-    const update = () => setMobile(query.matches);
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
-  return Boolean(mobile);
+  return useSyncExternalStore(
+    subscribeMobile,
+    () => Boolean(window.matchMedia?.(MOBILE_QUERY).matches),
+    () => false,
+  );
 }
 
 /** Holds open/collapsed state for a Sidebar. Cmd/Ctrl+B toggles it, unless nested inside another provider. */

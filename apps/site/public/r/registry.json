@@ -2080,6 +2080,7 @@
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
+        "@machine-ui/use-reduced-motion",
         "@machine-ui/utils"
       ],
       "files": [

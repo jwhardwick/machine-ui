@@ -2,10 +2,7 @@
 
 import { useEffect, useRef, useState, type ComponentProps } from 'react';
 import { cn } from '../lib/cn.ts';
-
-function prefersReducedMotion() {
-  return typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-}
+import { useReducedMotion } from '../lib/motion.ts';
 
 /**
  * Types text out a few characters at a time with a cursor, then hides the cursor.
@@ -19,7 +16,11 @@ export function StreamingText({
   className,
   ...props
 }: ComponentProps<'span'> & { text: string; speed?: number; onDone?: () => void }) {
-  const [shown, setShown] = useState(() => (prefersReducedMotion() ? text.length : 0));
+  // Reduced motion is read through useReducedMotion so server markup and the first client render
+  // agree; the full text appears as soon as hydration has the real preference.
+  const reduced = useReducedMotion();
+  const [typed, setTyped] = useState(0);
+  const shown = reduced ? text.length : typed;
   const done = shown >= text.length;
   const onDoneRef = useRef(onDone);
   const reported = useRef(false);
@@ -36,7 +37,7 @@ export function StreamingText({
       }
       return;
     }
-    const id = window.setTimeout(() => setShown((n) => Math.min(text.length, n + 3)), 1000 / speed);
+    const id = window.setTimeout(() => setTyped((n) => Math.min(text.length, n + 3)), 1000 / speed);
     return () => window.clearTimeout(id);
   }, [done, shown, speed, text.length]);
 
