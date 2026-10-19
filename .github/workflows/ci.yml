@@ -1,0 +1,84 @@
+# Every PR, human or agent, passes the same deterministic gates. The agent never self-certifies.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: Types, lint, unit, contrast, size
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      # Includes the contrast suites, the API/token report drift check and the registry drift check.
+      - run: pnpm test
+      - run: pnpm size
+
+  browser:
+    name: Storybook interaction + axe, site axe + e2e
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @machine-ui/storybook exec playwright install --with-deps chromium
+      - run: pnpm test:storybook
+      - run: pnpm test:site
+
+  visual:
+    name: Visual regression
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @machine-ui/storybook exec playwright install --with-deps chromium
+      # Linux baselines are created by the "Visual baselines" workflow and committed by a human.
+      - run: pnpm test:visual
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs
+          path: apps/storybook/visual/__screenshots__/**/*
+
+  release-check:
+    name: Version bump and changeset
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # The tool computes the bump; the changeset must declare at least that level.
+      - run: pnpm release:bump --base origin/${{ github.base_ref }} --check-changeset | tee -a "$GITHUB_STEP_SUMMARY"
