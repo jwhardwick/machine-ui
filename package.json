@@ -15,7 +15,9 @@
     "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm test:storybook && pnpm test:site",
     "changeset": "changeset",
     "test:site": "pnpm --filter @machine-ui/site test",
-    "build:site": "pnpm --filter @machine-ui/site build"
+    "build:site": "pnpm --filter @machine-ui/site build",
+    "api:report": "node tooling/release/src/cli/report.ts",
+    "release:bump": "node tooling/release/src/cli/bump.ts"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
@@ -28,6 +30,7 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.2",
     "vitest": "5.0.5",
-    "@machine-ui/eslint-plugin": "workspace:*"
+    "@machine-ui/eslint-plugin": "workspace:*",
+    "@machine-ui/release-tools": "workspace:*"
   }
 }

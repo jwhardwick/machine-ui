@@ -1,0 +1,666 @@
+{
+  "exports": {
+    "apcaContrast": {
+      "kind": "function",
+      "signature": "(text: Oklch, background: Oklch): number",
+      "members": {
+        "c": {
+          "type": "number",
+          "optional": false
+        },
+        "h": {
+          "type": "number",
+          "optional": false
+        },
+        "l": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "AppliedTheme": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "dispose": {
+          "type": "() => void",
+          "optional": false
+        },
+        "tokens": {
+          "type": "ThemeTokens",
+          "optional": false
+        }
+      }
+    },
+    "applyTheme": {
+      "kind": "function",
+      "signature": "(seed: ThemeSeed, opts?: ApplyThemeOptions): AppliedTheme",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "ApplyThemeOptions": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "mode": {
+          "type": "Mode | undefined",
+          "optional": true
+        },
+        "target": {
+          "type": "HTMLElement | undefined",
+          "optional": true
+        }
+      }
+    },
+    "auditPalette": {
+      "kind": "function",
+      "signature": "(palette: Palette): PairResult[]"
+    },
+    "buildPalette": {
+      "kind": "function",
+      "signature": "(seed: ThemeSeed, mode: Mode): Palette",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "CONTRAST_PAIRS": {
+      "kind": "const",
+      "signature": "readonly ContrastPair[]"
+    },
+    "ContrastPair": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "bg": {
+          "type": "\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\"",
+          "optional": false
+        },
+        "fg": {
+          "type": "\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\"",
+          "optional": false
+        },
+        "kind": {
+          "type": "\"text\" | \"ui\"",
+          "optional": false
+        },
+        "target": {
+          "type": "4.5 | 3",
+          "optional": false
+        }
+      }
+    },
+    "ContrastUnsolvableError": {
+      "kind": "class",
+      "signature": "extends Error"
+    },
+    "exportTheme": {
+      "kind": "function",
+      "signature": "(seed: ThemeSeed): ThemeExport",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "fluidTypeScale": {
+      "kind": "function",
+      "signature": "(ratio: number): Record<TypeStep, string>"
+    },
+    "formatOklch": {
+      "kind": "function",
+      "signature": "({ l, c, h }: Oklch): string",
+      "members": {
+        "c": {
+          "type": "number",
+          "optional": false
+        },
+        "h": {
+          "type": "number",
+          "optional": false
+        },
+        "l": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "generateScale": {
+      "kind": "function",
+      "signature": "(hue: number, chroma: number): Scale"
+    },
+    "generateTheme": {
+      "kind": "function",
+      "signature": "(input: ThemeSeed): ThemeTokens",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "luminance": {
+      "kind": "function",
+      "signature": "(color: Oklch): number",
+      "members": {
+        "c": {
+          "type": "number",
+          "optional": false
+        },
+        "h": {
+          "type": "number",
+          "optional": false
+        },
+        "l": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "Mode": {
+      "kind": "type",
+      "signature": "\"light\" | \"dark\""
+    },
+    "normalizeSeed": {
+      "kind": "function",
+      "signature": "(input: Partial<ThemeSeed>): ThemeSeed",
+      "members": {
+        "chroma": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "density": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "hue": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "motion": {
+          "type": "MotionLevel | undefined",
+          "optional": true
+        },
+        "name": {
+          "type": "string | undefined",
+          "optional": true
+        },
+        "neutral": {
+          "type": "NeutralTemperature | undefined",
+          "optional": true
+        },
+        "radius": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "separation": {
+          "type": "number | undefined",
+          "optional": true
+        },
+        "typePair": {
+          "type": "TypePairId | undefined",
+          "optional": true
+        },
+        "typeRatio": {
+          "type": "number | undefined",
+          "optional": true
+        }
+      }
+    },
+    "Oklch": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "c": {
+          "type": "number",
+          "optional": false
+        },
+        "h": {
+          "type": "number",
+          "optional": false
+        },
+        "l": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "PairResult": {
+      "kind": "interface",
+      "signature": "extends ContrastPair",
+      "members": {
+        "apca": {
+          "type": "number",
+          "optional": false
+        },
+        "bg": {
+          "type": "\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\"",
+          "optional": false
+        },
+        "fg": {
+          "type": "\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\"",
+          "optional": false
+        },
+        "kind": {
+          "type": "\"text\" | \"ui\"",
+          "optional": false
+        },
+        "pass": {
+          "type": "boolean",
+          "optional": false
+        },
+        "ratio": {
+          "type": "number",
+          "optional": false
+        },
+        "target": {
+          "type": "4.5 | 3",
+          "optional": false
+        }
+      }
+    },
+    "Palette": {
+      "kind": "type",
+      "signature": "{ background: Oklch; foreground: Oklch; card: Oklch; \"card-foreground\": Oklch; popover: Oklch; \"popover-foreground\": Oklch; primary: Oklch; \"primary-foreground\": Oklch; link: Oklch; secondary: Oklch; \"secondary-foreground\": Oklch; muted: Oklch; \"muted-foreground\": Oklch; accent: Oklch; \"accent-foreground\": Oklch; destructive: Oklch; \"destructive-foreground\": Oklch; success: Oklch; \"success-foreground\": Oklch; warning: Oklch; \"warning-foreground\": Oklch; border: Oklch; input: Oklch; ring: Oklch; \"chart-1\": Oklch; \"chart-2\": Oklch; \"chart-3\": Oklch; \"chart-4\": Oklch; \"chart-5\": Oklch; sidebar: Oklch; \"sidebar-foreground\": Oklch; }"
+    },
+    "parseSeed": {
+      "kind": "function",
+      "signature": "(input: string | null | undefined): ThemeSeed | null"
+    },
+    "referenceThemeCss": {
+      "kind": "function",
+      "signature": "(seed: ThemeSeed): string",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "Scale": {
+      "kind": "type",
+      "signature": "{ 50: Oklch; 100: Oklch; 200: Oklch; 300: Oklch; 400: Oklch; 500: Oklch; 600: Oklch; 700: Oklch; 800: Oklch; 900: Oklch; 950: Oklch; }"
+    },
+    "SCALE_STEPS": {
+      "kind": "const",
+      "signature": "readonly [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]"
+    },
+    "ScaleStep": {
+      "kind": "type",
+      "signature": "50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950"
+    },
+    "serializeSeed": {
+      "kind": "function",
+      "signature": "(seed: ThemeSeed): string",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "solveContrast": {
+      "kind": "function",
+      "signature": "(fg: Oklch, bg: Oklch, target: number): { fg: Oklch; bg: Oklch; }",
+      "members": {
+        "c": {
+          "type": "number",
+          "optional": false
+        },
+        "h": {
+          "type": "number",
+          "optional": false
+        },
+        "l": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "themeBrief": {
+      "kind": "function",
+      "signature": "(seed: ThemeSeed): string",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "ThemeExport": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "brief": {
+          "type": "string",
+          "optional": false
+        },
+        "css": {
+          "type": "string",
+          "optional": false
+        },
+        "json": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "themeToCss": {
+      "kind": "function",
+      "signature": "(tokens: ThemeTokens, opts?: { selector?: string; }): string",
+      "members": {
+        "dark": {
+          "type": "TokenMap<\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\" | \"elevation-sm\" | \"elevation-md\" | \"elevation-lg\">",
+          "optional": false
+        },
+        "light": {
+          "type": "TokenMap<\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\" | \"elevation-sm\" | \"elevation-md\" | \"elevation-lg\">",
+          "optional": false
+        },
+        "seed": {
+          "type": "ThemeSeed",
+          "optional": false
+        },
+        "shared": {
+          "type": "TokenMap<\"radius\" | \"corner-sm\" | \"corner-md\" | \"corner-lg\" | \"corner-xl\" | \"typeface-display\" | \"typeface-text\" | \"typeface-code\" | \"type-xs\" | \"type-sm\" | \"type-base\" | \"type-lg\" | \"type-xl\" | \"type-2xl\" | \"type-3xl\" | \"type-4xl\" | \"space-unit\" | \"control-sm\" | \"control-md\" | \"control-lg\" | \"border-width\" | \"card-border-width\" | \"motion-fast\" | \"motion-normal\" | \"motion-slow\" | \"motion-ease-standard\" | \"motion-ease-emphasized\">",
+          "optional": false
+        }
+      }
+    },
+    "toGamut": {
+      "kind": "function",
+      "signature": "(color: Oklch): Oklch",
+      "members": {
+        "c": {
+          "type": "number",
+          "optional": false
+        },
+        "h": {
+          "type": "number",
+          "optional": false
+        },
+        "l": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "wcagContrast": {
+      "kind": "function",
+      "signature": "(a: Oklch, b: Oklch): number",
+      "members": {
+        "c": {
+          "type": "number",
+          "optional": false
+        },
+        "h": {
+          "type": "number",
+          "optional": false
+        },
+        "l": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    }
+  }
+}

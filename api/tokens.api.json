@@ -1,0 +1,190 @@
+{
+  "exports": {
+    "COLOR_ROLES": {
+      "kind": "const",
+      "signature": "readonly [\"background\", \"foreground\", \"card\", \"card-foreground\", \"popover\", \"popover-foreground\", \"primary\", \"primary-foreground\", \"link\", \"secondary\", \"secondary-foreground\", \"muted\", \"muted-foreground\", \"accent\", \"accent-foreground\", \"destructive\", \"destructive-foreground\", \"success\", \"success-foreground\", \"warning\", \"warning-foreground\", \"border\", \"input\", \"ring\", \"chart-1\", \"chart-2\", \"chart-3\", \"chart-4\", \"chart-5\", \"sidebar\", \"sidebar-foreground\"]"
+    },
+    "ColorRole": {
+      "kind": "type",
+      "signature": "\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\""
+    },
+    "CURATED_FONT_FAMILIES": {
+      "kind": "const",
+      "signature": "string[]"
+    },
+    "DEFAULT_SEED": {
+      "kind": "const",
+      "signature": "ThemeSeed"
+    },
+    "ELEVATION_TOKENS": {
+      "kind": "const",
+      "signature": "readonly [\"elevation-sm\", \"elevation-md\", \"elevation-lg\"]"
+    },
+    "MODE_TOKENS": {
+      "kind": "const",
+      "signature": "readonly [\"background\", \"foreground\", \"card\", \"card-foreground\", \"popover\", \"popover-foreground\", \"primary\", \"primary-foreground\", \"link\", \"secondary\", \"secondary-foreground\", \"muted\", \"muted-foreground\", \"accent\", \"accent-foreground\", \"destructive\", \"destructive-foreground\", \"success\", \"success-foreground\", \"warning\", \"warning-foreground\", \"border\", \"input\", \"ring\", \"chart-1\", \"chart-2\", \"chart-3\", \"chart-4\", \"chart-5\", \"sidebar\", \"sidebar-foreground\", \"elevation-sm\", \"elevation-md\", \"elevation-lg\"]"
+    },
+    "ModeToken": {
+      "kind": "type",
+      "signature": "\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\" | \"elevation-sm\" | \"elevation-md\" | \"elevation-lg\""
+    },
+    "MOTION_LEVELS": {
+      "kind": "const",
+      "signature": "readonly [\"none\", \"subtle\", \"expressive\"]"
+    },
+    "MotionLevel": {
+      "kind": "type",
+      "signature": "\"none\" | \"subtle\" | \"expressive\""
+    },
+    "NEUTRAL_TEMPERATURES": {
+      "kind": "const",
+      "signature": "readonly [\"cool\", \"neutral\", \"warm\"]"
+    },
+    "NeutralTemperature": {
+      "kind": "type",
+      "signature": "\"cool\" | \"neutral\" | \"warm\""
+    },
+    "NumericSeedKey": {
+      "kind": "type",
+      "signature": "\"hue\" | \"chroma\" | \"radius\" | \"density\" | \"separation\" | \"typeRatio\""
+    },
+    "REFERENCE_THEMES": {
+      "kind": "const",
+      "signature": "readonly ThemeSeed[]"
+    },
+    "SEED_LIMITS": {
+      "kind": "const",
+      "signature": "{ readonly hue: readonly [0, 360]; readonly chroma: readonly [0, 1]; readonly radius: readonly [0, 1]; readonly density: readonly [0, 1]; readonly separation: readonly [0, 1]; readonly typeRatio: readonly [1.125, 1.333]; }"
+    },
+    "SHARED_TOKENS": {
+      "kind": "const",
+      "signature": "readonly [\"radius\", \"corner-sm\", \"corner-md\", \"corner-lg\", \"corner-xl\", \"typeface-display\", \"typeface-text\", \"typeface-code\", ...(\"type-xs\" | \"type-sm\" | \"type-base\" | \"type-lg\" | \"type-xl\" | \"type-2xl\" | \"type-3xl\" | \"type-4xl\")[], \"space-unit\", \"control-sm\", \"control-md\", \"control-lg\", \"border-width\", \"card-border-width\", \"motion-fast\", \"motion-normal\", \"motion-slow\", \"motion-ease-standard\", \"motion-ease-emphasized\"]"
+    },
+    "SharedToken": {
+      "kind": "type",
+      "signature": "\"radius\" | \"corner-sm\" | \"corner-md\" | \"corner-lg\" | \"corner-xl\" | \"typeface-display\" | \"typeface-text\" | \"typeface-code\" | \"type-xs\" | \"type-sm\" | \"type-base\" | \"type-lg\" | \"type-xl\" | \"type-2xl\" | \"type-3xl\" | \"type-4xl\" | \"space-unit\" | \"control-sm\" | \"control-md\" | \"control-lg\" | \"border-width\" | \"card-border-width\" | \"motion-fast\" | \"motion-normal\" | \"motion-slow\" | \"motion-ease-standard\" | \"motion-ease-emphasized\""
+    },
+    "ThemeSeed": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "chroma": {
+          "type": "number",
+          "optional": false
+        },
+        "density": {
+          "type": "number",
+          "optional": false
+        },
+        "hue": {
+          "type": "number",
+          "optional": false
+        },
+        "motion": {
+          "type": "MotionLevel",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "neutral": {
+          "type": "NeutralTemperature",
+          "optional": false
+        },
+        "radius": {
+          "type": "number",
+          "optional": false
+        },
+        "separation": {
+          "type": "number",
+          "optional": false
+        },
+        "typePair": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "typeRatio": {
+          "type": "number",
+          "optional": false
+        }
+      }
+    },
+    "ThemeTokens": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "dark": {
+          "type": "TokenMap<\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\" | \"elevation-sm\" | \"elevation-md\" | \"elevation-lg\">",
+          "optional": false
+        },
+        "light": {
+          "type": "TokenMap<\"background\" | \"foreground\" | \"card\" | \"card-foreground\" | \"popover\" | \"popover-foreground\" | \"primary\" | \"primary-foreground\" | \"link\" | \"secondary\" | \"secondary-foreground\" | \"muted\" | \"muted-foreground\" | \"accent\" | \"accent-foreground\" | \"destructive\" | \"destructive-foreground\" | \"success\" | \"success-foreground\" | \"warning\" | \"warning-foreground\" | \"border\" | \"input\" | \"ring\" | \"chart-1\" | \"chart-2\" | \"chart-3\" | \"chart-4\" | \"chart-5\" | \"sidebar\" | \"sidebar-foreground\" | \"elevation-sm\" | \"elevation-md\" | \"elevation-lg\">",
+          "optional": false
+        },
+        "seed": {
+          "type": "ThemeSeed",
+          "optional": false
+        },
+        "shared": {
+          "type": "TokenMap<\"radius\" | \"corner-sm\" | \"corner-md\" | \"corner-lg\" | \"corner-xl\" | \"typeface-display\" | \"typeface-text\" | \"typeface-code\" | \"type-xs\" | \"type-sm\" | \"type-base\" | \"type-lg\" | \"type-xl\" | \"type-2xl\" | \"type-3xl\" | \"type-4xl\" | \"space-unit\" | \"control-sm\" | \"control-md\" | \"control-lg\" | \"border-width\" | \"card-border-width\" | \"motion-fast\" | \"motion-normal\" | \"motion-slow\" | \"motion-ease-standard\" | \"motion-ease-emphasized\">",
+          "optional": false
+        }
+      }
+    },
+    "TokenMap": {
+      "kind": "type",
+      "signature": "{ [P in K]: string; }"
+    },
+    "TYPE_PAIR_IDS": {
+      "kind": "const",
+      "signature": "TypePairId[]"
+    },
+    "TYPE_PAIRS": {
+      "kind": "const",
+      "signature": "Record<TypePairId, TypePair>"
+    },
+    "TYPE_STEPS": {
+      "kind": "const",
+      "signature": "readonly [\"xs\", \"sm\", \"base\", \"lg\", \"xl\", \"2xl\", \"3xl\", \"4xl\"]"
+    },
+    "TypePair": {
+      "kind": "interface",
+      "signature": "",
+      "members": {
+        "code": {
+          "type": "string",
+          "optional": false
+        },
+        "display": {
+          "type": "string",
+          "optional": false
+        },
+        "googleFontsQuery": {
+          "type": "string",
+          "optional": false
+        },
+        "id": {
+          "type": "TypePairId",
+          "optional": false
+        },
+        "label": {
+          "type": "string",
+          "optional": false
+        },
+        "text": {
+          "type": "string",
+          "optional": false
+        }
+      }
+    },
+    "TypePairId": {
+      "kind": "type",
+      "signature": "\"geist\" | \"civic\" | \"editorial\" | \"technical\" | \"humanist\" | \"heavy\""
+    },
+    "TypeStep": {
+      "kind": "type",
+      "signature": "\"xs\" | \"sm\" | \"base\" | \"lg\" | \"xl\" | \"2xl\" | \"3xl\" | \"4xl\""
+    }
+  }
+}
