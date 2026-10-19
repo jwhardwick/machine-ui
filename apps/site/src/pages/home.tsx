@@ -1,10 +1,11 @@
-import { auditPalette, buildPalette, serializeSeed } from '@machine-ui/theme-engine';
+import { auditPalette, buildPalette } from '@machine-ui/theme-engine';
 import { CATEGORIES, COMPONENT_DOCS, SCREENS } from '@machine-ui/examples';
 import { REFERENCE_THEMES } from '@machine-ui/tokens';
 import { Button, CodeBlock, ToggleGroup, ToggleGroupItem } from '@machine-ui/ui';
 import { ArrowRight } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
+import { registryEntry } from '../site/install-prompt.ts';
 import { ScreenFrame } from '../site/preview-frame.tsx';
 import { Specimen } from '../site/specimen.tsx';
 import { useSiteTheme } from '../site/theme.tsx';
@@ -114,8 +115,8 @@ export function HomePage() {
             Three lines to adopt
           </h2>
           <p className="text-muted-foreground">
-            Install the packages, import one stylesheet and apply your theme. Or copy the install prompt from the toolbar and let
-            your coding agent do it.
+            Point the shadcn CLI at the registry, add your theme, then add components as source. Or copy the install prompt from
+            the toolbar and let your coding agent do it.
           </p>
           <div>
             <Button asChild variant="link" className="px-0">
@@ -124,12 +125,10 @@ export function HomePage() {
           </div>
         </div>
         <CodeBlock
-          filename="main.tsx"
-          code={`import '@machine-ui/ui/styles.css';
-import { applyTheme, parseSeed } from '@machine-ui/theme-engine';
-
-// The theme you're looking at now:
-applyTheme(parseSeed('${serializeSeed(seed)}')!);`}
+          filename="terminal"
+          code={`# components.json → ${registryEntry(window.location.origin)}
+npx shadcn@latest add @machine-ui/theme-${seed.name}
+npx shadcn@latest add @machine-ui/button @machine-ui/card`}
         />
       </section>
     </div>

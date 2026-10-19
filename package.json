@@ -21,7 +21,8 @@
     "size": "size-limit",
     "test:visual": "pnpm --filter @machine-ui/storybook test:visual",
     "registry:build": "node tooling/registry/src/cli.ts",
-    "test:registry-install": "node tooling/registry/src/install-smoke.ts"
+    "test:registry-install": "node tooling/registry/src/install-smoke.ts",
+    "docs:build": "node tooling/registry/src/docs-cli.ts"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",

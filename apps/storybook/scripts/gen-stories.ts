@@ -26,7 +26,14 @@ const pascal = (s: string) =>
     .map((w) => w[0]!.toUpperCase() + w.slice(1))
     .join('');
 
-const server = await createServer({ configFile: false, appType: 'custom', logLevel: 'error', server: { middlewareMode: true } });
+const server = await createServer({
+  // Root at this app so workspace dependencies resolve regardless of the working directory.
+  root: fileURLToPath(new URL('..', import.meta.url)),
+  configFile: false,
+  appType: 'custom',
+  logLevel: 'error',
+  server: { middlewareMode: true },
+});
 let docs: ComponentDoc[];
 try {
   ({ COMPONENT_DOCS: docs } = (await server.ssrLoadModule('@machine-ui/examples')) as { COMPONENT_DOCS: ComponentDoc[] });
