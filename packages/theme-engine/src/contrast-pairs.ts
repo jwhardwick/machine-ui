@@ -21,6 +21,8 @@ const ui = (fg: ColorRole, bg: ColorRole): ContrastPair => ({ fg, bg, target: 3,
  */
 export const CONTRAST_PAIRS: readonly ContrastPair[] = [
   text('foreground', 'background'),
+  text('foreground', 'card'),
+  text('foreground', 'muted'),
   text('card-foreground', 'card'),
   text('popover-foreground', 'popover'),
   text('primary', 'background'),
