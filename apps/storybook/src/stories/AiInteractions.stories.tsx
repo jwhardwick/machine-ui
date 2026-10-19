@@ -3,13 +3,22 @@ import { ApprovalCard, PromptInput, StreamingText } from '@machine-ui/ui';
 import { expect, fn, userEvent, waitFor } from 'storybook/test';
 import { example } from './helpers.tsx';
 
-const meta = { title: 'Interactions/AI elements' } satisfies Meta;
+interface Args {
+  onSubmit: (value: string) => void;
+  onStop: () => void;
+  onConfirm: (value: string) => void;
+  onDone: () => void;
+}
+
+const meta: Meta<Args> = {
+  title: 'Interactions/AI elements',
+  args: { onSubmit: fn(), onStop: fn(), onConfirm: fn(), onDone: fn() },
+};
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<Args>;
 
 export const PromptEnterSendsShiftEnterBreaks: Story = {
-  args: { onSubmit: fn() },
-  render: (args) => <PromptInput className="max-w-xl" onSubmit={args.onSubmit as (v: string) => void} />,
+  render: (args) => <PromptInput className="max-w-xl" onSubmit={args.onSubmit} />,
   play: async ({ args, canvas }) => {
     const box = canvas.getByRole('textbox', { name: 'Message' });
     const send = canvas.getByRole('button', { name: 'Send message' });
@@ -23,8 +32,7 @@ export const PromptEnterSendsShiftEnterBreaks: Story = {
 };
 
 export const PromptBusyStops: Story = {
-  args: { onStop: fn() },
-  render: (args) => <PromptInput busy className="max-w-xl" onStop={args.onStop as () => void} />,
+  render: (args) => <PromptInput busy className="max-w-xl" onStop={args.onStop} />,
   play: async ({ args, canvas }) => {
     await userEvent.click(canvas.getByRole('button', { name: 'Stop generating' }));
     await expect(args.onStop).toHaveBeenCalledOnce();
@@ -43,7 +51,6 @@ export const ToolCallDiscloses: Story = {
 };
 
 export const ApprovalConfirmsChoice: Story = {
-  args: { onConfirm: fn() },
   render: (args) => (
     <ApprovalCard
       className="max-w-md"
@@ -52,7 +59,7 @@ export const ApprovalConfirmsChoice: Story = {
         { value: 'archive', label: 'Archive them' },
         { value: 'review', label: 'Show me first' },
       ]}
-      onConfirm={args.onConfirm as (v: string) => void}
+      onConfirm={args.onConfirm}
     />
   ),
   play: async ({ args, canvas }) => {
@@ -63,8 +70,7 @@ export const ApprovalConfirmsChoice: Story = {
 };
 
 export const StreamingFinishesOnce: Story = {
-  args: { onDone: fn() },
-  render: (args) => <StreamingText text="Done in a moment." speed={200} onDone={args.onDone as () => void} />,
+  render: (args) => <StreamingText text="Done in a moment." speed={200} onDone={args.onDone} />,
   play: async ({ args, canvasElement }) => {
     const text = canvasElement.querySelector('[data-slot=streaming-text]')!;
     await waitFor(() => expect(text).toHaveAttribute('aria-busy', 'false'));

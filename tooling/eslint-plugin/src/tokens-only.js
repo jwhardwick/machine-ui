@@ -9,7 +9,12 @@ const BANNED_FONTS = ['Inter', 'Arial', 'Helvetica', 'Roboto', 'system-ui', 'Seg
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const CHECKS = [
-  ['rawColor', /#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|oklch|oklab|lab|lch|color)\(/i],
+  // Hex with a letter is a colour wherever it appears; all-digit hex (#8812) only in a colour position,
+  // so issue and ticket numbers in copy don't trip the rule.
+  [
+    'rawColor',
+    /#(?=[0-9]*[a-f])[0-9a-f]{3,8}\b|(?:^|[[(:,]\s*)#[0-9]{3,8}\b|\b(?:rgba?|hsla?|oklch|oklab|lab|lch|color)\(/i,
+  ],
   ['rawPx', /\d*\.?\d+px\b/],
   ['paletteUtility', new RegExp(`(?:^|[\\s:])(?:${COLOR_UTILITY})-(?:(?:${PALETTE})-\\d{2,3}|white|black)\\b`)],
   ['gradient', /(?:^|[\s:])bg-(?:gradient|linear|radial|conic)-/],
