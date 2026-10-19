@@ -1,0 +1,33 @@
+name: Task
+description: A change to the design system. A maintainer adds `agent:ready` when it's ready to pick up.
+labels: [task]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: What and why
+      description: The change and the problem it solves, in a sentence or two.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: A checklist that is true when this is done. The agent works to this list and nothing else.
+      placeholder: |
+        - [ ] Button has a `loading` prop that shows a spinner and sets aria-busy
+        - [ ] Story per state with a play function
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Component, Token or theme engine, Docs, Tooling]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Links, screenshots, constraints.

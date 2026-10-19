@@ -3,7 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "scripts": { "typecheck": "tsc --noEmit -p ." },
-  "dependencies": { "typescript": "6.0.3", "@machine-ui/tokens": "workspace:*" },
-  "devDependencies": { "@types/node": "26.6.5", "vitest": "5.0.5" }
+  "scripts": {
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "typescript": "6.0.3",
+    "@machine-ui/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "vitest": "5.0.5",
+    "yaml": "2.9.1"
+  }
 }
