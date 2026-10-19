@@ -1,4 +1,4 @@
-import { Badge, Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@machine-ui/ui';
+import { Badge, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@machine-ui/ui';
 import { defineDoc } from '../types.ts';
 
 const INVOICES = [
@@ -40,6 +40,12 @@ export default defineDoc({
               </TableRow>
             ))}
           </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3}>Total</TableCell>
+              <TableCell className="text-right tabular-nums">$4,126.00</TableCell>
+            </TableRow>
+          </TableFooter>
         </Table>
       ),
     },

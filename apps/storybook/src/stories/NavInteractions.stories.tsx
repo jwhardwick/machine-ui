@@ -88,3 +88,30 @@ export const DataTableSortsFiltersSelects: Story = {
     await expect(canvas.getByText('1 of 1 selected')).toBeVisible();
   },
 };
+
+export const MenubarSubmenuAndRadio: Story = {
+  render: example('menubar', 'Editor'),
+  play: async ({ canvas }) => {
+    await userEvent.click(canvas.getByRole('menuitem', { name: 'View' }));
+    const zoom = await screen.findByRole('menuitemradio', { name: '100%' });
+    await expect(zoom).toHaveAttribute('aria-checked', 'true');
+    await userEvent.keyboard('{Escape}');
+    await userEvent.click(canvas.getByRole('menuitem', { name: 'File' }));
+    const exportItem = await screen.findByRole('menuitem', { name: 'Export' });
+    exportItem.focus();
+    await userEvent.keyboard('{ArrowRight}');
+    await waitFor(() => expect(screen.getByRole('menuitem', { name: 'theme.css' })).toHaveFocus());
+    await userEvent.keyboard('{Escape}');
+  },
+};
+
+export const DataTablePaginates: Story = {
+  render: example('data-table', 'Members'),
+  play: async ({ canvas }) => {
+    const pager = canvas.getByText(/^Page \d+ of \d+$/);
+    await expect(pager).toHaveTextContent('Page 1 of 2');
+    await userEvent.click(canvas.getByRole('button', { name: 'Next' }));
+    await expect(pager).toHaveTextContent('Page 2 of 2');
+    await expect(canvas.getByRole('button', { name: 'Next' })).toBeDisabled();
+  },
+};

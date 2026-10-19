@@ -38,6 +38,16 @@ export function SiteThemeProvider({ children }: { children: ReactNode }) {
     applyTheme(state.seed, { mode: state.mode });
   }, [state]);
 
+  // A share link's theme is consumed on arrival. Leaving it in the address bar would override the
+  // visitor's later choices on reload; the share button builds fresh links on demand.
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has('theme') && !url.searchParams.has('mode')) return;
+    url.searchParams.delete('theme');
+    url.searchParams.delete('mode');
+    window.history.replaceState(window.history.state, '', url);
+  }, []);
+
   useEffect(() => {
     try {
       window.localStorage.setItem(STORAGE_KEY, `theme=${serializeSeed(state.seed)}&mode=${state.mode}`);

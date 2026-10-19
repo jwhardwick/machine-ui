@@ -12,9 +12,12 @@ export function Stat({
   ...props
 }: ComponentProps<'div'> & { label: string; value: string; change?: string; trend?: 'up' | 'down' }) {
   return (
-    <div data-slot="stat" className={cn('grid gap-1', className)} {...props}>
+    <div data-slot="stat" className={cn('@container grid gap-1', className)} {...props}>
       <div className="text-sm text-muted-foreground">{label}</div>
-      <div className="font-display text-3xl font-semibold tabular-nums leading-none">{value}</div>
+      {/* Sized by the card, not the viewport: display faces range from narrow to very wide. */}
+      <div data-slot="stat-value" className="font-display text-xl font-semibold tabular-nums leading-none @3xs:text-2xl @2xs:text-3xl">
+        {value}
+      </div>
       {change && (
         <div className="flex items-center gap-1 text-sm">
           {trend === 'down' ? (

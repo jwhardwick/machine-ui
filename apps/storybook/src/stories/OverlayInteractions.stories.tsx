@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, fireEvent, screen, userEvent, waitFor } from 'storybook/test';
+import { expect, fireEvent, screen, userEvent, waitFor, within } from 'storybook/test';
 import { example } from './helpers.tsx';
 
 const meta = { title: 'Interactions/Overlays' } satisfies Meta;
@@ -112,5 +112,50 @@ export const ToastAppears: Story = {
     await userEvent.click(canvas.getByRole('button', { name: 'Success' }));
     const shown = await screen.findByText('Version 2.4.0 is live.');
     await waitFor(() => expect(shown).toBeVisible());
+  },
+};
+
+export const CommandPaletteRunsAndCloses: Story = {
+  render: example('command-palette', 'Default'),
+  play: async ({ canvas }) => {
+    const trigger = canvas.getByRole('button', { name: /Open command palette/ });
+    await userEvent.click(trigger);
+    const dialog = await screen.findByRole('dialog');
+    await userEvent.keyboard('pref');
+    await waitFor(() => expect(within(dialog).getAllByRole('option')).toHaveLength(1));
+    await userEvent.keyboard('{Enter}');
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    // Focus returns to whatever opened the palette, not <body>.
+    await waitFor(() => expect(trigger).toHaveFocus());
+  },
+};
+
+export const DropdownSubmenuAndRadio: Story = {
+  render: example('dropdown-menu', 'Account menu'),
+  play: async ({ canvas }) => {
+    await userEvent.click(canvas.getByRole('button', { name: 'Ada Lovelace' }));
+    const left = await screen.findByRole('menuitemradio', { name: 'Left' });
+    await expect(screen.getByRole('menuitemradio', { name: 'Right' })).toHaveAttribute('aria-checked', 'true');
+    await expect(left).toHaveAttribute('aria-checked', 'false');
+    const sub = screen.getByRole('menuitem', { name: 'Switch workspace' });
+    sub.focus();
+    await userEvent.keyboard('{ArrowRight}');
+    await waitFor(() => expect(screen.getByRole('menuitem', { name: 'Northwind' })).toHaveFocus());
+    await userEvent.keyboard('{ArrowLeft}');
+    await waitFor(() => expect(sub).toHaveFocus());
+    await userEvent.keyboard('{Escape}');
+  },
+};
+
+export const ContextMenuSubmenu: Story = {
+  render: example('context-menu', 'Default'),
+  play: async ({ canvas }) => {
+    fireEvent.contextMenu(canvas.getByText('Right-click this file'));
+    const share = await screen.findByRole('menuitem', { name: 'Share' });
+    share.focus();
+    await userEvent.keyboard('{ArrowRight}');
+    await waitFor(() => expect(screen.getByRole('menuitem', { name: 'Copy link' })).toHaveFocus());
+    await expect(screen.getByRole('menuitemradio', { name: 'Last modified' })).toHaveAttribute('aria-checked', 'true');
+    await userEvent.keyboard('{Escape}');
   },
 };
