@@ -99,7 +99,7 @@ export function ThemeToolbar() {
         size="sm"
         className="rounded-full"
         aria-label={promptCopied ? 'Install prompt copied' : 'Copy install prompt'}
-        onClick={() => copyPrompt(installPrompt(seed))}
+        onClick={() => copyPrompt(installPrompt(seed, window.location.origin))}
       >
         {promptCopied ? <Check aria-hidden /> : <Copy aria-hidden />}
         <span className="hidden sm:inline">{promptCopied ? 'Copied' : 'Copy install prompt'}</span>

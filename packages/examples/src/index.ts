@@ -19,3 +19,4 @@ export function getDoc(slug: string): ComponentDoc | undefined {
 export function getSource(slug: string): string | undefined {
   return sources[`./components/${slug}.tsx`];
 }
+export { installCommand, registryItemsFor } from './install.ts';
