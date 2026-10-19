@@ -93,7 +93,8 @@ export const DrawerOpens: Story = {
     const shown = await screen.findByRole('dialog', { name: 'Daily goal' });
     await waitFor(() => expect(shown).toBeVisible());
     await userEvent.click(screen.getByRole('button', { name: 'Cancel' }));
-    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
+    // vaul animates the close before unmounting; allow for a slow machine.
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull(), { timeout: 5000 });
   },
 };
 

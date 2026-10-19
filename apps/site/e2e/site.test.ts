@@ -36,7 +36,8 @@ async function open(path: string, viewport = { width: 1280, height: 900 }): Prom
   page.on('console', (m) => m.type() === 'error' && !OFFLINE_HOSTS.test(m.location().url) && errors.push(m.text()));
   (page as Page & { errors: string[] }).errors = errors;
   await page.goto(BASE + path);
-  await page.waitForLoadState('networkidle');
+  // Wait for the app to render rather than for "network idle", which any late request can reset.
+  await page.locator('h1').first().waitFor();
   return page;
 }
 
@@ -54,7 +55,7 @@ describe('theme', () => {
     assert.notEqual(forgePrimary, bloomPrimary);
 
     await page.reload();
-    await page.waitForLoadState('networkidle');
+    await page.locator('h1').first().waitFor();
     assert.equal(await rootVar(page, '--primary'), forgePrimary, 'reload keeps the theme the visitor picked');
     await page.close();
   });

@@ -40,13 +40,13 @@ import {
 import { BarChart3, Download, Home, Package, Settings, ShoppingCart, Users } from 'lucide-react';
 
 const TRAFFIC = [
-  { day: 'Mon', visitors: 2140, orders: 182 },
-  { day: 'Tue', visitors: 2580, orders: 214 },
-  { day: 'Wed', visitors: 2310, orders: 199 },
-  { day: 'Thu', visitors: 3020, orders: 263 },
-  { day: 'Fri', visitors: 3410, orders: 301 },
-  { day: 'Sat', visitors: 2870, orders: 244 },
-  { day: 'Sun', visitors: 2650, orders: 228 },
+  { day: 'Mon', visitors: 2140, orders: 168 },
+  { day: 'Tue', visitors: 2580, orders: 181 },
+  { day: 'Wed', visitors: 2310, orders: 203 },
+  { day: 'Thu', visitors: 3020, orders: 214 },
+  { day: 'Fri', visitors: 3410, orders: 248 },
+  { day: 'Sat', visitors: 2870, orders: 309 },
+  { day: 'Sun', visitors: 2650, orders: 288 },
 ];
 
 const CHANNELS = [
@@ -185,10 +185,10 @@ export function DashboardScreen() {
                 <CardDescription>Last 7 days</CardDescription>
               </CardHeader>
               <CardContent>
-                <ChartContainer config={trafficConfig} className="h-56 w-full" role="img" aria-label="Visitors peaked Friday at 3,410 and orders at 301; both dipped over the weekend">
-                  <Recharts.AreaChart data={TRAFFIC} margin={{ left: 0, right: 8 }}>
+                <ChartContainer config={trafficConfig} className="h-56 w-full" role="img" aria-label="Visitors peaked Friday at 3,410; orders kept climbing to a Saturday peak of 309">
+                  <Recharts.AreaChart data={TRAFFIC} margin={{ left: 16, right: 16 }}>
                     <Recharts.CartesianGrid vertical={false} />
-                    <Recharts.XAxis dataKey="day" tickLine={false} axisLine={false} tickMargin={8} />
+                    <Recharts.XAxis dataKey="day" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
                     {/* Orders are an order of magnitude smaller, so each series gets its own scale. */}
                     <Recharts.YAxis yAxisId="visitors" hide />
                     <Recharts.YAxis yAxisId="orders" orientation="right" hide />

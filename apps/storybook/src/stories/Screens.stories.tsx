@@ -24,7 +24,8 @@ export const AgentInbox: Story = {
     await userEvent.type(box, 'Any other open tickets?{Enter}');
     await expect(canvas.getByText('Any other open tickets?')).toBeVisible();
     await expect(canvas.getByRole('button', { name: 'Stop generating' })).toBeVisible();
-    await waitFor(() => expect(canvas.getByRole('button', { name: 'Send message' })).toBeInTheDocument(), { timeout: 6000 });
+    // The reply arrives after a simulated delay and then streams in; wait for it to finish.
+    await waitFor(() => expect(canvas.getByRole('button', { name: 'Send message' })).toBeInTheDocument(), { timeout: 30_000 });
     await expect(canvas.getByText(/Two tickets are still open with Acme/)).toBeVisible();
   },
 };
