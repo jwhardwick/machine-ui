@@ -16,6 +16,12 @@ describe('CONTRAST_PAIRS', () => {
     expect(CONTRAST_PAIRS).toContainEqual({ fg: 'foreground', bg: 'background', target: 4.5, kind: 'text' });
     expect(CONTRAST_PAIRS).toContainEqual({ fg: 'input', bg: 'background', target: 3, kind: 'ui' });
   });
+
+  it('covers plain foreground text on every surface components put it on', () => {
+    for (const bg of ['background', 'card', 'muted'] as const) {
+      expect(CONTRAST_PAIRS).toContainEqual({ fg: 'foreground', bg, target: 4.5, kind: 'text' });
+    }
+  });
 });
 
 describe('buildPalette', () => {
