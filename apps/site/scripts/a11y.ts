@@ -11,7 +11,7 @@ import { preview } from 'vite';
 const require = createRequire(import.meta.url);
 const axeSource = readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const ROUTES = ['/', '/get-started', '/themes', '/screens', '/components', '/components/data-table', '/components/prompt-input', '/nope'];
-const THEMES = REFERENCE_THEMES.filter((t) => ['graphite', 'folio', 'forge'].includes(t.name));
+const THEMES = REFERENCE_THEMES.filter((t) => ['console', 'folio', 'forge'].includes(t.name));
 
 const server = await preview({ root: fileURLToPath(new URL('..', import.meta.url)), preview: { port: 4174, strictPort: true } });
 const browser = await chromium.launch();

@@ -1,5 +1,5 @@
 @import "@machine-ui/ui/styles.css";
-@import "@machine-ui/tokens/css/themes/graphite.css";
+@import "@machine-ui/tokens/css/themes/console.css";
 
 @source "./";
 @source "../../../packages/examples/src";

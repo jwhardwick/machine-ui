@@ -1,6 +1,6 @@
 import type { ThemeSeed } from './seed.ts';
 
-/** Crisp, near-neutral product UI. The default. */
+/** Crisp, near-neutral product UI. */
 const graphite: ThemeSeed = {
   name: 'graphite',
   hue: 255,
@@ -42,15 +42,15 @@ const folio: ThemeSeed = {
   motion: 'subtle',
 };
 
-/** Dense operational dashboard: compact, technical type, tight corners. */
+/** Calm operational UI: olive accent on warm greys, technical type, compact. The default. */
 const consoleTheme: ThemeSeed = {
   name: 'console',
-  hue: 230,
-  chroma: 0.5,
-  neutral: 'cool',
-  radius: 0.15,
-  density: 0,
-  separation: 0.2,
+  hue: 101,
+  chroma: 0.31,
+  neutral: 'warm',
+  radius: 0.45,
+  density: 0.39,
+  separation: 0.3,
   typePair: 'technical',
   typeRatio: 1.125,
   motion: 'subtle',
@@ -84,6 +84,6 @@ const forge: ThemeSeed = {
   motion: 'expressive',
 };
 
-export const REFERENCE_THEMES: readonly ThemeSeed[] = [graphite, harbor, folio, consoleTheme, bloom, forge];
+export const REFERENCE_THEMES: readonly ThemeSeed[] = [consoleTheme, graphite, harbor, folio, bloom, forge];
 
-export const DEFAULT_SEED: ThemeSeed = graphite;
+export const DEFAULT_SEED: ThemeSeed = consoleTheme;
