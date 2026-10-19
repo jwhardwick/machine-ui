@@ -4,5 +4,5 @@ import { getDoc } from '@machine-ui/examples';
 export function example(slug: string, name: string) {
   const found = getDoc(slug)?.examples.find((e) => e.name === name);
   if (!found) throw new Error(`No example "${name}" for ${slug}`);
-  return found.render;
+  return () => <>{found.render()}</>;
 }

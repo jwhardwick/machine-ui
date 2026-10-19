@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
-import { example } from './helpers.ts';
+import { example } from './helpers.tsx';
 
 const meta = { title: 'Interactions/Navigation and layout' } satisfies Meta;
 export default meta;
