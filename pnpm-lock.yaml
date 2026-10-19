@@ -14,6 +14,9 @@ importers:
       '@eslint/js':
         specifier: 10.0.1
         version: 10.0.1(eslint@10.13.0)
+      '@machine-ui/eslint-plugin':
+        specifier: workspace:*
+        version: link:tooling/eslint-plugin
       '@types/node':
         specifier: 26.6.5
         version: 26.6.5
@@ -84,6 +87,19 @@ importers:
       react-dom:
         specifier: 19.3.1
         version: 19.3.1(react@19.3.1)
+
+  tooling/eslint-plugin:
+    dependencies:
+      '@machine-ui/tokens':
+        specifier: workspace:*
+        version: link:../../packages/tokens
+    devDependencies:
+      eslint:
+        specifier: 10.13.0
+        version: 10.13.0
+      typescript-eslint:
+        specifier: 8.71.2
+        version: 8.71.2(eslint@10.13.0)(typescript@6.0.3)
 
 packages:
 
