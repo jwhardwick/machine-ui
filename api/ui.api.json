@@ -2114,6 +2114,10 @@
       "kind": "const",
       "signature": "React.ForwardRefExoticComponent<TooltipPrimitive.TooltipTriggerProps & React.RefAttributes<HTMLButtonElement>>"
     },
+    "useReducedMotion": {
+      "kind": "function",
+      "signature": "(): boolean"
+    },
     "useSidebar": {
       "kind": "function",
       "signature": "(): SidebarContextValue"
