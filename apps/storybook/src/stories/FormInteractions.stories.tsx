@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, screen, userEvent, waitFor } from 'storybook/test';
-import { example } from './helpers.ts';
+import { example } from './helpers.tsx';
 
 const meta = { title: 'Interactions/Forms' } satisfies Meta;
 export default meta;
