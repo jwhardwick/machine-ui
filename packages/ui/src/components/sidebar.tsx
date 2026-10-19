@@ -42,7 +42,7 @@ function useIsMobile() {
   return Boolean(mobile);
 }
 
-/** Holds open/collapsed state for a Sidebar. Cmd/Ctrl+B toggles it. */
+/** Holds open/collapsed state for a Sidebar. Cmd/Ctrl+B toggles it, unless nested inside another provider. */
 export function SidebarProvider({
   defaultOpen = true,
   open: openProp,
@@ -64,8 +64,12 @@ export function SidebarProvider({
     [onOpenChange],
   );
   const toggle = useCallback(() => (isMobile ? setOpenMobile((o) => !o) : setOpen(!open)), [isMobile, open, setOpen]);
+  // Only the app's own (outermost) sidebar answers the shortcut, so sidebars inside previews and
+  // embedded screens don't all toggle at once.
+  const nested = useContext(SidebarContext) !== null;
 
   useEffect(() => {
+    if (nested) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'b' && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
@@ -74,7 +78,7 @@ export function SidebarProvider({
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [toggle]);
+  }, [toggle, nested]);
 
   const value = useMemo(() => ({ open, setOpen, openMobile, setOpenMobile, isMobile, toggle }), [open, setOpen, openMobile, isMobile, toggle]);
 

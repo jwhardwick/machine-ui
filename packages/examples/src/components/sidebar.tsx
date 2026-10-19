@@ -12,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarSeparator,
   SidebarTrigger,
 } from '@machine-ui/ui';
 import { BarChart3, Home, Inbox, Settings, Users } from 'lucide-react';
@@ -58,6 +59,7 @@ export default defineDoc({
                   </SidebarGroupContent>
                 </SidebarGroup>
               </SidebarContent>
+              <SidebarSeparator />
               <SidebarFooter>
                 <SidebarMenu>
                   <SidebarMenuItem>

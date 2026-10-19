@@ -1,4 +1,4 @@
-import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, Label } from '@machine-ui/ui';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, Label } from '@machine-ui/ui';
 import { AtSign } from 'lucide-react';
 import { defineDoc } from '../types.ts';
 
@@ -31,6 +31,15 @@ export default defineDoc({
                 <AtSign aria-hidden />
               </InputGroupAddon>
               <InputGroupInput id="ig-handle" placeholder="ada" />
+            </InputGroup>
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="ig-invite">Invite by email</Label>
+            <InputGroup>
+              <InputGroupInput id="ig-invite" type="email" placeholder="grace@northwind.dev" />
+              <InputGroupAddon align="end">
+                <InputGroupButton variant="secondary">Send invite</InputGroupButton>
+              </InputGroupAddon>
             </InputGroup>
           </div>
         </div>

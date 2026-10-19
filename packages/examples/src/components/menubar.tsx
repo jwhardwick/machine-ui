@@ -2,10 +2,17 @@ import {
   Menubar,
   MenubarCheckboxItem,
   MenubarContent,
+  MenubarGroup,
   MenubarItem,
+  MenubarLabel,
   MenubarMenu,
+  MenubarRadioGroup,
+  MenubarRadioItem,
   MenubarSeparator,
   MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
   MenubarTrigger,
 } from '@machine-ui/ui';
 import { defineDoc } from '../types.ts';
@@ -23,14 +30,22 @@ export default defineDoc({
           <MenubarMenu>
             <MenubarTrigger>File</MenubarTrigger>
             <MenubarContent>
-              <MenubarItem>
-                New file <MenubarShortcut>⌘N</MenubarShortcut>
-              </MenubarItem>
-              <MenubarItem>
-                Open… <MenubarShortcut>⌘O</MenubarShortcut>
-              </MenubarItem>
+              <MenubarGroup>
+                <MenubarItem>
+                  New file <MenubarShortcut>⌘N</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem>
+                  Open… <MenubarShortcut>⌘O</MenubarShortcut>
+                </MenubarItem>
+              </MenubarGroup>
               <MenubarSeparator />
-              <MenubarItem>Export theme</MenubarItem>
+              <MenubarSub>
+                <MenubarSubTrigger>Export</MenubarSubTrigger>
+                <MenubarSubContent>
+                  <MenubarItem>theme.css</MenubarItem>
+                  <MenubarItem>tokens.json</MenubarItem>
+                </MenubarSubContent>
+              </MenubarSub>
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
@@ -49,6 +64,13 @@ export default defineDoc({
             <MenubarContent>
               <MenubarCheckboxItem checked>Show grid</MenubarCheckboxItem>
               <MenubarCheckboxItem>Show rulers</MenubarCheckboxItem>
+              <MenubarSeparator />
+              <MenubarLabel>Zoom</MenubarLabel>
+              <MenubarRadioGroup value="100">
+                <MenubarRadioItem value="75">75%</MenubarRadioItem>
+                <MenubarRadioItem value="100">100%</MenubarRadioItem>
+                <MenubarRadioItem value="150">150%</MenubarRadioItem>
+              </MenubarRadioGroup>
             </MenubarContent>
           </MenubarMenu>
         </Menubar>

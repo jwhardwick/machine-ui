@@ -1,4 +1,4 @@
-import { CheckIcon, ChevronRightIcon } from 'lucide-react';
+import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import { Menubar as MenubarPrimitive } from 'radix-ui';
 import type { ComponentProps } from 'react';
 import { cn } from '../lib/cn.ts';
@@ -62,6 +62,23 @@ export function MenubarCheckboxItem({ className, children, ...props }: Component
       {children}
     </MenubarPrimitive.CheckboxItem>
   );
+}
+
+export function MenubarRadioItem({ className, children, ...props }: ComponentProps<typeof MenubarPrimitive.RadioItem>) {
+  return (
+    <MenubarPrimitive.RadioItem data-slot="menubar-radio-item" className={cn(menuItem, 'pl-8', className)} {...props}>
+      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+        <MenubarPrimitive.ItemIndicator>
+          <CircleIcon aria-hidden className="size-2 fill-current" />
+        </MenubarPrimitive.ItemIndicator>
+      </span>
+      {children}
+    </MenubarPrimitive.RadioItem>
+  );
+}
+
+export function MenubarLabel({ className, ...props }: ComponentProps<typeof MenubarPrimitive.Label>) {
+  return <MenubarPrimitive.Label data-slot="menubar-label" className={cn('px-2 py-1.5 text-xs font-medium text-muted-foreground', className)} {...props} />;
 }
 
 export function MenubarSeparator({ className, ...props }: ComponentProps<typeof MenubarPrimitive.Separator>) {
