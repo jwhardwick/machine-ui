@@ -22,7 +22,8 @@
     "test:visual": "pnpm --filter @machine-ui/storybook test:visual",
     "registry:build": "node tooling/registry/src/cli.ts",
     "test:registry-install": "node tooling/registry/src/install-smoke.ts",
-    "docs:build": "node tooling/registry/src/docs-cli.ts"
+    "docs:build": "node tooling/registry/src/docs-cli.ts",
+    "eval:run": "node tooling/eval/src/run.ts"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
