@@ -1,4 +1,4 @@
-import { CATEGORIES, COMPONENT_DOCS, getDoc, getSource, SCREENS } from '@machine-ui/examples';
+import { CATEGORIES, COMPONENT_DOCS, getDoc, getSource, installCommand, SCREENS } from '@machine-ui/examples';
 import {
   Badge,
   Breadcrumb,
@@ -9,6 +9,7 @@ import {
   BreadcrumbSeparator,
   Button,
   CodeBlock,
+  CopyInput,
 } from '@machine-ui/ui';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, useParams } from 'react-router';
@@ -63,6 +64,20 @@ export function ComponentDetailPage() {
           </p>
         )}
       </header>
+
+      <section className="grid max-w-2xl gap-2" aria-labelledby="install">
+        <h2 id="install" className="font-medium">
+          Install
+        </h2>
+        <CopyInput aria-label="Install command" value={installCommand(doc.slug)} />
+        <p className="text-sm text-muted-foreground">
+          Adds the source to your project with the shadcn CLI. First time? Follow{' '}
+          <Link to="/get-started" className="text-link underline underline-offset-4">
+            Get started
+          </Link>{' '}
+          to add the registry and a theme.
+        </p>
+      </section>
 
       {doc.examples.map((example) => (
         <section key={example.name} className="grid grid-cols-1 gap-3" aria-labelledby={`ex-${example.name}`}>

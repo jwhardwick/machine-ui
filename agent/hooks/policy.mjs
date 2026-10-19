@@ -6,6 +6,8 @@
 export const PROTECTED_PATHS = [
   { pattern: /(^|\/)\.github\/workflows\//, why: 'CI configuration is maintained by humans' },
   { pattern: /(^|\/)api\/[^/]+\.json$/, why: 'API reports are generated: run `pnpm api:report`' },
+  { pattern: /(^|\/)public\/r\/[^/]+\.json$/, why: 'the registry is generated: run `pnpm registry:build`' },
+  { pattern: /(^|\/)public\/(llms(-full)?\.txt|install\.md)$/, why: 'agent docs are generated: run `pnpm docs:build`' },
   { pattern: /(^|\/)__screenshots__\//, why: 'only a human can approve a visual baseline; propose it in the PR instead' },
   { pattern: /(^|\/)\.changeset\/config\.json$/, why: 'release configuration is maintained by humans' },
   { pattern: /(^|\/)agent\/config\.yaml$/, why: 'autonomy thresholds are set by maintainers' },

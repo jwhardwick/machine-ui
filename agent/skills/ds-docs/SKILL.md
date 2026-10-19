@@ -13,6 +13,7 @@ description: Document a component with examples, stories, interaction tests and 
 ## Verify
 
 ```sh
+pnpm docs:build       # regenerate llms.txt, llms-full.txt and install.md
 pnpm test             # registry renders every example; every export is documented
 pnpm test:storybook
 ```

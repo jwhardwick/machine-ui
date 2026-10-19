@@ -329,6 +329,9 @@ importers:
 
   tooling/registry:
     dependencies:
+      '@machine-ui/examples':
+        specifier: workspace:*
+        version: link:../../packages/examples
       '@machine-ui/theme-engine':
         specifier: workspace:*
         version: link:../../packages/theme-engine
@@ -345,6 +348,9 @@ importers:
       shadcn:
         specifier: 4.22.1
         version: 4.22.1
+      vite:
+        specifier: 8.3.4
+        version: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
       vitest:
         specifier: 5.0.5
         version: 5.0.5(@types/node@26.6.5)(@vitest/browser-playwright@5.0.5)(@vitest/ui@5.0.5)(jsdom@30.1.3)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
@@ -8853,7 +8859,7 @@ snapshots:
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
-      postcss: 8.5.30
+      postcss: 8.5.31
       rolldown: 1.2.14
       tinyglobby: 0.2.17
     optionalDependencies:
