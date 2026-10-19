@@ -24,7 +24,7 @@ const selectClass =
 
 function Field({ label, htmlFor, value, children }: { label: string; htmlFor: string; value?: string; children: ReactNode }) {
   return (
-    <div className="grid gap-2">
+    <div className="grid grid-cols-1 gap-2">
       <div className="flex items-baseline justify-between">
         <Label htmlFor={htmlFor}>{label}</Label>
         {value && <span className="font-mono text-xs text-muted-foreground">{value}</span>}
@@ -45,8 +45,8 @@ export function Controls({ seed, onChange }: { seed: ThemeSeed; onChange: (seed:
   const update = (patch: Partial<ThemeSeed>) => onChange({ ...seed, ...patch, name: 'custom' });
 
   return (
-    <div className="grid gap-6">
-      <fieldset className="grid gap-2">
+    <div className="grid grid-cols-1 gap-6">
+      <fieldset className="grid grid-cols-1 gap-2">
         <legend className="mb-2 text-sm font-medium">Start from</legend>
         <div className="flex flex-wrap gap-2">
           {REFERENCE_THEMES.map((preset) => (
@@ -112,7 +112,7 @@ export function Controls({ seed, onChange }: { seed: ThemeSeed; onChange: (seed:
         </select>
       </Field>
 
-      <fieldset className="grid gap-2">
+      <fieldset className="grid grid-cols-1 gap-2">
         <legend className="mb-2 text-sm font-medium">Motion</legend>
         <div className="flex gap-2">
           {MOTION_LEVELS.map((level) => (

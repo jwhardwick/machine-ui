@@ -12,9 +12,10 @@
     "test": "vitest run",
     "storybook": "pnpm --filter @machine-ui/storybook storybook",
     "test:storybook": "pnpm --filter @machine-ui/storybook test",
-    "build:site": "pnpm --filter @machine-ui/site build",
-    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm test:storybook && pnpm build:site",
-    "changeset": "changeset"
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm test:storybook && pnpm test:site",
+    "changeset": "changeset",
+    "test:site": "pnpm --filter @machine-ui/site test:a11y",
+    "build:site": "pnpm --filter @machine-ui/site build"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",

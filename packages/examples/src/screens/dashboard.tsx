@@ -185,13 +185,16 @@ export function DashboardScreen() {
                 <CardDescription>Last 7 days</CardDescription>
               </CardHeader>
               <CardContent>
-                <ChartContainer config={trafficConfig} className="h-56 w-full" role="img" aria-label="Visitors peaked Friday at 3,410; orders followed the same shape">
+                <ChartContainer config={trafficConfig} className="h-56 w-full" role="img" aria-label="Visitors peaked Friday at 3,410 and orders at 301; both dipped over the weekend">
                   <Recharts.AreaChart data={TRAFFIC} margin={{ left: 0, right: 8 }}>
                     <Recharts.CartesianGrid vertical={false} />
                     <Recharts.XAxis dataKey="day" tickLine={false} axisLine={false} tickMargin={8} />
+                    {/* Orders are an order of magnitude smaller, so each series gets its own scale. */}
+                    <Recharts.YAxis yAxisId="visitors" hide />
+                    <Recharts.YAxis yAxisId="orders" orientation="right" hide />
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Recharts.Area dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.12} stroke="var(--color-visitors)" strokeWidth={2} />
-                    <Recharts.Area dataKey="orders" type="monotone" fill="var(--color-orders)" fillOpacity={0.12} stroke="var(--color-orders)" strokeWidth={2} />
+                    <Recharts.Area yAxisId="visitors" dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.12} stroke="var(--color-visitors)" strokeWidth={2} />
+                    <Recharts.Area yAxisId="orders" dataKey="orders" type="monotone" fill="var(--color-orders)" fillOpacity={0.08} stroke="var(--color-orders)" strokeWidth={2} strokeDasharray="4 3" />
                   </Recharts.AreaChart>
                 </ChartContainer>
               </CardContent>
