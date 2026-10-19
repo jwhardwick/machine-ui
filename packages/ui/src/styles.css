@@ -9,6 +9,44 @@
 @theme inline {
   --animate-enter: mui-enter var(--motion-normal) var(--motion-ease-emphasized);
   --animate-overlay: mui-fade var(--motion-normal) var(--motion-ease-standard);
+  --animate-sheet-right: mui-from-right var(--motion-slow) var(--motion-ease-emphasized);
+  --animate-sheet-left: mui-from-left var(--motion-slow) var(--motion-ease-emphasized);
+  --animate-sheet-top: mui-from-top var(--motion-slow) var(--motion-ease-emphasized);
+  --animate-sheet-bottom: mui-from-bottom var(--motion-slow) var(--motion-ease-emphasized);
+  --animate-shimmer: mui-shimmer calc(var(--motion-slow) * 6) linear infinite;
+}
+
+@keyframes mui-from-right {
+  from {
+    translate: 100% 0;
+  }
+}
+
+@keyframes mui-from-left {
+  from {
+    translate: -100% 0;
+  }
+}
+
+@keyframes mui-from-top {
+  from {
+    translate: 0 -100%;
+  }
+}
+
+@keyframes mui-from-bottom {
+  from {
+    translate: 0 100%;
+  }
+}
+
+@keyframes mui-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @keyframes mui-enter {
