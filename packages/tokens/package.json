@@ -1,0 +1,14 @@
+{
+  "name": "@machine-ui/tokens",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": ["*.css"],
+  "exports": {
+    ".": "./src/index.ts",
+    "./theme.css": "./theme.css",
+    "./base.css": "./base.css",
+    "./css/*": "./css/*"
+  },
+  "scripts": { "typecheck": "tsc --noEmit -p ." },
+  "dependencies": {}
+}
