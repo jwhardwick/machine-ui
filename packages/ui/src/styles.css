@@ -3,3 +3,23 @@
 @import "@machine-ui/tokens/base.css";
 
 @source "./components";
+
+/* Enter animations. Durations and easing come from motion tokens, so `motion: none` and
+   prefers-reduced-motion both resolve to 0ms. Only var() references and keyframe names here. */
+@theme inline {
+  --animate-enter: mui-enter var(--motion-normal) var(--motion-ease-emphasized);
+  --animate-overlay: mui-fade var(--motion-normal) var(--motion-ease-standard);
+}
+
+@keyframes mui-enter {
+  from {
+    opacity: 0;
+    scale: 0.96;
+  }
+}
+
+@keyframes mui-fade {
+  from {
+    opacity: 0;
+  }
+}
