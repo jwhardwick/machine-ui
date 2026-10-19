@@ -33,7 +33,7 @@ tester.run('tokens-only', rule, {
     { code: jsx('text-white'), errors: [{ messageId: 'paletteUtility' }] },
     { code: jsx('bg-linear-to-r from-primary'), errors: [{ messageId: 'gradient' }] },
     { code: jsx("font-['Inter']"), errors: [{ messageId: 'fontName' }] },
-    { code: 'const f = "Fraunces";', errors: [{ messageId: 'fontName' }] },
+    { code: 'const f = "Figtree";', errors: [{ messageId: 'fontName' }] },
     { code: 'const a = <div style={{ padding: 4 }} />;', errors: [{ messageId: 'rawStyleNumber' }] },
   ],
 });
