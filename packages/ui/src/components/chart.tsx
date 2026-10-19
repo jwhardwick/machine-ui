@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContext, useId, type CSSProperties, type ComponentProps, type ReactNode } from 'react';
 import * as Recharts from 'recharts';
 import { cn } from '../lib/cn.ts';

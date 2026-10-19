@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckIcon, CopyIcon } from 'lucide-react';
 import { useState, type ComponentProps } from 'react';
 import { cn } from '../lib/cn.ts';

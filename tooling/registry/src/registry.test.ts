@@ -38,6 +38,16 @@ describe('registry', () => {
     expect(byName.get('date-picker')!.files![0]!.content).toContain("from '@/components/ui/calendar'");
   });
 
+  it('marks client components for React Server Components projects (Next.js)', () => {
+    const CLIENT_ONLY = /\buse(State|Effect|LayoutEffect|Context|Ref|Callback|Memo|Id|SyncExternalStore|ComposedRefs)\b|\bcreateContext\b|from '(radix-ui|vaul|cmdk|sonner|recharts|embla-carousel-react|input-otp|react-day-picker|@tanstack\/react-table|react-resizable-panels)'|\bon[A-Z]\w*=\{/;
+    const offenders = items
+      .flatMap((item) => (item.files ?? []).map((file) => ({ name: item.name, content: file.content ?? '' })))
+      .filter(({ content }) => CLIENT_ONLY.test(content) && !content.startsWith("'use client';"))
+      .map(({ name }) => name);
+    expect(offenders).toEqual([]);
+    expect(byName.get('card')!.files![0]!.content).not.toContain("'use client'");
+  });
+
   it('declares every dependency it imports, and only real ones', () => {
     const uiPackage = JSON.parse(readFileSync(join(UI_DIR, '../package.json'), 'utf8'));
     for (const item of items) {

@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '../lib/cn.ts';
