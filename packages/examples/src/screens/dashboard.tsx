@@ -36,6 +36,7 @@ import {
   ToggleGroupItem,
   type ChartConfig,
   type ColumnDef,
+  useReducedMotion,
 } from '@machine-ui/ui';
 import { BarChart3, Download, Home, Package, Settings, ShoppingCart, Users } from 'lucide-react';
 
@@ -111,6 +112,8 @@ const NAV = [
 
 /** A store analytics dashboard: stats, charts, a sortable table and system status. */
 export function DashboardScreen() {
+  // Chart animations run in JavaScript, so they follow the reduced-motion preference explicitly.
+  const animate = !useReducedMotion();
   return (
     <SidebarProvider className="h-full">
       <Sidebar>
@@ -193,8 +196,8 @@ export function DashboardScreen() {
                     <Recharts.YAxis yAxisId="visitors" hide />
                     <Recharts.YAxis yAxisId="orders" orientation="right" hide />
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Recharts.Area yAxisId="visitors" dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.12} stroke="var(--color-visitors)" strokeWidth={2} />
-                    <Recharts.Area yAxisId="orders" dataKey="orders" type="monotone" fill="var(--color-orders)" fillOpacity={0.08} stroke="var(--color-orders)" strokeWidth={2} strokeDasharray="4 3" />
+                    <Recharts.Area isAnimationActive={animate} yAxisId="visitors" dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.12} stroke="var(--color-visitors)" strokeWidth={2} />
+                    <Recharts.Area isAnimationActive={animate} yAxisId="orders" dataKey="orders" type="monotone" fill="var(--color-orders)" fillOpacity={0.08} stroke="var(--color-orders)" strokeWidth={2} strokeDasharray="4 3" />
                   </Recharts.AreaChart>
                 </ChartContainer>
               </CardContent>
@@ -210,7 +213,7 @@ export function DashboardScreen() {
                     <Recharts.XAxis type="number" hide />
                     <Recharts.YAxis dataKey="channel" type="category" tickLine={false} axisLine={false} width={64} />
                     <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                    <Recharts.Bar dataKey="share" fill="var(--color-share)" radius={4} />
+                    <Recharts.Bar isAnimationActive={animate} dataKey="share" fill="var(--color-share)" radius={4} />
                   </Recharts.BarChart>
                 </ChartContainer>
               </CardContent>
