@@ -2,7 +2,7 @@
 
 A theming-first design system on shadcn/ui, maintained by an autonomous agent. The full spec is in `docs/SPEC.md`. Read it before starting any task.
 
-**Current milestone: M1, theme engine + live Storybook.** Do not start M2 or M3 work unless asked.
+**Current milestone: M2 + M3, repo-side** (see `docs/decisions/0003-m2-m3-scope.md` and `docs/plans/m2-m3.md`). The VPS runner and Jira adapter are out of scope until asked.
 
 ## Stack
 
