@@ -17,6 +17,7 @@ description: Add or change a component in packages/ui by wrapping a shadcn/Radix
 
 ```sh
 pnpm api:report          # the public API changed: regenerate the report
+pnpm registry:build      # the shadcn registry ships component source: regenerate it
 pnpm lint
 pnpm test                # includes "every exported component is documented"
 pnpm test:storybook      # renders every example under axe, runs play functions

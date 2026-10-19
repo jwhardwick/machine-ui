@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "type": "registry:ui",
+  "title": "Table",
+  "description": "Composable table parts for simple tabular data. Use Data Table when you need sorting or selection.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/table.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function Table({ className, ...props }: ComponentProps<'table'>) {\n  return (\n    <div data-slot=\"table-container\" className=\"relative w-full overflow-x-auto\">\n      <table data-slot=\"table\" className={cn('w-full caption-bottom text-sm', className)} {...props} />\n    </div>\n  );\n}\n\nexport function TableHeader({ className, ...props }: ComponentProps<'thead'>) {\n  return <thead data-slot=\"table-header\" className={cn('[&_tr]:border-b', className)} {...props} />;\n}\n\nexport function TableBody({ className, ...props }: ComponentProps<'tbody'>) {\n  return <tbody data-slot=\"table-body\" className={cn('[&_tr:last-child]:border-0', className)} {...props} />;\n}\n\nexport function TableFooter({ className, ...props }: ComponentProps<'tfoot'>) {\n  return <tfoot data-slot=\"table-footer\" className={cn('border-t bg-muted font-medium [&>tr]:last:border-b-0', className)} {...props} />;\n}\n\nexport function TableRow({ className, ...props }: ComponentProps<'tr'>) {\n  return (\n    <tr\n      data-slot=\"table-row\"\n      className={cn('border-b transition-colors duration-(--motion-fast) hover:bg-muted data-[state=selected]:bg-muted', className)}\n      {...props}\n    />\n  );\n}\n\nexport function TableHead({ className, ...props }: ComponentProps<'th'>) {\n  return (\n    <th\n      data-slot=\"table-head\"\n      className={cn(\n        'h-(--control-md) whitespace-nowrap px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function TableCell({ className, ...props }: ComponentProps<'td'>) {\n  return <td data-slot=\"table-cell\" className={cn('whitespace-nowrap p-2 align-middle [&:has([role=checkbox])]:pr-0', className)} {...props} />;\n}\n\nexport function TableCaption({ className, ...props }: ComponentProps<'caption'>) {\n  return <caption data-slot=\"table-caption\" className={cn('mt-4 text-sm text-muted-foreground', className)} {...props} />;\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "title": "Spinner",
+  "description": "A spinning ring for work with no known length. Announced to screen readers as loading.",
+  "dependencies": [
+    "lucide-react@1.59.0"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/spinner.tsx",
+      "type": "registry:ui",
+      "content": "import { Loader2Icon } from 'lucide-react';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function Spinner({ className, ...props }: ComponentProps<'svg'>) {\n  return <Loader2Icon role=\"status\" aria-label=\"Loading\" className={cn('size-4 animate-spin', className)} {...props} />;\n}\n"
+    }
+  ]
+}

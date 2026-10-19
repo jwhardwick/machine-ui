@@ -1,0 +1,160 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "machine-ui-base",
+  "type": "registry:theme",
+  "title": "machine-ui base",
+  "description": "Maps machine-ui tokens onto Tailwind utilities and adds base styles and animations. Pair it with a theme-* item.",
+  "cssVars": {
+    "theme": {
+      "color-background": "var(--background)",
+      "color-foreground": "var(--foreground)",
+      "color-card": "var(--card)",
+      "color-card-foreground": "var(--card-foreground)",
+      "color-popover": "var(--popover)",
+      "color-popover-foreground": "var(--popover-foreground)",
+      "color-primary": "var(--primary)",
+      "color-primary-foreground": "var(--primary-foreground)",
+      "color-link": "var(--link)",
+      "color-secondary": "var(--secondary)",
+      "color-secondary-foreground": "var(--secondary-foreground)",
+      "color-muted": "var(--muted)",
+      "color-muted-foreground": "var(--muted-foreground)",
+      "color-accent": "var(--accent)",
+      "color-accent-foreground": "var(--accent-foreground)",
+      "color-destructive": "var(--destructive)",
+      "color-destructive-foreground": "var(--destructive-foreground)",
+      "color-border": "var(--border)",
+      "color-input": "var(--input)",
+      "color-ring": "var(--ring)",
+      "color-success": "var(--success)",
+      "color-success-foreground": "var(--success-foreground)",
+      "color-warning": "var(--warning)",
+      "color-warning-foreground": "var(--warning-foreground)",
+      "color-chart-1": "var(--chart-1)",
+      "color-chart-2": "var(--chart-2)",
+      "color-chart-3": "var(--chart-3)",
+      "color-chart-4": "var(--chart-4)",
+      "color-chart-5": "var(--chart-5)",
+      "color-sidebar": "var(--sidebar)",
+      "color-sidebar-foreground": "var(--sidebar-foreground)",
+      "spacing": "var(--space-unit)",
+      "font-display": "var(--typeface-display)",
+      "font-sans": "var(--typeface-text)",
+      "font-mono": "var(--typeface-code)",
+      "radius-sm": "var(--corner-sm)",
+      "radius-md": "var(--corner-md)",
+      "radius-lg": "var(--corner-lg)",
+      "radius-xl": "var(--corner-xl)",
+      "shadow-sm": "var(--elevation-sm)",
+      "shadow-md": "var(--elevation-md)",
+      "shadow-lg": "var(--elevation-lg)",
+      "text-xs": "var(--type-xs)",
+      "text-sm": "var(--type-sm)",
+      "text-base": "var(--type-base)",
+      "text-lg": "var(--type-lg)",
+      "text-xl": "var(--type-xl)",
+      "text-2xl": "var(--type-2xl)",
+      "text-3xl": "var(--type-3xl)",
+      "text-4xl": "var(--type-4xl)",
+      "ease-standard": "var(--motion-ease-standard)",
+      "ease-emphasized": "var(--motion-ease-emphasized)",
+      "animate-enter": "mui-enter var(--motion-normal) var(--motion-ease-emphasized)",
+      "animate-overlay": "mui-fade var(--motion-normal) var(--motion-ease-standard)",
+      "animate-sheet-right": "mui-from-right var(--motion-slow) var(--motion-ease-emphasized)",
+      "animate-sheet-left": "mui-from-left var(--motion-slow) var(--motion-ease-emphasized)",
+      "animate-sheet-top": "mui-from-top var(--motion-slow) var(--motion-ease-emphasized)",
+      "animate-sheet-bottom": "mui-from-bottom var(--motion-slow) var(--motion-ease-emphasized)",
+      "animate-dot": "mui-dot calc(var(--motion-slow) * 6) var(--motion-ease-standard) infinite",
+      "animate-caret": "mui-caret calc(var(--motion-slow) * 5) steps(1) infinite",
+      "animate-shimmer": "mui-shimmer calc(var(--motion-slow) * 6) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes mui-from-right": {
+      "from": {
+        "translate": "100% 0"
+      }
+    },
+    "@keyframes mui-from-left": {
+      "from": {
+        "translate": "-100% 0"
+      }
+    },
+    "@keyframes mui-from-top": {
+      "from": {
+        "translate": "0 -100%"
+      }
+    },
+    "@keyframes mui-from-bottom": {
+      "from": {
+        "translate": "0 100%"
+      }
+    },
+    "@keyframes mui-shimmer": {
+      "from": {
+        "background-position": "200% 0"
+      },
+      "to": {
+        "background-position": "-200% 0"
+      }
+    },
+    "@keyframes mui-enter": {
+      "from": {
+        "opacity": "0",
+        "scale": "0.96"
+      }
+    },
+    "@keyframes mui-fade": {
+      "from": {
+        "opacity": "0"
+      }
+    },
+    "@keyframes mui-dot": {
+      "0%,\n  80%,\n  100%": {
+        "opacity": "0.25"
+      },
+      "40%": {
+        "opacity": "1"
+      }
+    },
+    "@keyframes mui-caret": {
+      "50%": {
+        "opacity": "0"
+      }
+    },
+    "@layer base": {
+      "*, ::before, ::after": {
+        "border-color": "var(--border)"
+      },
+      "html": {
+        "color-scheme": "light"
+      },
+      "html.dark, html[data-mode=\"dark\"]": {
+        "color-scheme": "dark"
+      },
+      "body": {
+        "background-color": "var(--background)",
+        "color": "var(--foreground)",
+        "font-family": "var(--typeface-text)",
+        "font-size": "var(--type-base)",
+        "line-height": "1.55",
+        "-webkit-font-smoothing": "antialiased"
+      },
+      "h1, h2, h3, h4": {
+        "font-family": "var(--typeface-display)",
+        "line-height": "1.15"
+      },
+      ":focus-visible": {
+        "outline": "2px solid var(--ring)",
+        "outline-offset": "2px"
+      }
+    },
+    "@media (prefers-reduced-motion: reduce)": {
+      ":root": {
+        "--motion-fast": "0ms",
+        "--motion-normal": "0ms",
+        "--motion-slow": "0ms"
+      }
+    }
+  }
+}

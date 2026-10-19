@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "type": "registry:ui",
+  "title": "Empty",
+  "description": "A placeholder for a view with nothing in it yet: what it is for, and the one action to start.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/empty.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\n/** A placeholder for a view with nothing in it: icon, title, description and an action. */\nexport function Empty({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"empty\"\n      className={cn('flex min-w-0 flex-1 flex-col items-center justify-center gap-4 rounded-lg border border-dashed p-8 text-center', className)}\n      {...props}\n    />\n  );\n}\n\nexport function EmptyMedia({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"empty-media\"\n      className={cn('flex size-10 items-center justify-center rounded-lg bg-muted text-foreground [&_svg]:size-5', className)}\n      {...props}\n    />\n  );\n}\n\nexport function EmptyTitle({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"empty-title\" className={cn('font-display text-lg font-medium', className)} {...props} />;\n}\n\nexport function EmptyDescription({ className, ...props }: ComponentProps<'p'>) {\n  return <p data-slot=\"empty-description\" className={cn('max-w-sm text-sm text-muted-foreground', className)} {...props} />;\n}\n\nexport function EmptyActions({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"empty-actions\" className={cn('flex flex-wrap items-center justify-center gap-2', className)} {...props} />;\n}\n"
+    }
+  ]
+}

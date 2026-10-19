@@ -34,6 +34,8 @@ Set these up in the first task, then keep them working:
 - `pnpm test`
 - `pnpm size` (bundle budgets in `.size-limit.json`)
 - `pnpm api:report` (regenerate `api/`; required after any public API or token change)
+- `pnpm registry:build` (regenerate the shadcn registry in `apps/site/public/r`; required after any component change)
+- `pnpm test:registry-install` (opt-in, needs network: installs registry items into a fresh project, typechecks and builds it)
 - `pnpm release:bump --check-changeset` (computed version bump; fails if changesets under-declare it)
 - `pnpm storybook`
 - `pnpm test:storybook` (interaction + axe on every example and screen)

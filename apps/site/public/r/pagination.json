@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "type": "registry:ui",
+  "title": "Pagination",
+  "description": "Moves through pages of results with numbered links, previous and next.",
+  "dependencies": [
+    "lucide-react@1.59.0"
+  ],
+  "registryDependencies": [
+    "@machine-ui/button",
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/pagination.tsx",
+      "type": "registry:ui",
+      "content": "import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { buttonVariants, type ButtonProps } from '@/components/ui/button';\n\nexport function Pagination({ className, ...props }: ComponentProps<'nav'>) {\n  return <nav aria-label=\"Pagination\" data-slot=\"pagination\" className={cn('mx-auto flex w-full justify-center', className)} {...props} />;\n}\n\nexport function PaginationContent({ className, ...props }: ComponentProps<'ul'>) {\n  return <ul data-slot=\"pagination-content\" className={cn('flex flex-row items-center gap-1', className)} {...props} />;\n}\n\nexport function PaginationItem(props: ComponentProps<'li'>) {\n  return <li data-slot=\"pagination-item\" {...props} />;\n}\n\nexport function PaginationLink({\n  className,\n  isActive,\n  size = 'icon',\n  ...props\n}: ComponentProps<'a'> & { isActive?: boolean; size?: ButtonProps['size'] }) {\n  return (\n    <a\n      aria-current={isActive ? 'page' : undefined}\n      data-slot=\"pagination-link\"\n      data-active={isActive}\n      className={cn(buttonVariants({ variant: isActive ? 'outline' : 'ghost', size }), className)}\n      {...props}\n    />\n  );\n}\n\nexport function PaginationPrevious({ className, ...props }: ComponentProps<typeof PaginationLink>) {\n  return (\n    <PaginationLink aria-label=\"Go to previous page\" size=\"md\" className={cn('gap-1 px-2.5', className)} {...props}>\n      <ChevronLeftIcon aria-hidden />\n      <span className=\"hidden sm:block\">Previous</span>\n    </PaginationLink>\n  );\n}\n\nexport function PaginationNext({ className, ...props }: ComponentProps<typeof PaginationLink>) {\n  return (\n    <PaginationLink aria-label=\"Go to next page\" size=\"md\" className={cn('gap-1 px-2.5', className)} {...props}>\n      <span className=\"hidden sm:block\">Next</span>\n      <ChevronRightIcon aria-hidden />\n    </PaginationLink>\n  );\n}\n\nexport function PaginationEllipsis({ className, ...props }: ComponentProps<'span'>) {\n  return (\n    <span aria-hidden data-slot=\"pagination-ellipsis\" className={cn('flex size-(--control-md) items-center justify-center', className)} {...props}>\n      <MoreHorizontalIcon className=\"size-4\" />\n      <span className=\"sr-only\">More pages</span>\n    </span>\n  );\n}\n"
+    }
+  ]
+}

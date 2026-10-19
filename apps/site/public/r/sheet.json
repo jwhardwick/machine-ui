@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet",
+  "description": "A panel that slides in from any edge over a scrim. Good for edit forms and detail views.",
+  "dependencies": [
+    "lucide-react@1.59.0",
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/sheet.tsx",
+      "type": "registry:ui",
+      "content": "import { XIcon } from 'lucide-react';\nimport { Dialog as SheetPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { focusRing } from '@/lib/machine-ui-styles';\n\nexport const Sheet = SheetPrimitive.Root;\nexport const SheetTrigger = SheetPrimitive.Trigger;\nexport const SheetClose = SheetPrimitive.Close;\n\nconst SIDES = {\n  right: 'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm data-[state=open]:animate-sheet-right',\n  left: 'inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm data-[state=open]:animate-sheet-left',\n  top: 'inset-x-0 top-0 h-auto border-b data-[state=open]:animate-sheet-top',\n  bottom: 'inset-x-0 bottom-0 h-auto border-t data-[state=open]:animate-sheet-bottom',\n} as const;\n\n/** A panel that slides in from any edge of the screen over a scrim. */\nexport function SheetContent({\n  className,\n  children,\n  side = 'right',\n  ...props\n}: ComponentProps<typeof SheetPrimitive.Content> & { side?: keyof typeof SIDES }) {\n  return (\n    <SheetPrimitive.Portal>\n      <SheetPrimitive.Overlay\n        data-slot=\"sheet-overlay\"\n        className=\"fixed inset-0 z-50 bg-background/70 backdrop-blur-sm data-[state=open]:animate-overlay\"\n      />\n      <SheetPrimitive.Content\n        data-slot=\"sheet-content\"\n        className={cn('fixed z-50 flex flex-col gap-4 bg-popover text-popover-foreground shadow-lg focus-visible:outline-none', SIDES[side], className)}\n        {...props}\n      >\n        {children}\n        <SheetPrimitive.Close\n          className={cn('absolute right-4 top-4 cursor-pointer rounded-sm text-muted-foreground hover:text-foreground [&_svg]:size-4', focusRing)}\n        >\n          <XIcon aria-hidden />\n          <span className=\"sr-only\">Close</span>\n        </SheetPrimitive.Close>\n      </SheetPrimitive.Content>\n    </SheetPrimitive.Portal>\n  );\n}\n\nexport function SheetHeader({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"sheet-header\" className={cn('flex flex-col gap-1.5 p-4 pr-10', className)} {...props} />;\n}\n\nexport function SheetFooter({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"sheet-footer\" className={cn('mt-auto flex flex-col gap-2 p-4', className)} {...props} />;\n}\n\nexport function SheetTitle({ className, ...props }: ComponentProps<typeof SheetPrimitive.Title>) {\n  return <SheetPrimitive.Title data-slot=\"sheet-title\" className={cn('font-display text-lg font-semibold', className)} {...props} />;\n}\n\nexport function SheetDescription({ className, ...props }: ComponentProps<typeof SheetPrimitive.Description>) {\n  return <SheetPrimitive.Description data-slot=\"sheet-description\" className={cn('text-sm text-muted-foreground', className)} {...props} />;\n}\n"
+    }
+  ]
+}

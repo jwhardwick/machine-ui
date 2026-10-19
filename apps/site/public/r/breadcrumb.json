@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Shows where a page sits in the hierarchy, with a collapsed middle for long trails.",
+  "dependencies": [
+    "lucide-react@1.59.0",
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/breadcrumb.tsx",
+      "type": "registry:ui",
+      "content": "import { ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react';\nimport { Slot } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport function Breadcrumb(props: ComponentProps<'nav'>) {\n  return <nav aria-label=\"Breadcrumb\" data-slot=\"breadcrumb\" {...props} />;\n}\n\nexport function BreadcrumbList({ className, ...props }: ComponentProps<'ol'>) {\n  return <ol data-slot=\"breadcrumb-list\" className={cn('flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground', className)} {...props} />;\n}\n\nexport function BreadcrumbItem({ className, ...props }: ComponentProps<'li'>) {\n  return <li data-slot=\"breadcrumb-item\" className={cn('inline-flex items-center gap-1.5', className)} {...props} />;\n}\n\nexport function BreadcrumbLink({ asChild, className, ...props }: ComponentProps<'a'> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot.Root : 'a';\n  return <Comp data-slot=\"breadcrumb-link\" className={cn('transition-colors hover:text-foreground', className)} {...props} />;\n}\n\nexport function BreadcrumbPage({ className, ...props }: ComponentProps<'span'>) {\n  return <span data-slot=\"breadcrumb-page\" aria-current=\"page\" className={cn('font-normal text-foreground', className)} {...props} />;\n}\n\nexport function BreadcrumbSeparator({ children, className, ...props }: ComponentProps<'li'>) {\n  return (\n    <li data-slot=\"breadcrumb-separator\" role=\"presentation\" aria-hidden className={cn('[&>svg]:size-3.5', className)} {...props}>\n      {children ?? <ChevronRightIcon />}\n    </li>\n  );\n}\n\nexport function BreadcrumbEllipsis({ className, ...props }: ComponentProps<'span'>) {\n  return (\n    <span data-slot=\"breadcrumb-ellipsis\" role=\"presentation\" aria-hidden className={cn('flex size-5 items-center justify-center', className)} {...props}>\n      <MoreHorizontalIcon className=\"size-4\" />\n    </span>\n  );\n}\n"
+    }
+  ]
+}

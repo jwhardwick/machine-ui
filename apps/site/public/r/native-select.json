@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "type": "registry:ui",
+  "title": "Native Select",
+  "description": "The browser’s own select, styled to match the theme. Best on mobile and for long option lists.",
+  "dependencies": [
+    "lucide-react@1.59.0"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "@machine-ui/machine-ui-styles",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/native-select.tsx",
+      "type": "registry:ui",
+      "content": "import { ChevronDownIcon } from 'lucide-react';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { disabledControl, fieldChrome, focusRing, transition } from '@/lib/machine-ui-styles';\n\n/** The browser's own select, styled to match. Best on mobile and for long option lists. */\nexport function NativeSelect({ className, children, ...props }: ComponentProps<'select'>) {\n  return (\n    <div data-slot=\"native-select-wrapper\" className=\"relative w-full\">\n      <select\n        data-slot=\"native-select\"\n        className={cn(\n          fieldChrome,\n          transition,\n          focusRing,\n          disabledControl,\n          'h-(--control-md) appearance-none pl-3 pr-8 text-sm',\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </select>\n      <ChevronDownIcon\n        aria-hidden\n        className=\"pointer-events-none absolute right-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground\"\n      />\n    </div>\n  );\n}\n"
+    }
+  ]
+}
