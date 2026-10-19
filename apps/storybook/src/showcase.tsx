@@ -66,7 +66,7 @@ export function Showcase() {
           <TabsTrigger value="activity">Activity</TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="text-sm">
-          Eleven components, five reference themes, every pair contrast-solved.
+          Every component follows the theme, and every colour pair is contrast-solved.
         </TabsContent>
         <TabsContent value="activity" className="text-sm">
           Nothing new this week.
