@@ -7,7 +7,7 @@
   "dependencies": [],
   "registryDependencies": [
     "@machine-ui/machine-ui-base",
-    "utils"
+    "@machine-ui/utils"
   ],
   "files": [
     {
