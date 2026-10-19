@@ -8,7 +8,8 @@ import {
 } from '@machine-ui/tokens';
 import { normalizeSeed } from './generate.ts';
 
-// Compact, URL-safe seed encoding: `~ledger.h28.c35.nw.r15.d70.s10.teditorial.x1250.ms`.
+// Compact seed encoding: `iledger_h28_c35_nw_r15_d70_s10_teditorial_x1250_ms`.
+// Only [a-z0-9_-], which is URL-safe and passes Storybook's URL globals validation.
 // One letter per field; 0–1 values are stored as percentages, the ratio in thousandths.
 
 const NEUTRAL_CODES: Record<string, NeutralTemperature> = { c: 'cool', n: 'neutral', w: 'warm' };
@@ -23,7 +24,7 @@ const slug = (name: string) =>
 
 export function serializeSeed(seed: ThemeSeed): string {
   return [
-    `~${slug(seed.name) || 'custom'}`,
+    `i${slug(seed.name) || 'custom'}`,
     `h${Math.round(seed.hue)}`,
     `c${Math.round(seed.chroma * 100)}`,
     `n${seed.neutral[0]}`,
@@ -33,7 +34,7 @@ export function serializeSeed(seed: ThemeSeed): string {
     `t${seed.typePair}`,
     `x${Math.round(seed.typeRatio * 1000)}`,
     `m${seed.motion[0]}`,
-  ].join('.');
+  ].join('_');
 }
 
 /** Decode a share string. Returns null when nothing usable is there or an enum is unknown; never throws. */
@@ -42,13 +43,13 @@ export function parseSeed(input: string | null | undefined): ThemeSeed | null {
   const seed: Partial<ThemeSeed> = {};
   let recognised = 0;
 
-  for (const part of input.split('.')) {
+  for (const part of input.split('_')) {
     const code = part[0];
     const value = part.slice(1);
     if (!code || !value) continue;
     const num = Number(value);
 
-    if (code === '~') {
+    if (code === 'i') {
       seed.name = slug(value) || 'custom';
     } else if (code === 'n') {
       const neutral = NEUTRAL_CODES[value];
