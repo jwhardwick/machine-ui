@@ -33,7 +33,8 @@ Set these up in the first task, then keep them working:
 - `pnpm lint`
 - `pnpm test`
 - `pnpm storybook`
-- `pnpm test:storybook` (interaction + axe)
+- `pnpm test:storybook` (interaction + axe on every example and screen)
+- `pnpm test:site` (builds the docs site and runs axe on every route in several themes, light and dark)
 - `pnpm check` (runs all of the above; must pass before saying a task is done)
 
 ## Hard rules

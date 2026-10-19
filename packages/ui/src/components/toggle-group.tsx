@@ -38,7 +38,7 @@ export function ToggleGroupItem({
       data-slot="toggle-group-item"
       className={cn(
         toggleVariants({ variant: context.variant ?? variant, size: context.size ?? size }),
-        'min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-md last:rounded-r-md focus-visible:z-10',
+        'shrink-0 rounded-none shadow-none first:rounded-l-md last:rounded-r-md focus-visible:z-10',
         'data-[variant=outline]:border-l-0 group-data-[variant=outline]/toggle-group:border-l-0 group-data-[variant=outline]/toggle-group:first:border-l',
         className,
       )}

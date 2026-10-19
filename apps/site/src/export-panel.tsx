@@ -31,7 +31,7 @@ function CopyButton({ text, label }: { text: string; label: string }) {
 export function ExportPanel({ seed }: { seed: ThemeSeed }) {
   const files = useMemo(() => exportTheme(seed), [seed]);
   return (
-    <Card>
+    <Card className="min-w-0">
       <CardHeader>
         <CardTitle>Take it with you</CardTitle>
         <CardDescription>
@@ -48,8 +48,8 @@ export function ExportPanel({ seed }: { seed: ThemeSeed }) {
             ))}
           </TabsList>
           {FILES.map((file) => (
-            <TabsContent key={file.value} value={file.value} className="grid gap-3">
-              <pre className="max-h-80 overflow-auto rounded-md border bg-muted p-4 font-mono text-xs text-foreground">
+            <TabsContent key={file.value} value={file.value} className="grid grid-cols-1 min-w-0 gap-3">
+              <pre tabIndex={0} aria-label={`${file.label} contents`} className="max-h-80 min-w-0 overflow-auto rounded-md border bg-muted p-4 font-mono text-xs text-foreground">
                 {files[file.key]}
               </pre>
               <div>
