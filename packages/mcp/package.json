@@ -1,0 +1,16 @@
+{
+  "name": "@machine-ui/mcp",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "MCP server for machine-ui: list and read components, read tokens and generate contrast-safe themes.",
+  "bin": { "machine-ui-mcp": "./src/bin.ts" },
+  "exports": { ".": "./src/server.ts" },
+  "scripts": { "typecheck": "tsc --noEmit -p .", "start": "node src/bin.ts" },
+  "dependencies": {
+    "@machine-ui/theme-engine": "workspace:*",
+    "@machine-ui/tokens": "workspace:*",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": { "@types/node": "26.6.5", "vitest": "5.0.5" }
+}

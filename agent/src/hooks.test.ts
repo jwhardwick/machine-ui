@@ -50,7 +50,7 @@ describe('guard-bash', () => {
 });
 
 describe('guard-paths', () => {
-  it.each(['apps/site/public/r/button.json', 'apps/site/public/llms.txt', 'apps/site/public/install.md', '.github/workflows/ci.yml', '/repo/.github/workflows/release.yml', 'api/ui.api.json', 'apps/storybook/visual/__screenshots__/x.png', '.changeset/config.json', 'agent/config.yaml'])(
+  it.each(['packages/mcp/data/components.json', 'apps/site/public/r/button.json', 'apps/site/public/llms.txt', 'apps/site/public/install.md', '.github/workflows/ci.yml', '/repo/.github/workflows/release.yml', 'api/ui.api.json', 'apps/storybook/visual/__screenshots__/x.png', '.changeset/config.json', 'agent/config.yaml'])(
     'blocks edits to %s',
     (path) => {
       expect(edit(path).code).toBe(2);
