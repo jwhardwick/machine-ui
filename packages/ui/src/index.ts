@@ -71,3 +71,4 @@ export { PromptInput, PromptSuggestions, type PromptInputProps } from './compone
 export { StreamingText } from './components/streaming-text.tsx';
 export { ThinkingIndicator, ThinkingSteps, type ThinkingStep } from './components/thinking.tsx';
 export { ToolCall } from './components/tool-call.tsx';
+export { useReducedMotion } from './lib/motion.ts';

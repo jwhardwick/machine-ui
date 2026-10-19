@@ -12,13 +12,14 @@
     "test": "vitest run",
     "storybook": "pnpm --filter @machine-ui/storybook storybook",
     "test:storybook": "pnpm --filter @machine-ui/storybook test",
-    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm size && pnpm test:storybook && pnpm test:site",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm size && pnpm test:storybook && pnpm test:visual && pnpm test:site",
     "changeset": "changeset",
     "test:site": "pnpm --filter @machine-ui/site test",
     "build:site": "pnpm --filter @machine-ui/site build",
     "api:report": "node tooling/release/src/cli/report.ts",
     "release:bump": "node tooling/release/src/cli/bump.ts",
-    "size": "size-limit"
+    "size": "size-limit",
+    "test:visual": "pnpm --filter @machine-ui/storybook test:visual"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
