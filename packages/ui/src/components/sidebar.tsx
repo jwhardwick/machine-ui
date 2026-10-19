@@ -22,6 +22,8 @@ interface SidebarContextValue {
   setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
   toggle: () => void;
+  /** Inside another SidebarProvider (an embedded demo or screen) rather than the app's own. */
+  nested: boolean;
 }
 
 const SidebarContext = createContext<SidebarContextValue | null>(null);
@@ -82,7 +84,10 @@ export function SidebarProvider({
     return () => window.removeEventListener('keydown', onKey);
   }, [toggle, nested]);
 
-  const value = useMemo(() => ({ open, setOpen, openMobile, setOpenMobile, isMobile, toggle }), [open, setOpen, openMobile, isMobile, toggle]);
+  const value = useMemo(
+    () => ({ open, setOpen, openMobile, setOpenMobile, isMobile, toggle, nested }),
+    [open, setOpen, openMobile, isMobile, toggle, nested],
+  );
 
   return (
     <SidebarContext.Provider value={value}>
@@ -162,9 +167,14 @@ export function SidebarTrigger({ className, onClick, ...props }: ComponentProps<
   );
 }
 
-/** The main content area beside a Sidebar. */
+/**
+ * The main content area beside a Sidebar. It is the page's <main> landmark, except inside an
+ * embedded layout (a nested provider), where it's a plain region so the page keeps one <main>.
+ */
 export function SidebarInset({ className, ...props }: ComponentProps<'main'>) {
-  return <main data-slot="sidebar-inset" className={cn('relative flex min-w-0 flex-1 flex-col bg-background', className)} {...props} />;
+  // Typed as 'main' so the public props (and ref: HTMLElement) stay the same; a div is an HTMLElement too.
+  const Comp = (useContext(SidebarContext)?.nested ? 'div' : 'main') as 'main';
+  return <Comp data-slot="sidebar-inset" className={cn('relative flex min-w-0 flex-1 flex-col bg-background', className)} {...props} />;
 }
 
 export function SidebarHeader({ className, ...props }: ComponentProps<'div'>) {
