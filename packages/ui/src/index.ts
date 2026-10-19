@@ -5,3 +5,19 @@ export { Button, buttonVariants, type ButtonProps } from './components/button.ts
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './components/card.tsx';
 export { Label } from './components/label.tsx';
 export { Separator } from './components/separator.tsx';
+export { Checkbox } from './components/checkbox.tsx';
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from './components/dialog.tsx';
+export { Input } from './components/input.tsx';
+export { Switch } from './components/switch.tsx';
+export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/tabs.tsx';
