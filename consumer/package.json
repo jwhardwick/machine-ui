@@ -1,0 +1,8 @@
+{
+  "name": "@machine-ui/consumer-skills",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code plugin that helps any coding agent adopt machine-ui correctly.",
+  "devDependencies": { "@types/node": "26.6.5", "vitest": "5.0.5" }
+}

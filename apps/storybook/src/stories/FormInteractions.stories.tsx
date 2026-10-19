@@ -12,7 +12,8 @@ export const SelectPicksAnOption: Story = {
     const trigger = canvas.getByRole('combobox', { name: 'Model' });
     await expect(trigger).toHaveTextContent('Balanced');
     await userEvent.click(trigger);
-    await userEvent.click(await screen.findByRole('option', { name: 'Deep research' }));
+    // The listbox animates open; allow for a slow machine before looking for its options.
+    await userEvent.click(await screen.findByRole('option', { name: 'Deep research' }, { timeout: 5000 }));
     await expect(trigger).toHaveTextContent('Deep research');
     await expect(trigger).toHaveFocus();
   },

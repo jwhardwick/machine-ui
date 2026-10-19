@@ -3,6 +3,7 @@ packages:
   - apps/*
   - tooling/*
   - agent
+  - consumer
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
