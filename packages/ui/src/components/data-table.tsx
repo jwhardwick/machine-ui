@@ -7,6 +7,7 @@ import {
   useReactTable,
   type Column,
   type ColumnDef,
+  type ColumnFiltersState,
   type RowSelectionState,
   type SortingState,
 } from '@tanstack/react-table';
@@ -74,13 +75,14 @@ export function DataTable<TData>({
 }: DataTableProps<TData>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-  const [globalFilter, setGlobalFilter] = useState('');
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const table = useReactTable({
     data,
     columns,
-    state: { sorting, rowSelection, columnFilters: filterColumn ? [{ id: filterColumn, value: globalFilter }] : [] },
+    state: { sorting, rowSelection, columnFilters },
     onSortingChange: setSorting,
     onRowSelectionChange: setRowSelection,
+    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -99,8 +101,8 @@ export function DataTable<TData>({
             <Input
               aria-label={filterPlaceholder}
               placeholder={filterPlaceholder}
-              value={globalFilter}
-              onChange={(e) => setGlobalFilter(e.target.value)}
+              value={(table.getColumn(filterColumn)?.getFilterValue() as string | undefined) ?? ''}
+              onChange={(e) => table.getColumn(filterColumn)?.setFilterValue(e.target.value)}
               className="max-w-xs"
             />
           )}

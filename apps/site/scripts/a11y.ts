@@ -16,6 +16,8 @@ const THEMES = REFERENCE_THEMES.filter((t) => ['graphite', 'folio', 'forge'].inc
 const server = await preview({ root: fileURLToPath(new URL('..', import.meta.url)), preview: { port: 4174, strictPort: true } });
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+// No network dependency: web fonts are blocked, so pages render with their fallback stacks.
+await page.route(/fonts\.(googleapis|gstatic)\.com/, (route) => route.abort());
 let failures = 0;
 
 try {

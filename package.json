@@ -14,7 +14,7 @@
     "test:storybook": "pnpm --filter @machine-ui/storybook test",
     "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm test:storybook && pnpm test:site",
     "changeset": "changeset",
-    "test:site": "pnpm --filter @machine-ui/site test:a11y",
+    "test:site": "pnpm --filter @machine-ui/site test",
     "build:site": "pnpm --filter @machine-ui/site build"
   },
   "devDependencies": {

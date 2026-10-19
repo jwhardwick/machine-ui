@@ -28,13 +28,13 @@ import { NavLink, Outlet, useLocation, useMatch, useResolvedPath } from 'react-r
 import { SearchCommand } from './search.tsx';
 import { ThemeToolbar } from './toolbar.tsx';
 
-function NavItem({ to, children, end = true }: { to: string; children: ReactNode; end?: boolean }) {
+function NavItem({ to, children, end = true, size }: { to: string; children: ReactNode; end?: boolean; size?: 'sm' | 'md' }) {
   const { setOpenMobile } = useSidebar();
   const resolved = useResolvedPath(to);
   const active = Boolean(useMatch({ path: resolved.pathname, end }));
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton asChild isActive={active}>
+      <SidebarMenuButton asChild isActive={active} size={size}>
         <NavLink to={to} end={end} onClick={() => setOpenMobile(false)}>
           {children}
         </NavLink>
@@ -92,7 +92,7 @@ export function Shell() {
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <NavItem to="/screens">
+                <NavItem to="/screens" size="sm">
                   All screens
                 </NavItem>
                 {SCREENS.map((s) => (
@@ -114,7 +114,7 @@ export function Shell() {
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <NavItem to="/components">
+                <NavItem to="/components" size="sm">
                   All components
                 </NavItem>
                 {CATEGORIES.map((category) => {
@@ -133,7 +133,7 @@ export function Shell() {
                         <CollapsibleContent>
                           <SidebarMenu className="ml-4 border-l pl-2">
                             {docs.map((doc) => (
-                              <NavItem key={doc.slug} to={`/components/${doc.slug}`}>
+                              <NavItem key={doc.slug} to={`/components/${doc.slug}`} size="sm">
                                 {doc.name}
                               </NavItem>
                             ))}

@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p .",
-    "test:a11y": "vite build && node scripts/a11y.ts"
+    "test:a11y": "vite build && node scripts/a11y.ts",
+    "test:e2e": "vite build && node --test e2e/",
+    "test": "vite build && node scripts/a11y.ts && node --test e2e/"
   },
   "dependencies": {
     "@machine-ui/theme-engine": "workspace:*",

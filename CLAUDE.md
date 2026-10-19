@@ -34,7 +34,7 @@ Set these up in the first task, then keep them working:
 - `pnpm test`
 - `pnpm storybook`
 - `pnpm test:storybook` (interaction + axe on every example and screen)
-- `pnpm test:site` (builds the docs site and runs axe on every route in several themes, light and dark)
+- `pnpm test:site` (builds the docs site, runs axe on every route in several themes and both modes, then the end-to-end suite in `apps/site/e2e`)
 - `pnpm check` (runs all of the above; must pass before saying a task is done)
 
 ## Hard rules

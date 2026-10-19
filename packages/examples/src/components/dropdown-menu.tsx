@@ -3,6 +3,9 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -31,12 +34,14 @@ export default defineDoc({
           <DropdownMenuContent className="w-56" align="start">
             <DropdownMenuLabel>ada@northwind.dev</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <User aria-hidden /> Profile <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings aria-hidden /> Settings <DropdownMenuShortcut>⌘,</DropdownMenuShortcut>
-            </DropdownMenuItem>
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <User aria-hidden /> Profile <DropdownMenuShortcut>⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings aria-hidden /> Settings <DropdownMenuShortcut>⌘,</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>Switch workspace</DropdownMenuSubTrigger>
               <DropdownMenuSubContent>
@@ -45,6 +50,12 @@ export default defineDoc({
               </DropdownMenuSubContent>
             </DropdownMenuSub>
             <DropdownMenuCheckboxItem checked>Compact mode</DropdownMenuCheckboxItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel>Panel position</DropdownMenuLabel>
+            <DropdownMenuRadioGroup value="right">
+              <DropdownMenuRadioItem value="left">Left</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem variant="destructive">
               <LogOut aria-hidden /> Sign out
