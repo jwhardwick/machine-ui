@@ -5,7 +5,7 @@ import globals from 'globals';
 import machineUi from '@machine-ui/eslint-plugin';
 
 export default tseslint.config(
-  { ignores: ['**/node_modules/**', '**/dist/**', '**/storybook-static/**', '.superpowers/**'] },
+  { ignores: ['**/node_modules/**', '**/dist/**', '**/storybook-static/**', '.superpowers/**', 'tooling/eval/fixtures/**', 'tooling/eval/template/**'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
