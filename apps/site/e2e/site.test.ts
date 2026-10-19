@@ -131,6 +131,14 @@ describe('layout', () => {
     });
   }
 
+  test('every page has exactly one main landmark, even with embedded screens', async () => {
+    for (const path of ['/', '/screens', '/components/sidebar', '/themes']) {
+      const page = await open(path);
+      assert.equal(await page.locator('main').count(), 1, path);
+      await page.close();
+    }
+  });
+
   test('pages render without runtime errors', async () => {
     for (const path of ['/', '/components', '/screens', '/themes', '/get-started', '/components/chart']) {
       const page = await open(path);

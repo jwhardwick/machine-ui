@@ -10,6 +10,7 @@ import {
   DataTable,
   Sidebar,
   SidebarContent,
+  SidebarInset,
   SidebarProvider,
   SidebarTrigger,
   Stat,
@@ -143,5 +144,25 @@ export const DataTableFilterResetsToFirstPage: Story = {
     const rows = within(canvas.getByRole('table')).getAllByRole('row').slice(1);
     await expect(rows).toHaveLength(5);
     await expect(rows[0]).toHaveTextContent('Person 01');
+  },
+};
+
+export const NestedInsetIsNotASecondMain: Story = {
+  render: () => (
+    <SidebarProvider>
+      <SidebarInset>
+        <p>App content</p>
+        <SidebarProvider>
+          <SidebarInset>
+            <p>Embedded demo</p>
+          </SidebarInset>
+        </SidebarProvider>
+      </SidebarInset>
+    </SidebarProvider>
+  ),
+  play: async ({ canvasElement }) => {
+    // One main landmark per page: an inset inside another sidebar layout is a plain region.
+    await expect(canvasElement.querySelectorAll('main')).toHaveLength(1);
+    await expect(canvasElement.querySelectorAll('[data-slot=sidebar-inset]')).toHaveLength(2);
   },
 };
