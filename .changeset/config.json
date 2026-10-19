@@ -7,5 +7,15 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@machine-ui/storybook", "@machine-ui/site", "@machine-ui/eslint-plugin"]
+  "ignore": [
+    "@machine-ui/agent",
+    "@machine-ui/consumer-skills",
+    "@machine-ui/eslint-plugin",
+    "@machine-ui/eval",
+    "@machine-ui/examples",
+    "@machine-ui/registry-builder",
+    "@machine-ui/release-tools",
+    "@machine-ui/site",
+    "@machine-ui/storybook"
+  ]
 }
