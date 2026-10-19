@@ -77,8 +77,9 @@ export function CommandGroup({ className, ...props }: ComponentProps<typeof Comm
   );
 }
 
-export function CommandSeparator({ className, ...props }: ComponentProps<typeof CommandPrimitive.Separator>) {
-  return <CommandPrimitive.Separator data-slot="command-separator" className={cn('-mx-1 h-px bg-border', className)} {...props} />;
+/** A visual divider between groups. Decorative: cmdk's own separator role isn't allowed inside a listbox. */
+export function CommandSeparator({ className, ...props }: ComponentProps<'div'>) {
+  return <div aria-hidden data-slot="command-separator" className={cn('-mx-1 h-px bg-border', className)} {...props} />;
 }
 
 export function CommandItem({ className, ...props }: ComponentProps<typeof CommandPrimitive.Item>) {

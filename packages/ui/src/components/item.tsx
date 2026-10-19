@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
-import type { ComponentProps } from 'react';
+import { createContext, useContext, type ComponentProps } from 'react';
 import { cn } from '../lib/cn.ts';
 import { focusRing, transition } from '../lib/styles.ts';
 
@@ -12,6 +12,8 @@ const itemVariants = cva(['group/item flex flex-wrap items-center gap-4 rounded-
   defaultVariants: { variant: 'default', size: 'md' },
 });
 
+const InGroupContext = createContext(false);
+
 /** A row with media, a title, a description and actions. Lists, settings and search results. */
 export function Item({
   className,
@@ -21,7 +23,10 @@ export function Item({
   ...props
 }: ComponentProps<'div'> & VariantProps<typeof itemVariants> & { asChild?: boolean }) {
   const Comp = asChild ? Slot.Root : 'div';
-  return <Comp data-slot="item" className={cn(itemVariants({ variant, size }), className)} {...props} />;
+  const inGroup = useContext(InGroupContext);
+  return (
+    <Comp data-slot="item" role={inGroup ? 'listitem' : undefined} className={cn(itemVariants({ variant, size }), className)} {...props} />
+  );
 }
 
 export function ItemMedia({ className, ...props }: ComponentProps<'div'>) {
@@ -51,5 +56,9 @@ export function ItemActions({ className, ...props }: ComponentProps<'div'>) {
 }
 
 export function ItemGroup({ className, ...props }: ComponentProps<'div'>) {
-  return <div role="list" data-slot="item-group" className={cn('flex flex-col', className)} {...props} />;
+  return (
+    <InGroupContext.Provider value>
+      <div role="list" data-slot="item-group" className={cn('flex flex-col', className)} {...props} />
+    </InGroupContext.Provider>
+  );
 }
