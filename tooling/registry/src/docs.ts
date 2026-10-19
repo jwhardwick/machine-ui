@@ -139,6 +139,38 @@ Run the project's typecheck, lint and build. Search new code for raw colours (\`
 `;
 }
 
+export const COMPONENT_DATA_FILE = join(import.meta.dirname, '../../../packages/mcp/data/components.json');
+
+export interface ComponentData {
+  slug: string;
+  name: string;
+  category: string;
+  categoryLabel: string;
+  description: string;
+  install: string[];
+  props: Record<string, Record<string, ApiMember>>;
+  example: string;
+}
+
+/** The component catalogue as data, for the MCP server (which can't load TSX examples itself). */
+export function componentData(input: DocsInput): string {
+  const data: ComponentData[] = input.docs.map((doc) => ({
+    slug: doc.slug,
+    name: doc.name,
+    category: doc.category,
+    categoryLabel: input.categories.find((c) => c.id === doc.category)?.label ?? doc.category,
+    description: doc.description,
+    install: items(input, doc.slug),
+    props: Object.fromEntries(propsFor(input, doc.slug)),
+    example: (input.sourceFor(doc.slug) ?? '').trim(),
+  }));
+  return `${JSON.stringify(data, null, 2)}\n`;
+}
+
+export async function staleComponentData(input: DocsInput): Promise<boolean> {
+  return (await readFile(COMPONENT_DATA_FILE, 'utf8').catch(() => null)) !== componentData(input);
+}
+
 export function renderDocs(input: DocsInput): Record<(typeof DOC_FILES)[number], string> {
   return { 'llms.txt': llmsTxt(input), 'llms-full.txt': llmsFullTxt(input), 'install.md': installMd() };
 }

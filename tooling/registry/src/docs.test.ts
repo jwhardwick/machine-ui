@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { CATEGORIES, COMPONENT_DOCS, getSource, registryItemsFor } from '@machine-ui/examples';
 import { describe, expect, it } from 'vitest';
-import { DOC_FILES, renderDocs, staleDocs, type DocsInput } from './docs.ts';
+import { DOC_FILES, renderDocs, staleComponentData, staleDocs, type DocsInput } from './docs.ts';
 
 const root = join(import.meta.dirname, '../../..');
 const input: DocsInput = {
@@ -57,6 +57,7 @@ describe('install.md', () => {
 describe('committed docs', () => {
   it('match the source (run `pnpm docs:build`)', async () => {
     expect(await staleDocs(input)).toEqual([]);
+    expect(await staleComponentData(input), 'packages/mcp/data/components.json').toBe(false);
     expect(DOC_FILES).toEqual(['llms.txt', 'llms-full.txt', 'install.md']);
   });
 });
