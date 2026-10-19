@@ -12,56 +12,55 @@ export interface TypePair {
 }
 
 export const TYPE_PAIRS: Record<TypePairId, TypePair> = {
+  geist: {
+    id: 'geist',
+    label: 'Geist',
+    display: '"Geist", "Helvetica Neue", Arial, sans-serif',
+    text: '"Geist", "Helvetica Neue", Arial, sans-serif',
+    code: '"Geist Mono", ui-monospace, Menlo, monospace',
+    googleFontsQuery: 'family=Geist:wght@400..700&family=Geist+Mono:wght@400..600',
+  },
+  civic: {
+    id: 'civic',
+    label: 'Public Sans',
+    display: '"Public Sans", "Helvetica Neue", Arial, sans-serif',
+    text: '"Public Sans", "Helvetica Neue", Arial, sans-serif',
+    code: '"IBM Plex Mono", ui-monospace, Menlo, monospace',
+    googleFontsQuery: 'family=Public+Sans:wght@400..800&family=IBM+Plex+Mono:wght@400;600',
+  },
   editorial: {
     id: 'editorial',
-    label: 'Editorial: Fraunces + Source Serif 4',
-    display: '"Fraunces", "Iowan Old Style", Georgia, serif',
-    text: '"Source Serif 4", "Iowan Old Style", Georgia, serif',
+    label: 'Instrument Serif + Instrument Sans',
+    display: '"Instrument Serif", "Iowan Old Style", Georgia, serif',
+    text: '"Instrument Sans", "Helvetica Neue", Arial, sans-serif',
     code: '"JetBrains Mono", ui-monospace, Menlo, monospace',
     googleFontsQuery:
-      'family=Fraunces:opsz,wght@9..144,400..800&family=Source+Serif+4:opsz,wght@8..60,400..700&family=JetBrains+Mono:wght@400;600',
-  },
-  grotesk: {
-    id: 'grotesk',
-    label: 'Grotesk: Space Grotesk + IBM Plex Sans',
-    display: '"Space Grotesk", "Helvetica Neue", Arial, sans-serif',
-    text: '"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif',
-    code: '"IBM Plex Mono", ui-monospace, Menlo, monospace',
-    googleFontsQuery:
-      'family=Space+Grotesk:wght@400..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600',
-  },
-  humanist: {
-    id: 'humanist',
-    label: 'Humanist: Bricolage Grotesque + Atkinson Hyperlegible',
-    display: '"Bricolage Grotesque", "Trebuchet MS", sans-serif',
-    text: '"Atkinson Hyperlegible", Verdana, sans-serif',
-    code: '"JetBrains Mono", ui-monospace, Menlo, monospace',
-    googleFontsQuery:
-      'family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600',
+      'family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;600',
   },
   technical: {
     id: 'technical',
-    label: 'Technical: IBM Plex Mono + IBM Plex Sans',
+    label: 'IBM Plex Mono + IBM Plex Sans',
     display: '"IBM Plex Mono", ui-monospace, Menlo, monospace',
     text: '"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif',
     code: '"IBM Plex Mono", ui-monospace, Menlo, monospace',
     googleFontsQuery: 'family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700',
   },
-  brutalist: {
-    id: 'brutalist',
-    label: 'Brutalist: Archivo Black + Archivo',
+  humanist: {
+    id: 'humanist',
+    label: 'Bricolage Grotesque + Figtree',
+    display: '"Bricolage Grotesque", "Trebuchet MS", sans-serif',
+    text: '"Figtree", "Trebuchet MS", sans-serif',
+    code: '"JetBrains Mono", ui-monospace, Menlo, monospace',
+    googleFontsQuery:
+      'family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400..700&family=JetBrains+Mono:wght@400;600',
+  },
+  heavy: {
+    id: 'heavy',
+    label: 'Archivo Black + Archivo',
     display: '"Archivo Black", "Arial Black", sans-serif',
     text: '"Archivo", "Helvetica Neue", Arial, sans-serif',
     code: '"Space Mono", ui-monospace, Menlo, monospace',
     googleFontsQuery: 'family=Archivo+Black&family=Archivo:wght@400..700&family=Space+Mono:wght@400;700',
-  },
-  classic: {
-    id: 'classic',
-    label: 'Classic: DM Serif Display + DM Sans',
-    display: '"DM Serif Display", Georgia, serif',
-    text: '"DM Sans", "Helvetica Neue", Arial, sans-serif',
-    code: '"DM Mono", ui-monospace, Menlo, monospace',
-    googleFontsQuery: 'family=DM+Serif+Display&family=DM+Sans:opsz,wght@9..40,400..700&family=DM+Mono:wght@400;500',
   },
 };
 

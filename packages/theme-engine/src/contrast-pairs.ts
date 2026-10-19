@@ -16,7 +16,9 @@ const text = (fg: ColorRole, bg: ColorRole): ContrastPair => ({ fg, bg, target: 
 const ui = (fg: ColorRole, bg: ColorRole): ContrastPair => ({ fg, bg, target: 3, kind: 'ui' });
 
 /**
- * Every pair the components rely on. Order matters when solving: a role is settled as a
+ * Every pair the components rely on. `primary` is a surface (buttons, checked controls) and only
+ * has to carry its own foreground; primary-coloured text uses `link`, which is solved separately.
+ * Order matters when solving: a role is settled as a
  * foreground before it is used as a background for its own "-foreground" partner.
  */
 export const CONTRAST_PAIRS: readonly ContrastPair[] = [
@@ -25,8 +27,8 @@ export const CONTRAST_PAIRS: readonly ContrastPair[] = [
   text('foreground', 'muted'),
   text('card-foreground', 'card'),
   text('popover-foreground', 'popover'),
-  text('primary', 'background'),
-  text('primary', 'card'),
+  text('link', 'background'),
+  text('link', 'card'),
   text('primary-foreground', 'primary'),
   text('secondary-foreground', 'secondary'),
   text('muted-foreground', 'muted'),
@@ -36,6 +38,18 @@ export const CONTRAST_PAIRS: readonly ContrastPair[] = [
   text('destructive', 'background'),
   text('destructive', 'card'),
   text('destructive-foreground', 'destructive'),
+  ui('success', 'background'),
+  ui('success', 'card'),
+  text('success-foreground', 'success'),
+  ui('warning', 'background'),
+  ui('warning', 'card'),
+  text('warning-foreground', 'warning'),
+  text('sidebar-foreground', 'sidebar'),
+  text('muted-foreground', 'sidebar'),
+  ...(['chart-1', 'chart-2', 'chart-3', 'chart-4', 'chart-5'] as const).flatMap((chart) => [
+    ui(chart, 'background'),
+    ui(chart, 'card'),
+  ]),
   ui('input', 'background'),
   ui('input', 'card'),
   ui('ring', 'background'),

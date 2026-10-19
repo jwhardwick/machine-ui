@@ -76,6 +76,12 @@ describe('theme.css', () => {
 });
 
 describe('schema', () => {
+  it('includes status, chart and sidebar roles', () => {
+    for (const role of ['success', 'success-foreground', 'warning', 'warning-foreground', 'chart-1', 'chart-5', 'sidebar', 'sidebar-foreground']) {
+      expect(COLOR_ROLES).toContain(role);
+    }
+  });
+
   it('mode tokens include every colour role', () => {
     for (const role of COLOR_ROLES) expect(MODE_TOKENS).toContain(role);
   });
@@ -86,10 +92,13 @@ describe('schema', () => {
 });
 
 describe('reference themes', () => {
-  it('ships five uniquely named themes and defaults to the first', () => {
-    expect(REFERENCE_THEMES).toHaveLength(5);
-    expect(new Set(REFERENCE_THEMES.map((t) => t.name)).size).toBe(5);
+  it('ships six uniquely named themes and defaults to graphite', () => {
+    expect(REFERENCE_THEMES.map((t) => t.name)).toEqual(['graphite', 'harbor', 'folio', 'console', 'bloom', 'forge']);
     expect(DEFAULT_SEED).toBe(REFERENCE_THEMES[0]);
+  });
+
+  it('gives every theme its own type pair', () => {
+    expect(new Set(REFERENCE_THEMES.map((t) => t.typePair)).size).toBe(REFERENCE_THEMES.length);
   });
 
   it('avoids Inter and maximum radius', () => {

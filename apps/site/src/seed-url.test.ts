@@ -9,9 +9,9 @@ describe('seed URL state', () => {
   });
 
   it('round-trips a theme and mode through the URL', () => {
-    const seed = REFERENCE_THEMES[2]!;
+    const seed = REFERENCE_THEMES.find((t) => t.name === 'bloom')!;
     const url = writeStateToUrl('https://machine-ui.dev/play?ref=x#top', { seed, mode: 'dark' });
-    expect(url).toBe(`https://machine-ui.dev/play?ref=x&theme=imeadow_h155_c55_nw_r75_d80_s85_thumanist_x1200_me&mode=dark#top`);
+    expect(url).toBe(`https://machine-ui.dev/play?ref=x&theme=ibloom_h350_c75_nw_r85_d80_s85_thumanist_x1200_me&mode=dark#top`);
     expect(readStateFromSearch(new URL(url).search)).toEqual({ seed, mode: 'dark' });
   });
 });

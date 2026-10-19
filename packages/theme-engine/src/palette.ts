@@ -15,10 +15,22 @@ const NEUTRALS: Record<NeutralTemperature, (seedHue: number) => { h: number; c: 
 };
 
 const DESTRUCTIVE_HUE = 27;
+const SUCCESS_HUE = 150;
+const WARNING_HUE = 75;
+/** Hue offsets for chart series, spread so neighbours stay distinguishable. */
+const CHART_OFFSETS = [0, 70, 150, 210, 290] as const;
 const MAX_SOLVE_PASSES = 4;
 
 const at = (scale: Scale, step: keyof Scale) => scale[step];
 const tone = (h: number, c: number, l: number): Oklch => toGamut({ l, c, h });
+
+/** Below this seed chroma the theme reads as neutral, so primary becomes ink rather than a grey. */
+const INK_THRESHOLD = 0.2;
+
+/** The most colourful of the mid steps, so yellows and ambers stay bright instead of turning olive. */
+function vividStep(scale: Scale): Oklch {
+  return [at(scale, 600), at(scale, 500), at(scale, 400)].reduce((best, c) => (c.c > best.c + 0.005 ? c : best));
+}
 
 /** Near-white or near-black, whichever reads better on `bg`. */
 function onColor(bg: Oklch): Oklch {
@@ -34,12 +46,23 @@ function startingPalette(seed: ThemeSeed, mode: Mode): Palette {
   const p = generateScale(hue, seed.chroma);
   const a = generateScale((hue + 30) % 360, seed.chroma * 0.6);
   const d = generateScale(DESTRUCTIVE_HUE, 0.9);
+  const ok = generateScale(SUCCESS_HUE, 0.7);
+  const warn = generateScale(WARNING_HUE, 0.9);
+  const charts = CHART_OFFSETS.map((offset) => generateScale((hue + offset) % 360, Math.max(seed.chroma, 0.55)));
+  const chart = (step: keyof Scale) =>
+    Object.fromEntries(charts.map((scale, i) => [`chart-${i + 1}`, at(scale, step)])) as Record<
+      'chart-1' | 'chart-2' | 'chart-3' | 'chart-4' | 'chart-5',
+      Oklch
+    >;
 
   if (mode === 'light') {
-    const background = tone(neutral.h, neutral.c * 0.5, 0.975);
-    const card = tone(neutral.h, neutral.c * 0.3, 0.995);
-    const primary = at(p, 600);
+    // Near-white surfaces whatever the temperature: warmth lives in the greys, not the page.
+    const background = tone(neutral.h, Math.min(neutral.c * 0.35, 0.005), 0.985);
+    const card = tone(neutral.h, Math.min(neutral.c * 0.15, 0.003), 0.998);
+    const primary = seed.chroma < INK_THRESHOLD ? at(p, 900) : vividStep(p);
     const destructive = at(d, 600);
+    const success = at(ok, 600);
+    const warning = at(warn, 400);
     return {
       background,
       foreground: at(n, 950),
@@ -49,6 +72,7 @@ function startingPalette(seed: ThemeSeed, mode: Mode): Palette {
       'popover-foreground': at(n, 950),
       primary,
       'primary-foreground': onColor(primary),
+      link: at(p, 600),
       secondary: at(n, 100),
       'secondary-foreground': at(n, 900),
       muted: at(n, 100),
@@ -57,16 +81,25 @@ function startingPalette(seed: ThemeSeed, mode: Mode): Palette {
       'accent-foreground': at(a, 900),
       destructive,
       'destructive-foreground': onColor(destructive),
+      success,
+      'success-foreground': onColor(success),
+      warning,
+      'warning-foreground': onColor(warning),
       border: at(n, 200),
       input: at(n, 500),
       ring: at(p, 500),
+      ...chart(500),
+      sidebar: tone(neutral.h, Math.min(neutral.c * 0.6, 0.008), 0.97),
+      'sidebar-foreground': at(n, 900),
     };
   }
 
   const background = tone(neutral.h, neutral.c, 0.17);
   const card = tone(neutral.h, neutral.c, 0.21);
-  const primary = at(p, 400);
+  const primary = seed.chroma < INK_THRESHOLD ? at(p, 100) : at(p, 400);
   const destructive = at(d, 400);
+  const success = at(ok, 400);
+  const warning = at(warn, 300);
   return {
     background,
     foreground: at(n, 50),
@@ -76,6 +109,7 @@ function startingPalette(seed: ThemeSeed, mode: Mode): Palette {
     'popover-foreground': at(n, 50),
     primary,
     'primary-foreground': onColor(primary),
+    link: at(p, 300),
     secondary: at(n, 800),
     'secondary-foreground': at(n, 100),
     muted: at(n, 800),
@@ -84,9 +118,16 @@ function startingPalette(seed: ThemeSeed, mode: Mode): Palette {
     'accent-foreground': at(a, 100),
     destructive,
     'destructive-foreground': onColor(destructive),
+    success,
+    'success-foreground': onColor(success),
+    warning,
+    'warning-foreground': onColor(warning),
     border: at(n, 800),
     input: at(n, 600),
     ring: at(p, 400),
+    ...chart(400),
+    sidebar: tone(neutral.h, neutral.c, 0.14),
+    'sidebar-foreground': at(n, 100),
   };
 }
 

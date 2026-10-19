@@ -29,7 +29,7 @@ const meta = {
         </DialogHeader>
         <div className="grid gap-2">
           <Label htmlFor="theme-name">Name</Label>
-          <Input id="theme-name" defaultValue="ledger" />
+          <Input id="theme-name" defaultValue="graphite" />
         </div>
         <DialogFooter>
           <DialogClose asChild>

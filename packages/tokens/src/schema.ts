@@ -10,6 +10,7 @@ export const COLOR_ROLES = [
   'popover-foreground',
   'primary',
   'primary-foreground',
+  'link',
   'secondary',
   'secondary-foreground',
   'muted',
@@ -18,9 +19,20 @@ export const COLOR_ROLES = [
   'accent-foreground',
   'destructive',
   'destructive-foreground',
+  'success',
+  'success-foreground',
+  'warning',
+  'warning-foreground',
   'border',
   'input',
   'ring',
+  'chart-1',
+  'chart-2',
+  'chart-3',
+  'chart-4',
+  'chart-5',
+  'sidebar',
+  'sidebar-foreground',
 ] as const;
 
 export type ColorRole = (typeof COLOR_ROLES)[number];
