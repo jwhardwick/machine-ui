@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-glyph",
+  "type": "registry:ui",
+  "title": "Agent Glyph",
+  "description": "The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.",
+  "dependencies": [
+    "lucide-react@1.59.0"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/agent-glyph.tsx",
+      "type": "registry:ui",
+      "content": "import { SparklesIcon } from 'lucide-react';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\n/** The agent's mark, used as its avatar beside messages and activity. */\nexport function AgentGlyph({ className, label = 'Assistant', ...props }: ComponentProps<'span'> & { label?: string }) {\n  return (\n    <span\n      data-slot=\"agent-glyph\"\n      role=\"img\"\n      aria-label={label}\n      className={cn('inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground [&_svg]:size-1/2', className)}\n      {...props}\n    >\n      <SparklesIcon aria-hidden />\n    </span>\n  );\n}\n"
+    }
+  ]
+}

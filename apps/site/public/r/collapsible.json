@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "A single trigger that shows or hides the content beneath it.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/collapsible.tsx",
+      "type": "registry:ui",
+      "content": "import { Collapsible as CollapsiblePrimitive } from 'radix-ui';\n\nexport const Collapsible = CollapsiblePrimitive.Root;\nexport const CollapsibleTrigger = CollapsiblePrimitive.Trigger;\nexport const CollapsibleContent = CollapsiblePrimitive.Content;\n"
+    }
+  ]
+}

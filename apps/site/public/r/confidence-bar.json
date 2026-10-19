@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confidence-bar",
+  "type": "registry:ui",
+  "title": "Confidence Bar",
+  "description": "How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.",
+  "dependencies": [],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/confidence-bar.tsx",
+      "type": "registry:ui",
+      "content": "import type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\nfunction level(value: number) {\n  if (value > 80) return { word: 'High', tone: 'bg-success' };\n  if (value > 50) return { word: 'Medium', tone: 'bg-warning' };\n  return { word: 'Low', tone: 'bg-destructive' };\n}\n\n/** How sure the agent is, as a bar and a word, so colour is never the only signal. */\nexport function ConfidenceBar({ value, label = 'Confidence', className, ...props }: ComponentProps<'div'> & { value: number; label?: string }) {\n  const { word, tone } = level(value);\n  return (\n    <div data-slot=\"confidence-bar\" className={cn('grid w-full gap-1.5', className)} {...props}>\n      <div className=\"flex items-baseline justify-between text-xs\">\n        <span className=\"text-muted-foreground\">{label}</span>\n        <span className=\"font-medium tabular-nums\">\n          {word} · {value}%\n        </span>\n      </div>\n      <div\n        role=\"meter\"\n        aria-label={label}\n        aria-valuemin={0}\n        aria-valuemax={100}\n        aria-valuenow={value}\n        aria-valuetext={`${word}, ${value}%`}\n        className=\"h-1.5 overflow-hidden rounded-full bg-muted\"\n      >\n        <div className={cn('h-full rounded-full transition-[width] duration-(--motion-slow) ease-standard', tone)} style={{ width: `${value}%` }} />\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "type": "registry:ui",
+  "title": "Sonner",
+  "description": "The Sonner component from machine-ui, styled with theme tokens only.",
+  "dependencies": [
+    "sonner@2.0.8"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/sonner.tsx",
+      "type": "registry:ui",
+      "content": "import type { CSSProperties } from 'react';\nimport { Toaster as Sonner, toast, type ToasterProps } from 'sonner';\n\n/** Toast queue. Mount once near the root; call `toast()` from anywhere. Colours come from the theme. */\nexport function Toaster(props: ToasterProps) {\n  return (\n    <Sonner\n      className=\"toaster group\"\n      style={\n        {\n          '--normal-bg': 'var(--popover)',\n          '--normal-text': 'var(--popover-foreground)',\n          '--normal-border': 'var(--border)',\n          '--success-bg': 'var(--popover)',\n          '--success-text': 'var(--popover-foreground)',\n          '--success-border': 'var(--success)',\n          '--error-bg': 'var(--popover)',\n          '--error-text': 'var(--popover-foreground)',\n          '--error-border': 'var(--destructive)',\n          '--border-radius': 'var(--corner-md)',\n          fontFamily: 'var(--typeface-text)',\n        } as CSSProperties\n      }\n      {...props}\n    />\n  );\n}\n\nexport { toast };\n"
+    }
+  ]
+}

@@ -5,3 +5,6 @@ packages:
   - agent
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - shadcn@4.22.1
+  - postcss@8.5.31

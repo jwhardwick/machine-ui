@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "type": "registry:ui",
+  "title": "Alert Dialog",
+  "description": "A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/button",
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/alert-dialog.tsx",
+      "type": "registry:ui",
+      "content": "import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\nimport { buttonVariants } from '@/components/ui/button';\n\nexport const AlertDialog = AlertDialogPrimitive.Root;\nexport const AlertDialogTrigger = AlertDialogPrimitive.Trigger;\n\n/** A modal that interrupts to confirm a consequential action. Clicking outside does not dismiss it. */\nexport function AlertDialogContent({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Content>) {\n  return (\n    <AlertDialogPrimitive.Portal>\n      <AlertDialogPrimitive.Overlay\n        data-slot=\"alert-dialog-overlay\"\n        className=\"fixed inset-0 z-50 bg-background/80 backdrop-blur-sm data-[state=open]:animate-overlay\"\n      />\n      <AlertDialogPrimitive.Content\n        data-slot=\"alert-dialog-content\"\n        className={cn(\n          'fixed left-1/2 top-1/2 z-50 grid w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 gap-4 rounded-lg border bg-popover p-6 text-popover-foreground shadow-lg data-[state=open]:animate-enter focus-visible:outline-none',\n          className,\n        )}\n        {...props}\n      />\n    </AlertDialogPrimitive.Portal>\n  );\n}\n\nexport function AlertDialogHeader({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"alert-dialog-header\" className={cn('flex flex-col gap-2', className)} {...props} />;\n}\n\nexport function AlertDialogFooter({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"alert-dialog-footer\" className={cn('flex flex-col-reverse gap-2 sm:flex-row sm:justify-end', className)} {...props} />;\n}\n\nexport function AlertDialogTitle({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Title>) {\n  return <AlertDialogPrimitive.Title data-slot=\"alert-dialog-title\" className={cn('font-display text-lg font-semibold leading-tight', className)} {...props} />;\n}\n\nexport function AlertDialogDescription({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Description>) {\n  return <AlertDialogPrimitive.Description data-slot=\"alert-dialog-description\" className={cn('text-sm text-muted-foreground', className)} {...props} />;\n}\n\nexport function AlertDialogAction({\n  className,\n  variant = 'default',\n  ...props\n}: ComponentProps<typeof AlertDialogPrimitive.Action> & { variant?: 'default' | 'destructive' }) {\n  return <AlertDialogPrimitive.Action className={cn(buttonVariants({ variant }), className)} {...props} />;\n}\n\nexport function AlertDialogCancel({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Cancel>) {\n  return <AlertDialogPrimitive.Cancel className={cn(buttonVariants({ variant: 'outline' }), className)} {...props} />;\n}\n"
+    }
+  ]
+}

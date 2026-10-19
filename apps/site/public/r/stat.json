@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat",
+  "type": "registry:ui",
+  "title": "Stat",
+  "description": "A labelled number with an optional change, marked up or down by icon and text, not colour alone.",
+  "dependencies": [
+    "lucide-react@1.59.0"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/stat.tsx",
+      "type": "registry:ui",
+      "content": "import { ArrowDownRightIcon, ArrowUpRightIcon } from 'lucide-react';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\n/** A labelled number with an optional change, coloured and arrowed by direction. */\nexport function Stat({\n  label,\n  value,\n  change,\n  trend,\n  className,\n  ...props\n}: ComponentProps<'div'> & { label: string; value: string; change?: string; trend?: 'up' | 'down' }) {\n  return (\n    <div data-slot=\"stat\" className={cn('@container grid gap-1', className)} {...props}>\n      <div className=\"text-sm text-muted-foreground\">{label}</div>\n      {/* Sized by the card, not the viewport: display faces range from narrow to very wide. */}\n      <div data-slot=\"stat-value\" className=\"font-display text-xl font-semibold tabular-nums leading-none @3xs:text-2xl @2xs:text-3xl\">\n        {value}\n      </div>\n      {change && (\n        <div className=\"flex items-center gap-1 text-sm\">\n          {trend === 'down' ? (\n            <ArrowDownRightIcon aria-hidden className=\"size-4 text-destructive\" />\n          ) : (\n            <ArrowUpRightIcon aria-hidden className=\"size-4 text-success\" />\n          )}\n          <span className=\"tabular-nums text-foreground\">{change}</span>\n          <span className=\"sr-only\">{trend === 'down' ? 'decrease' : 'increase'}</span>\n        </div>\n      )}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

@@ -19,7 +19,9 @@
     "api:report": "node tooling/release/src/cli/report.ts",
     "release:bump": "node tooling/release/src/cli/bump.ts",
     "size": "size-limit",
-    "test:visual": "pnpm --filter @machine-ui/storybook test:visual"
+    "test:visual": "pnpm --filter @machine-ui/storybook test:visual",
+    "registry:build": "node tooling/registry/src/cli.ts",
+    "test:registry-install": "node tooling/registry/src/install-smoke.ts"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",

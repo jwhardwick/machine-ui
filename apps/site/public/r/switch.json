@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Turns a setting on or off immediately, without a save step.",
+  "dependencies": [
+    "radix-ui@1.8.1"
+  ],
+  "registryDependencies": [
+    "@machine-ui/machine-ui-base",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/machine-ui/ui/switch.tsx",
+      "type": "registry:ui",
+      "content": "import { Switch as SwitchPrimitive } from 'radix-ui';\nimport type { ComponentProps } from 'react';\nimport { cn } from '@/lib/utils';\n\n/** Corners follow the theme radius, so sharp themes get a square switch rather than a pill. */\nexport function Switch({ className, ...props }: ComponentProps<typeof SwitchPrimitive.Root>) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      className={cn(\n        'peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-lg border-2 border-transparent',\n        'transition-colors duration-(--motion-fast) ease-standard',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',\n        'data-[state=checked]:bg-primary data-[state=unchecked]:bg-input',\n        'disabled:cursor-not-allowed disabled:opacity-50',\n        className,\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"switch-thumb\"\n        className={cn(\n          'pointer-events-none block size-4 rounded-md bg-background shadow-sm data-[state=checked]:bg-primary-foreground',\n          'transition-transform duration-(--motion-normal) ease-emphasized',\n          'data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0',\n        )}\n      />\n    </SwitchPrimitive.Root>\n  );\n}\n"
+    }
+  ]
+}
