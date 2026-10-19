@@ -23,9 +23,14 @@ export default tseslint.config(
   },
   {
     // Tokens only in components. Never disable this rule; fix the styling instead.
-    files: ['packages/ui/src/**/*.{ts,tsx}'],
+    files: ['packages/ui/src/**/*.{ts,tsx}', 'packages/examples/src/**/*.{ts,tsx}'],
     plugins: { 'machine-ui': machineUi },
     linterOptions: { noInlineConfig: true },
     rules: { 'machine-ui/tokens-only': 'error' },
+  },
+  {
+    // tanstack/react-table returns non-memoisable functions by design; the compiler just skips this file.
+    files: ['packages/ui/src/components/data-table.tsx'],
+    rules: { 'react-hooks/incompatible-library': 'off' },
   },
 );
