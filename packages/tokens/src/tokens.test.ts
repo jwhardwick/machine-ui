@@ -92,9 +92,24 @@ describe('schema', () => {
 });
 
 describe('reference themes', () => {
-  it('ships six uniquely named themes and defaults to graphite', () => {
-    expect(REFERENCE_THEMES.map((t) => t.name)).toEqual(['graphite', 'harbor', 'folio', 'console', 'bloom', 'forge']);
+  it('ships six uniquely named themes and defaults to console', () => {
+    expect(REFERENCE_THEMES.map((t) => t.name)).toEqual(['console', 'graphite', 'harbor', 'folio', 'bloom', 'forge']);
     expect(DEFAULT_SEED).toBe(REFERENCE_THEMES[0]);
+  });
+
+  it('uses the maintainer-tuned console seed as the default', () => {
+    expect(DEFAULT_SEED).toEqual({
+      name: 'console',
+      hue: 101,
+      chroma: 0.31,
+      neutral: 'warm',
+      radius: 0.45,
+      density: 0.39,
+      separation: 0.3,
+      typePair: 'technical',
+      typeRatio: 1.125,
+      motion: 'subtle',
+    });
   });
 
   it('gives every theme its own type pair', () => {
