@@ -18,9 +18,12 @@ export const ReferenceThemes: Story = {
     const cells = [...canvasElement.querySelectorAll<HTMLElement>('[data-theme-cell]')];
     await expect(cells).toHaveLength(REFERENCE_THEMES.length * 2);
     await waitFor(() => {
-      const primaries = cells.map((cell) => getComputedStyle(cell).getPropertyValue('--primary').trim());
-      expect(primaries.every((value) => value.startsWith('oklch'))).toBe(true);
-      expect(new Set(primaries).size).toBe(cells.length);
+      const signatures = cells.map((cell) => {
+        const style = getComputedStyle(cell);
+        return ['--background', '--primary', '--radius', '--typeface-display'].map((v) => style.getPropertyValue(v).trim()).join('|');
+      });
+      expect(signatures.every((value) => value.startsWith('oklch'))).toBe(true);
+      expect(new Set(signatures).size).toBe(cells.length);
     });
     for (const cell of cells) await expect(cell).toHaveAttribute('data-mode');
   },

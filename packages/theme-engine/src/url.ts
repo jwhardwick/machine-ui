@@ -8,7 +8,7 @@ import {
 } from '@machine-ui/tokens';
 import { normalizeSeed } from './generate.ts';
 
-// Compact seed encoding: `iledger_h28_c35_nw_r15_d70_s10_teditorial_x1250_ms`.
+// Compact seed encoding: `igraphite_h255_c12_nc_r45_d45_s30_tgeist_x1200_ms`.
 // Only [a-z0-9_-], which is URL-safe and passes Storybook's URL globals validation.
 // One letter per field; 0–1 values are stored as percentages, the ratio in thousandths.
 

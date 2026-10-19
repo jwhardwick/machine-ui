@@ -57,6 +57,37 @@ describe('buildPalette', () => {
     }
   });
 
+  it('keeps light surfaces near-white for every neutral temperature (no cream)', () => {
+    for (const neutral of NEUTRAL_TEMPERATURES) {
+      const p = buildPalette({ ...DEFAULT_SEED, neutral }, 'light');
+      for (const role of ['background', 'card'] as const) {
+        expect(p[role].l).toBeGreaterThanOrEqual(0.98);
+        expect(p[role].c).toBeLessThanOrEqual(0.006);
+      }
+    }
+  });
+
+  it('solves status and chart colours', () => {
+    for (const fg of ['success', 'warning', 'chart-1', 'chart-3', 'chart-5'] as const) {
+      expect(CONTRAST_PAIRS.some((p) => p.fg === fg && p.bg === 'background')).toBe(true);
+    }
+    expect(CONTRAST_PAIRS).toContainEqual({ fg: 'warning-foreground', bg: 'warning', target: 4.5, kind: 'text' });
+    expect(CONTRAST_PAIRS).toContainEqual({ fg: 'sidebar-foreground', bg: 'sidebar', target: 4.5, kind: 'text' });
+  });
+
+  it('gives near-neutral seeds an ink primary in both modes', () => {
+    const seed = { ...DEFAULT_SEED, chroma: 0.1 };
+    expect(buildPalette(seed, 'light').primary.l).toBeLessThan(0.3);
+    expect(buildPalette(seed, 'dark').primary.l).toBeGreaterThan(0.85);
+  });
+
+  it('keeps vivid warm primaries bright instead of darkening them for text use', () => {
+    const amber = buildPalette({ ...DEFAULT_SEED, hue: 60, chroma: 0.95 }, 'light');
+    expect(amber.primary.l).toBeGreaterThan(0.6);
+    expect(CONTRAST_PAIRS.some((p) => p.fg === 'primary' && p.bg === 'background')).toBe(false);
+    expect(CONTRAST_PAIRS).toContainEqual({ fg: 'link', bg: 'background', target: 4.5, kind: 'text' });
+  });
+
   it('makes dark mode darker than light mode', () => {
     expect(buildPalette(DEFAULT_SEED, 'light').background.l).toBeGreaterThan(
       buildPalette(DEFAULT_SEED, 'dark').background.l,

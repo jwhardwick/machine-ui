@@ -1,6 +1,6 @@
 export type NeutralTemperature = 'cool' | 'neutral' | 'warm';
 export type MotionLevel = 'none' | 'subtle' | 'expressive';
-export type TypePairId = 'editorial' | 'grotesk' | 'humanist' | 'technical' | 'brutalist' | 'classic';
+export type TypePairId = 'geist' | 'civic' | 'editorial' | 'technical' | 'humanist' | 'heavy';
 
 /** The small set of choices a whole theme expands from. */
 export interface ThemeSeed {

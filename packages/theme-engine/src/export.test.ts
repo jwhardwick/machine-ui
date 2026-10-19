@@ -5,8 +5,10 @@ import { describe, expect, it } from 'vitest';
 import { exportTheme } from './export.ts';
 import { serializeSeed } from './url.ts';
 
-const concrete = REFERENCE_THEMES.find((t) => t.name === 'concrete')!;
-const meadow = REFERENCE_THEMES.find((t) => t.name === 'meadow')!;
+const forge = REFERENCE_THEMES.find((t) => t.name === 'forge')!;
+/** A deliberately flat, still variant: sharp corners, borders, no motion. */
+const concrete = { ...forge, name: 'concrete', radius: 0, separation: 0, motion: 'none' as const };
+const meadow = REFERENCE_THEMES.find((t) => t.name === 'bloom')!;
 
 describe('exportTheme', () => {
   it('emits CSS, JSON tokens and an agent brief', () => {
