@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'native-select',
   name: 'Native Select',
   category: 'forms',
-  description: 'The browser’s own select, styled to match the theme. Best on mobile and for long option lists.',
+  description: 'The browser’s own select, styled to match the theme. Works best on mobile and for long lists of options.',
   examples: [
     {
       name: 'Default',

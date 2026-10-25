@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'prompt-input',
   name: 'Prompt Input',
   category: 'ai',
-  description: 'The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.',
+  description: 'The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.',
   examples: [
     {
       name: 'With suggestions',

@@ -871,7 +871,7 @@
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "description": "A stack of headings that each reveal a section. One or several sections can be open.",
+      "description": "A stack of headings that each open a section. You can allow one section or several to be open at once.",
       "dependencies": [
         "lucide-react@1.59.0",
         "radix-ui@1.8.1"
@@ -892,7 +892,7 @@
       "name": "agent-glyph",
       "type": "registry:ui",
       "title": "Agent Glyph",
-      "description": "The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.",
+      "description": "The agent’s icon, used as its avatar next to messages and activity. It uses the theme’s primary colour.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -911,7 +911,7 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
-      "description": "A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.",
+      "description": "A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key.",
       "dependencies": [
         "radix-ui@1.8.1"
       ],
@@ -931,7 +931,7 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "description": "An inline banner with a title and a description, in default, success, warning and destructive variants.",
+      "description": "An inline banner with a title and a description, in default, success, warning, and destructive variants.",
       "dependencies": [
         "class-variance-authority@0.7.1"
       ],
@@ -950,7 +950,7 @@
       "name": "approval-card",
       "type": "registry:ui",
       "title": "Approval Card",
-      "description": "The agent asks before it acts: a question, a few options and Confirm or Skip.",
+      "description": "Lets the agent check with you before it acts, with a question, a few options, and Confirm and Skip buttons.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -1009,7 +1009,7 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "A small label for state or category, in primary, secondary, outline and destructive styles.",
+      "description": "A small label for state or category, in primary, secondary, outline, and destructive styles.",
       "dependencies": [
         "class-variance-authority@0.7.1"
       ],
@@ -1065,7 +1065,7 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "Triggers an action. Six variants and four sizes, with icon, loading and disabled states.",
+      "description": "Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states.",
       "dependencies": [
         "class-variance-authority@0.7.1",
         "radix-ui@1.8.1"
@@ -1145,7 +1145,7 @@
       "name": "chart",
       "type": "registry:ui",
       "title": "Chart",
-      "description": "Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.",
+      "description": "Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens.",
       "dependencies": [
         "recharts@2.15.4"
       ],
@@ -1164,7 +1164,7 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "description": "Turns an option on or off. Supports an indeterminate state for \"some selected\".",
+      "description": "Turns an option on or off. It also has an indeterminate state for when only some items are selected.",
       "dependencies": [
         "lucide-react@1.59.0",
         "radix-ui@1.8.1"
@@ -1243,7 +1243,7 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "description": "A select with a filter field: type to narrow the options, then pick one.",
+      "description": "A select with a search field. Type to narrow the options, then pick one.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -1287,7 +1287,7 @@
       "name": "confidence-bar",
       "type": "registry:ui",
       "title": "Confidence Bar",
-      "description": "How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.",
+      "description": "Shows how sure the agent is with a bar and a word (high, medium, or low), so colour isn’t the only cue.",
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
@@ -1325,7 +1325,7 @@
       "name": "copy-input",
       "type": "registry:ui",
       "title": "Copy Input",
-      "description": "A read-only field with a copy button, for API keys, webhook URLs and share links.",
+      "description": "A read-only field with a copy button, for API keys, webhook URLs, and share links.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -1344,7 +1344,7 @@
       "name": "data-table",
       "type": "registry:ui",
       "title": "Data Table",
-      "description": "A table with sorting, filtering, row selection and pagination, built on TanStack Table.",
+      "description": "A table with sorting, filtering, row selection, and pagination, built on TanStack Table.",
       "dependencies": [
         "@tanstack/react-table@8.21.3",
         "lucide-react@1.59.0"
@@ -1430,7 +1430,7 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "title": "Dropdown Menu",
-      "description": "A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.",
+      "description": "A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style.",
       "dependencies": [
         "lucide-react@1.59.0",
         "radix-ui@1.8.1"
@@ -1451,7 +1451,7 @@
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
-      "description": "A placeholder for a view with nothing in it yet: what it is for, and the one action to start.",
+      "description": "A placeholder for an empty view. It explains what goes there and offers one action to get started.",
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
@@ -1468,7 +1468,7 @@
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "description": "Lays out a label, control, help text and error for one form field, so every form reads the same way.",
+      "description": "Lays out the label, control, help text, and error for one form field, so your forms look consistent.",
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/label",
@@ -1486,7 +1486,7 @@
       "name": "hover-card",
       "type": "registry:ui",
       "title": "Hover Card",
-      "description": "A floating preview shown while the pointer rests on, or focus is on, its trigger.",
+      "description": "A floating preview that shows while the pointer is over its trigger, or while the trigger has focus.",
       "dependencies": [
         "radix-ui@1.8.1"
       ],
@@ -1525,7 +1525,7 @@
       "name": "input-otp",
       "type": "registry:ui",
       "title": "Input Otp",
-      "description": "Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.",
+      "description": "One box per character for one-time codes. Focus moves to the next box as you type, and you can paste the whole code.",
       "dependencies": [
         "input-otp@1.5.0",
         "lucide-react@1.59.0"
@@ -1563,7 +1563,7 @@
       "name": "item",
       "type": "registry:ui",
       "title": "Item",
-      "description": "A row with media, a title, a description and actions, for lists, settings and search results.",
+      "description": "A row with media, a title, a description and actions, for lists, settings, and search results.",
       "dependencies": [
         "class-variance-authority@0.7.1",
         "radix-ui@1.8.1"
@@ -1620,7 +1620,7 @@
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
-      "description": "A row of menus like a desktop app bar. Open one, then arrow or hover across the others.",
+      "description": "A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others.",
       "dependencies": [
         "lucide-react@1.59.0",
         "radix-ui@1.8.1"
@@ -1641,7 +1641,7 @@
       "name": "message",
       "type": "registry:ui",
       "title": "Message",
-      "description": "One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.",
+      "description": "One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.",
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
@@ -1658,7 +1658,7 @@
       "name": "native-select",
       "type": "registry:ui",
       "title": "Native Select",
-      "description": "The browser’s own select, styled to match the theme. Best on mobile and for long option lists.",
+      "description": "The browser’s own select, styled to match the theme. Works best on mobile and for long lists of options.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -1720,7 +1720,7 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "description": "A floating panel anchored to a trigger, for short forms, settings and details.",
+      "description": "A floating panel anchored to a trigger, for short forms, settings, and details.",
       "dependencies": [
         "radix-ui@1.8.1"
       ],
@@ -1759,7 +1759,7 @@
       "name": "prompt-input",
       "type": "registry:ui",
       "title": "Prompt Input",
-      "description": "The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.",
+      "description": "The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -1799,7 +1799,7 @@
       "name": "resizable",
       "type": "registry:ui",
       "title": "Resizable",
-      "description": "Panels the user can resize by dragging, or with arrow keys on the focused handle.",
+      "description": "Panels you can resize by dragging, or with the arrow keys when a handle has focus.",
       "dependencies": [
         "lucide-react@1.59.0",
         "react-resizable-panels@2.1.9"
@@ -1900,7 +1900,7 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "description": "A panel that slides in from any edge over a scrim. Good for edit forms and detail views.",
+      "description": "A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views.",
       "dependencies": [
         "lucide-react@1.59.0",
         "radix-ui@1.8.1"
@@ -1921,7 +1921,7 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
-      "description": "App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.",
+      "description": "App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it.",
       "dependencies": [
         "class-variance-authority@0.7.1",
         "lucide-react@1.59.0",
@@ -1964,7 +1964,7 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "Picks a number, or a range, by dragging. Arrow keys step through values.",
+      "description": "Picks a number or a range by dragging. The arrow keys move it one step at a time.",
       "dependencies": [
         "radix-ui@1.8.1"
       ],
@@ -2021,7 +2021,7 @@
       "name": "stat",
       "type": "registry:ui",
       "title": "Stat",
-      "description": "A labelled number with an optional change, marked up or down by icon and text, not colour alone.",
+      "description": "A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -2057,7 +2057,7 @@
       "name": "stepper",
       "type": "registry:ui",
       "title": "Stepper",
-      "description": "Progress through a fixed sequence of steps, with done, current and upcoming states.",
+      "description": "Progress through a fixed sequence of steps, with done, current, and upcoming states.",
       "dependencies": [
         "lucide-react@1.59.0"
       ],
@@ -2076,7 +2076,7 @@
       "name": "streaming-text",
       "type": "registry:ui",
       "title": "Streaming Text",
-      "description": "Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.",
+      "description": "Types out a response with a cursor, then hides the cursor. If reduced motion is on, it shows the whole text at once.",
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",
@@ -2250,7 +2250,7 @@
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "description": "A short label shown on hover or focus. Never put essential information only in a tooltip.",
+      "description": "A short label shown on hover or focus. Don’t put anything essential only in a tooltip.",
       "dependencies": [
         "radix-ui@1.8.1"
       ],
@@ -2269,7 +2269,7 @@
       "name": "typography",
       "type": "registry:ui",
       "title": "Typography",
-      "description": "Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.",
+      "description": "Text styles from the theme’s type scale. Headings use the display font and body text uses the text font.",
       "dependencies": [],
       "registryDependencies": [
         "@machine-ui/machine-ui-base",

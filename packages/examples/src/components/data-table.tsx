@@ -34,7 +34,7 @@ export default defineDoc({
   slug: 'data-table',
   name: 'Data Table',
   category: 'data',
-  description: 'A table with sorting, filtering, row selection and pagination, built on TanStack Table.',
+  description: 'A table with sorting, filtering, row selection, and pagination, built on TanStack Table.',
   examples: [
     {
       name: 'Members',

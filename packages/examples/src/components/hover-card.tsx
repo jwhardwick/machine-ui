@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'hover-card',
   name: 'Hover Card',
   category: 'overlays',
-  description: 'A floating preview shown while the pointer rests on, or focus is on, its trigger.',
+  description: 'A floating preview that shows while the pointer is over its trigger, or while the trigger has focus.',
   examples: [
     {
       name: 'Profile preview',

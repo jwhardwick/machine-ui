@@ -45,6 +45,6 @@ export default defineDoc({
   slug: 'command-palette',
   name: 'Command Palette',
   category: 'overlays',
-  description: 'Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.',
+  description: 'Command in a modal that opens from a button or a keyboard shortcut. Type to filter, use the arrow keys to move, Enter to run, and Escape to close.',
   examples: [{ name: 'Default', render: () => <Palette_ /> }],
 });

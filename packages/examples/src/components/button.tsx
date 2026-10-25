@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'button',
   name: 'Button',
   category: 'forms',
-  description: 'Triggers an action. Six variants and four sizes, with icon, loading and disabled states.',
+  description: 'Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states.',
   examples: [
     { name: 'Default', render: () => <Button>Send reply</Button> },
     {

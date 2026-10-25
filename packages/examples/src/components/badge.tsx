@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'badge',
   name: 'Badge',
   category: 'data',
-  description: 'A small label for state or category, in primary, secondary, outline and destructive styles.',
+  description: 'A small label for state or category, in primary, secondary, outline, and destructive styles.',
   examples: [
     {
       name: 'Variants',

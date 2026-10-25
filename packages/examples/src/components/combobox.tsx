@@ -13,7 +13,7 @@ export default defineDoc({
   slug: 'combobox',
   name: 'Combobox',
   category: 'forms',
-  description: 'A select with a filter field: type to narrow the options, then pick one.',
+  description: 'A select with a search field. Type to narrow the options, then pick one.',
   examples: [
     {
       name: 'Default',

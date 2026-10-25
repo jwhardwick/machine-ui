@@ -36,10 +36,10 @@ export function SearchCommand({ open, onOpenChange }: { open: boolean; onOpenCha
   };
 
   return (
-    <CommandDialog open={open} onOpenChange={onOpenChange} title="Search" description="Search pages, components, screens and themes.">
-      <CommandInput placeholder="Search components, screens, themes…" />
+    <CommandDialog open={open} onOpenChange={onOpenChange} title="Search" description="Search pages, components, screens, and themes.">
+      <CommandInput placeholder="Search components, screens, and themes…" />
       <CommandList>
-        <CommandEmpty>Nothing matches. Try a component name like “select”.</CommandEmpty>
+        <CommandEmpty>No results. Try a component name, like “select”.</CommandEmpty>
         <CommandGroup heading="Pages">
           {PAGES.map(([label, to]) => (
             <CommandItem key={to} onSelect={() => go(to)}>

@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'copy-input',
   name: 'Copy Input',
   category: 'forms',
-  description: 'A read-only field with a copy button, for API keys, webhook URLs and share links.',
+  description: 'A read-only field with a copy button, for API keys, webhook URLs, and share links.',
   examples: [
     {
       name: 'Default',

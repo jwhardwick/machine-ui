@@ -3,7 +3,7 @@
   "name": "empty",
   "type": "registry:ui",
   "title": "Empty",
-  "description": "A placeholder for a view with nothing in it yet: what it is for, and the one action to start.",
+  "description": "A placeholder for an empty view. It explains what goes there and offers one action to get started.",
   "dependencies": [],
   "registryDependencies": [
     "@machine-ui/machine-ui-base",

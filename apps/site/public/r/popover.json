@@ -3,7 +3,7 @@
   "name": "popover",
   "type": "registry:ui",
   "title": "Popover",
-  "description": "A floating panel anchored to a trigger, for short forms, settings and details.",
+  "description": "A floating panel anchored to a trigger, for short forms, settings, and details.",
   "dependencies": [
     "radix-ui@1.8.1"
   ],

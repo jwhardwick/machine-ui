@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'checkbox',
   name: 'Checkbox',
   category: 'forms',
-  description: 'Turns an option on or off. Supports an indeterminate state for "some selected".',
+  description: 'Turns an option on or off. It also has an indeterminate state for when only some items are selected.',
   examples: [
     {
       name: 'States',

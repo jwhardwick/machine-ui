@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'stepper',
   name: 'Stepper',
   category: 'navigation',
-  description: 'Progress through a fixed sequence of steps, with done, current and upcoming states.',
+  description: 'Progress through a fixed sequence of steps, with done, current, and upcoming states.',
   examples: [
     {
       name: 'Onboarding',

@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'approval-card',
   name: 'Approval Card',
   category: 'ai',
-  description: 'The agent asks before it acts: a question, a few options and Confirm or Skip.',
+  description: 'Lets the agent check with you before it acts, with a question, a few options, and Confirm and Skip buttons.',
   examples: [
     {
       name: 'Default',

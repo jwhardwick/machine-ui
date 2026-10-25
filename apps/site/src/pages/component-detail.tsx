@@ -71,11 +71,11 @@ export function ComponentDetailPage() {
         </h2>
         <CopyInput aria-label="Install command" value={installCommand(doc.slug)} />
         <p className="text-sm text-muted-foreground">
-          Adds the source to your project with the shadcn CLI. First time? Follow{' '}
+          This copies the component’s source into your project. If you haven’t set up machine-ui yet, follow{' '}
           <Link to="/get-started" className="text-link underline underline-offset-4">
             Get started
           </Link>{' '}
-          to add the registry and a theme.
+          first.
         </p>
       </section>
 

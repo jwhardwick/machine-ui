@@ -3,7 +3,7 @@
   "name": "tooltip",
   "type": "registry:ui",
   "title": "Tooltip",
-  "description": "A short label shown on hover or focus. Never put essential information only in a tooltip.",
+  "description": "A short label shown on hover or focus. Don’t put anything essential only in a tooltip.",
   "dependencies": [
     "radix-ui@1.8.1"
   ],

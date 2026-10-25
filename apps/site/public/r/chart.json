@@ -3,7 +3,7 @@
   "name": "chart",
   "type": "registry:ui",
   "title": "Chart",
-  "description": "Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.",
+  "description": "Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens.",
   "dependencies": [
     "recharts@2.15.4"
   ],

@@ -9,8 +9,8 @@ export function ComponentsPage() {
       <header className="grid grid-cols-1 max-w-2xl gap-4">
         <h1 className="font-display text-4xl font-semibold">Components</h1>
         <p className="text-lg text-muted-foreground">
-          {COMPONENT_DOCS.length} components on shadcn/ui and Radix. Every one is styled with tokens only, so each follows the
-          theme, and each is tested for keyboard use and accessibility.
+          {COMPONENT_DOCS.length} components built on shadcn/ui and Radix. They’re styled only with theme tokens, so they all
+          follow your theme. Each one is tested for keyboard use and accessibility.
         </p>
         <nav aria-label="Categories" className="flex flex-wrap gap-2">
           {CATEGORIES.map((c) => (

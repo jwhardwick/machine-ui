@@ -22,7 +22,7 @@ export default defineDoc({
   slug: 'dropdown-menu',
   name: 'Dropdown Menu',
   category: 'overlays',
-  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.',
+  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style.',
   examples: [
     {
       name: 'Account menu',

@@ -3,7 +3,7 @@
   "name": "prompt-input",
   "type": "registry:ui",
   "title": "Prompt Input",
-  "description": "The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.",
+  "description": "The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.",
   "dependencies": [
     "lucide-react@1.59.0"
   ],

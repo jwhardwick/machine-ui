@@ -3,7 +3,7 @@
   "name": "typography",
   "type": "registry:ui",
   "title": "Typography",
-  "description": "Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.",
+  "description": "Text styles from the theme’s type scale. Headings use the display font and body text uses the text font.",
   "dependencies": [],
   "registryDependencies": [
     "@machine-ui/machine-ui-base",

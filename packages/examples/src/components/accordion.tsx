@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'accordion',
   name: 'Accordion',
   category: 'layout',
-  description: 'A stack of headings that each reveal a section. One or several sections can be open.',
+  description: 'A stack of headings that each open a section. You can allow one section or several to be open at once.',
   examples: [
     {
       name: 'FAQ',

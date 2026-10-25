@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'field',
   name: 'Field',
   category: 'forms',
-  description: 'Lays out a label, control, help text and error for one form field, so every form reads the same way.',
+  description: 'Lays out the label, control, help text, and error for one form field, so your forms look consistent.',
   examples: [
     {
       name: 'Form',

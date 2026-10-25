@@ -3,7 +3,7 @@
   "name": "copy-input",
   "type": "registry:ui",
   "title": "Copy Input",
-  "description": "A read-only field with a copy button, for API keys, webhook URLs and share links.",
+  "description": "A read-only field with a copy button, for API keys, webhook URLs, and share links.",
   "dependencies": [
     "lucide-react@1.59.0"
   ],

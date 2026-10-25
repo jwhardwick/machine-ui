@@ -33,9 +33,9 @@ export function ExportPanel({ seed }: { seed: ThemeSeed }) {
   return (
     <Card className="min-w-0">
       <CardHeader>
-        <CardTitle>Take it with you</CardTitle>
+        <CardTitle>Export</CardTitle>
         <CardDescription>
-          Drop the CSS into any shadcn/ui project. Give the brief to your coding agent so it stays on-theme.
+          Copy the CSS into any shadcn/ui project. Give theme-brief.md to your coding agent so it sticks to the theme.
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'empty',
   name: 'Empty',
   category: 'feedback',
-  description: 'A placeholder for a view with nothing in it yet: what it is for, and the one action to start.',
+  description: 'A placeholder for an empty view. It explains what goes there and offers one action to get started.',
   examples: [
     {
       name: 'Default',

@@ -3,7 +3,7 @@
   "name": "confidence-bar",
   "type": "registry:ui",
   "title": "Confidence Bar",
-  "description": "How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.",
+  "description": "Shows how sure the agent is with a bar and a word (high, medium, or low), so colour isn’t the only cue.",
   "dependencies": [],
   "registryDependencies": [
     "@machine-ui/machine-ui-base",
