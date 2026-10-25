@@ -1,11 +1,12 @@
 import { auditPalette, buildPalette } from '@machine-ui/theme-engine';
-import { CATEGORIES, COMPONENT_DOCS, SCREENS } from '@machine-ui/examples';
+import { CATEGORIES, COMPONENTS, SCREENS } from '@machine-ui/examples/catalog';
 import { REFERENCE_THEMES } from '@machine-ui/tokens';
 import { Button, CodeBlock, ToggleGroup, ToggleGroupItem } from '@machine-ui/ui';
 import { ArrowRight } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { Suspense, useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { registryEntry } from '../site/install-prompt.ts';
+import { Loading } from '../site/loading.tsx';
 import { ScreenFrame } from '../site/preview-frame.tsx';
 import { Specimen } from '../site/specimen.tsx';
 import { useSiteTheme } from '../site/theme.tsx';
@@ -39,7 +40,7 @@ export function HomePage() {
         <dl className="grid max-w-2xl grid-cols-3 gap-6 border-t pt-6">
           <div>
             <dt className="text-sm text-muted-foreground">Components</dt>
-            <dd className="font-display text-3xl font-semibold tabular-nums">{COMPONENT_DOCS.length}</dd>
+            <dd className="font-display text-3xl font-semibold tabular-nums">{COMPONENTS.length}</dd>
           </div>
           <div>
             <dt className="text-sm text-muted-foreground">Starting themes</dt>
@@ -75,7 +76,9 @@ export function HomePage() {
           </div>
         </div>
         <ScreenFrame title={`app.northwind.dev/${current.slug}`}>
-          <current.Component />
+          <Suspense fallback={<Loading className="h-full" />}>
+            <current.Component />
+          </Suspense>
         </ScreenFrame>
       </section>
 
@@ -86,7 +89,7 @@ export function HomePage() {
           </h2>
           <Button asChild variant="outline">
             <Link to="/components">
-              Browse all {COMPONENT_DOCS.length} <ArrowRight aria-hidden />
+              Browse all {COMPONENTS.length} <ArrowRight aria-hidden />
             </Link>
           </Button>
         </div>
@@ -95,7 +98,7 @@ export function HomePage() {
             <div key={category.id} className="grid grid-cols-1 content-start gap-2">
               <h3 className="text-sm font-medium">{category.label}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                {COMPONENT_DOCS.filter((d) => d.category === category.id).map((doc, i, all) => (
+                {COMPONENTS.filter((d) => d.category === category.id).map((doc, i, all) => (
                   <span key={doc.slug}>
                     <Link to={`/components/${doc.slug}`} className="text-foreground underline-offset-4 hover:underline">
                       {doc.name}

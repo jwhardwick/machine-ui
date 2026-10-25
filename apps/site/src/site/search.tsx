@@ -1,4 +1,4 @@
-import { COMPONENT_DOCS, SCREENS } from '@machine-ui/examples';
+import { COMPONENTS, SCREENS } from '@machine-ui/examples/catalog';
 import { REFERENCE_THEMES } from '@machine-ui/tokens';
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '@machine-ui/ui';
 import { Component, FileText, LayoutTemplate, Palette } from 'lucide-react';
@@ -49,7 +49,7 @@ export function SearchCommand({ open, onOpenChange }: { open: boolean; onOpenCha
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Components">
-          {COMPONENT_DOCS.map((doc) => (
+          {COMPONENTS.map((doc) => (
             <CommandItem key={doc.slug} value={`${doc.name} ${doc.description}`} onSelect={() => go(`/components/${doc.slug}`)}>
               <Component aria-hidden /> {doc.name}
             </CommandItem>

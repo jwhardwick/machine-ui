@@ -1,4 +1,4 @@
-import { CATEGORIES, COMPONENT_DOCS, SCREENS } from '@machine-ui/examples';
+import { CATEGORIES, COMPONENTS, SCREENS } from '@machine-ui/examples/catalog';
 import {
   Badge,
   Button,
@@ -23,8 +23,9 @@ import {
   useSidebar,
 } from '@machine-ui/ui';
 import { BookOpen, ChevronRight, Component, Home, LayoutTemplate, Palette, Search } from 'lucide-react';
-import { useEffect, useState, type ReactNode } from 'react';
+import { Suspense, useEffect, useState, type ReactNode } from 'react';
 import { Link, NavLink, Outlet, useLocation, useMatch, useResolvedPath } from 'react-router';
+import { Loading } from './loading.tsx';
 import { SearchCommand } from './search.tsx';
 import { ThemeToolbar } from './toolbar.tsx';
 
@@ -64,8 +65,24 @@ function NavItem({
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
-    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
-    else window.scrollTo(0, 0);
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // The target can be on a page whose code is still loading, so wait for it to appear.
+    const scroll = () => {
+      const target = document.getElementById(hash.slice(1));
+      target?.scrollIntoView();
+      return Boolean(target);
+    };
+    if (scroll()) return;
+    const observer = new MutationObserver(() => scroll() && observer.disconnect());
+    observer.observe(document.body, { childList: true, subtree: true });
+    const giveUp = window.setTimeout(() => observer.disconnect(), 5000);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(giveUp);
+    };
   }, [pathname, hash]);
   return null;
 }
@@ -125,7 +142,7 @@ export function Shell() {
             <SidebarGroupLabel>
               <Component aria-hidden className="mr-2 size-3.5" /> Components
               <Badge variant="secondary" className="ml-auto">
-                {COMPONENT_DOCS.length}
+                {COMPONENTS.length}
               </Badge>
             </SidebarGroupLabel>
             <SidebarGroupContent>
@@ -134,7 +151,7 @@ export function Shell() {
                   All components
                 </NavItem>
                 {CATEGORIES.map((category) => {
-                  const docs = COMPONENT_DOCS.filter((d) => d.category === category.id);
+                  const docs = COMPONENTS.filter((d) => d.category === category.id);
                   const containsCurrent = docs.some((d) => pathname === `/components/${d.slug}`);
                   return (
                     <Collapsible key={category.id} asChild defaultOpen={containsCurrent} className="group/collapsible">
@@ -171,7 +188,9 @@ export function Shell() {
           <span className="font-display font-semibold">machine-ui</span>
         </header>
         <div className="mx-auto w-full max-w-6xl px-4 pb-32 pt-10 sm:px-8 lg:pt-14">
-          <Outlet />
+          <Suspense fallback={<Loading className="min-h-96" />}>
+            <Outlet />
+          </Suspense>
         </div>
       </SidebarInset>
       <ThemeToolbar />

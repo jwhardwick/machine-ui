@@ -1,6 +1,8 @@
-import { getDoc, SCREENS } from '@machine-ui/examples';
+import { getMeta, SCREENS } from '@machine-ui/examples/catalog';
 import { Badge } from '@machine-ui/ui';
+import { Suspense } from 'react';
 import { Link } from 'react-router';
+import { Loading } from '../site/loading.tsx';
 import { ScreenFrame } from '../site/preview-frame.tsx';
 
 export function ScreensPage() {
@@ -24,14 +26,16 @@ export function ScreensPage() {
               {screen.uses.map((slug) => (
                 <Link key={slug} to={`/components/${slug}`}>
                   <Badge variant="outline" className="font-normal hover:bg-accent hover:text-accent-foreground">
-                    {getDoc(slug)?.name ?? slug}
+                    {getMeta(slug)?.name ?? slug}
                   </Badge>
                 </Link>
               ))}
             </p>
           </div>
           <ScreenFrame title={`app.northwind.dev/${screen.slug}`}>
-            <screen.Component />
+            <Suspense fallback={<Loading className="h-full" />}>
+              <screen.Component />
+            </Suspense>
           </ScreenFrame>
         </section>
       ))}
