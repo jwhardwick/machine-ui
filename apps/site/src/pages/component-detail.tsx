@@ -1,4 +1,4 @@
-import { CATEGORIES, COMPONENT_DOCS, getDoc, getSource, installCommand, SCREENS } from '@machine-ui/examples';
+import { CATEGORIES, COMPONENTS, getMeta, installCommand, loadDoc, loadSource, SCREENS } from '@machine-ui/examples/catalog';
 import {
   Badge,
   Breadcrumb,
@@ -12,18 +12,35 @@ import {
   CopyInput,
 } from '@machine-ui/ui';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Suspense, use } from 'react';
 import { Link, useParams } from 'react-router';
+import { Loading } from '../site/loading.tsx';
 import { PreviewFrame } from '../site/preview-frame.tsx';
 import { NotFoundPage } from './not-found.tsx';
 
+function Examples({ slug }: { slug: string }) {
+  return use(loadDoc(slug)).examples.map((example) => (
+    <section key={example.name} className="grid grid-cols-1 gap-3" aria-labelledby={`ex-${example.name}`}>
+      <h2 id={`ex-${example.name}`} className="font-medium">
+        {example.name}
+      </h2>
+      <PreviewFrame className="min-h-64">{example.render()}</PreviewFrame>
+    </section>
+  ));
+}
+
+function Source({ slug }: { slug: string }) {
+  return <CodeBlock filename={`examples/${slug}.tsx`} code={use(loadSource(slug))} className="[&_pre]:max-h-[32rem]" />;
+}
+
 export function ComponentDetailPage() {
   const { slug = '' } = useParams();
-  const doc = getDoc(slug);
+  const doc = getMeta(slug);
   if (!doc) return <NotFoundPage />;
 
-  const index = COMPONENT_DOCS.indexOf(doc);
-  const previous = COMPONENT_DOCS[index - 1];
-  const next = COMPONENT_DOCS[index + 1];
+  const index = COMPONENTS.indexOf(doc);
+  const previous = COMPONENTS[index - 1];
+  const next = COMPONENTS[index + 1];
   const category = CATEGORIES.find((c) => c.id === doc.category)!;
   const usedIn = SCREENS.filter((s) => s.uses.includes(doc.slug));
 
@@ -79,20 +96,17 @@ export function ComponentDetailPage() {
         </p>
       </section>
 
-      {doc.examples.map((example) => (
-        <section key={example.name} className="grid grid-cols-1 gap-3" aria-labelledby={`ex-${example.name}`}>
-          <h2 id={`ex-${example.name}`} className="font-medium">
-            {example.name}
-          </h2>
-          <PreviewFrame className="min-h-64">{example.render()}</PreviewFrame>
-        </section>
-      ))}
+      <Suspense fallback={<Loading className="min-h-64" />}>
+        <Examples slug={doc.slug} />
+      </Suspense>
 
       <section className="grid grid-cols-1 gap-3" aria-labelledby="source">
         <h2 id="source" className="font-medium">
           Example source
         </h2>
-        <CodeBlock filename={`examples/${doc.slug}.tsx`} code={getSource(doc.slug) ?? ''} className="[&_pre]:max-h-[32rem]" />
+        <Suspense fallback={<Loading />}>
+          <Source slug={doc.slug} />
+        </Suspense>
       </section>
 
       <nav aria-label="More components" className="flex justify-between gap-4 border-t pt-6">

@@ -1,0 +1,793 @@
+[
+  {
+    "slug": "accordion",
+    "name": "Accordion",
+    "category": "layout",
+    "description": "A stack of headings that each reveal a section. One or several sections can be open.",
+    "install": [
+      "@machine-ui/accordion"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "agent-glyph",
+    "name": "Agent Glyph",
+    "category": "ai",
+    "description": "The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.",
+    "install": [
+      "@machine-ui/agent-glyph"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "alert",
+    "name": "Alert",
+    "category": "feedback",
+    "description": "An inline banner with a title and a description, in default, success, warning and destructive variants.",
+    "install": [
+      "@machine-ui/alert"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "alert-dialog",
+    "name": "Alert Dialog",
+    "category": "overlays",
+    "description": "A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.",
+    "install": [
+      "@machine-ui/alert-dialog",
+      "@machine-ui/button"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "approval-card",
+    "name": "Approval Card",
+    "category": "ai",
+    "description": "The agent asks before it acts: a question, a few options and Confirm or Skip.",
+    "install": [
+      "@machine-ui/approval-card"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "aspect-ratio",
+    "name": "Aspect Ratio",
+    "category": "layout",
+    "description": "Keeps media at a fixed shape as its width changes.",
+    "install": [
+      "@machine-ui/aspect-ratio"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "avatar",
+    "name": "Avatar",
+    "category": "data",
+    "description": "Shows a person as a photo or initials, alone or as an overlapping group.",
+    "install": [
+      "@machine-ui/avatar"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "badge",
+    "name": "Badge",
+    "category": "data",
+    "description": "A small label for state or category, in primary, secondary, outline and destructive styles.",
+    "install": [
+      "@machine-ui/badge"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "breadcrumb",
+    "name": "Breadcrumb",
+    "category": "navigation",
+    "description": "Shows where a page sits in the hierarchy, with a collapsed middle for long trails.",
+    "install": [
+      "@machine-ui/breadcrumb"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "button",
+    "name": "Button",
+    "category": "forms",
+    "description": "Triggers an action. Six variants and four sizes, with icon, loading and disabled states.",
+    "install": [
+      "@machine-ui/button"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "button-group",
+    "name": "Button Group",
+    "category": "forms",
+    "description": "Joins related buttons into one row with shared edges, including split buttons.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/button-group"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "calendar",
+    "name": "Calendar",
+    "category": "forms",
+    "description": "A month grid for picking a single date or a range, with today marked and keyboard navigation.",
+    "install": [
+      "@machine-ui/calendar"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "card",
+    "name": "Card",
+    "category": "data",
+    "description": "Groups related content on a raised surface. Whether it uses a border or a shadow comes from the theme’s separation setting.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/card"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "carousel",
+    "name": "Carousel",
+    "category": "layout",
+    "description": "A row of slides with previous and next buttons, swipe, and arrow-key support.",
+    "install": [
+      "@machine-ui/card",
+      "@machine-ui/carousel"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "chart",
+    "name": "Chart",
+    "category": "data",
+    "description": "Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.",
+    "install": [
+      "@machine-ui/chart",
+      "@machine-ui/use-reduced-motion"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "checkbox",
+    "name": "Checkbox",
+    "category": "forms",
+    "description": "Turns an option on or off. Supports an indeterminate state for \"some selected\".",
+    "install": [
+      "@machine-ui/checkbox",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "citation",
+    "name": "Citations",
+    "category": "ai",
+    "description": "Numbered markers in an answer that preview their source, and the list of sources underneath.",
+    "install": [
+      "@machine-ui/citation"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "code-block",
+    "name": "Code Block",
+    "category": "ai",
+    "description": "Code with a filename header and a copy button, for agent output and docs.",
+    "install": [
+      "@machine-ui/code-block"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "collapsible",
+    "name": "Collapsible",
+    "category": "layout",
+    "description": "A single trigger that shows or hides the content beneath it.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/collapsible"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "combobox",
+    "name": "Combobox",
+    "category": "forms",
+    "description": "A select with a filter field: type to narrow the options, then pick one.",
+    "install": [
+      "@machine-ui/combobox",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "command",
+    "name": "Command",
+    "category": "overlays",
+    "description": "A searchable list of actions with groups and shortcuts. Use CommandDialog to open it as a palette.",
+    "install": [
+      "@machine-ui/command"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "command-palette",
+    "name": "Command Palette",
+    "category": "overlays",
+    "description": "Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/command",
+      "@machine-ui/kbd"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "confidence-bar",
+    "name": "Confidence Bar",
+    "category": "ai",
+    "description": "How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.",
+    "install": [
+      "@machine-ui/confidence-bar"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "context-menu",
+    "name": "Context Menu",
+    "category": "overlays",
+    "description": "A menu of actions that opens at the pointer when its area is right-clicked or long-pressed.",
+    "install": [
+      "@machine-ui/context-menu"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "copy-input",
+    "name": "Copy Input",
+    "category": "forms",
+    "description": "A read-only field with a copy button, for API keys, webhook URLs and share links.",
+    "install": [
+      "@machine-ui/copy-input",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "data-table",
+    "name": "Data Table",
+    "category": "data",
+    "description": "A table with sorting, filtering, row selection and pagination, built on TanStack Table.",
+    "install": [
+      "@machine-ui/badge",
+      "@machine-ui/data-table"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "date-picker",
+    "name": "Date Picker",
+    "category": "forms",
+    "description": "A button that opens a Calendar and shows the chosen date in short form.",
+    "install": [
+      "@machine-ui/date-picker",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "dialog",
+    "name": "Dialog",
+    "category": "overlays",
+    "description": "A modal window over the page. Focus moves inside, Escape closes it and focus returns to the trigger.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/dialog",
+      "@machine-ui/input",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "drawer",
+    "name": "Drawer",
+    "category": "overlays",
+    "description": "A bottom sheet with a drag handle, for mobile-first flows. Swipe down or press Escape to close.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/drawer"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "dropdown-menu",
+    "name": "Dropdown Menu",
+    "category": "overlays",
+    "description": "A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/dropdown-menu"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "empty",
+    "name": "Empty",
+    "category": "feedback",
+    "description": "A placeholder for a view with nothing in it yet: what it is for, and the one action to start.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/empty"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "field",
+    "name": "Field",
+    "category": "forms",
+    "description": "Lays out a label, control, help text and error for one form field, so every form reads the same way.",
+    "install": [
+      "@machine-ui/field",
+      "@machine-ui/input",
+      "@machine-ui/switch"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "hover-card",
+    "name": "Hover Card",
+    "category": "overlays",
+    "description": "A floating preview shown while the pointer rests on, or focus is on, its trigger.",
+    "install": [
+      "@machine-ui/avatar",
+      "@machine-ui/button",
+      "@machine-ui/hover-card"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "input",
+    "name": "Input",
+    "category": "forms",
+    "description": "A single-line text field, with invalid and disabled states.",
+    "install": [
+      "@machine-ui/input",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "input-group",
+    "name": "Input Group",
+    "category": "forms",
+    "description": "A text field with a fixed prefix, suffix or icon inside one border.",
+    "install": [
+      "@machine-ui/input-group",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "input-otp",
+    "name": "Input OTP",
+    "category": "forms",
+    "description": "Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.",
+    "install": [
+      "@machine-ui/input-otp",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "item",
+    "name": "Item",
+    "category": "data",
+    "description": "A row with media, a title, a description and actions, for lists, settings and search results.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/item",
+      "@machine-ui/switch"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "kbd",
+    "name": "Kbd",
+    "category": "data",
+    "description": "Shows a keyboard key or shortcut in a small keycap.",
+    "install": [
+      "@machine-ui/kbd"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "label",
+    "name": "Label",
+    "category": "forms",
+    "description": "A text label for a form control. Clicking it focuses the control it names.",
+    "install": [
+      "@machine-ui/input",
+      "@machine-ui/label"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "menubar",
+    "name": "Menubar",
+    "category": "navigation",
+    "description": "A row of menus like a desktop app bar. Open one, then arrow or hover across the others.",
+    "install": [
+      "@machine-ui/menubar"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "message",
+    "name": "Message",
+    "category": "ai",
+    "description": "One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.",
+    "install": [
+      "@machine-ui/agent-glyph",
+      "@machine-ui/button",
+      "@machine-ui/message"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "native-select",
+    "name": "Native Select",
+    "category": "forms",
+    "description": "The browser’s own select, styled to match the theme. Best on mobile and for long option lists.",
+    "install": [
+      "@machine-ui/label",
+      "@machine-ui/native-select"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "navigation-menu",
+    "name": "Navigation Menu",
+    "category": "navigation",
+    "description": "Site navigation with dropdown panels of links, for marketing sites and docs.",
+    "install": [
+      "@machine-ui/navigation-menu"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "pagination",
+    "name": "Pagination",
+    "category": "navigation",
+    "description": "Moves through pages of results with numbered links, previous and next.",
+    "install": [
+      "@machine-ui/pagination"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "popover",
+    "name": "Popover",
+    "category": "overlays",
+    "description": "A floating panel anchored to a trigger, for short forms, settings and details.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/input",
+      "@machine-ui/label",
+      "@machine-ui/popover"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "progress",
+    "name": "Progress",
+    "category": "feedback",
+    "description": "Shows how far a task with a known length has come.",
+    "install": [
+      "@machine-ui/label",
+      "@machine-ui/progress"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "prompt-input",
+    "name": "Prompt Input",
+    "category": "ai",
+    "description": "The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/prompt-input"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "radio-group",
+    "name": "Radio Group",
+    "category": "forms",
+    "description": "A set of options where exactly one is selected. Arrow keys move the selection.",
+    "install": [
+      "@machine-ui/label",
+      "@machine-ui/radio-group"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "resizable",
+    "name": "Resizable",
+    "category": "layout",
+    "description": "Panels the user can resize by dragging, or with arrow keys on the focused handle.",
+    "install": [
+      "@machine-ui/resizable"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "scroll-area",
+    "name": "Scroll Area",
+    "category": "layout",
+    "description": "A fixed-height container that scrolls its content with a thin, theme-coloured scrollbar.",
+    "install": [
+      "@machine-ui/scroll-area",
+      "@machine-ui/separator"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "search-input",
+    "name": "Search Input",
+    "category": "forms",
+    "description": "A search field with a shortcut hint, and a clear button once there is a value.",
+    "install": [
+      "@machine-ui/search-input"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "select",
+    "name": "Select",
+    "category": "forms",
+    "description": "A dropdown for picking one value from a short list, with groups and separators.",
+    "install": [
+      "@machine-ui/label",
+      "@machine-ui/select"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "separator",
+    "name": "Separator",
+    "category": "layout",
+    "description": "A hairline between groups of content, horizontal or vertical.",
+    "install": [
+      "@machine-ui/separator"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "sheet",
+    "name": "Sheet",
+    "category": "overlays",
+    "description": "A panel that slides in from any edge over a scrim. Good for edit forms and detail views.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/input",
+      "@machine-ui/label",
+      "@machine-ui/sheet"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "sidebar",
+    "name": "Sidebar",
+    "category": "navigation",
+    "description": "App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.",
+    "install": [
+      "@machine-ui/sidebar"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "skeleton",
+    "name": "Skeleton",
+    "category": "feedback",
+    "description": "Placeholder blocks that hold the shape of content while it loads.",
+    "install": [
+      "@machine-ui/skeleton"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "slider",
+    "name": "Slider",
+    "category": "forms",
+    "description": "Picks a number, or a range, by dragging. Arrow keys step through values.",
+    "install": [
+      "@machine-ui/label",
+      "@machine-ui/slider"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "spinner",
+    "name": "Spinner",
+    "category": "feedback",
+    "description": "A spinning ring for work with no known length. Announced to screen readers as loading.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/spinner"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "stat",
+    "name": "Stat",
+    "category": "data",
+    "description": "A labelled number with an optional change, marked up or down by icon and text, not colour alone.",
+    "install": [
+      "@machine-ui/card",
+      "@machine-ui/stat"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "status-dot",
+    "name": "Status Dot",
+    "category": "feedback",
+    "description": "A small coloured dot for presence and health, always paired with a text label.",
+    "install": [
+      "@machine-ui/status-dot"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "stepper",
+    "name": "Stepper",
+    "category": "navigation",
+    "description": "Progress through a fixed sequence of steps, with done, current and upcoming states.",
+    "install": [
+      "@machine-ui/stepper"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "streaming-text",
+    "name": "Streaming Text",
+    "category": "ai",
+    "description": "Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.",
+    "install": [
+      "@machine-ui/streaming-text"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "switch",
+    "name": "Switch",
+    "category": "forms",
+    "description": "Turns a setting on or off immediately, without a save step.",
+    "install": [
+      "@machine-ui/label",
+      "@machine-ui/switch"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "table",
+    "name": "Table",
+    "category": "data",
+    "description": "Composable table parts for simple tabular data. Use Data Table when you need sorting or selection.",
+    "install": [
+      "@machine-ui/badge",
+      "@machine-ui/table"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "tabs",
+    "name": "Tabs",
+    "category": "navigation",
+    "description": "Switches between views in the same context. Arrow keys move between tabs.",
+    "install": [
+      "@machine-ui/tabs"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "textarea",
+    "name": "Textarea",
+    "category": "forms",
+    "description": "A multi-line text field that resizes vertically. Use it for messages, notes and descriptions.",
+    "install": [
+      "@machine-ui/label",
+      "@machine-ui/textarea"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "thinking-indicator",
+    "name": "Thinking Indicator",
+    "category": "ai",
+    "description": "A short label with pulsing dots while the agent works. Announced politely; still when motion is off.",
+    "install": [
+      "@machine-ui/thinking"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "thinking-steps",
+    "name": "Thinking Steps",
+    "category": "ai",
+    "description": "The steps an agent is working through, with done, active and upcoming states.",
+    "install": [
+      "@machine-ui/thinking"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "toast",
+    "name": "Toast",
+    "category": "feedback",
+    "description": "Short, temporary messages in a stack. Mount one Toaster near the root and call toast() from anywhere.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/sonner"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "toggle",
+    "name": "Toggle",
+    "category": "forms",
+    "description": "A button that stays pressed, for one on/off option such as a filter or formatting.",
+    "install": [
+      "@machine-ui/toggle"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "toggle-group",
+    "name": "Toggle Group",
+    "category": "forms",
+    "description": "A joined row of toggles for picking one option, or several, from a small set.",
+    "install": [
+      "@machine-ui/toggle-group"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "tool-call",
+    "name": "Tool Call",
+    "category": "ai",
+    "description": "A tool the agent called, with its status and, on demand, its input and output.",
+    "install": [
+      "@machine-ui/tool-call"
+    ],
+    "wide": true
+  },
+  {
+    "slug": "tooltip",
+    "name": "Tooltip",
+    "category": "overlays",
+    "description": "A short label shown on hover or focus. Never put essential information only in a tooltip.",
+    "install": [
+      "@machine-ui/button",
+      "@machine-ui/tooltip"
+    ],
+    "wide": false
+  },
+  {
+    "slug": "typography",
+    "name": "Typography",
+    "category": "data",
+    "description": "Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.",
+    "install": [
+      "@machine-ui/typography"
+    ],
+    "wide": true
+  }
+]

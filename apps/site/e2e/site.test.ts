@@ -1,5 +1,7 @@
 // End-to-end tests against the built site. Run with `pnpm test:e2e` (builds first).
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
 import { after, before, describe, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { serializeSeed } from '@machine-ui/theme-engine';
@@ -38,6 +40,7 @@ async function open(path: string, viewport = { width: 1280, height: 900 }): Prom
   await page.goto(BASE + path);
   // Wait for the app to render rather than for "network idle", which any late request can reset.
   await page.locator('h1').first().waitFor();
+  await page.waitForFunction(() => !document.querySelector('[data-loading]'));
   return page;
 }
 
@@ -134,6 +137,15 @@ describe('navigation', () => {
     assert.equal(afterToggle[0], 'collapsed');
     assert.deepEqual(afterToggle.slice(1), before.slice(1));
     await page.close();
+  });
+});
+
+describe('bundle', () => {
+  test('the entry chunk stays small; pages, screens and examples load on demand', () => {
+    const dist = fileURLToPath(new URL('../dist/', import.meta.url));
+    const entry = /<script type="module" crossorigin src="\/(assets\/index-[\w-]+\.js)"/.exec(readFileSync(`${dist}index.html`, 'utf8'))![1]!;
+    const kB = gzipSync(readFileSync(dist + entry)).length / 1000;
+    assert.ok(kB < 110, `entry chunk is ${kB.toFixed(1)} kB gzipped; the budget is 110 kB`);
   });
 });
 
