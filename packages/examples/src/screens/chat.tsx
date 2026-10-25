@@ -191,8 +191,8 @@ export function ChatScreen() {
           </div>
         </header>
 
-        <div className="min-h-0 flex-1 overflow-y-auto">
-          <div className="mx-auto grid w-full max-w-2xl gap-6 px-4 py-6">
+        <div className="min-h-0 flex-1 overflow-y-auto mask-b-from-[calc(100%-var(--spacing)*8)]">
+          <div className="mx-auto grid w-full max-w-2xl gap-6 px-4 pt-6 pb-8">
             <Message from="user">
               <MessageContent>What happened with Acme’s outage, and what should I tell them?</MessageContent>
             </Message>
