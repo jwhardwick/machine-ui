@@ -25,6 +25,9 @@ try {
     for (const mode of ['light', 'dark']) {
       for (const route of ROUTES) {
         await page.goto(`http://localhost:4174${route}?theme=${serializeSeed(seed)}&mode=${mode}`);
+        // Pages and previews load lazily; check them once everything has arrived.
+        await page.locator('h1').first().waitFor();
+        await page.waitForFunction(() => !document.querySelector('[data-loading]'));
         await page.waitForTimeout(400);
         await page.addScriptTag({ content: axeSource });
         const violations = await page.evaluate(async () => {

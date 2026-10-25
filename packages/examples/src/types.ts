@@ -28,6 +28,14 @@ export interface ComponentDoc {
   examples: Example[];
 }
 
+/** A component's docs entry without its examples: enough to list it and show its install command. */
+export interface ComponentMeta extends Omit<ComponentDoc, 'examples'> {
+  /** Registry items its examples use, prefixed for the shadcn CLI. */
+  install: string[];
+  /** Whether its first example needs a wide preview frame. */
+  wide: boolean;
+}
+
 export function defineDoc(doc: ComponentDoc): ComponentDoc {
   return doc;
 }

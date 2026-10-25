@@ -3,7 +3,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createServer } from 'vite';
-import { COMPONENT_DATA_FILE, componentData, PUBLIC_DIR, renderDocs, type DocsInput } from './docs.ts';
+import { CATALOG_FILE, catalogData, COMPONENT_DATA_FILE, componentData, PUBLIC_DIR, renderDocs, type DocsInput } from './docs.ts';
 
 // Root at this package so workspace dependencies resolve regardless of the working directory.
 const server = await createServer({ root: join(import.meta.dirname, '..'), configFile: false, appType: 'custom', logLevel: 'error', server: { middlewareMode: true } });
@@ -24,7 +24,8 @@ try {
   const files = renderDocs(input);
   for (const [file, content] of Object.entries(files)) writeFileSync(join(PUBLIC_DIR, file), content);
   writeFileSync(COMPONENT_DATA_FILE, componentData(input));
-  console.log(`wrote ${Object.keys(files).join(', ')} to apps/site/public and the MCP component data`);
+  writeFileSync(CATALOG_FILE, catalogData(input));
+  console.log(`wrote ${Object.keys(files).join(', ')} to apps/site/public, the MCP component data and the examples catalog`);
 } finally {
   await server.close();
 }

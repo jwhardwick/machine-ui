@@ -2,7 +2,7 @@
 // code) and install.md. Served by the docs site next to the registry, so they can't drift.
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import type { ComponentDoc } from '@machine-ui/examples';
+import type { ComponentDoc, ComponentMeta } from '@machine-ui/examples';
 import { DEFAULT_SEED, REFERENCE_THEMES, TYPE_PAIRS } from '@machine-ui/tokens';
 
 export const DOC_FILES = ['llms.txt', 'llms-full.txt', 'install.md'] as const;
@@ -169,6 +169,25 @@ export function componentData(input: DocsInput): string {
 
 export async function staleComponentData(input: DocsInput): Promise<boolean> {
   return (await readFile(COMPONENT_DATA_FILE, 'utf8').catch(() => null)) !== componentData(input);
+}
+
+export const CATALOG_FILE = join(import.meta.dirname, '../../../packages/examples/src/catalog.json');
+
+/** Every component without its examples, so the docs site can list them before loading any example code. */
+export function catalogData(input: DocsInput): string {
+  const data: ComponentMeta[] = input.docs.map((doc) => ({
+    slug: doc.slug,
+    name: doc.name,
+    category: doc.category,
+    description: doc.description,
+    install: items(input, doc.slug),
+    wide: Boolean(doc.examples[0]?.wide),
+  }));
+  return `${JSON.stringify(data, null, 2)}\n`;
+}
+
+export async function staleCatalog(input: DocsInput): Promise<boolean> {
+  return (await readFile(CATALOG_FILE, 'utf8').catch(() => null)) !== catalogData(input);
 }
 
 export function renderDocs(input: DocsInput): Record<(typeof DOC_FILES)[number], string> {
