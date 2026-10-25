@@ -24,20 +24,38 @@ import {
 } from '@machine-ui/ui';
 import { BookOpen, ChevronRight, Component, Home, LayoutTemplate, Palette, Search } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
-import { NavLink, Outlet, useLocation, useMatch, useResolvedPath } from 'react-router';
+import { Link, NavLink, Outlet, useLocation, useMatch, useResolvedPath } from 'react-router';
 import { SearchCommand } from './search.tsx';
 import { ThemeToolbar } from './toolbar.tsx';
 
-function NavItem({ to, children, end = true, size }: { to: string; children: ReactNode; end?: boolean; size?: 'sm' | 'md' }) {
+/**
+ * A nav link that is active when its path matches. A link with a hash also needs that hash in the URL;
+ * `ownedHashes` lists the hashes that belong to sibling links, so a page link steps aside for them.
+ */
+function NavItem({
+  to,
+  children,
+  end = true,
+  size,
+  ownedHashes = [],
+}: {
+  to: string;
+  children: ReactNode;
+  end?: boolean;
+  size?: 'sm' | 'md';
+  ownedHashes?: string[];
+}) {
   const { setOpenMobile } = useSidebar();
+  const { hash } = useLocation();
   const resolved = useResolvedPath(to);
-  const active = Boolean(useMatch({ path: resolved.pathname, end }));
+  const pathActive = Boolean(useMatch({ path: resolved.pathname, end }));
+  const active = pathActive && (resolved.hash ? hash === resolved.hash : !ownedHashes.includes(hash));
   return (
     <SidebarMenuItem>
       <SidebarMenuButton asChild isActive={active} size={size}>
-        <NavLink to={to} end={end} onClick={() => setOpenMobile(false)}>
+        <Link to={to} aria-current={active ? 'page' : undefined} onClick={() => setOpenMobile(false)}>
           {children}
-        </NavLink>
+        </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
   );
@@ -92,15 +110,13 @@ export function Shell() {
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <NavItem to="/screens" size="sm">
+                <NavItem to="/screens" size="sm" ownedHashes={SCREENS.map((s) => `#${s.slug}`)}>
                   All screens
                 </NavItem>
                 {SCREENS.map((s) => (
-                  <SidebarMenuItem key={s.slug}>
-                    <SidebarMenuButton asChild size="sm">
-                      <NavLink to={`/screens#${s.slug}`}>{s.name}</NavLink>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
+                  <NavItem key={s.slug} to={`/screens#${s.slug}`} size="sm">
+                    {s.name}
+                  </NavItem>
                 ))}
               </SidebarMenu>
             </SidebarGroupContent>

@@ -106,6 +106,22 @@ describe('navigation', () => {
     await page.close();
   });
 
+  test('the site navigation marks only the screen in the URL as current', async () => {
+    const page = await open('/screens');
+    const nav = page.locator('[data-slot=sidebar]').first();
+    // The URL changes before React re-renders, so wait for the link to become current, then check it's the only one.
+    const current = async (name: string) => {
+      await nav.locator('[aria-current=page]', { hasText: name }).waitFor({ timeout: 3000 });
+      return nav.locator('[aria-current=page]').allTextContents();
+    };
+    assert.deepEqual(await current('All screens'), ['All screens']);
+    await nav.getByRole('link', { name: 'Store dashboard' }).click();
+    assert.deepEqual(await current('Store dashboard'), ['Store dashboard']);
+    await nav.getByRole('link', { name: 'Agent inbox' }).click();
+    assert.deepEqual(await current('Agent inbox'), ['Agent inbox']);
+    await page.close();
+  });
+
   test('Ctrl+B toggles the site navigation, not the sidebars inside previews', async () => {
     const page = await open('/');
     const sidebars = page.locator('[data-slot=sidebar]');
