@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { CATEGORIES, COMPONENT_DOCS, getSource, registryItemsFor } from '@machine-ui/examples';
 import { describe, expect, it } from 'vitest';
-import { DOC_FILES, renderDocs, staleCatalog, staleComponentData, staleDocs, type DocsInput } from './docs.ts';
+import { DOC_FILES, renderDocs, SITE_URL, staleCatalog, staleComponentData, staleDocs, type DocsInput } from './docs.ts';
 
 const root = join(import.meta.dirname, '../../..');
 const input: DocsInput = {
@@ -51,6 +51,12 @@ describe('install.md', () => {
     for (const text of ['"registries"', 'npx shadcn@latest add @machine-ui/theme-console', 'fonts.googleapis.com', '@machine-ui/button']) {
       expect(install).toContain(text);
     }
+  });
+
+  it('points at the deployed registry, not a placeholder host', () => {
+    const install = out['install.md']!;
+    expect(install).toContain(`"registries": { "@machine-ui": "${SITE_URL}/r/{name}.json" }`);
+    expect(install).not.toContain('example.com');
   });
 });
 

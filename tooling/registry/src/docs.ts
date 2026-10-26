@@ -7,6 +7,8 @@ import { DEFAULT_SEED, REFERENCE_THEMES, TYPE_PAIRS } from '@machine-ui/tokens';
 
 export const DOC_FILES = ['llms.txt', 'llms-full.txt', 'install.md'] as const;
 export const PUBLIC_DIR = join(import.meta.dirname, '../../../apps/site/public');
+// Where the site and registry are served. Set SITE_URL to generate docs for another deployment.
+export const SITE_URL = (process.env.SITE_URL ?? 'https://machine-ui.factory.jwhardwick.dev').replace(/\/+$/, '');
 
 interface ApiMember {
   type: string;
@@ -99,14 +101,14 @@ function installMd(): string {
 
 machine-ui installs as source through the [shadcn CLI](https://ui.shadcn.com/docs/cli). You need a React project with Tailwind CSS v4.
 
-The registry lives next to this file: if you are reading \`https://example.com/install.md\`, the registry URL is \`https://example.com/r/{name}.json\`.
+The registry is at \`${SITE_URL}/r/{name}.json\`. If you are reading a copy of this file on another host, use that host's \`/r/{name}.json\` instead.
 
 ## 1. Add the registry
 
 Run \`npx shadcn@latest init\` if the project has no \`components.json\`, then add:
 
 \`\`\`json
-"registries": { "@machine-ui": "https://example.com/r/{name}.json" }
+"registries": { "@machine-ui": "${SITE_URL}/r/{name}.json" }
 \`\`\`
 
 ## 2. Install a theme

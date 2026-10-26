@@ -35,7 +35,7 @@ Set these up in the first task, then keep them working:
 - `pnpm size` (bundle budgets in `.size-limit.json`)
 - `pnpm api:report` (regenerate `api/`; required after any public API or token change)
 - `pnpm registry:build` (regenerate the shadcn registry in `apps/site/public/r`; required after any component change)
-- `pnpm docs:build` (regenerate `llms.txt`, `llms-full.txt`, `install.md` in `apps/site/public`)
+- `pnpm docs:build` (regenerate `llms.txt`, `llms-full.txt`, `install.md` in `apps/site/public`; `install.md` uses `SITE_URL`, default `https://machine-ui.factory.jwhardwick.dev`)
 - `pnpm eval:run` (skill eval; live runs use model credits, `--dry-run` shows the commands)
 - `pnpm test:registry-install` (opt-in, needs network: installs registry items into a fresh project, typechecks and builds it)
 - `pnpm release:bump --check-changeset` (computed version bump; fails if changesets under-declare it)
