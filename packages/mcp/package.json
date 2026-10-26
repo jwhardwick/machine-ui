@@ -1,6 +1,6 @@
 {
   "name": "@machine-ui/mcp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "MCP server for machine-ui: list and read components, read tokens and generate contrast-safe themes.",
   "bin": { "machine-ui-mcp": "./src/bin.ts" },
