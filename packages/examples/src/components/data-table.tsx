@@ -9,13 +9,13 @@ interface Member {
 }
 
 const MEMBERS: Member[] = [
-  { name: 'Ada Lovelace', email: 'ada@machine-co.dev', role: 'Owner', lastActive: 'Today' },
-  { name: 'Grace Hopper', email: 'grace@machine-co.dev', role: 'Admin', lastActive: 'Today' },
-  { name: 'Katherine Johnson', email: 'kj@machine-co.dev', role: 'Member', lastActive: 'Yesterday' },
-  { name: 'Margaret Hamilton', email: 'margaret@machine-co.dev', role: 'Admin', lastActive: '3 days ago' },
-  { name: 'Radia Perlman', email: 'radia@machine-co.dev', role: 'Member', lastActive: 'Last week' },
-  { name: 'Barbara Liskov', email: 'barbara@machine-co.dev', role: 'Member', lastActive: 'Today' },
-  { name: 'Frances Allen', email: 'frances@machine-co.dev', role: 'Member', lastActive: '2 days ago' },
+  { name: 'Richard Hendricks', email: 'richard@machine-co.dev', role: 'Owner', lastActive: 'Today' },
+  { name: 'Bertram Gilfoyle', email: 'gilfoyle@machine-co.dev', role: 'Admin', lastActive: 'Today' },
+  { name: 'Dinesh Chugtai', email: 'dinesh@machine-co.dev', role: 'Member', lastActive: 'Yesterday' },
+  { name: 'Monica Hall', email: 'monica@machine-co.dev', role: 'Admin', lastActive: '3 days ago' },
+  { name: 'Erlich Bachman', email: 'erlich@machine-co.dev', role: 'Member', lastActive: 'Last week' },
+  { name: 'Jared Dunn', email: 'jared@machine-co.dev', role: 'Member', lastActive: 'Today' },
+  { name: 'Nelson Bighetti', email: 'bighead@machine-co.dev', role: 'Member', lastActive: '2 days ago' },
 ];
 
 const columns: ColumnDef<Member>[] = [

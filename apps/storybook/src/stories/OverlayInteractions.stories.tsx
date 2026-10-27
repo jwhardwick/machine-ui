@@ -22,7 +22,7 @@ export const AlertDialogNeedsAnAnswer: Story = {
 export const DropdownMenuKeyboard: Story = {
   render: example('dropdown-menu', 'Account menu'),
   play: async ({ canvas }) => {
-    const trigger = canvas.getByRole('button', { name: 'Ada Lovelace' });
+    const trigger = canvas.getByRole('button', { name: 'Richard Hendricks' });
     trigger.focus();
     await userEvent.keyboard('{Enter}');
     const menu = await screen.findByRole('menu');
@@ -70,7 +70,7 @@ export const HoverCardOnFocus: Story = {
   render: example('hover-card', 'Profile preview'),
   play: async () => {
     await userEvent.tab();
-    const shown = await screen.findByText('Ada Lovelace');
+    const shown = await screen.findByText('Bertram Gilfoyle');
     await waitFor(() => expect(shown).toBeVisible());
   },
 };
@@ -134,7 +134,7 @@ export const CommandPaletteRunsAndCloses: Story = {
 export const DropdownSubmenuAndRadio: Story = {
   render: example('dropdown-menu', 'Account menu'),
   play: async ({ canvas }) => {
-    await userEvent.click(canvas.getByRole('button', { name: 'Ada Lovelace' }));
+    await userEvent.click(canvas.getByRole('button', { name: 'Richard Hendricks' }));
     const left = await screen.findByRole('menuitemradio', { name: 'Left' });
     await expect(screen.getByRole('menuitemradio', { name: 'Right' })).toHaveAttribute('aria-checked', 'true');
     await expect(left).toHaveAttribute('aria-checked', 'false');

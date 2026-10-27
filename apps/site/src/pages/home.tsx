@@ -28,7 +28,7 @@ export function HomePage() {
             Make shadcn/ui look like your own
           </h1>
           <p className="text-lg text-muted-foreground">
-            machine-ui is a shadcn/ui kit with a theme generator. You set a few options, and it builds the colours, type, and
+            machine-ui is an agent-first shadcn/ui kit with a theme generator. You set a few options, and it builds the colours, type, and
             spacing, adjusting every colour pair until the contrast passes. Pick a theme to restyle this site.
           </p>
         </div>
@@ -75,7 +75,7 @@ export function HomePage() {
             </ToggleGroup>
           </div>
         </div>
-        <ScreenFrame title={`app.machine-co.dev/${current.slug}`}>
+        <ScreenFrame title={`app.pied-piper.dev/${current.slug}`}>
           <Suspense fallback={<Loading className="h-full" />}>
             <current.Component />
           </Suspense>

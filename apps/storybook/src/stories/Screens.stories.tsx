@@ -37,7 +37,7 @@ export const CodingAgent: Story = {
     await expect(canvas.getByText('Add a regression test', { selector: '[data-slot=message-content]' })).toBeVisible();
     await expect(canvas.getByRole('button', { name: 'Stop generating' })).toBeVisible();
     await waitFor(() => expect(canvas.getByRole('button', { name: 'Send message' })).toBeInTheDocument(), { timeout: 30_000 });
-    await expect(canvas.getByText(/run the upload suite again/)).toBeVisible();
+    await expect(canvas.getByText(/run the Weissman benchmark again/)).toBeVisible();
   },
 };
 
@@ -57,6 +57,6 @@ export const WorkspaceSettings: Story = {
     await userEvent.click(canvas.getByRole('tab', { name: 'Billing' }));
     await expect(canvas.getByRole('progressbar', { name: 'Seats' })).toBeVisible();
     await userEvent.click(canvas.getByRole('tab', { name: 'Team' }));
-    await expect(canvas.getByText('Grace Hopper')).toBeVisible();
+    await expect(canvas.getByText('Dinesh Chugtai')).toBeVisible();
   },
 };

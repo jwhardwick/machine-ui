@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  InlineCode,
   Message,
   MessageContent,
   PromptInput,
@@ -53,40 +54,41 @@ import { Fragment, useState, type ComponentProps } from 'react';
 type Tone = NonNullable<ComponentProps<typeof StatusDot>['tone']>;
 
 const SESSIONS: { title: string; status: string; tone: Tone }[] = [
-  { title: 'Fix flaky upload test', status: 'Running', tone: 'accent' },
-  { title: 'Add SSO for Hooli', status: 'Review', tone: 'busy' },
-  { title: 'Upgrade to React 19.2', status: 'Merged', tone: 'online' },
-  { title: 'Migrate auth to passkeys', status: 'Failed', tone: 'error' },
-  { title: 'Tune the middle-out encoder', status: 'Merged', tone: 'online' },
+  { title: 'Fix flaky Weissman score test', status: 'Running', tone: 'accent' },
+  { title: 'Scale PiperNet past 10,000 phones', status: 'Review', tone: 'busy' },
+  { title: 'Add video calls to PiperChat', status: 'Merged', tone: 'online' },
+  { title: 'Stop Son of Anton deleting code', status: 'Failed', tone: 'error' },
+  { title: 'Ship the Box appliance build', status: 'Merged', tone: 'online' },
 ];
 
 const FILES = [
-  { path: 'src/upload/chunked-upload.ts', added: 4, removed: 1 },
-  { path: 'src/upload/upload-progress.tsx', added: 6, removed: 2 },
-  { path: 'e2e/upload.spec.ts', added: 1, removed: 3 },
+  { path: 'src/middle-out/compress.ts', added: 4, removed: 1 },
+  { path: 'src/middle-out/encoder.ts', added: 6, removed: 2 },
+  { path: 'test/weissman.spec.ts', added: 1, removed: 3 },
 ];
 
 const CHECKS: { name: string; result: string; tone: Tone; pulse?: boolean }[] = [
   { name: 'Typecheck', result: 'Passed', tone: 'online' },
   { name: 'Lint', result: 'Passed', tone: 'online' },
   { name: 'Unit tests', result: '412 passed', tone: 'online' },
-  { name: 'upload.spec.ts ×50', result: 'Running', tone: 'accent', pulse: true },
+  { name: 'weissman.spec.ts ×50', result: 'Running', tone: 'accent', pulse: true },
 ];
 
-const DIFF = `@@ -38,8 +38,11 @@ export async function uploadChunked(file: File) {
-   for (const chunk of chunks(file, CHUNK_SIZE)) {
-     await session.send(chunk);
+const DIFF = `@@ -38,8 +38,11 @@ export async function compress(input: ReadableStream) {
+   for await (const block of blocks(input, BLOCK_SIZE)) {
+     encoder.write(block);
    }
--  return session.id;
-+  // The last chunk isn't the end: the server still has to
-+  // stitch the file together. Wait until it says it's done.
-+  await session.waitFor('complete', { timeout: 30_000 });
-+  return session.id;
+-  return encoder.result();
++  // Writing the last block isn't the end: the worker still
++  // has to flush it, or we score a partial file.
++  await encoder.flush({ timeout: 30_000 });
++  return encoder.result();
  }`;
 
-const TERMINAL = `$ pnpm test e2e/upload.spec.ts --repeat-each=50
+const TERMINAL = `$ pnpm test test/weissman.spec.ts --repeat-each=50
 Running 50 tests using 4 workers
   ✓ 50 passed (2.1m)
+  Weissman score: 5.2 median, 5.1 lowest
 
 $ pnpm typecheck && pnpm lint
 ✓ No problems found`;
@@ -185,7 +187,7 @@ function ChangesPanel() {
               </li>
             ))}
           </ul>
-          <CodeBlock filename="src/upload/chunked-upload.ts" code={DIFF} />
+          <CodeBlock filename="src/middle-out/compress.ts" code={DIFF} />
         </TabsContent>
         <TabsContent value="checks" className="min-h-0 overflow-y-auto p-3">
           <ul className="grid gap-1">
@@ -220,7 +222,7 @@ export function CodingAgentScreen() {
   const ask = (text: string) => {
     const id = Date.now();
     setTurns((t) => [...t, { id, from: 'user', text }]);
-    reply(id + 1, `On it. I’ll keep working on fix/upload-race for “${text}” and run the upload suite again before I push.`, 1200);
+    reply(id + 1, `On it. I’ll keep working on fix/encoder-flush for “${text}” and run the Weissman benchmark again before I push.`, 1200);
   };
 
   const confirm = (value: string) => {
@@ -228,8 +230,8 @@ export function CodingAgentScreen() {
     reply(
       Date.now(),
       value === 'draft'
-        ? 'Pushed fix/upload-race and opened draft PR #482. I’ll mark it ready once the 50-run check finishes.'
-        : 'Pushed fix/upload-race. Open a PR from the header when you’re ready.',
+        ? 'Pushed fix/encoder-flush and opened draft PR #482. I’ll mark it ready once the 50-run check finishes.'
+        : 'Pushed fix/encoder-flush. Open a PR from the header when you’re ready.',
       0,
     );
   };
@@ -240,7 +242,7 @@ export function CodingAgentScreen() {
         <SidebarHeader>
           <div className="flex items-center gap-2 px-2 py-1">
             <AgentGlyph className="size-6" label="Agent" />
-            <span className="font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">machine-co/web</span>
+            <span className="truncate font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">pied-piper/core</span>
           </div>
           <div className="grid gap-2 group-data-[collapsible=icon]/sidebar:hidden">
             <SearchInput aria-label="Search sessions" placeholder="Search sessions" shortcut="⌘K" />
@@ -270,11 +272,11 @@ export function CodingAgentScreen() {
         <SidebarFooter>
           <div className="flex items-center gap-2 px-2 py-1 group-data-[collapsible=icon]/sidebar:hidden">
             <Avatar className="size-7">
-              <AvatarFallback>PO</AvatarFallback>
+              <AvatarFallback>BG</AvatarFallback>
             </Avatar>
             <div className="grid text-xs leading-tight">
-              <span className="font-medium">Priya Okafor</span>
-              <span className="text-muted-foreground">Frontend</span>
+              <span className="font-medium">Bertram Gilfoyle</span>
+              <span className="text-muted-foreground">Pied Piper</span>
             </div>
           </div>
         </SidebarFooter>
@@ -283,9 +285,9 @@ export function CodingAgentScreen() {
       <SidebarInset className="min-h-0">
         <header className="flex h-12 shrink-0 items-center gap-2 border-b px-3">
           <SidebarTrigger />
-          <h2 className="truncate text-sm font-medium">Fix flaky upload test</h2>
+          <h2 className="truncate text-sm font-medium">Fix flaky Weissman score test</h2>
           <Badge variant="outline" className="hidden font-mono font-normal sm:inline-flex">
-            <GitBranch aria-hidden className="size-3" /> fix/upload-race
+            <GitBranch aria-hidden className="size-3" /> fix/encoder-flush
           </Badge>
           <div className="ml-auto flex items-center gap-1">
             <Button variant="ghost" size="sm">
@@ -313,7 +315,7 @@ export function CodingAgentScreen() {
             <div className="min-h-0 flex-1 overflow-y-auto mask-b-from-[calc(100%-var(--spacing)*8)]">
               <div className="mx-auto grid w-full max-w-2xl gap-6 px-4 pt-6 pb-8">
                 <Message from="user">
-                  <MessageContent>upload.spec.ts fails about one run in five on CI. Find out why and fix it.</MessageContent>
+                  <MessageContent>weissman.spec.ts fails about one run in five on CI. Find out why and fix it.</MessageContent>
                 </Message>
 
                 <Message from="assistant">
@@ -322,26 +324,26 @@ export function CodingAgentScreen() {
                     <ThinkingSteps
                       steps={[
                         { label: 'Reproduced the flake', detail: '4 of 20 runs failed', state: 'done' },
-                        { label: 'Traced it to an early return', detail: 'src/upload/chunked-upload.ts:41', state: 'done' },
-                        { label: 'Patched the upload and re-ran', detail: '50 runs, 0 failures', state: 'done' },
+                        { label: 'Traced it to an unflushed block', detail: 'src/middle-out/compress.ts:41', state: 'done' },
+                        { label: 'Patched the encoder and re-ran', detail: '50 runs, 0 failures', state: 'done' },
                       ]}
                     />
                     <ToolCall
                       name="bash"
                       status="done"
-                      input="pnpm test e2e/upload.spec.ts --repeat-each=20"
-                      output={'16 passed, 4 failed\nExpected status "complete", received "finalizing"'}
+                      input="pnpm test test/weissman.spec.ts --repeat-each=20"
+                      output={'16 passed, 4 failed\nExpected Weissman score ≥ 5.0, received 2.9'}
                     />
                     <p>
-                      The upload returns as soon as the last chunk is sent, but the server still needs a moment to put the file back
-                      together. When the test checks straight away, it sometimes sees <strong>finalizing</strong> instead of{' '}
-                      <strong>complete</strong>. Now the upload waits for the server to finish, and the progress bar shows a
-                      finalizing step.
+                      <InlineCode>compress</InlineCode> returns as soon as the last block is written, but the worker still needs a moment to flush
+                      it. When the test scores the output straight away, it sometimes measures a partial file, and the Weissman score
+                      drops to <strong>2.9</strong>. Now <InlineCode>compress</InlineCode> waits for the flush, so every run scores the whole
+                      file.
                     </p>
-                    <ToolCall name="edit_file" status="done" input="src/upload/chunked-upload.ts" output={DIFF} />
+                    <ToolCall name="edit_file" status="done" input="src/middle-out/compress.ts" output={DIFF} />
                     {approval === 'pending' && (
                       <ApprovalCard
-                        question="Push fix/upload-race?"
+                        question="Push fix/encoder-flush?"
                         options={[
                           { value: 'draft', label: 'Push and open a draft PR', description: 'Ready for review once checks pass.' },
                           { value: 'push', label: 'Push only', description: 'You open the PR yourself.' },
@@ -354,7 +356,7 @@ export function CodingAgentScreen() {
                       <ToolCall
                         name={approval === 'draft' ? 'gh pr create --draft' : 'git push'}
                         status="done"
-                        output={approval === 'draft' ? 'https://github.com/machine-co/web/pull/482' : 'fix/upload-race -> origin'}
+                        output={approval === 'draft' ? 'https://github.com/pied-piper/core/pull/482' : 'fix/encoder-flush -> origin'}
                       />
                     )}
                   </MessageContent>
@@ -387,7 +389,7 @@ export function CodingAgentScreen() {
 
             <div className="mx-auto grid w-full max-w-2xl shrink-0 gap-3 px-4 pb-4">
               {turns.length === 0 && (
-                <PromptSuggestions suggestions={['Add a regression test', 'Explain the race in more detail']} onPick={ask} />
+                <PromptSuggestions suggestions={['Add a regression test', 'Why did the score drop to 2.9?']} onPick={ask} />
               )}
               <PromptInput
                 label="Ask the agent"

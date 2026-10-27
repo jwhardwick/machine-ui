@@ -29,10 +29,10 @@ export default defineDoc({
       render: () => (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Ada Lovelace</Button>
+            <Button variant="outline">Richard Hendricks</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="start">
-            <DropdownMenuLabel>ada@machine-co.dev</DropdownMenuLabel>
+            <DropdownMenuLabel>richard@machine-co.dev</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>

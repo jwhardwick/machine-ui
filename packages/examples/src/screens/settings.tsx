@@ -48,9 +48,9 @@ import {
 import { UserPlus } from 'lucide-react';
 
 const MEMBERS = [
-  ['Ada Lovelace', 'ada@machine-co.dev', 'Owner'],
-  ['Grace Hopper', 'grace@machine-co.dev', 'Admin'],
-  ['Katherine Johnson', 'kj@machine-co.dev', 'Member'],
+  ['Richard Hendricks', 'richard@machine-co.dev', 'Owner'],
+  ['Bertram Gilfoyle', 'gilfoyle@machine-co.dev', 'Admin'],
+  ['Dinesh Chugtai', 'dinesh@machine-co.dev', 'Member'],
 ] as const;
 
 const NOTIFICATIONS = [

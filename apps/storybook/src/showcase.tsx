@@ -42,7 +42,7 @@ export function Showcase() {
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor={`${id}-email`}>Email</Label>
-            <Input id={`${id}-email`} type="email" placeholder="ada@example.com" />
+            <Input id={`${id}-email`} type="email" placeholder="jared@example.com" />
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id={`${id}-admin`} defaultChecked />

@@ -16,12 +16,12 @@ export default defineDoc({
       render: () => (
         <div className="flex items-center gap-4">
           <Avatar className="size-10">
-            <AvatarImage src={PORTRAIT} alt="Ada Lovelace" />
-            <AvatarFallback>AL</AvatarFallback>
+            <AvatarImage src={PORTRAIT} alt="Richard Hendricks" />
+            <AvatarFallback>RH</AvatarFallback>
           </Avatar>
           <Avatar className="size-10">
-            <AvatarImage src="/missing-photo.png" alt="Grace Hopper" />
-            <AvatarFallback>GH</AvatarFallback>
+            <AvatarImage src="/missing-photo.png" alt="Monica Hall" />
+            <AvatarFallback>MH</AvatarFallback>
           </Avatar>
         </div>
       ),
@@ -31,10 +31,10 @@ export default defineDoc({
       render: () => (
         <div className="flex items-center gap-6">
           <Avatar className="size-10">
-            <AvatarFallback>AL</AvatarFallback>
+            <AvatarFallback>RH</AvatarFallback>
           </Avatar>
           <AvatarGroup>
-            {['RH', 'MH', 'BG', 'DC'].map((initials) => (
+            {['BG', 'DC', 'MH', 'JD'].map((initials) => (
               <Avatar key={initials}>
                 <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>

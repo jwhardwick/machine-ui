@@ -312,12 +312,12 @@ export default defineDoc({
       render: () => (
         <div className="flex items-center gap-4">
           <Avatar className="size-10">
-            <AvatarImage src={PORTRAIT} alt="Ada Lovelace" />
-            <AvatarFallback>AL</AvatarFallback>
+            <AvatarImage src={PORTRAIT} alt="Richard Hendricks" />
+            <AvatarFallback>RH</AvatarFallback>
           </Avatar>
           <Avatar className="size-10">
-            <AvatarImage src="/missing-photo.png" alt="Grace Hopper" />
-            <AvatarFallback>GH</AvatarFallback>
+            <AvatarImage src="/missing-photo.png" alt="Monica Hall" />
+            <AvatarFallback>MH</AvatarFallback>
           </Avatar>
         </div>
       ),
@@ -327,10 +327,10 @@ export default defineDoc({
       render: () => (
         <div className="flex items-center gap-6">
           <Avatar className="size-10">
-            <AvatarFallback>AL</AvatarFallback>
+            <AvatarFallback>RH</AvatarFallback>
           </Avatar>
           <AvatarGroup>
-            {['RH', 'MH', 'BG', 'DC'].map((initials) => (
+            {['BG', 'DC', 'MH', 'JD'].map((initials) => (
               <Avatar key={initials}>
                 <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>
@@ -1368,13 +1368,13 @@ interface Member {
 }
 
 const MEMBERS: Member[] = [
-  { name: 'Ada Lovelace', email: 'ada@machine-co.dev', role: 'Owner', lastActive: 'Today' },
-  { name: 'Grace Hopper', email: 'grace@machine-co.dev', role: 'Admin', lastActive: 'Today' },
-  { name: 'Katherine Johnson', email: 'kj@machine-co.dev', role: 'Member', lastActive: 'Yesterday' },
-  { name: 'Margaret Hamilton', email: 'margaret@machine-co.dev', role: 'Admin', lastActive: '3 days ago' },
-  { name: 'Radia Perlman', email: 'radia@machine-co.dev', role: 'Member', lastActive: 'Last week' },
-  { name: 'Barbara Liskov', email: 'barbara@machine-co.dev', role: 'Member', lastActive: 'Today' },
-  { name: 'Frances Allen', email: 'frances@machine-co.dev', role: 'Member', lastActive: '2 days ago' },
+  { name: 'Richard Hendricks', email: 'richard@machine-co.dev', role: 'Owner', lastActive: 'Today' },
+  { name: 'Bertram Gilfoyle', email: 'gilfoyle@machine-co.dev', role: 'Admin', lastActive: 'Today' },
+  { name: 'Dinesh Chugtai', email: 'dinesh@machine-co.dev', role: 'Member', lastActive: 'Yesterday' },
+  { name: 'Monica Hall', email: 'monica@machine-co.dev', role: 'Admin', lastActive: '3 days ago' },
+  { name: 'Erlich Bachman', email: 'erlich@machine-co.dev', role: 'Member', lastActive: 'Last week' },
+  { name: 'Jared Dunn', email: 'jared@machine-co.dev', role: 'Member', lastActive: 'Today' },
+  { name: 'Nelson Bighetti', email: 'bighead@machine-co.dev', role: 'Member', lastActive: '2 days ago' },
 ];
 
 const columns: ColumnDef<Member>[] = [
@@ -1627,10 +1627,10 @@ export default defineDoc({
       render: () => (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Ada Lovelace</Button>
+            <Button variant="outline">Richard Hendricks</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="start">
-            <DropdownMenuLabel>ada@machine-co.dev</DropdownMenuLabel>
+            <DropdownMenuLabel>richard@machine-co.dev</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
@@ -1790,16 +1790,16 @@ export default defineDoc({
       render: () => (
         <HoverCard openDelay={150}>
           <HoverCardTrigger asChild>
-            <Button variant="link">@ada</Button>
+            <Button variant="link">@gilfoyle</Button>
           </HoverCardTrigger>
           <HoverCardContent>
             <div className="flex gap-3">
               <Avatar>
-                <AvatarFallback>AL</AvatarFallback>
+                <AvatarFallback>BG</AvatarFallback>
               </Avatar>
               <div className="grid gap-1 text-sm">
-                <p className="font-medium">Ada Lovelace</p>
-                <p className="text-muted-foreground">Platform team at machine-co. Reviews most of the agent’s pull requests.</p>
+                <p className="font-medium">Bertram Gilfoyle</p>
+                <p className="text-muted-foreground">Engineer at machine-co. Reviews most of the agent’s pull requests.</p>
               </div>
             </div>
           </HoverCardContent>
@@ -1908,13 +1908,13 @@ export default defineDoc({
               <InputGroupAddon>
                 <AtSign aria-hidden />
               </InputGroupAddon>
-              <InputGroupInput id="ig-handle" placeholder="ada" />
+              <InputGroupInput id="ig-handle" placeholder="gilfoyle" />
             </InputGroup>
           </div>
           <div className="grid gap-2">
             <Label htmlFor="ig-invite">Invite by email</Label>
             <InputGroup>
-              <InputGroupInput id="ig-invite" type="email" placeholder="grace@machine-co.dev" />
+              <InputGroupInput id="ig-invite" type="email" placeholder="dinesh@machine-co.dev" />
               <InputGroupAddon align="end">
                 <InputGroupButton variant="secondary">Send invite</InputGroupButton>
               </InputGroupAddon>
@@ -2112,7 +2112,7 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xs gap-2">
           <Label htmlFor="label-email">Email address</Label>
-          <Input id="label-email" type="email" placeholder="ada@example.com" />
+          <Input id="label-email" type="email" placeholder="jared@example.com" />
         </div>
       ),
     },
@@ -2938,7 +2938,7 @@ export default defineDoc({
             <div className="grid gap-4 px-4">
               <div className="grid gap-2">
                 <Label htmlFor="sheet-name">Name</Label>
-                <Input id="sheet-name" defaultValue="Grace Hopper" />
+                <Input id="sheet-name" defaultValue="Dinesh Chugtai" />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="sheet-role">Role</Label>

@@ -30,13 +30,13 @@ export default defineDoc({
               <InputGroupAddon>
                 <AtSign aria-hidden />
               </InputGroupAddon>
-              <InputGroupInput id="ig-handle" placeholder="ada" />
+              <InputGroupInput id="ig-handle" placeholder="gilfoyle" />
             </InputGroup>
           </div>
           <div className="grid gap-2">
             <Label htmlFor="ig-invite">Invite by email</Label>
             <InputGroup>
-              <InputGroupInput id="ig-invite" type="email" placeholder="grace@machine-co.dev" />
+              <InputGroupInput id="ig-invite" type="email" placeholder="dinesh@machine-co.dev" />
               <InputGroupAddon align="end">
                 <InputGroupButton variant="secondary">Send invite</InputGroupButton>
               </InputGroupAddon>

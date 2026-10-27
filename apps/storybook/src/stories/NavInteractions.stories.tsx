@@ -79,10 +79,10 @@ export const DataTableSortsFiltersSelects: Story = {
   play: async ({ canvas }) => {
     const rows = () => within(canvas.getByRole('table')).getAllByRole('row').slice(1);
     await userEvent.click(canvas.getByRole('button', { name: /Name/ }));
-    await expect(rows()[0]).toHaveTextContent('Ada Lovelace');
+    await expect(rows()[0]).toHaveTextContent('Bertram Gilfoyle');
     await userEvent.click(canvas.getByRole('button', { name: /Name/ }));
-    await expect(rows()[0]).toHaveTextContent('Radia Perlman');
-    await userEvent.type(canvas.getByRole('textbox', { name: 'Filter by name…' }), 'grace');
+    await expect(rows()[0]).toHaveTextContent('Richard Hendricks');
+    await userEvent.type(canvas.getByRole('textbox', { name: 'Filter by name…' }), 'dinesh');
     await waitFor(() => expect(rows()).toHaveLength(1));
     await userEvent.click(within(rows()[0]!).getByRole('checkbox', { name: 'Select row' }));
     await expect(canvas.getByText('1 of 1 selected')).toBeVisible();
