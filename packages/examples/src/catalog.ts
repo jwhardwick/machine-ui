@@ -51,7 +51,7 @@ export const loadSource = perSlug(async (slug) => {
 });
 
 const SCREEN_COMPONENTS: Record<string, ComponentType> = {
-  chat: lazy(() => import('./screens/chat.tsx').then((m) => ({ default: m.ChatScreen }))),
+  'coding-agent': lazy(() => import('./screens/coding-agent.tsx').then((m) => ({ default: m.CodingAgentScreen }))),
   dashboard: lazy(() => import('./screens/dashboard.tsx').then((m) => ({ default: m.DashboardScreen }))),
   settings: lazy(() => import('./screens/settings.tsx').then((m) => ({ default: m.SettingsScreen }))),
 };

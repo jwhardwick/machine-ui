@@ -1,4 +1,4 @@
-import { ChatScreen, DashboardScreen, SettingsScreen } from '@machine-ui/examples';
+import { CodingAgentScreen, DashboardScreen, SettingsScreen } from '@machine-ui/examples';
 import { applyTheme, type Mode } from '@machine-ui/theme-engine';
 import { REFERENCE_THEMES, type ThemeSeed } from '@machine-ui/tokens';
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
@@ -21,7 +21,7 @@ function Themed({ seed, mode, children }: { seed: ThemeSeed; mode: Mode; childre
 }
 
 const preset = (name: string) => REFERENCE_THEMES.find((t) => t.name === name)!;
-const SCREENS = { chat: ChatScreen, dashboard: DashboardScreen, settings: SettingsScreen };
+const SCREENS = { 'coding-agent': CodingAgentScreen, dashboard: DashboardScreen, settings: SettingsScreen };
 
 describe('theme matrix', () => {
   test('every preset in light and dark', async () => {

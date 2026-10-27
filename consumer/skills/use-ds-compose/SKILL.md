@@ -35,7 +35,8 @@ Read `<host>/llms.txt` for the full component list. Install what you need with `
 - **App shell:** `SidebarProvider` → `Sidebar` (header, groups, footer) + `SidebarInset` with a header bar (`SidebarTrigger`, title, actions) and scrolling content.
 - **Settings:** `tabs` across sections; each section a `card` of `field`s with one save action in the footer; destructive actions last, behind `alert-dialog`.
 - **Dashboard:** a row of `stat` cards, then `chart` cards, then a `data-table`.
-- **Agent inbox:** sidebar of threads; conversation of `message`s; `prompt-input` docked at the bottom with `prompt-suggestions` above it.
+- **Agent chat:** sidebar of threads; conversation of `message`s; `prompt-input` docked at the bottom with `prompt-suggestions` above it.
+- **Coding agent:** sidebar of sessions with a `status-dot` each; the run as `message`s with `thinking-steps`, `tool-call`s and an `approval-card` before anything leaves the machine; a side panel of `tabs` (changes, checks, terminal) using `code-block`.
 
 ## Rules
 

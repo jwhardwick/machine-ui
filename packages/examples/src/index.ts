@@ -1,7 +1,7 @@
 import type { ComponentDoc } from './types.ts';
 
 export * from './types.ts';
-export { ChatScreen, DashboardScreen, SCREENS, SettingsScreen, type ScreenDoc } from './screens/index.ts';
+export { CodingAgentScreen, DashboardScreen, SCREENS, SettingsScreen, type ScreenDoc } from './screens/index.ts';
 
 const modules = import.meta.glob<{ default: ComponentDoc }>('./components/*.tsx', { eager: true });
 const sources = import.meta.glob<string>('./components/*.tsx', { eager: true, query: '?raw', import: 'default' });

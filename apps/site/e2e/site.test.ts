@@ -120,8 +120,8 @@ describe('navigation', () => {
     assert.deepEqual(await current('All screens'), ['All screens']);
     await nav.getByRole('link', { name: 'Store dashboard' }).click();
     assert.deepEqual(await current('Store dashboard'), ['Store dashboard']);
-    await nav.getByRole('link', { name: 'Agent inbox' }).click();
-    assert.deepEqual(await current('Agent inbox'), ['Agent inbox']);
+    await nav.getByRole('link', { name: 'Coding agent' }).click();
+    assert.deepEqual(await current('Coding agent'), ['Coding agent']);
     await page.close();
   });
 

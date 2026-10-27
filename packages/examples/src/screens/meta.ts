@@ -9,10 +9,10 @@ export interface ScreenMeta {
 
 export const SCREEN_META: ScreenMeta[] = [
   {
-    slug: 'chat',
-    name: 'Agent inbox',
-    description: 'A support agent’s workspace: threads, a worked answer with sources and tools, and a live composer. Try sending a message.',
-    uses: ['sidebar', 'search-input', 'message', 'thinking-steps', 'tool-call', 'citation', 'confidence-bar', 'streaming-text', 'prompt-input', 'select', 'dropdown-menu'],
+    slug: 'coding-agent',
+    name: 'Coding agent',
+    description: 'A coding agent’s run: sessions, the plan it followed, tool calls, a push that waits for approval, and the diff, checks and terminal beside it. Try approving the push or sending a message.',
+    uses: ['sidebar', 'search-input', 'status-dot', 'message', 'thinking-steps', 'tool-call', 'approval-card', 'code-block', 'tabs', 'streaming-text', 'prompt-input', 'select', 'dropdown-menu'],
   },
   {
     slug: 'dashboard',
