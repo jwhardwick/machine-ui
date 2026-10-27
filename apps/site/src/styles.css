@@ -5,6 +5,16 @@
 @source "../../../packages/examples/src";
 
 @layer base {
+  /* Menus, selects and dialogs lock scrolling, which removes the scrollbar and widens the page, so fixed elements like the
+     theme toolbar jump sideways. Reserve the scrollbar's space instead, and drop the margin react-remove-scroll adds to
+     make up for it, which would now be counted twice. */
+  html {
+    scrollbar-gutter: stable;
+  }
+  html body[data-scroll-locked] {
+    margin-right: 0 !important;
+  }
+
   body {
     transition:
       background-color var(--motion-normal) var(--motion-ease-standard),
