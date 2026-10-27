@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'alert',
   name: 'Alert',
   category: 'feedback',
-  description: 'An inline banner with a title and a description, in default, success, warning and destructive variants.',
+  description: 'An inline banner with a title and a description, in default, success, warning, and destructive variants.',
   examples: [
     {
       name: 'Variants',

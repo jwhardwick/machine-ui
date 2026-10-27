@@ -13,7 +13,7 @@
 
 ## Accordion
 
-A stack of headings that each reveal a section. One or several sections can be open.
+A stack of headings that each open a section. You can allow one section or several to be open at once.
 
 Install: `npx shadcn@latest add @machine-ui/accordion`
 
@@ -27,7 +27,7 @@ export default defineDoc({
   slug: 'accordion',
   name: 'Accordion',
   category: 'layout',
-  description: 'A stack of headings that each reveal a section. One or several sections can be open.',
+  description: 'A stack of headings that each open a section. You can allow one section or several to be open at once.',
   examples: [
     {
       name: 'FAQ',
@@ -56,7 +56,7 @@ export default defineDoc({
 
 ## Agent Glyph
 
-The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.
+The agent’s icon, used as its avatar next to messages and activity. It uses the theme’s primary colour.
 
 Install: `npx shadcn@latest add @machine-ui/agent-glyph`
 
@@ -74,7 +74,7 @@ export default defineDoc({
   slug: 'agent-glyph',
   name: 'Agent Glyph',
   category: 'ai',
-  description: 'The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.',
+  description: 'The agent’s icon, used as its avatar next to messages and activity. It uses the theme’s primary colour.',
   examples: [
     {
       name: 'Sizes',
@@ -92,7 +92,7 @@ export default defineDoc({
 
 ## Alert
 
-An inline banner with a title and a description, in default, success, warning and destructive variants.
+An inline banner with a title and a description, in default, success, warning, and destructive variants.
 
 Install: `npx shadcn@latest add @machine-ui/alert`
 
@@ -111,7 +111,7 @@ export default defineDoc({
   slug: 'alert',
   name: 'Alert',
   category: 'feedback',
-  description: 'An inline banner with a title and a description, in default, success, warning and destructive variants.',
+  description: 'An inline banner with a title and a description, in default, success, warning, and destructive variants.',
   examples: [
     {
       name: 'Variants',
@@ -146,7 +146,7 @@ export default defineDoc({
 
 ## Alert Dialog
 
-A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.
+A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key.
 
 Install: `npx shadcn@latest add @machine-ui/alert-dialog @machine-ui/button`
 
@@ -181,7 +181,7 @@ export default defineDoc({
   slug: 'alert-dialog',
   name: 'Alert Dialog',
   category: 'overlays',
-  description: 'A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.',
+  description: 'A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key.',
   examples: [
     {
       name: 'Destructive',
@@ -211,7 +211,7 @@ export default defineDoc({
 
 ## Approval Card
 
-The agent asks before it acts: a question, a few options and Confirm or Skip.
+Lets the agent check with you before it acts, with a question, a few options, and Confirm and Skip buttons.
 
 Install: `npx shadcn@latest add @machine-ui/approval-card`
 
@@ -233,7 +233,7 @@ export default defineDoc({
   slug: 'approval-card',
   name: 'Approval Card',
   category: 'ai',
-  description: 'The agent asks before it acts: a question, a few options and Confirm or Skip.',
+  description: 'Lets the agent check with you before it acts, with a question, a few options, and Confirm and Skip buttons.',
   examples: [
     {
       name: 'Default',
@@ -345,7 +345,7 @@ export default defineDoc({
 
 ## Badge
 
-A small label for state or category, in primary, secondary, outline and destructive styles.
+A small label for state or category, in primary, secondary, outline, and destructive styles.
 
 Install: `npx shadcn@latest add @machine-ui/badge`
 
@@ -363,7 +363,7 @@ export default defineDoc({
   slug: 'badge',
   name: 'Badge',
   category: 'data',
-  description: 'A small label for state or category, in primary, secondary, outline and destructive styles.',
+  description: 'A small label for state or category, in primary, secondary, outline, and destructive styles.',
   examples: [
     {
       name: 'Variants',
@@ -440,7 +440,7 @@ export default defineDoc({
 
 ## Button
 
-Triggers an action. Six variants and four sizes, with icon, loading and disabled states.
+Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states.
 
 Install: `npx shadcn@latest add @machine-ui/button`
 
@@ -461,7 +461,7 @@ export default defineDoc({
   slug: 'button',
   name: 'Button',
   category: 'forms',
-  description: 'Triggers an action. Six variants and four sizes, with icon, loading and disabled states.',
+  description: 'Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states.',
   examples: [
     { name: 'Default', render: () => <Button>Send reply</Button> },
     {
@@ -713,7 +713,7 @@ export default defineDoc({
 
 ## Chart
 
-Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.
+Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens.
 
 Install: `npx shadcn@latest add @machine-ui/chart @machine-ui/use-reduced-motion`
 
@@ -787,7 +787,7 @@ export default defineDoc({
   slug: 'chart',
   name: 'Chart',
   category: 'data',
-  description: 'Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.',
+  description: 'Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens.',
   examples: [
     {
       name: 'Bar',
@@ -805,7 +805,7 @@ export default defineDoc({
 
 ## Checkbox
 
-Turns an option on or off. Supports an indeterminate state for "some selected".
+Turns an option on or off. It also has an indeterminate state for when only some items are selected.
 
 Install: `npx shadcn@latest add @machine-ui/checkbox @machine-ui/label`
 
@@ -819,7 +819,7 @@ export default defineDoc({
   slug: 'checkbox',
   name: 'Checkbox',
   category: 'forms',
-  description: 'Turns an option on or off. Supports an indeterminate state for "some selected".',
+  description: 'Turns an option on or off. It also has an indeterminate state for when only some items are selected.',
   examples: [
     {
       name: 'States',
@@ -993,7 +993,7 @@ export default defineDoc({
 
 ## Combobox
 
-A select with a filter field: type to narrow the options, then pick one.
+A select with a search field. Type to narrow the options, then pick one.
 
 Install: `npx shadcn@latest add @machine-ui/combobox @machine-ui/label`
 
@@ -1028,7 +1028,7 @@ export default defineDoc({
   slug: 'combobox',
   name: 'Combobox',
   category: 'forms',
-  description: 'A select with a filter field: type to narrow the options, then pick one.',
+  description: 'A select with a search field. Type to narrow the options, then pick one.',
   examples: [
     {
       name: 'Default',
@@ -1099,7 +1099,7 @@ export default defineDoc({
 
 ## Command Palette
 
-Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.
+Command in a modal that opens from a button or a keyboard shortcut. Type to filter, use the arrow keys to move, Enter to run, and Escape to close.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/command @machine-ui/kbd`
 
@@ -1164,14 +1164,14 @@ export default defineDoc({
   slug: 'command-palette',
   name: 'Command Palette',
   category: 'overlays',
-  description: 'Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.',
+  description: 'Command in a modal that opens from a button or a keyboard shortcut. Type to filter, use the arrow keys to move, Enter to run, and Escape to close.',
   examples: [{ name: 'Default', render: () => <Palette_ /> }],
 });
 ```
 
 ## Confidence Bar
 
-How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.
+Shows how sure the agent is with a bar and a word (high, medium, or low), so colour isn’t the only cue.
 
 Install: `npx shadcn@latest add @machine-ui/confidence-bar`
 
@@ -1190,7 +1190,7 @@ export default defineDoc({
   slug: 'confidence-bar',
   name: 'Confidence Bar',
   category: 'ai',
-  description: 'How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.',
+  description: 'Shows how sure the agent is with a bar and a word (high, medium, or low), so colour isn’t the only cue.',
   examples: [
     {
       name: 'Levels',
@@ -1296,7 +1296,7 @@ export default defineDoc({
 
 ## Copy Input
 
-A read-only field with a copy button, for API keys, webhook URLs and share links.
+A read-only field with a copy button, for API keys, webhook URLs, and share links.
 
 Install: `npx shadcn@latest add @machine-ui/copy-input @machine-ui/label`
 
@@ -1314,7 +1314,7 @@ export default defineDoc({
   slug: 'copy-input',
   name: 'Copy Input',
   category: 'forms',
-  description: 'A read-only field with a copy button, for API keys, webhook URLs and share links.',
+  description: 'A read-only field with a copy button, for API keys, webhook URLs, and share links.',
   examples: [
     {
       name: 'Default',
@@ -1331,7 +1331,7 @@ export default defineDoc({
 
 ## Data Table
 
-A table with sorting, filtering, row selection and pagination, built on TanStack Table.
+A table with sorting, filtering, row selection, and pagination, built on TanStack Table.
 
 Install: `npx shadcn@latest add @machine-ui/badge @machine-ui/data-table`
 
@@ -1393,7 +1393,7 @@ export default defineDoc({
   slug: 'data-table',
   name: 'Data Table',
   category: 'data',
-  description: 'A table with sorting, filtering, row selection and pagination, built on TanStack Table.',
+  description: 'A table with sorting, filtering, row selection, and pagination, built on TanStack Table.',
   examples: [
     {
       name: 'Members',
@@ -1570,7 +1570,7 @@ export default defineDoc({
 
 ## Dropdown Menu
 
-A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.
+A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/dropdown-menu`
 
@@ -1620,7 +1620,7 @@ export default defineDoc({
   slug: 'dropdown-menu',
   name: 'Dropdown Menu',
   category: 'overlays',
-  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.',
+  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style.',
   examples: [
     {
       name: 'Account menu',
@@ -1668,7 +1668,7 @@ export default defineDoc({
 
 ## Empty
 
-A placeholder for a view with nothing in it yet: what it is for, and the one action to start.
+A placeholder for an empty view. It explains what goes there and offers one action to get started.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/empty`
 
@@ -1689,7 +1689,7 @@ export default defineDoc({
   slug: 'empty',
   name: 'Empty',
   category: 'feedback',
-  description: 'A placeholder for a view with nothing in it yet: what it is for, and the one action to start.',
+  description: 'A placeholder for an empty view. It explains what goes there and offers one action to get started.',
   examples: [
     {
       name: 'Default',
@@ -1713,7 +1713,7 @@ export default defineDoc({
 
 ## Field
 
-Lays out a label, control, help text and error for one form field, so every form reads the same way.
+Lays out the label, control, help text, and error for one form field, so your forms look consistent.
 
 Install: `npx shadcn@latest add @machine-ui/field @machine-ui/input @machine-ui/switch`
 
@@ -1731,7 +1731,7 @@ export default defineDoc({
   slug: 'field',
   name: 'Field',
   category: 'forms',
-  description: 'Lays out a label, control, help text and error for one form field, so every form reads the same way.',
+  description: 'Lays out the label, control, help text, and error for one form field, so your forms look consistent.',
   examples: [
     {
       name: 'Form',
@@ -1763,7 +1763,7 @@ export default defineDoc({
 
 ## Hover Card
 
-A floating preview shown while the pointer rests on, or focus is on, its trigger.
+A floating preview that shows while the pointer is over its trigger, or while the trigger has focus.
 
 Install: `npx shadcn@latest add @machine-ui/avatar @machine-ui/button @machine-ui/hover-card`
 
@@ -1783,7 +1783,7 @@ export default defineDoc({
   slug: 'hover-card',
   name: 'Hover Card',
   category: 'overlays',
-  description: 'A floating preview shown while the pointer rests on, or focus is on, its trigger.',
+  description: 'A floating preview that shows while the pointer is over its trigger, or while the trigger has focus.',
   examples: [
     {
       name: 'Profile preview',
@@ -1929,7 +1929,7 @@ export default defineDoc({
 
 ## Input OTP
 
-Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.
+One box per character for one-time codes. Focus moves to the next box as you type, and you can paste the whole code.
 
 Install: `npx shadcn@latest add @machine-ui/input-otp @machine-ui/label`
 
@@ -1947,7 +1947,7 @@ export default defineDoc({
   slug: 'input-otp',
   name: 'Input OTP',
   category: 'forms',
-  description: 'Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.',
+  description: 'One box per character for one-time codes. Focus moves to the next box as you type, and you can paste the whole code.',
   examples: [
     {
       name: 'Six digits',
@@ -1976,7 +1976,7 @@ export default defineDoc({
 
 ## Item
 
-A row with media, a title, a description and actions, for lists, settings and search results.
+A row with media, a title, a description and actions, for lists, settings, and search results.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/item @machine-ui/switch`
 
@@ -2003,7 +2003,7 @@ export default defineDoc({
   slug: 'item',
   name: 'Item',
   category: 'data',
-  description: 'A row with media, a title, a description and actions, for lists, settings and search results.',
+  description: 'A row with media, a title, a description and actions, for lists, settings, and search results.',
   examples: [
     {
       name: 'Settings list',
@@ -2118,7 +2118,7 @@ export default defineDoc({
 
 ## Menubar
 
-A row of menus like a desktop app bar. Open one, then arrow or hover across the others.
+A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others.
 
 Install: `npx shadcn@latest add @machine-ui/menubar`
 
@@ -2152,7 +2152,7 @@ export default defineDoc({
   slug: 'menubar',
   name: 'Menubar',
   category: 'navigation',
-  description: 'A row of menus like a desktop app bar. Open one, then arrow or hover across the others.',
+  description: 'A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others.',
   examples: [
     {
       name: 'Editor',
@@ -2213,7 +2213,7 @@ export default defineDoc({
 
 ## Message
 
-One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.
+One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.
 
 Install: `npx shadcn@latest add @machine-ui/agent-glyph @machine-ui/button @machine-ui/message`
 
@@ -2242,7 +2242,7 @@ export default defineDoc({
   slug: 'message',
   name: 'Message',
   category: 'ai',
-  description: 'One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.',
+  description: 'One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.',
   examples: [
     {
       name: 'Exchange',
@@ -2285,7 +2285,7 @@ export default defineDoc({
 
 ## Native Select
 
-The browser’s own select, styled to match the theme. Best on mobile and for long option lists.
+The browser’s own select, styled to match the theme. Works best on mobile and for long lists of options.
 
 Install: `npx shadcn@latest add @machine-ui/label @machine-ui/native-select`
 
@@ -2299,7 +2299,7 @@ export default defineDoc({
   slug: 'native-select',
   name: 'Native Select',
   category: 'forms',
-  description: 'The browser’s own select, styled to match the theme. Best on mobile and for long option lists.',
+  description: 'The browser’s own select, styled to match the theme. Works best on mobile and for long lists of options.',
   examples: [
     {
       name: 'Default',
@@ -2456,7 +2456,7 @@ export default defineDoc({
 
 ## Popover
 
-A floating panel anchored to a trigger, for short forms, settings and details.
+A floating panel anchored to a trigger, for short forms, settings, and details.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/popover`
 
@@ -2476,7 +2476,7 @@ export default defineDoc({
   slug: 'popover',
   name: 'Popover',
   category: 'overlays',
-  description: 'A floating panel anchored to a trigger, for short forms, settings and details.',
+  description: 'A floating panel anchored to a trigger, for short forms, settings, and details.',
   examples: [
     {
       name: 'Settings',
@@ -2541,7 +2541,7 @@ export default defineDoc({
 
 ## Prompt Input
 
-The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.
+The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/prompt-input`
 
@@ -2577,7 +2577,7 @@ export default defineDoc({
   slug: 'prompt-input',
   name: 'Prompt Input',
   category: 'ai',
-  description: 'The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.',
+  description: 'The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.',
   examples: [
     {
       name: 'With suggestions',
@@ -2647,7 +2647,7 @@ export default defineDoc({
 
 ## Resizable
 
-Panels the user can resize by dragging, or with arrow keys on the focused handle.
+Panels you can resize by dragging, or with the arrow keys when a handle has focus.
 
 Install: `npx shadcn@latest add @machine-ui/resizable`
 
@@ -2665,7 +2665,7 @@ export default defineDoc({
   slug: 'resizable',
   name: 'Resizable',
   category: 'layout',
-  description: 'Panels the user can resize by dragging, or with arrow keys on the focused handle.',
+  description: 'Panels you can resize by dragging, or with the arrow keys when a handle has focus.',
   examples: [
     {
       name: 'Editor layout',
@@ -2881,7 +2881,7 @@ export default defineDoc({
 
 ## Sheet
 
-A panel that slides in from any edge over a scrim. Good for edit forms and detail views.
+A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/sheet`
 
@@ -2917,7 +2917,7 @@ export default defineDoc({
   slug: 'sheet',
   name: 'Sheet',
   category: 'overlays',
-  description: 'A panel that slides in from any edge over a scrim. Good for edit forms and detail views.',
+  description: 'A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views.',
   examples: [
     {
       name: 'Edit panel',
@@ -2957,7 +2957,7 @@ export default defineDoc({
 
 ## Sidebar
 
-App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.
+App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it.
 
 Install: `npx shadcn@latest add @machine-ui/sidebar`
 
@@ -3019,7 +3019,7 @@ export default defineDoc({
   slug: 'sidebar',
   name: 'Sidebar',
   category: 'navigation',
-  description: 'App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.',
+  description: 'App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it.',
   examples: [
     {
       name: 'App shell',
@@ -3112,7 +3112,7 @@ export default defineDoc({
 
 ## Slider
 
-Picks a number, or a range, by dragging. Arrow keys step through values.
+Picks a number or a range by dragging. The arrow keys move it one step at a time.
 
 Install: `npx shadcn@latest add @machine-ui/label @machine-ui/slider`
 
@@ -3126,7 +3126,7 @@ export default defineDoc({
   slug: 'slider',
   name: 'Slider',
   category: 'forms',
-  description: 'Picks a number, or a range, by dragging. Arrow keys step through values.',
+  description: 'Picks a number or a range by dragging. The arrow keys move it one step at a time.',
   examples: [
     {
       name: 'Single',
@@ -3192,7 +3192,7 @@ export default defineDoc({
 
 ## Stat
 
-A labelled number with an optional change, marked up or down by icon and text, not colour alone.
+A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.
 
 Install: `npx shadcn@latest add @machine-ui/card @machine-ui/stat`
 
@@ -3213,7 +3213,7 @@ export default defineDoc({
   slug: 'stat',
   name: 'Stat',
   category: 'data',
-  description: 'A labelled number with an optional change, marked up or down by icon and text, not colour alone.',
+  description: 'A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.',
   examples: [
     {
       name: 'Row',
@@ -3290,7 +3290,7 @@ export default defineDoc({
 
 ## Stepper
 
-Progress through a fixed sequence of steps, with done, current and upcoming states.
+Progress through a fixed sequence of steps, with done, current, and upcoming states.
 
 Install: `npx shadcn@latest add @machine-ui/stepper`
 
@@ -3309,7 +3309,7 @@ export default defineDoc({
   slug: 'stepper',
   name: 'Stepper',
   category: 'navigation',
-  description: 'Progress through a fixed sequence of steps, with done, current and upcoming states.',
+  description: 'Progress through a fixed sequence of steps, with done, current, and upcoming states.',
   examples: [
     {
       name: 'Onboarding',
@@ -3333,7 +3333,7 @@ export default defineDoc({
 
 ## Streaming Text
 
-Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.
+Types out a response with a cursor, then hides the cursor. If reduced motion is on, it shows the whole text at once.
 
 Install: `npx shadcn@latest add @machine-ui/streaming-text`
 
@@ -3353,7 +3353,7 @@ export default defineDoc({
   slug: 'streaming-text',
   name: 'Streaming Text',
   category: 'ai',
-  description: 'Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.',
+  description: 'Types out a response with a cursor, then hides the cursor. If reduced motion is on, it shows the whole text at once.',
   examples: [
     {
       name: 'Default',
@@ -3556,7 +3556,7 @@ export default defineDoc({
 
 ## Thinking Indicator
 
-A short label with pulsing dots while the agent works. Announced politely; still when motion is off.
+A short label with pulsing dots that shows while the agent works. Screen readers announce it without interrupting, and the dots stay still if reduced motion is on.
 
 Install: `npx shadcn@latest add @machine-ui/thinking`
 
@@ -3574,7 +3574,7 @@ export default defineDoc({
   slug: 'thinking-indicator',
   name: 'Thinking Indicator',
   category: 'ai',
-  description: 'A short label with pulsing dots while the agent works. Announced politely; still when motion is off.',
+  description: 'A short label with pulsing dots that shows while the agent works. Screen readers announce it without interrupting, and the dots stay still if reduced motion is on.',
   examples: [
     {
       name: 'Default',
@@ -3591,7 +3591,7 @@ export default defineDoc({
 
 ## Thinking Steps
 
-The steps an agent is working through, with done, active and upcoming states.
+The steps an agent is working through, with done, active, and upcoming states.
 
 Install: `npx shadcn@latest add @machine-ui/thinking`
 
@@ -3609,7 +3609,7 @@ export default defineDoc({
   slug: 'thinking-steps',
   name: 'Thinking Steps',
   category: 'ai',
-  description: 'The steps an agent is working through, with done, active and upcoming states.',
+  description: 'The steps an agent is working through, with done, active, and upcoming states.',
   examples: [
     {
       name: 'In progress',
@@ -3823,7 +3823,7 @@ export default defineDoc({
 
 ## Tooltip
 
-A short label shown on hover or focus. Never put essential information only in a tooltip.
+A short label shown on hover or focus. Don’t put anything essential only in a tooltip.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/tooltip`
 
@@ -3844,7 +3844,7 @@ export default defineDoc({
   slug: 'tooltip',
   name: 'Tooltip',
   category: 'overlays',
-  description: 'A short label shown on hover or focus. Never put essential information only in a tooltip.',
+  description: 'A short label shown on hover or focus. Don’t put anything essential only in a tooltip.',
   examples: [
     {
       name: 'Icon button',
@@ -3865,7 +3865,7 @@ export default defineDoc({
 
 ## Typography
 
-Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.
+Text styles from the theme’s type scale. Headings use the display font and body text uses the text font.
 
 Install: `npx shadcn@latest add @machine-ui/typography`
 
@@ -3879,7 +3879,7 @@ export default defineDoc({
   slug: 'typography',
   name: 'Typography',
   category: 'data',
-  description: 'Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.',
+  description: 'Text styles from the theme’s type scale. Headings use the display font and body text uses the text font.',
   examples: [
     {
       name: 'Article',

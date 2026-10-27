@@ -3,7 +3,7 @@
   "name": "stat",
   "type": "registry:ui",
   "title": "Stat",
-  "description": "A labelled number with an optional change, marked up or down by icon and text, not colour alone.",
+  "description": "A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.",
   "dependencies": [
     "lucide-react@1.59.0"
   ],

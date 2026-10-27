@@ -3,7 +3,7 @@
   "name": "menubar",
   "type": "registry:ui",
   "title": "Menubar",
-  "description": "A row of menus like a desktop app bar. Open one, then arrow or hover across the others.",
+  "description": "A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others.",
   "dependencies": [
     "lucide-react@1.59.0",
     "radix-ui@1.8.1"

@@ -3,7 +3,7 @@
   "name": "stepper",
   "type": "registry:ui",
   "title": "Stepper",
-  "description": "Progress through a fixed sequence of steps, with done, current and upcoming states.",
+  "description": "Progress through a fixed sequence of steps, with done, current, and upcoming states.",
   "dependencies": [
     "lucide-react@1.59.0"
   ],

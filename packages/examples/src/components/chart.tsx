@@ -50,7 +50,7 @@ export default defineDoc({
   slug: 'chart',
   name: 'Chart',
   category: 'data',
-  description: 'Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.',
+  description: 'Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens.',
   examples: [
     {
       name: 'Bar',

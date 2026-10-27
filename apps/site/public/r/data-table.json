@@ -3,7 +3,7 @@
   "name": "data-table",
   "type": "registry:ui",
   "title": "Data Table",
-  "description": "A table with sorting, filtering, row selection and pagination, built on TanStack Table.",
+  "description": "A table with sorting, filtering, row selection, and pagination, built on TanStack Table.",
   "dependencies": [
     "@tanstack/react-table@8.21.3",
     "lucide-react@1.59.0"

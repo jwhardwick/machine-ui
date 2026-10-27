@@ -3,7 +3,7 @@
   "name": "item",
   "type": "registry:ui",
   "title": "Item",
-  "description": "A row with media, a title, a description and actions, for lists, settings and search results.",
+  "description": "A row with media, a title, a description and actions, for lists, settings, and search results.",
   "dependencies": [
     "class-variance-authority@0.7.1",
     "radix-ui@1.8.1"

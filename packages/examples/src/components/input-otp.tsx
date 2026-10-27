@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'input-otp',
   name: 'Input OTP',
   category: 'forms',
-  description: 'Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.',
+  description: 'One box per character for one-time codes. Focus moves to the next box as you type, and you can paste the whole code.',
   examples: [
     {
       name: 'Six digits',

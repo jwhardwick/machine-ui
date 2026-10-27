@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'stat',
   name: 'Stat',
   category: 'data',
-  description: 'A labelled number with an optional change, marked up or down by icon and text, not colour alone.',
+  description: 'A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.',
   examples: [
     {
       name: 'Row',

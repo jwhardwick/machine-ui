@@ -3,7 +3,7 @@
   "name": "badge",
   "type": "registry:ui",
   "title": "Badge",
-  "description": "A small label for state or category, in primary, secondary, outline and destructive styles.",
+  "description": "A small label for state or category, in primary, secondary, outline, and destructive styles.",
   "dependencies": [
     "class-variance-authority@0.7.1"
   ],

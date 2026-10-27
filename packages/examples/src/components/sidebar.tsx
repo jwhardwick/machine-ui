@@ -29,7 +29,7 @@ export default defineDoc({
   slug: 'sidebar',
   name: 'Sidebar',
   category: 'navigation',
-  description: 'App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.',
+  description: 'App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it.',
   examples: [
     {
       name: 'App shell',

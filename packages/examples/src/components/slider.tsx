@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'slider',
   name: 'Slider',
   category: 'forms',
-  description: 'Picks a number, or a range, by dragging. Arrow keys step through values.',
+  description: 'Picks a number or a range by dragging. The arrow keys move it one step at a time.',
   examples: [
     {
       name: 'Single',

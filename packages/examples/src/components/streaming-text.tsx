@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'streaming-text',
   name: 'Streaming Text',
   category: 'ai',
-  description: 'Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.',
+  description: 'Types out a response with a cursor, then hides the cursor. If reduced motion is on, it shows the whole text at once.',
   examples: [
     {
       name: 'Default',

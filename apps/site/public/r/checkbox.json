@@ -3,7 +3,7 @@
   "name": "checkbox",
   "type": "registry:ui",
   "title": "Checkbox",
-  "description": "Turns an option on or off. Supports an indeterminate state for \"some selected\".",
+  "description": "Turns an option on or off. It also has an indeterminate state for when only some items are selected.",
   "dependencies": [
     "lucide-react@1.59.0",
     "radix-ui@1.8.1"

@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'message',
   name: 'Message',
   category: 'ai',
-  description: 'One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.',
+  description: 'One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.',
   examples: [
     {
       name: 'Exchange',

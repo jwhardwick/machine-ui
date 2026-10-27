@@ -22,7 +22,7 @@ function ContrastTable({ mode }: { mode: Mode }) {
             {passed}/{results.length} pass
           </Badge>
         </div>
-        <CardDescription>WCAG 2.2: 4.5:1 for text, 3:1 for control boundaries. APCA shown for reference.</CardDescription>
+        <CardDescription>WCAG 2.2 needs 4.5:1 for text and 3:1 for control borders. APCA is shown for reference only.</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
@@ -66,7 +66,8 @@ export function ThemesPage() {
       <header className="grid grid-cols-1 max-w-2xl gap-4">
         <h1 className="font-display text-4xl font-semibold">Themes</h1>
         <p className="text-lg text-muted-foreground">
-          Move the settings and the whole site follows. Every colour pair is solved for contrast as you go, in light and dark.
+          Change the settings and the whole site updates. As you go, every colour pair is adjusted to meet WCAG contrast in light
+          and dark mode.
         </p>
       </header>
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[18rem_1fr]">

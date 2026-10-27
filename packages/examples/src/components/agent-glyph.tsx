@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'agent-glyph',
   name: 'Agent Glyph',
   category: 'ai',
-  description: 'The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.',
+  description: 'The agent’s icon, used as its avatar next to messages and activity. It uses the theme’s primary colour.',
   examples: [
     {
       name: 'Sizes',

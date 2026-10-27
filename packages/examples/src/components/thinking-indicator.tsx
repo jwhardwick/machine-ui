@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'thinking-indicator',
   name: 'Thinking Indicator',
   category: 'ai',
-  description: 'A short label with pulsing dots while the agent works. Announced politely; still when motion is off.',
+  description: 'A short label with pulsing dots that shows while the agent works. Screen readers announce it without interrupting, and the dots stay still if reduced motion is on.',
   examples: [
     {
       name: 'Default',

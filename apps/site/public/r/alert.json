@@ -3,7 +3,7 @@
   "name": "alert",
   "type": "registry:ui",
   "title": "Alert",
-  "description": "An inline banner with a title and a description, in default, success, warning and destructive variants.",
+  "description": "An inline banner with a title and a description, in default, success, warning, and destructive variants.",
   "dependencies": [
     "class-variance-authority@0.7.1"
   ],

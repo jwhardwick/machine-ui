@@ -3,7 +3,7 @@
   "name": "resizable",
   "type": "registry:ui",
   "title": "Resizable",
-  "description": "Panels the user can resize by dragging, or with arrow keys on the focused handle.",
+  "description": "Panels you can resize by dragging, or with the arrow keys when a handle has focus.",
   "dependencies": [
     "lucide-react@1.59.0",
     "react-resizable-panels@2.1.9"

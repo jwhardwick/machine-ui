@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'thinking-steps',
   name: 'Thinking Steps',
   category: 'ai',
-  description: 'The steps an agent is working through, with done, active and upcoming states.',
+  description: 'The steps an agent is working through, with done, active, and upcoming states.',
   examples: [
     {
       name: 'In progress',

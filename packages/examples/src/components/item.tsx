@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'item',
   name: 'Item',
   category: 'data',
-  description: 'A row with media, a title, a description and actions, for lists, settings and search results.',
+  description: 'A row with media, a title, a description and actions, for lists, settings, and search results.',
   examples: [
     {
       name: 'Settings list',

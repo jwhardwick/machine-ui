@@ -23,7 +23,7 @@ export const SCREEN_META: ScreenMeta[] = [
   {
     slug: 'settings',
     name: 'Workspace settings',
-    description: 'Tabbed settings: a profile form, notification switches, billing usage, a team list and a confirmed delete.',
+    description: 'Workspace settings in tabs for profile, notifications, billing, and team. Deleting the workspace asks you to confirm first.',
     uses: ['tabs', 'field', 'input', 'textarea', 'native-select', 'select', 'copy-input', 'item', 'switch', 'progress', 'avatar', 'alert-dialog'],
   },
 ];

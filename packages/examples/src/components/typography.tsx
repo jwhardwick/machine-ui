@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'typography',
   name: 'Typography',
   category: 'data',
-  description: 'Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.',
+  description: 'Text styles from the theme’s type scale. Headings use the display font and body text uses the text font.',
   examples: [
     {
       name: 'Article',

@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'tooltip',
   name: 'Tooltip',
   category: 'overlays',
-  description: 'A short label shown on hover or focus. Never put essential information only in a tooltip.',
+  description: 'A short label shown on hover or focus. Don’t put anything essential only in a tooltip.',
   examples: [
     {
       name: 'Icon button',

@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'popover',
   name: 'Popover',
   category: 'overlays',
-  description: 'A floating panel anchored to a trigger, for short forms, settings and details.',
+  description: 'A floating panel anchored to a trigger, for short forms, settings, and details.',
   examples: [
     {
       name: 'Settings',
