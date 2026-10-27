@@ -21,7 +21,7 @@ export default defineDoc({
               </Avatar>
               <div className="grid gap-1 text-sm">
                 <p className="font-medium">Ada Lovelace</p>
-                <p className="text-muted-foreground">Platform team at machine-co. Reviews most of Alpha’s pull requests.</p>
+                <p className="text-muted-foreground">Platform team at machine-co. Reviews most of the agent’s pull requests.</p>
               </div>
             </div>
           </HoverCardContent>

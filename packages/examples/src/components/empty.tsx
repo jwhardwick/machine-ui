@@ -16,7 +16,7 @@ export default defineDoc({
             <SquareTerminal aria-hidden />
           </EmptyMedia>
           <EmptyTitle>No sessions yet</EmptyTitle>
-          <EmptyDescription>Start a session and Alpha can fix a bug, write tests, or review a pull request.</EmptyDescription>
+          <EmptyDescription>Start a session and the agent can fix a bug, write tests, or review a pull request.</EmptyDescription>
           <EmptyActions>
             <Button>New session</Button>
             <Button variant="ghost">Browse open issues</Button>

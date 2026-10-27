@@ -13,7 +13,7 @@ export default defineDoc({
         <div className="flex items-center gap-3">
           <AgentGlyph className="size-6" />
           <AgentGlyph />
-          <AgentGlyph className="size-12" label="Alpha, your coding agent" />
+          <AgentGlyph className="size-12" label="Your coding agent" />
         </div>
       ),
     },

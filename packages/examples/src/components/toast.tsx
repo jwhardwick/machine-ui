@@ -12,7 +12,7 @@ export default defineDoc({
       render: () => (
         <div className="flex flex-wrap gap-2">
           <Toaster position="bottom-right" />
-          <Button variant="outline" onClick={() => toast('Session started', { description: 'Alpha is reading the repository.' })}>
+          <Button variant="outline" onClick={() => toast('Session started', { description: 'The agent is reading the repository.' })}>
             Default
           </Button>
           <Button variant="outline" onClick={() => toast.success('Merged', { description: 'Pull request #482 is on main.' })}>

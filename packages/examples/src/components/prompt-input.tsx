@@ -15,8 +15,8 @@ export default defineDoc({
         <div className="grid w-full max-w-xl gap-3">
           <PromptSuggestions suggestions={['Why is CI red on main?', 'Write tests for the upload handler', 'Review my open pull request']} />
           <PromptInput
-            placeholder="Ask Alpha to change something…"
-            hint="Alpha can make mistakes. Review the diff before you merge."
+            placeholder="Ask the agent to change something…"
+            hint="The agent can make mistakes. Review the diff before you merge."
             tools={
               <Button type="button" variant="ghost" size="sm" className="text-muted-foreground">
                 <Paperclip aria-hidden /> Attach
@@ -29,7 +29,7 @@ export default defineDoc({
     {
       name: 'Busy',
       wide: true,
-      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="Alpha is working…" />,
+      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="The agent is working…" />,
     },
   ],
 });

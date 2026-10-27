@@ -93,7 +93,7 @@ $ pnpm typecheck && pnpm lint
 
 // Like a model router: one picker, several providers, each model addressed as provider/model.
 const MODELS = [
-  { provider: 'machine-co', models: [['machine-co/alpha-4', 'Alpha 4'], ['machine-co/alpha-4-mini', 'Alpha 4 mini']] },
+  { provider: 'machine-co', models: [['machine-co/machine-4', 'Machine 4'], ['machine-co/machine-4-mini', 'Machine 4 mini']] },
   { provider: 'Hooli', models: [['hooli/nucleus-3', 'Nucleus 3'], ['hooli/nucleus-3-flash', 'Nucleus 3 Flash']] },
   { provider: 'Pied Piper', models: [['pied-piper/middle-out-2', 'Middle-out 2'], ['pied-piper/middle-out-2-lite', 'Middle-out 2 Lite']] },
 ] as const;
@@ -123,7 +123,7 @@ function ComposerTools() {
       <Button type="button" variant="ghost" size="icon" className="size-(--control-sm) text-muted-foreground" aria-label="Attach file">
         <Paperclip aria-hidden />
       </Button>
-      <Select defaultValue="machine-co/alpha-4">
+      <Select defaultValue="machine-co/machine-4">
         <SelectTrigger size="sm" aria-label="Model" className="h-(--control-sm) border-transparent shadow-none">
           <SelectValue />
         </SelectTrigger>
@@ -239,7 +239,7 @@ export function CodingAgentScreen() {
       <Sidebar>
         <SidebarHeader>
           <div className="flex items-center gap-2 px-2 py-1">
-            <AgentGlyph className="size-6" label="Alpha" />
+            <AgentGlyph className="size-6" label="Agent" />
             <span className="font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">machine-co/web</span>
           </div>
           <div className="grid gap-2 group-data-[collapsible=icon]/sidebar:hidden">
@@ -317,7 +317,7 @@ export function CodingAgentScreen() {
                 </Message>
 
                 <Message from="assistant">
-                  <AgentGlyph className="size-7" label="Alpha" />
+                  <AgentGlyph className="size-7" label="Agent" />
                   <MessageContent className="gap-4">
                     <ThinkingSteps
                       steps={[
@@ -367,7 +367,7 @@ export function CodingAgentScreen() {
                     </Message>
                   ) : (
                     <Message key={turn.id} from="assistant">
-                      <AgentGlyph className="size-7" label="Alpha" />
+                      <AgentGlyph className="size-7" label="Agent" />
                       <MessageContent>
                         <p>
                           <StreamingText text={turn.text} onDone={() => setBusy(false)} />
@@ -378,7 +378,7 @@ export function CodingAgentScreen() {
                 )}
                 {busy && turns.at(-1)?.from === 'user' && (
                   <Message from="assistant">
-                    <AgentGlyph className="size-7" label="Alpha" />
+                    <AgentGlyph className="size-7" label="Agent" />
                     <ThinkingIndicator label="Reading the codebase" />
                   </Message>
                 )}
@@ -390,8 +390,8 @@ export function CodingAgentScreen() {
                 <PromptSuggestions suggestions={['Add a regression test', 'Explain the race in more detail']} onPick={ask} />
               )}
               <PromptInput
-                label="Ask Alpha"
-                placeholder="Ask Alpha to change something…"
+                label="Ask the agent"
+                placeholder="Ask the agent to change something…"
                 busy={busy}
                 onSubmit={ask}
                 onStop={() => setBusy(false)}

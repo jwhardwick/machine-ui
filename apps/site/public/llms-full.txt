@@ -82,7 +82,7 @@ export default defineDoc({
         <div className="flex items-center gap-3">
           <AgentGlyph className="size-6" />
           <AgentGlyph />
-          <AgentGlyph className="size-12" label="Alpha, your coding agent" />
+          <AgentGlyph className="size-12" label="Your coding agent" />
         </div>
       ),
     },
@@ -119,7 +119,7 @@ export default defineDoc({
         <div className="grid w-full max-w-lg gap-3">
           <Alert>
             <Info aria-hidden />
-            <AlertTitle>Alpha 4.1 is out</AlertTitle>
+            <AlertTitle>Machine 4.1 is out</AlertTitle>
             <AlertDescription>Restart your running sessions to use it.</AlertDescription>
           </Alert>
           <Alert variant="success">
@@ -636,7 +636,7 @@ export default defineDoc({
             <CardTitle>Weekly agent report</CardTitle>
             <CardDescription>Sessions and pull requests for week 43.</CardDescription>
           </CardHeader>
-          <CardContent className="text-sm">Alpha opened 38 pull requests. 31 merged without changes.</CardContent>
+          <CardContent className="text-sm">The agent opened 38 pull requests. 31 merged without changes.</CardContent>
           <CardFooter className="gap-2">
             <Button size="sm">Open report</Button>
             <Button size="sm" variant="ghost">
@@ -1699,7 +1699,7 @@ export default defineDoc({
             <SquareTerminal aria-hidden />
           </EmptyMedia>
           <EmptyTitle>No sessions yet</EmptyTitle>
-          <EmptyDescription>Start a session and Alpha can fix a bug, write tests, or review a pull request.</EmptyDescription>
+          <EmptyDescription>Start a session and the agent can fix a bug, write tests, or review a pull request.</EmptyDescription>
           <EmptyActions>
             <Button>New session</Button>
             <Button variant="ghost">Browse open issues</Button>
@@ -1741,12 +1741,12 @@ export default defineDoc({
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="field-name">Name</FieldLabel>
-              <Input id="field-name" defaultValue="Alpha (machine-co)" />
+              <Input id="field-name" defaultValue="machine-co agent" />
             </Field>
             <Field data-invalid>
               <FieldLabel htmlFor="field-email">Email</FieldLabel>
-              <Input id="field-email" aria-invalid defaultValue="alpha@" aria-describedby="field-email-error" />
-              <FieldError id="field-email-error">Enter an email like alpha@machine-co.dev.</FieldError>
+              <Input id="field-email" aria-invalid defaultValue="agent@" aria-describedby="field-email-error" />
+              <FieldError id="field-email-error">Enter an email like agent@machine-co.dev.</FieldError>
             </Field>
             <Field orientation="horizontal">
               <FieldLabel htmlFor="field-sign">Sign commits</FieldLabel>
@@ -1799,7 +1799,7 @@ export default defineDoc({
               </Avatar>
               <div className="grid gap-1 text-sm">
                 <p className="font-medium">Ada Lovelace</p>
-                <p className="text-muted-foreground">Platform team at machine-co. Reviews most of Alpha’s pull requests.</p>
+                <p className="text-muted-foreground">Platform team at machine-co. Reviews most of the agent’s pull requests.</p>
               </div>
             </div>
           </HoverCardContent>
@@ -2590,8 +2590,8 @@ export default defineDoc({
         <div className="grid w-full max-w-xl gap-3">
           <PromptSuggestions suggestions={['Why is CI red on main?', 'Write tests for the upload handler', 'Review my open pull request']} />
           <PromptInput
-            placeholder="Ask Alpha to change something…"
-            hint="Alpha can make mistakes. Review the diff before you merge."
+            placeholder="Ask the agent to change something…"
+            hint="The agent can make mistakes. Review the diff before you merge."
             tools={
               <Button type="button" variant="ghost" size="sm" className="text-muted-foreground">
                 <Paperclip aria-hidden /> Attach
@@ -2604,7 +2604,7 @@ export default defineDoc({
     {
       name: 'Busy',
       wide: true,
-      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="Alpha is working…" />,
+      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="The agent is working…" />,
     },
   ],
 });
@@ -3545,7 +3545,7 @@ export default defineDoc({
       name: 'Default',
       render: () => (
         <div className="grid w-full max-w-sm gap-2">
-          <Label htmlFor="ta-task">Task for Alpha</Label>
+          <Label htmlFor="ta-task">Task for the agent</Label>
           <Textarea id="ta-task" placeholder="Run the Weissman score benchmark on every pull request…" />
         </div>
       ),
@@ -3662,7 +3662,7 @@ export default defineDoc({
       render: () => (
         <div className="flex flex-wrap gap-2">
           <Toaster position="bottom-right" />
-          <Button variant="outline" onClick={() => toast('Session started', { description: 'Alpha is reading the repository.' })}>
+          <Button variant="outline" onClick={() => toast('Session started', { description: 'The agent is reading the repository.' })}>
             Default
           </Button>
           <Button variant="outline" onClick={() => toast.success('Merged', { description: 'Pull request #482 is on main.' })}>

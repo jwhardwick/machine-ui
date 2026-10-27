@@ -32,7 +32,7 @@ export const CodingAgent: Story = {
     await waitFor(() => expect(canvas.getByRole('button', { name: 'Send message' })).toBeInTheDocument(), { timeout: 30_000 });
     await expect(canvas.getByText(/opened draft PR #482/)).toBeVisible();
 
-    const box = canvas.getByRole('textbox', { name: 'Ask Alpha' });
+    const box = canvas.getByRole('textbox', { name: 'Ask the agent' });
     await userEvent.type(box, 'Add a regression test{Enter}');
     await expect(canvas.getByText('Add a regression test', { selector: '[data-slot=message-content]' })).toBeVisible();
     await expect(canvas.getByRole('button', { name: 'Stop generating' })).toBeVisible();

@@ -16,7 +16,7 @@ export default defineDoc({
             <CardTitle>Weekly agent report</CardTitle>
             <CardDescription>Sessions and pull requests for week 43.</CardDescription>
           </CardHeader>
-          <CardContent className="text-sm">Alpha opened 38 pull requests. 31 merged without changes.</CardContent>
+          <CardContent className="text-sm">The agent opened 38 pull requests. 31 merged without changes.</CardContent>
           <CardFooter className="gap-2">
             <Button size="sm">Open report</Button>
             <Button size="sm" variant="ghost">

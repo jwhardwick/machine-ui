@@ -14,7 +14,7 @@ export default defineDoc({
         <div className="grid w-full max-w-lg gap-3">
           <Alert>
             <Info aria-hidden />
-            <AlertTitle>Alpha 4.1 is out</AlertTitle>
+            <AlertTitle>Machine 4.1 is out</AlertTitle>
             <AlertDescription>Restart your running sessions to use it.</AlertDescription>
           </Alert>
           <Alert variant="success">

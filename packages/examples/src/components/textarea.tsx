@@ -11,7 +11,7 @@ export default defineDoc({
       name: 'Default',
       render: () => (
         <div className="grid w-full max-w-sm gap-2">
-          <Label htmlFor="ta-task">Task for Alpha</Label>
+          <Label htmlFor="ta-task">Task for the agent</Label>
           <Textarea id="ta-task" placeholder="Run the Weissman score benchmark on every pull request…" />
         </div>
       ),
