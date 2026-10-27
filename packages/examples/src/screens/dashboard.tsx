@@ -38,79 +38,79 @@ import {
   type ColumnDef,
   useReducedMotion,
 } from '@machine-ui/ui';
-import { BarChart3, Download, Home, Package, Settings, ShoppingCart, Users } from 'lucide-react';
+import { BarChart3, Download, FolderGit2, GitPullRequest, Home, Settings, SquareTerminal } from 'lucide-react';
 
-const TRAFFIC = [
-  { day: 'Mon', visitors: 2140, orders: 168 },
-  { day: 'Tue', visitors: 2580, orders: 181 },
-  { day: 'Wed', visitors: 2310, orders: 203 },
-  { day: 'Thu', visitors: 3020, orders: 214 },
-  { day: 'Fri', visitors: 3410, orders: 248 },
-  { day: 'Sat', visitors: 2870, orders: 309 },
-  { day: 'Sun', visitors: 2650, orders: 288 },
+const ACTIVITY = [
+  { day: 'Mon', sessions: 214, merged: 48 },
+  { day: 'Tue', sessions: 258, merged: 52 },
+  { day: 'Wed', sessions: 231, merged: 61 },
+  { day: 'Thu', sessions: 302, merged: 64 },
+  { day: 'Fri', sessions: 341, merged: 73 },
+  { day: 'Sat', sessions: 187, merged: 22 },
+  { day: 'Sun', sessions: 165, merged: 19 },
 ];
 
-const CHANNELS = [
-  { channel: 'Search', share: 42 },
-  { channel: 'Direct', share: 27 },
-  { channel: 'Email', share: 16 },
-  { channel: 'Social', share: 10 },
-  { channel: 'Referral', share: 5 },
+const TRIGGERS = [
+  { trigger: 'Issues', share: 42 },
+  { trigger: 'Chat', share: 27 },
+  { trigger: 'CI', share: 16 },
+  { trigger: 'Reviews', share: 10 },
+  { trigger: 'Cron', share: 5 },
 ];
 
-const trafficConfig = {
-  visitors: { label: 'Visitors', color: 'var(--chart-1)' },
-  orders: { label: 'Orders', color: 'var(--chart-2)' },
+const activityConfig = {
+  sessions: { label: 'Sessions', color: 'var(--chart-1)' },
+  merged: { label: 'PRs merged', color: 'var(--chart-2)' },
 } satisfies ChartConfig;
 
-const channelConfig = { share: { label: 'Share of orders (%)', color: 'var(--chart-3)' } } satisfies ChartConfig;
+const triggerConfig = { share: { label: 'Share of sessions (%)', color: 'var(--chart-3)' } } satisfies ChartConfig;
 
-interface Order {
+interface Run {
   id: string;
-  customer: string;
-  status: 'Paid' | 'Refunded' | 'Pending';
-  total: number;
+  repo: string;
+  status: 'Merged' | 'Reverted' | 'Open';
+  cost: number;
 }
 
-const ORDERS: Order[] = [
-  { id: 'NW-3021', customer: 'Lumen Labs', status: 'Paid', total: 1290 },
-  { id: 'NW-3020', customer: 'Fjord Health', status: 'Refunded', total: 340 },
-  { id: 'NW-3019', customer: 'Brightline', status: 'Paid', total: 2760 },
-  { id: 'NW-3018', customer: 'Cobalt Dental', status: 'Pending', total: 480 },
-  { id: 'NW-3017', customer: 'Acme', status: 'Paid', total: 5120 },
-  { id: 'NW-3016', customer: 'Northwind', status: 'Paid', total: 860 },
+const RUNS: Run[] = [
+  { id: 'RUN-3021', repo: 'machine-co/web', status: 'Merged', cost: 12.9 },
+  { id: 'RUN-3020', repo: 'machine-co/api', status: 'Reverted', cost: 3.4 },
+  { id: 'RUN-3019', repo: 'hooli/nucleus', status: 'Merged', cost: 27.6 },
+  { id: 'RUN-3018', repo: 'machine-co/docs', status: 'Open', cost: 4.8 },
+  { id: 'RUN-3017', repo: 'pied-piper/middle-out', status: 'Merged', cost: 51.2 },
+  { id: 'RUN-3016', repo: 'machine-co/infra', status: 'Merged', cost: 8.6 },
 ];
 
-const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
-const columns: ColumnDef<Order>[] = [
-  { accessorKey: 'id', header: 'Order' },
-  { accessorKey: 'customer', header: ({ column }) => <DataTableColumnHeader column={column} title="Customer" /> },
+const columns: ColumnDef<Run>[] = [
+  { accessorKey: 'id', header: 'Run' },
+  { accessorKey: 'repo', header: ({ column }) => <DataTableColumnHeader column={column} title="Repository" /> },
   {
     accessorKey: 'status',
     header: 'Status',
     cell: ({ getValue }) => {
-      const status = getValue<Order['status']>();
-      return <Badge variant={status === 'Refunded' ? 'destructive' : status === 'Pending' ? 'outline' : 'secondary'}>{status}</Badge>;
+      const status = getValue<Run['status']>();
+      return <Badge variant={status === 'Reverted' ? 'destructive' : status === 'Open' ? 'outline' : 'secondary'}>{status}</Badge>;
     },
   },
   {
-    accessorKey: 'total',
-    header: ({ column }) => <DataTableColumnHeader column={column} title="Total" />,
+    accessorKey: 'cost',
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Cost" />,
     cell: ({ getValue }) => <span className="tabular-nums">{currency.format(getValue<number>())}</span>,
   },
 ];
 
 const NAV = [
   { label: 'Overview', icon: Home, active: true },
-  { label: 'Orders', icon: ShoppingCart, badge: '12' },
-  { label: 'Products', icon: Package },
-  { label: 'Customers', icon: Users },
-  { label: 'Reports', icon: BarChart3 },
+  { label: 'Sessions', icon: SquareTerminal, badge: '12' },
+  { label: 'Pull requests', icon: GitPullRequest },
+  { label: 'Repositories', icon: FolderGit2 },
+  { label: 'Usage', icon: BarChart3 },
   { label: 'Settings', icon: Settings },
 ];
 
-/** A store analytics dashboard: stats, charts, a sortable table and system status. */
+/** An agent usage dashboard with stats, charts, a sortable table of runs, and runner status. */
 export function DashboardScreen() {
   // Chart animations run in JavaScript, so they follow the reduced-motion preference explicitly.
   const animate = !useReducedMotion();
@@ -118,7 +118,7 @@ export function DashboardScreen() {
     <SidebarProvider className="h-full">
       <Sidebar>
         <SidebarHeader>
-          <div className="flex h-8 items-center gap-2 px-2 font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">Northwind store</div>
+          <div className="flex h-8 items-center gap-2 px-2 font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">machine-co</div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
@@ -144,7 +144,7 @@ export function DashboardScreen() {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="#store">Store</BreadcrumbLink>
+                <BreadcrumbLink href="#usage">Usage</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -168,10 +168,10 @@ export function DashboardScreen() {
           <h2 className="sr-only">Overview</h2>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              { label: 'Revenue', value: '$48,210', change: '12.4%', trend: 'up' as const },
-              { label: 'Orders', value: '1,631', change: '8.1%', trend: 'up' as const },
-              { label: 'Conversion', value: '3.9%', change: '0.4pt', trend: 'up' as const },
-              { label: 'Refund rate', value: '1.2%', change: '0.3pt', trend: 'down' as const },
+              { label: 'Sessions', value: '1,698', change: '8.1%', trend: 'up' as const },
+              { label: 'PRs merged', value: '339', change: '12.4%', trend: 'up' as const },
+              { label: 'Merged unchanged', value: '86%', change: '2.1pt', trend: 'up' as const },
+              { label: 'Revert rate', value: '1.2%', change: '0.3pt', trend: 'down' as const },
             ].map((stat) => (
               <Card key={stat.label}>
                 <CardContent className="pt-6">
@@ -184,34 +184,34 @@ export function DashboardScreen() {
           <div className="grid gap-4 lg:grid-cols-3">
             <Card className="lg:col-span-2">
               <CardHeader>
-                <CardTitle className="text-base">Traffic and orders</CardTitle>
+                <CardTitle className="text-base">Sessions and merges</CardTitle>
                 <CardDescription>Last 7 days</CardDescription>
               </CardHeader>
               <CardContent>
-                <ChartContainer config={trafficConfig} className="h-56 w-full" role="img" aria-label="Visitors peaked Friday at 3,410; orders kept climbing to a Saturday peak of 309">
-                  <Recharts.AreaChart data={TRAFFIC} margin={{ left: 16, right: 16 }}>
+                <ChartContainer config={activityConfig} className="h-56 w-full" role="img" aria-label="Sessions peaked on Friday at 341, with 73 pull requests merged. Both dropped at the weekend.">
+                  <Recharts.AreaChart data={ACTIVITY} margin={{ left: 16, right: 16 }}>
                     <Recharts.CartesianGrid vertical={false} />
                     <Recharts.XAxis dataKey="day" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
-                    {/* Orders are an order of magnitude smaller, so each series gets its own scale. */}
-                    <Recharts.YAxis yAxisId="visitors" hide />
-                    <Recharts.YAxis yAxisId="orders" orientation="right" hide />
+                    {/* Merges are a fraction of sessions, so each series gets its own scale. */}
+                    <Recharts.YAxis yAxisId="sessions" hide />
+                    <Recharts.YAxis yAxisId="merged" orientation="right" hide />
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Recharts.Area isAnimationActive={animate} yAxisId="visitors" dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.12} stroke="var(--color-visitors)" strokeWidth={2} />
-                    <Recharts.Area isAnimationActive={animate} yAxisId="orders" dataKey="orders" type="monotone" fill="var(--color-orders)" fillOpacity={0.08} stroke="var(--color-orders)" strokeWidth={2} strokeDasharray="4 3" />
+                    <Recharts.Area isAnimationActive={animate} yAxisId="sessions" dataKey="sessions" type="monotone" fill="var(--color-sessions)" fillOpacity={0.12} stroke="var(--color-sessions)" strokeWidth={2} />
+                    <Recharts.Area isAnimationActive={animate} yAxisId="merged" dataKey="merged" type="monotone" fill="var(--color-merged)" fillOpacity={0.08} stroke="var(--color-merged)" strokeWidth={2} strokeDasharray="4 3" />
                   </Recharts.AreaChart>
                 </ChartContainer>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">Orders by channel</CardTitle>
-                <CardDescription>Share of orders, %</CardDescription>
+                <CardTitle className="text-base">What started each session</CardTitle>
+                <CardDescription>Share of sessions, %</CardDescription>
               </CardHeader>
               <CardContent>
-                <ChartContainer config={channelConfig} className="h-56 w-full" role="img" aria-label="Search drives 42% of orders, then direct 27%, email 16%, social 10%, referral 5%">
-                  <Recharts.BarChart data={CHANNELS} layout="vertical" margin={{ left: 8 }}>
+                <ChartContainer config={triggerConfig} className="h-56 w-full" role="img" aria-label="Issues start 42% of sessions, then chat 27%, CI failures 16%, reviews 10%, and scheduled runs 5%">
+                  <Recharts.BarChart data={TRIGGERS} layout="vertical" margin={{ left: 8 }}>
                     <Recharts.XAxis type="number" hide />
-                    <Recharts.YAxis dataKey="channel" type="category" tickLine={false} axisLine={false} width={64} />
+                    <Recharts.YAxis dataKey="trigger" type="category" tickLine={false} axisLine={false} width={64} />
                     <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
                     <Recharts.Bar isAnimationActive={animate} dataKey="share" fill="var(--color-share)" radius={4} />
                   </Recharts.BarChart>
@@ -223,29 +223,29 @@ export function DashboardScreen() {
           <div className="grid gap-4 lg:grid-cols-3">
             <Card className="lg:col-span-2">
               <CardHeader>
-                <CardTitle className="text-base">Recent orders</CardTitle>
+                <CardTitle className="text-base">Recent runs</CardTitle>
               </CardHeader>
               <CardContent>
-                <DataTable columns={columns} data={ORDERS} pageSize={5} />
+                <DataTable columns={columns} data={RUNS} pageSize={5} />
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">System status</CardTitle>
+                <CardTitle className="text-base">Runner status</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="grid gap-3 text-sm">
                   <li className="flex items-center gap-2">
-                    <StatusDot tone="online" /> Checkout <span className="ml-auto text-muted-foreground">Operational</span>
+                    <StatusDot tone="online" /> Agent runners <span className="ml-auto text-muted-foreground">Operational</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <StatusDot tone="online" /> Payments <span className="ml-auto text-muted-foreground">Operational</span>
+                    <StatusDot tone="online" /> Model API <span className="ml-auto text-muted-foreground">Operational</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <StatusDot tone="busy" /> Email receipts <span className="ml-auto text-muted-foreground">Delayed</span>
+                    <StatusDot tone="busy" /> Preview deploys <span className="ml-auto text-muted-foreground">Delayed</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <StatusDot tone="online" /> Search <span className="ml-auto text-muted-foreground">Operational</span>
+                    <StatusDot tone="online" /> GitHub sync <span className="ml-auto text-muted-foreground">Operational</span>
                   </li>
                 </ul>
               </CardContent>

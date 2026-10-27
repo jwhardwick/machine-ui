@@ -19,7 +19,7 @@ export default defineDoc({
             <Italic aria-hidden />
           </Toggle>
           <Toggle variant="outline">
-            <Star aria-hidden /> Starred only
+            <Star aria-hidden /> My pull requests
           </Toggle>
         </div>
       ),

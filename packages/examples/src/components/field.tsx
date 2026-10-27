@@ -11,22 +11,22 @@ export default defineDoc({
       name: 'Form',
       render: () => (
         <FieldSet className="w-full max-w-sm">
-          <FieldLegend>Billing contact</FieldLegend>
+          <FieldLegend>Commit author</FieldLegend>
           <FieldGroup>
             <Field>
-              <FieldLabel htmlFor="field-name">Full name</FieldLabel>
-              <Input id="field-name" defaultValue="Ada Lovelace" />
+              <FieldLabel htmlFor="field-name">Name</FieldLabel>
+              <Input id="field-name" defaultValue="Alpha (machine-co)" />
             </Field>
             <Field data-invalid>
               <FieldLabel htmlFor="field-email">Email</FieldLabel>
-              <Input id="field-email" aria-invalid defaultValue="ada@" aria-describedby="field-email-error" />
-              <FieldError id="field-email-error">Enter an email like ada@example.com.</FieldError>
+              <Input id="field-email" aria-invalid defaultValue="alpha@" aria-describedby="field-email-error" />
+              <FieldError id="field-email-error">Enter an email like alpha@machine-co.dev.</FieldError>
             </Field>
             <Field orientation="horizontal">
-              <FieldLabel htmlFor="field-receipts">Email receipts</FieldLabel>
-              <Switch id="field-receipts" defaultChecked />
+              <FieldLabel htmlFor="field-sign">Sign commits</FieldLabel>
+              <Switch id="field-sign" defaultChecked />
             </Field>
-            <FieldDescription>Receipts go to the billing contact, not the account owner.</FieldDescription>
+            <FieldDescription>The agent signs with the workspace key, not yours.</FieldDescription>
           </FieldGroup>
         </FieldSet>
       ),

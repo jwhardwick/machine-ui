@@ -11,7 +11,7 @@ export const AlertDialogNeedsAnAnswer: Story = {
   play: async ({ canvas }) => {
     const trigger = canvas.getByRole('button', { name: 'Delete workspace' });
     await userEvent.click(trigger);
-    const dialog = await screen.findByRole('alertdialog', { name: 'Delete Northwind?' });
+    const dialog = await screen.findByRole('alertdialog', { name: 'Delete machine-co?' });
     await expect(screen.getByRole('button', { name: 'Keep workspace' })).toHaveFocus();
     await userEvent.keyboard('{Escape}');
     await waitFor(() => expect(dialog).not.toBeInTheDocument());
@@ -48,11 +48,11 @@ export const ContextMenuOpensOnRightClick: Story = {
 export const PopoverOpensAndCloses: Story = {
   render: example('popover', 'Settings'),
   play: async ({ canvas }) => {
-    const trigger = canvas.getByRole('button', { name: 'Dimensions' });
+    const trigger = canvas.getByRole('button', { name: 'Limits' });
     await userEvent.click(trigger);
-    await expect(await screen.findByLabelText('Width')).toHaveValue('1440');
+    await expect(await screen.findByLabelText('Minutes')).toHaveValue('45');
     await userEvent.keyboard('{Escape}');
-    await waitFor(() => expect(screen.queryByLabelText('Width')).toBeNull());
+    await waitFor(() => expect(screen.queryByLabelText('Minutes')).toBeNull());
     await expect(trigger).toHaveFocus();
   },
 };
@@ -62,7 +62,7 @@ export const TooltipOnFocus: Story = {
   play: async ({ canvas }) => {
     await userEvent.tab();
     await expect(canvas.getByRole('button', { name: 'Notifications' })).toHaveFocus();
-    await expect(await screen.findByRole('tooltip')).toHaveTextContent('3 unread notifications');
+    await expect(await screen.findByRole('tooltip')).toHaveTextContent('3 pull requests need your review');
   },
 };
 
@@ -89,8 +89,8 @@ export const SheetTrapsFocus: Story = {
 export const DrawerOpens: Story = {
   render: example('drawer', 'Default'),
   play: async ({ canvas }) => {
-    await userEvent.click(canvas.getByRole('button', { name: 'Set a goal' }));
-    const shown = await screen.findByRole('dialog', { name: 'Daily goal' });
+    await userEvent.click(canvas.getByRole('button', { name: 'Set a budget' }));
+    const shown = await screen.findByRole('dialog', { name: 'Session budget' });
     await waitFor(() => expect(shown).toBeVisible());
     await userEvent.click(screen.getByRole('button', { name: 'Cancel' }));
     // vaul animates the close before unmounting; allow for a slow machine.
@@ -111,7 +111,7 @@ export const ToastAppears: Story = {
   render: example('toast', 'Variants'),
   play: async ({ canvas }) => {
     await userEvent.click(canvas.getByRole('button', { name: 'Success' }));
-    const shown = await screen.findByText('Version 2.4.0 is live.');
+    const shown = await screen.findByText('Pull request #482 is on main.');
     await waitFor(() => expect(shown).toBeVisible());
   },
 };
@@ -141,7 +141,7 @@ export const DropdownSubmenuAndRadio: Story = {
     const sub = screen.getByRole('menuitem', { name: 'Switch workspace' });
     sub.focus();
     await userEvent.keyboard('{ArrowRight}');
-    await waitFor(() => expect(screen.getByRole('menuitem', { name: 'Northwind' })).toHaveFocus());
+    await waitFor(() => expect(screen.getByRole('menuitem', { name: 'machine-co' })).toHaveFocus());
     await userEvent.keyboard('{ArrowLeft}');
     await waitFor(() => expect(sub).toHaveFocus());
     await userEvent.keyboard('{Escape}');

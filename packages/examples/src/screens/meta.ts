@@ -11,13 +11,13 @@ export const SCREEN_META: ScreenMeta[] = [
   {
     slug: 'coding-agent',
     name: 'Coding agent',
-    description: 'A coding agent’s run: sessions, the plan it followed, tool calls, a push that waits for approval, and the diff, checks and terminal beside it. Try approving the push or sending a message.',
+    description: 'A coding agent working through a flaky test. It shows its plan and tool calls, and asks before it pushes. Try approving the push or sending it a message.',
     uses: ['sidebar', 'search-input', 'status-dot', 'message', 'thinking-steps', 'tool-call', 'approval-card', 'code-block', 'tabs', 'streaming-text', 'prompt-input', 'select', 'dropdown-menu'],
   },
   {
     slug: 'dashboard',
-    name: 'Store dashboard',
-    description: 'An analytics overview: stats, area and bar charts, a sortable orders table and system status.',
+    name: 'Usage dashboard',
+    description: 'How the agents are doing this week, with stats, area and bar charts, a sortable table of runs, and runner status.',
     uses: ['sidebar', 'breadcrumb', 'toggle-group', 'stat', 'chart', 'data-table', 'badge', 'status-dot', 'card'],
   },
   {

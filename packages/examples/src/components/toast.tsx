@@ -12,15 +12,15 @@ export default defineDoc({
       render: () => (
         <div className="flex flex-wrap gap-2">
           <Toaster position="bottom-right" />
-          <Button variant="outline" onClick={() => toast('Theme saved', { description: 'Share the link to preview it.' })}>
+          <Button variant="outline" onClick={() => toast('Session started', { description: 'Alpha is reading the repository.' })}>
             Default
           </Button>
-          <Button variant="outline" onClick={() => toast.success('Published', { description: 'Version 2.4.0 is live.' })}>
+          <Button variant="outline" onClick={() => toast.success('Merged', { description: 'Pull request #482 is on main.' })}>
             Success
           </Button>
           <Button
             variant="outline"
-            onClick={() => toast.error('Deploy failed', { description: 'Step 3 timed out.', action: { label: 'Retry', onClick: () => {} } })}
+            onClick={() => toast.error('Run failed', { description: 'pnpm test timed out after 10 minutes.', action: { label: 'Retry', onClick: () => {} } })}
           >
             Error with action
           </Button>

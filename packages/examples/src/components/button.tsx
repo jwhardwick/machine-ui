@@ -8,7 +8,7 @@ export default defineDoc({
   category: 'forms',
   description: 'Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states.',
   examples: [
-    { name: 'Default', render: () => <Button>Send reply</Button> },
+    { name: 'Default', render: () => <Button>Run agent</Button> },
     {
       name: 'Variants',
       render: () => (
@@ -47,7 +47,7 @@ export default defineDoc({
       name: 'Loading',
       render: () => (
         <Button disabled>
-          <Loader2 aria-hidden className="animate-spin" /> Saving
+          <Loader2 aria-hidden className="animate-spin" /> Running tests
         </Button>
       ),
     },

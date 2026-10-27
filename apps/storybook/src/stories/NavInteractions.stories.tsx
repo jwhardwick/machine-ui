@@ -9,10 +9,10 @@ type Story = StoryObj<typeof meta>;
 export const AccordionTogglesSections: Story = {
   render: example('accordion', 'FAQ'),
   play: async ({ canvas }) => {
-    const fonts = canvas.getByRole('button', { name: 'Can I use my own fonts?' });
-    await userEvent.click(fonts);
-    await expect(fonts).toHaveAttribute('aria-expanded', 'true');
-    await expect(canvas.getByRole('button', { name: 'How is contrast guaranteed?' })).toHaveAttribute('aria-expanded', 'false');
+    const checks = canvas.getByRole('button', { name: 'What happens when a check fails?' });
+    await userEvent.click(checks);
+    await expect(checks).toHaveAttribute('aria-expanded', 'true');
+    await expect(canvas.getByRole('button', { name: 'Can the agent push to main?' })).toHaveAttribute('aria-expanded', 'false');
   },
 };
 

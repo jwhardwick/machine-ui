@@ -14,23 +14,23 @@ export default defineDoc({
         <div className="grid w-full max-w-lg gap-3">
           <Alert>
             <Info aria-hidden />
-            <AlertTitle>New version available</AlertTitle>
-            <AlertDescription>Reload to get the latest components.</AlertDescription>
+            <AlertTitle>Alpha 4.1 is out</AlertTitle>
+            <AlertDescription>Restart your running sessions to use it.</AlertDescription>
           </Alert>
           <Alert variant="success">
             <CircleCheck aria-hidden />
-            <AlertTitle>Theme published</AlertTitle>
-            <AlertDescription>Everyone with the link now sees the new colours.</AlertDescription>
+            <AlertTitle>Pull request merged</AlertTitle>
+            <AlertDescription>Pull request #482 is on main, and its preview deploy has been cleaned up.</AlertDescription>
           </Alert>
           <Alert variant="warning">
             <TriangleAlert aria-hidden />
             <AlertTitle>Usage at 90%</AlertTitle>
-            <AlertDescription>You have 2,000 requests left this month.</AlertDescription>
+            <AlertDescription>You have 2,000 agent minutes left this month.</AlertDescription>
           </Alert>
           <Alert variant="destructive">
             <CircleAlert aria-hidden />
-            <AlertTitle>Deploy failed</AlertTitle>
-            <AlertDescription>The build stopped at step 3. Check the logs and retry.</AlertDescription>
+            <AlertTitle>Run failed</AlertTitle>
+            <AlertDescription>The agent stopped at pnpm typecheck. Check the logs and try again.</AlertDescription>
           </Alert>
         </div>
       ),

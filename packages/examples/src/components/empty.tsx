@@ -1,5 +1,5 @@
 import { Button, Empty, EmptyActions, EmptyDescription, EmptyMedia, EmptyTitle } from '@machine-ui/ui';
-import { FolderOpen } from 'lucide-react';
+import { SquareTerminal } from 'lucide-react';
 import { defineDoc } from '../types.ts';
 
 export default defineDoc({
@@ -13,13 +13,13 @@ export default defineDoc({
       render: () => (
         <Empty className="max-w-md">
           <EmptyMedia>
-            <FolderOpen aria-hidden />
+            <SquareTerminal aria-hidden />
           </EmptyMedia>
-          <EmptyTitle>No projects yet</EmptyTitle>
-          <EmptyDescription>Projects hold your themes and components. Create one to get started.</EmptyDescription>
+          <EmptyTitle>No sessions yet</EmptyTitle>
+          <EmptyDescription>Start a session and Alpha can fix a bug, write tests, or review a pull request.</EmptyDescription>
           <EmptyActions>
-            <Button>Create project</Button>
-            <Button variant="ghost">Import from Figma</Button>
+            <Button>New session</Button>
+            <Button variant="ghost">Browse open issues</Button>
           </EmptyActions>
         </Empty>
       ),

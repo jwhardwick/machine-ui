@@ -11,8 +11,8 @@ export default defineDoc({
       name: 'Default',
       render: () => (
         <div className="grid w-full max-w-sm gap-2">
-          <Label htmlFor="ta-feedback">What should we improve?</Label>
-          <Textarea id="ta-feedback" placeholder="The export panel could remember my last format…" />
+          <Label htmlFor="ta-task">Task for Alpha</Label>
+          <Textarea id="ta-task" placeholder="Run the Weissman score benchmark on every pull request…" />
         </div>
       ),
     },

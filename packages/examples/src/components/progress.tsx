@@ -12,7 +12,7 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-sm gap-2">
           <div className="flex justify-between text-sm">
-            <Label id="progress-upload">Uploading brand assets</Label>
+            <Label id="progress-upload">Indexing the repository</Label>
             <span className="tabular-nums text-muted-foreground">64%</span>
           </div>
           <Progress aria-labelledby="progress-upload" value={64} />

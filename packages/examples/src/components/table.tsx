@@ -1,11 +1,11 @@
 import { Badge, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@machine-ui/ui';
 import { defineDoc } from '../types.ts';
 
-const INVOICES = [
-  ['INV-2041', 'Paid', 'Card', '$1,250.00'],
-  ['INV-2042', 'Pending', 'Bank transfer', '$480.00'],
-  ['INV-2043', 'Overdue', 'Card', '$2,300.00'],
-  ['INV-2044', 'Paid', 'Card', '$96.00'],
+const RUNS = [
+  ['Run 1041', 'Passed', 'Push', '4m 12s'],
+  ['Run 1042', 'Running', 'Agent', '1m 03s'],
+  ['Run 1043', 'Failed', 'Schedule', '7m 48s'],
+  ['Run 1044', 'Passed', 'Pull request', '3m 30s'],
 ] as const;
 
 export default defineDoc({
@@ -15,35 +15,35 @@ export default defineDoc({
   description: 'Composable table parts for simple tabular data. Use Data Table when you need sorting or selection.',
   examples: [
     {
-      name: 'Invoices',
+      name: 'CI runs',
       wide: true,
       render: () => (
         <Table className="max-w-2xl">
-          <TableCaption>Invoices for October 2026.</TableCaption>
+          <TableCaption>CI runs on fix/upload-race.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead>Invoice</TableHead>
+              <TableHead>Run</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Method</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
+              <TableHead>Trigger</TableHead>
+              <TableHead className="text-right">Duration</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {INVOICES.map(([id, status, method, amount]) => (
+            {RUNS.map(([id, status, trigger, duration]) => (
               <TableRow key={id}>
                 <TableCell className="font-medium">{id}</TableCell>
                 <TableCell>
-                  <Badge variant={status === 'Overdue' ? 'destructive' : status === 'Paid' ? 'secondary' : 'outline'}>{status}</Badge>
+                  <Badge variant={status === 'Failed' ? 'destructive' : status === 'Passed' ? 'secondary' : 'outline'}>{status}</Badge>
                 </TableCell>
-                <TableCell>{method}</TableCell>
-                <TableCell className="text-right tabular-nums">{amount}</TableCell>
+                <TableCell>{trigger}</TableCell>
+                <TableCell className="text-right tabular-nums">{duration}</TableCell>
               </TableRow>
             ))}
           </TableBody>
           <TableFooter>
             <TableRow>
               <TableCell colSpan={3}>Total</TableCell>
-              <TableCell className="text-right tabular-nums">$4,126.00</TableCell>
+              <TableCell className="text-right tabular-nums">16m 33s</TableCell>
             </TableRow>
           </TableFooter>
         </Table>

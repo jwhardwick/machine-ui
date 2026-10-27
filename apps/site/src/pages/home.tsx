@@ -75,7 +75,7 @@ export function HomePage() {
             </ToggleGroup>
           </div>
         </div>
-        <ScreenFrame title={`app.northwind.dev/${current.slug}`}>
+        <ScreenFrame title={`app.machine-co.dev/${current.slug}`}>
           <Suspense fallback={<Loading className="h-full" />}>
             <current.Component />
           </Suspense>

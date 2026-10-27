@@ -17,7 +17,7 @@ export default defineDoc({
               <Bell aria-hidden />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>3 unread notifications</TooltipContent>
+          <TooltipContent>3 pull requests need your review</TooltipContent>
         </Tooltip>
       ),
     },

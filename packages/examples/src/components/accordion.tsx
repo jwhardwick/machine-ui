@@ -10,20 +10,20 @@ export default defineDoc({
     {
       name: 'FAQ',
       render: () => (
-        <Accordion type="single" collapsible defaultValue="contrast" className="w-full max-w-md">
-          <AccordionItem value="contrast">
-            <AccordionTrigger>How is contrast guaranteed?</AccordionTrigger>
+        <Accordion type="single" collapsible defaultValue="main" className="w-full max-w-md">
+          <AccordionItem value="main">
+            <AccordionTrigger>Can the agent push to main?</AccordionTrigger>
             <AccordionContent>
-              The engine adjusts lightness until every text pair reaches 4.5:1 and every control boundary 3:1, in light and dark.
+              No. It works on its own branch, runs your checks, and opens a pull request for you to review.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="fonts">
-            <AccordionTrigger>Can I use my own fonts?</AccordionTrigger>
-            <AccordionContent>Yes. Set the typeface tokens after applying a theme, or add a pairing to the token package.</AccordionContent>
+          <AccordionItem value="checks">
+            <AccordionTrigger>What happens when a check fails?</AccordionTrigger>
+            <AccordionContent>It reads the failure, tries a fix, and runs the check again. After three tries it stops and asks you.</AccordionContent>
           </AccordionItem>
-          <AccordionItem value="shadcn">
-            <AccordionTrigger>Does it work with existing shadcn/ui code?</AccordionTrigger>
-            <AccordionContent>Colour variables use shadcn’s names, so existing components pick up the theme unchanged.</AccordionContent>
+          <AccordionItem value="secrets">
+            <AccordionTrigger>Can it see my secrets?</AccordionTrigger>
+            <AccordionContent>Only the ones you add to a session. They’re masked in logs and never written to the repo.</AccordionContent>
           </AccordionItem>
         </Accordion>
       ),

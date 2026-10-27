@@ -13,10 +13,10 @@ export default defineDoc({
       render: () => (
         <Card className="w-full max-w-sm">
           <CardHeader>
-            <CardTitle>Quarterly report</CardTitle>
-            <CardDescription>Revenue and retention for Q3.</CardDescription>
+            <CardTitle>Weekly agent report</CardTitle>
+            <CardDescription>Sessions and pull requests for week 43.</CardDescription>
           </CardHeader>
-          <CardContent className="text-sm">Net revenue grew 12% while churn held at 2.1%.</CardContent>
+          <CardContent className="text-sm">Alpha opened 38 pull requests. 31 merged without changes.</CardContent>
           <CardFooter className="gap-2">
             <Button size="sm">Open report</Button>
             <Button size="sm" variant="ghost">

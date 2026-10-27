@@ -15,13 +15,13 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from '@machine-ui/ui';
-import { BarChart3, Home, Inbox, Settings, Users } from 'lucide-react';
+import { BarChart3, GitPullRequest, Settings, SquareTerminal, Users } from 'lucide-react';
 import { defineDoc } from '../types.ts';
 
 const NAV = [
-  { label: 'Home', icon: Home, active: true },
-  { label: 'Inbox', icon: Inbox, badge: '12' },
-  { label: 'Analytics', icon: BarChart3 },
+  { label: 'Sessions', icon: SquareTerminal, active: true },
+  { label: 'Pull requests', icon: GitPullRequest, badge: '12' },
+  { label: 'Usage', icon: BarChart3 },
   { label: 'Team', icon: Users },
 ];
 
@@ -39,7 +39,7 @@ export default defineDoc({
           <SidebarProvider className="h-full">
             <Sidebar>
               <SidebarHeader>
-                <div className="flex h-8 items-center gap-2 px-2 font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">Northwind</div>
+                <div className="flex h-8 items-center gap-2 px-2 font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">machine-co</div>
               </SidebarHeader>
               <SidebarContent>
                 <SidebarGroup>
@@ -74,7 +74,7 @@ export default defineDoc({
             <SidebarInset>
               <header className="flex h-12 items-center gap-2 border-b px-3">
                 <SidebarTrigger />
-                <span className="text-sm font-medium">Home</span>
+                <span className="text-sm font-medium">Sessions</span>
               </header>
               <div className="p-4 text-sm text-muted-foreground">Your content goes here.</div>
             </SidebarInset>

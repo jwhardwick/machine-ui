@@ -27,9 +27,9 @@ export default defineDoc({
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Delete Northwind?</AlertDialogTitle>
+              <AlertDialogTitle>Delete machine-co?</AlertDialogTitle>
               <AlertDialogDescription>
-                This removes 14 projects, their themes and history for every member. It can’t be undone.
+                This removes 14 repositories’ sessions, agent memory, and run history for every member. You can’t undo this.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

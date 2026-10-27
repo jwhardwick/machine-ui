@@ -1,5 +1,5 @@
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from '@machine-ui/ui';
-import { CreditCard, FileText, Palette, Settings, User } from 'lucide-react';
+import { CreditCard, GitBranch, Settings, SquareTerminal, User } from 'lucide-react';
 import { defineDoc } from '../types.ts';
 
 export default defineDoc({
@@ -17,10 +17,10 @@ export default defineDoc({
             <CommandEmpty>No results.</CommandEmpty>
             <CommandGroup heading="Suggestions">
               <CommandItem>
-                <Palette aria-hidden /> Change theme
+                <SquareTerminal aria-hidden /> New session
               </CommandItem>
               <CommandItem>
-                <FileText aria-hidden /> New document
+                <GitBranch aria-hidden /> Switch branch
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />

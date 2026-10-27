@@ -17,13 +17,13 @@ export default defineDoc({
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
           <TabsContent value="overview" className="text-sm text-muted-foreground">
-            42 deploys this week, 2 rolled back.
+            42 agent sessions this week. 2 pull requests were reverted.
           </TabsContent>
           <TabsContent value="activity" className="text-sm text-muted-foreground">
             Nothing new since yesterday.
           </TabsContent>
           <TabsContent value="settings" className="text-sm text-muted-foreground">
-            Notifications are on for failed deploys.
+            Notifications are on for failed runs.
           </TabsContent>
         </Tabs>
       ),

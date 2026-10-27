@@ -34,7 +34,7 @@ export default defineDoc({
             <AvatarFallback>AL</AvatarFallback>
           </Avatar>
           <AvatarGroup>
-            {['GH', 'KJ', 'MH', 'RB'].map((initials) => (
+            {['RH', 'MH', 'BG', 'DC'].map((initials) => (
               <Avatar key={initials}>
                 <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>

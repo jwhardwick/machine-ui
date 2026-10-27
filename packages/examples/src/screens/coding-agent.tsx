@@ -18,7 +18,10 @@ import {
   SearchInput,
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
   Sidebar,
@@ -45,52 +48,55 @@ import {
   ToolCall,
 } from '@machine-ui/ui';
 import { FileCode2, GitBranch, GitPullRequest, MoreHorizontal, Paperclip, Plus } from 'lucide-react';
-import { useState, type ComponentProps } from 'react';
+import { Fragment, useState, type ComponentProps } from 'react';
 
 type Tone = NonNullable<ComponentProps<typeof StatusDot>['tone']>;
 
 const SESSIONS: { title: string; status: string; tone: Tone }[] = [
-  { title: 'Fix flaky checkout test', status: 'Running', tone: 'accent' },
-  { title: 'Add CSV export to orders', status: 'Review', tone: 'busy' },
+  { title: 'Fix flaky upload test', status: 'Running', tone: 'accent' },
+  { title: 'Add SSO for Hooli', status: 'Review', tone: 'busy' },
   { title: 'Upgrade to React 19.2', status: 'Merged', tone: 'online' },
   { title: 'Migrate auth to passkeys', status: 'Failed', tone: 'error' },
-  { title: 'Speed up product search', status: 'Merged', tone: 'online' },
+  { title: 'Tune the middle-out encoder', status: 'Merged', tone: 'online' },
 ];
 
 const FILES = [
-  { path: 'src/cart/use-cart.ts', added: 9, removed: 5 },
-  { path: 'src/cart/cart-reducer.ts', added: 7, removed: 1 },
-  { path: 'e2e/checkout.spec.ts', added: 2, removed: 0 },
+  { path: 'src/upload/chunked-upload.ts', added: 4, removed: 1 },
+  { path: 'src/upload/upload-progress.tsx', added: 6, removed: 2 },
+  { path: 'e2e/upload.spec.ts', added: 1, removed: 3 },
 ];
 
 const CHECKS: { name: string; result: string; tone: Tone; pulse?: boolean }[] = [
   { name: 'Typecheck', result: 'Passed', tone: 'online' },
   { name: 'Lint', result: 'Passed', tone: 'online' },
   { name: 'Unit tests', result: '412 passed', tone: 'online' },
-  { name: 'checkout.spec.ts ×50', result: 'Running', tone: 'accent', pulse: true },
+  { name: 'upload.spec.ts ×50', result: 'Running', tone: 'accent', pulse: true },
 ];
 
-const DIFF = `@@ -38,11 +38,15 @@ export function useCart() {
--  const [total, setTotal] = useState(0);
--  useEffect(() => {
--    setTotal(sumLines(state.lines));
--  }, [state.lines]);
-+  // The total is part of the cart state, so a click
-+  // can never see lines and total out of step.
-+  const { lines, total, pending } = state;
+const DIFF = `@@ -38,8 +38,11 @@ export async function uploadChunked(file: File) {
+   for (const chunk of chunks(file, CHUNK_SIZE)) {
+     await session.send(chunk);
+   }
+-  return session.id;
++  // The last chunk isn't the end: the server still has to
++  // stitch the file together. Wait until it says it's done.
++  await session.waitFor('complete', { timeout: 30_000 });
++  return session.id;
+ }`;
 
-   const placeOrder = useCallback(async () => {
-+    if (pending) await settled();
-     return api.orders.create({ lines, total });
--  }, [lines, total]);
-+  }, [lines, total, pending]);`;
-
-const TERMINAL = `$ pnpm test e2e/checkout.spec.ts --repeat-each=50
+const TERMINAL = `$ pnpm test e2e/upload.spec.ts --repeat-each=50
 Running 50 tests using 4 workers
-  ✓ 50 passed (1.4m)
+  ✓ 50 passed (2.1m)
 
 $ pnpm typecheck && pnpm lint
 ✓ No problems found`;
+
+// Like a model router: one picker, several providers, each model addressed as provider/model.
+const MODELS = [
+  { provider: 'machine-co', models: [['machine-co/alpha-4', 'Alpha 4'], ['machine-co/alpha-4-mini', 'Alpha 4 mini']] },
+  { provider: 'Hooli', models: [['hooli/nucleus-3', 'Nucleus 3'], ['hooli/nucleus-3-flash', 'Nucleus 3 Flash']] },
+  { provider: 'Pied Piper', models: [['pied-piper/middle-out-2', 'Middle-out 2'], ['pied-piper/middle-out-2-lite', 'Middle-out 2 Lite']] },
+] as const;
 
 interface Turn {
   id: number;
@@ -117,6 +123,26 @@ function ComposerTools() {
       <Button type="button" variant="ghost" size="icon" className="size-(--control-sm) text-muted-foreground" aria-label="Attach file">
         <Paperclip aria-hidden />
       </Button>
+      <Select defaultValue="machine-co/alpha-4">
+        <SelectTrigger size="sm" aria-label="Model" className="h-(--control-sm) border-transparent shadow-none">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {MODELS.map((group, i) => (
+            <Fragment key={group.provider}>
+              {i > 0 && <SelectSeparator />}
+              <SelectGroup>
+                <SelectLabel>{group.provider}</SelectLabel>
+                {group.models.map(([id, name]) => (
+                  <SelectItem key={id} value={id}>
+                    {name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </Fragment>
+          ))}
+        </SelectContent>
+      </Select>
       <Select defaultValue="ask">
         <SelectTrigger size="sm" aria-label="Permissions" className="h-(--control-sm) border-transparent shadow-none">
           <SelectValue />
@@ -159,7 +185,7 @@ function ChangesPanel() {
               </li>
             ))}
           </ul>
-          <CodeBlock filename="src/cart/use-cart.ts" code={DIFF} />
+          <CodeBlock filename="src/upload/chunked-upload.ts" code={DIFF} />
         </TabsContent>
         <TabsContent value="checks" className="min-h-0 overflow-y-auto p-3">
           <ul className="grid gap-1">
@@ -180,7 +206,7 @@ function ChangesPanel() {
   );
 }
 
-/** A coding agent at work: sessions, a run with its plan, tool calls and an approval, and the diff it produced. */
+/** A coding agent at work. Sessions on the left, the current run in the middle, and the diff, checks, and terminal on the right. */
 export function CodingAgentScreen() {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
@@ -194,7 +220,7 @@ export function CodingAgentScreen() {
   const ask = (text: string) => {
     const id = Date.now();
     setTurns((t) => [...t, { id, from: 'user', text }]);
-    reply(id + 1, `On it. I’ll keep working on fix/checkout-race for “${text}” and run the checkout suite again before I push.`, 1200);
+    reply(id + 1, `On it. I’ll keep working on fix/upload-race for “${text}” and run the upload suite again before I push.`, 1200);
   };
 
   const confirm = (value: string) => {
@@ -202,8 +228,8 @@ export function CodingAgentScreen() {
     reply(
       Date.now(),
       value === 'draft'
-        ? 'Pushed fix/checkout-race and opened draft PR #482. I’ll mark it ready once the 50-run check finishes.'
-        : 'Pushed fix/checkout-race. Open a PR from the header when you’re ready.',
+        ? 'Pushed fix/upload-race and opened draft PR #482. I’ll mark it ready once the 50-run check finishes.'
+        : 'Pushed fix/upload-race. Open a PR from the header when you’re ready.',
       0,
     );
   };
@@ -214,7 +240,7 @@ export function CodingAgentScreen() {
         <SidebarHeader>
           <div className="flex items-center gap-2 px-2 py-1">
             <AgentGlyph className="size-6" label="Alpha" />
-            <span className="font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">northwind/web</span>
+            <span className="font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">machine-co/web</span>
           </div>
           <div className="grid gap-2 group-data-[collapsible=icon]/sidebar:hidden">
             <SearchInput aria-label="Search sessions" placeholder="Search sessions" shortcut="⌘K" />
@@ -257,9 +283,9 @@ export function CodingAgentScreen() {
       <SidebarInset className="min-h-0">
         <header className="flex h-12 shrink-0 items-center gap-2 border-b px-3">
           <SidebarTrigger />
-          <h2 className="truncate text-sm font-medium">Fix flaky checkout test</h2>
+          <h2 className="truncate text-sm font-medium">Fix flaky upload test</h2>
           <Badge variant="outline" className="hidden font-mono font-normal sm:inline-flex">
-            <GitBranch aria-hidden className="size-3" /> fix/checkout-race
+            <GitBranch aria-hidden className="size-3" /> fix/upload-race
           </Badge>
           <div className="ml-auto flex items-center gap-1">
             <Button variant="ghost" size="sm">
@@ -287,7 +313,7 @@ export function CodingAgentScreen() {
             <div className="min-h-0 flex-1 overflow-y-auto mask-b-from-[calc(100%-var(--spacing)*8)]">
               <div className="mx-auto grid w-full max-w-2xl gap-6 px-4 pt-6 pb-8">
                 <Message from="user">
-                  <MessageContent>checkout.spec.ts fails about one run in five on CI. Find out why and fix it.</MessageContent>
+                  <MessageContent>upload.spec.ts fails about one run in five on CI. Find out why and fix it.</MessageContent>
                 </Message>
 
                 <Message from="assistant">
@@ -296,25 +322,26 @@ export function CodingAgentScreen() {
                     <ThinkingSteps
                       steps={[
                         { label: 'Reproduced the flake', detail: '4 of 20 runs failed', state: 'done' },
-                        { label: 'Traced it to a stale total', detail: 'src/cart/use-cart.ts:41', state: 'done' },
-                        { label: 'Patched the cart and re-ran', detail: '50 runs, 0 failures', state: 'done' },
+                        { label: 'Traced it to an early return', detail: 'src/upload/chunked-upload.ts:41', state: 'done' },
+                        { label: 'Patched the upload and re-ran', detail: '50 runs, 0 failures', state: 'done' },
                       ]}
                     />
                     <ToolCall
                       name="bash"
                       status="done"
-                      input="pnpm test e2e/checkout.spec.ts --repeat-each=20"
-                      output={'16 passed, 4 failed\nTimeout waiting for text "Order placed"'}
+                      input="pnpm test e2e/upload.spec.ts --repeat-each=20"
+                      output={'16 passed, 4 failed\nExpected status "complete", received "finalizing"'}
                     />
                     <p>
-                      The cart total is recalculated in an effect, so a fast click on <strong>Place order</strong> can post the old
-                      total. The server rejects the mismatch and the test times out. I moved the total into the reducer so it updates
-                      with the lines, and the button now waits for any pending update.
+                      The upload returns as soon as the last chunk is sent, but the server still needs a moment to put the file back
+                      together. When the test checks straight away, it sometimes sees <strong>finalizing</strong> instead of{' '}
+                      <strong>complete</strong>. Now the upload waits for the server to finish, and the progress bar shows a
+                      finalizing step.
                     </p>
-                    <ToolCall name="edit_file" status="done" input="src/cart/use-cart.ts" output={DIFF} />
+                    <ToolCall name="edit_file" status="done" input="src/upload/chunked-upload.ts" output={DIFF} />
                     {approval === 'pending' && (
                       <ApprovalCard
-                        question="Push fix/checkout-race?"
+                        question="Push fix/upload-race?"
                         options={[
                           { value: 'draft', label: 'Push and open a draft PR', description: 'Ready for review once checks pass.' },
                           { value: 'push', label: 'Push only', description: 'You open the PR yourself.' },
@@ -327,7 +354,7 @@ export function CodingAgentScreen() {
                       <ToolCall
                         name={approval === 'draft' ? 'gh pr create --draft' : 'git push'}
                         status="done"
-                        output={approval === 'draft' ? 'https://github.com/northwind/web/pull/482' : 'fix/checkout-race -> origin'}
+                        output={approval === 'draft' ? 'https://github.com/machine-co/web/pull/482' : 'fix/upload-race -> origin'}
                       />
                     )}
                   </MessageContent>

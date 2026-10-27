@@ -11,10 +11,10 @@ export default defineDoc({
       name: 'Variants',
       render: () => (
         <div className="flex flex-wrap gap-2">
-          <Badge>Live</Badge>
+          <Badge>Merged</Badge>
           <Badge variant="secondary">Draft</Badge>
           <Badge variant="outline">v2.4.0</Badge>
-          <Badge variant="destructive">3 failing</Badge>
+          <Badge variant="destructive">3 checks failing</Badge>
         </div>
       ),
     },

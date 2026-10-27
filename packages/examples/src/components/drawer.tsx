@@ -12,17 +12,17 @@ export default defineDoc({
       render: () => (
         <Drawer>
           <DrawerTrigger asChild>
-            <Button variant="outline">Set a goal</Button>
+            <Button variant="outline">Set a budget</Button>
           </DrawerTrigger>
           <DrawerContent>
             <div className="mx-auto w-full max-w-sm">
               <DrawerHeader>
-                <DrawerTitle>Daily goal</DrawerTitle>
-                <DrawerDescription>How many minutes a day do you want to practise?</DrawerDescription>
+                <DrawerTitle>Session budget</DrawerTitle>
+                <DrawerDescription>How many minutes can the agent spend on this session?</DrawerDescription>
               </DrawerHeader>
-              <p className="py-6 text-center font-display text-6xl font-semibold tabular-nums">25</p>
+              <p className="py-6 text-center font-display text-6xl font-semibold tabular-nums">45</p>
               <DrawerFooter>
-                <Button>Save goal</Button>
+                <Button>Save budget</Button>
                 <DrawerClose asChild>
                   <Button variant="outline">Cancel</Button>
                 </DrawerClose>

@@ -48,15 +48,15 @@ import {
 import { UserPlus } from 'lucide-react';
 
 const MEMBERS = [
-  ['Ada Lovelace', 'ada@northwind.dev', 'Owner'],
-  ['Grace Hopper', 'grace@northwind.dev', 'Admin'],
-  ['Katherine Johnson', 'kj@northwind.dev', 'Member'],
+  ['Ada Lovelace', 'ada@machine-co.dev', 'Owner'],
+  ['Grace Hopper', 'grace@machine-co.dev', 'Admin'],
+  ['Katherine Johnson', 'kj@machine-co.dev', 'Member'],
 ] as const;
 
 const NOTIFICATIONS = [
-  ['Failed deploys', 'Email me when a production deploy fails.', true],
-  ['Weekly digest', 'A Monday summary of usage and changes.', true],
-  ['Product news', 'New components and themes, about once a month.', false],
+  ['Failed runs', 'Email me when an agent run fails on main.', true],
+  ['Weekly digest', 'A Monday summary of sessions, merges, and spend.', true],
+  ['Product news', 'New models and agent features, about once a month.', false],
 ] as const;
 
 /** Workspace settings across tabs: profile form, notifications, billing with usage, team and a danger zone. */
@@ -66,7 +66,7 @@ export function SettingsScreen() {
       <div className="mx-auto grid max-w-3xl gap-6 px-4 py-8">
         <div className="grid gap-1">
           <h2 className="font-display text-2xl font-semibold">Settings</h2>
-          <p className="text-sm text-muted-foreground">Manage the Northwind workspace.</p>
+          <p className="text-sm text-muted-foreground">Manage the machine-co workspace.</p>
         </div>
         <Tabs defaultValue="general">
           <TabsList>
@@ -86,11 +86,11 @@ export function SettingsScreen() {
                 <FieldGroup>
                   <Field>
                     <FieldLabel htmlFor="ws-name">Name</FieldLabel>
-                    <Input id="ws-name" defaultValue="Northwind" />
+                    <Input id="ws-name" defaultValue="machine-co" />
                   </Field>
                   <Field>
                     <FieldLabel htmlFor="ws-about">Description</FieldLabel>
-                    <Textarea id="ws-about" defaultValue="Design systems and tooling for the Northwind product teams." />
+                    <Textarea id="ws-about" defaultValue="Coding agents and tooling for the machine-co product teams." />
                     <FieldDescription>Up to 200 characters.</FieldDescription>
                   </Field>
                   <div className="grid gap-6 sm:grid-cols-2">
@@ -118,7 +118,7 @@ export function SettingsScreen() {
                   </div>
                   <Field>
                     <FieldLabel htmlFor="ws-key">API key</FieldLabel>
-                    <CopyInput id="ws-key" value="nw_live_8f2k1x9q4m" />
+                    <CopyInput id="ws-key" value="mc_live_8f2k1x9q4m" />
                   </Field>
                 </FieldGroup>
               </CardContent>
@@ -130,7 +130,7 @@ export function SettingsScreen() {
             <Card className="border-destructive">
               <CardHeader>
                 <CardTitle className="text-lg">Delete workspace</CardTitle>
-                <CardDescription>Removes 14 projects and their history for every member.</CardDescription>
+                <CardDescription>Removes 14 repositories’ sessions and run history for every member.</CardDescription>
               </CardHeader>
               <CardFooter>
                 <AlertDialog>
@@ -139,7 +139,7 @@ export function SettingsScreen() {
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Delete Northwind?</AlertDialogTitle>
+                      <AlertDialogTitle>Delete machine-co?</AlertDialogTitle>
                       <AlertDialogDescription>This can’t be undone.</AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
@@ -187,7 +187,7 @@ export function SettingsScreen() {
                 </div>
                 <div className="grid gap-2">
                   <div className="flex justify-between text-sm">
-                    <span id="usage-builds">Builds this month</span>
+                    <span id="usage-builds">Agent minutes this month</span>
                     <span className="tabular-nums text-muted-foreground">4,120 of 5,000</span>
                   </div>
                   <Progress aria-labelledby="usage-builds" value={82} />

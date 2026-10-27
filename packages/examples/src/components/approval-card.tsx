@@ -12,11 +12,11 @@ export default defineDoc({
       render: () => (
         <ApprovalCard
           className="max-w-md"
-          question="How should I reply to Acme?"
+          question="The migration fails on Hooli’s data. What should I do?"
           options={[
-            { value: 'workaround', label: 'Send the workaround', description: 'Restores sync now; fix lands Thursday.' },
-            { value: 'wait', label: 'Wait for the fix', description: 'Reply Thursday with the release note.' },
-            { value: 'escalate', label: 'Escalate to engineering' },
+            { value: 'default', label: 'Add a default value', description: 'Existing rows pass, and the column stays required.' },
+            { value: 'rollback', label: 'Roll back the migration', description: 'Safe now. The column comes back next release.' },
+            { value: 'ask', label: 'Ask the team in #eng' },
           ]}
         />
       ),

@@ -32,7 +32,7 @@ export default defineDoc({
             <Button variant="outline">Ada Lovelace</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="start">
-            <DropdownMenuLabel>ada@northwind.dev</DropdownMenuLabel>
+            <DropdownMenuLabel>ada@machine-co.dev</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
@@ -45,8 +45,8 @@ export default defineDoc({
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>Switch workspace</DropdownMenuSubTrigger>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Northwind</DropdownMenuItem>
-                <DropdownMenuItem>Lumen Labs</DropdownMenuItem>
+                <DropdownMenuItem>machine-co</DropdownMenuItem>
+                <DropdownMenuItem>Pied Piper</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
             <DropdownMenuCheckboxItem checked>Compact mode</DropdownMenuCheckboxItem>

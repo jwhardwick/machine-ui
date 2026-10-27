@@ -11,7 +11,7 @@ export default defineDoc({
       name: 'Default',
       render: () => (
         <p className="max-w-md text-sm leading-relaxed">
-          <StreamingText text="Acme’s outage started after Tuesday’s deploy. The fix ships Thursday; until then, the workaround in the help centre restores sync." />
+          <StreamingText text="Found it. The upload test sends 3 GB in one request, but #477 capped single requests at 2 GB. I’ll switch the test to chunked uploads." />
         </p>
       ),
     },

@@ -33,7 +33,7 @@ export function ScreensPage() {
               ))}
             </p>
           </div>
-          <ScreenFrame title={`app.northwind.dev/${screen.slug}`}>
+          <ScreenFrame title={`app.machine-co.dev/${screen.slug}`}>
             <Suspense fallback={<Loading className="h-full" />}>
               <screen.Component />
             </Suspense>

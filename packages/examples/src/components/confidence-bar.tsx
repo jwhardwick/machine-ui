@@ -12,8 +12,8 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xs gap-4">
           <ConfidenceBar value={92} label="Root cause" />
-          <ConfidenceBar value={64} label="Ships Thursday" />
-          <ConfidenceBar value={31} label="Affects other accounts" />
+          <ConfidenceBar value={64} label="Fix covers every caller" />
+          <ConfidenceBar value={31} label="Safe to auto-merge" />
         </div>
       ),
     },

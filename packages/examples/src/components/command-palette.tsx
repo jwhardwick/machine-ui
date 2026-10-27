@@ -9,7 +9,7 @@ import {
   CommandShortcut,
   Kbd,
 } from '@machine-ui/ui';
-import { FileText, Palette, Settings } from 'lucide-react';
+import { GitBranch, Settings, SquareTerminal } from 'lucide-react';
 import { useState } from 'react';
 import { defineDoc } from '../types.ts';
 
@@ -26,10 +26,10 @@ function Palette_() {
           <CommandEmpty>No results.</CommandEmpty>
           <CommandGroup heading="Actions">
             <CommandItem onSelect={() => setOpen(false)}>
-              <Palette aria-hidden /> Change theme
+              <SquareTerminal aria-hidden /> New session
             </CommandItem>
             <CommandItem onSelect={() => setOpen(false)}>
-              <FileText aria-hidden /> New document
+              <GitBranch aria-hidden /> Switch branch
             </CommandItem>
             <CommandItem onSelect={() => setOpen(false)}>
               <Settings aria-hidden /> Preferences <CommandShortcut>⌘,</CommandShortcut>
