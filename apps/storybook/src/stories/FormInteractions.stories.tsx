@@ -34,7 +34,7 @@ export const ComboboxFiltersAndSelects: Story = {
 export const DatePickerChoosesADay: Story = {
   render: example('date-picker', 'Default'),
   play: async ({ canvas }) => {
-    const trigger = canvas.getByRole('button', { name: 'Launch date' });
+    const trigger = canvas.getByRole('button', { name: 'Code freeze' });
     await expect(trigger).toHaveTextContent('3 Nov 2026');
     await userEvent.click(trigger);
     await userEvent.click(await screen.findByRole('button', { name: /^12 November 2026/ }));
@@ -58,10 +58,10 @@ export const RadioGroupMovesWithArrows: Story = {
 export const SliderStepsWithKeyboard: Story = {
   render: example('slider', 'Single'),
   play: async ({ canvas }) => {
-    const thumb = canvas.getByRole('slider', { name: 'Volume' });
+    const thumb = canvas.getByRole('slider', { name: 'Coverage target (%)' });
     thumb.focus();
     await userEvent.keyboard('{ArrowRight}{ArrowRight}');
-    await expect(thumb).toHaveAttribute('aria-valuenow', '62');
+    await expect(thumb).toHaveAttribute('aria-valuenow', '82');
   },
 };
 
@@ -97,8 +97,8 @@ export const OtpAdvancesAsYouType: Story = {
 export const SearchInputClears: Story = {
   render: example('search-input', 'With value'),
   play: async ({ canvas }) => {
-    const input = canvas.getByRole('searchbox', { name: 'Search threads' });
-    await expect(input).toHaveValue('refund');
+    const input = canvas.getByRole('searchbox', { name: 'Search sessions' });
+    await expect(input).toHaveValue('flaky test');
     await userEvent.click(canvas.getByRole('button', { name: 'Clear search' }));
     await expect(input).toHaveValue('');
   },
@@ -107,6 +107,6 @@ export const SearchInputClears: Story = {
 export const CheckboxIndeterminate: Story = {
   render: example('checkbox', 'States'),
   play: async ({ canvas }) => {
-    await expect(canvas.getByRole('checkbox', { name: 'Some teams selected' })).toHaveAttribute('aria-checked', 'mixed');
+    await expect(canvas.getByRole('checkbox', { name: 'Some repositories selected' })).toHaveAttribute('aria-checked', 'mixed');
   },
 };

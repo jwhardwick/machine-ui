@@ -17,7 +17,7 @@ export default defineDoc({
   slug: 'sheet',
   name: 'Sheet',
   category: 'overlays',
-  description: 'A panel that slides in from any edge over a scrim. Good for edit forms and detail views.',
+  description: 'A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views.',
   examples: [
     {
       name: 'Edit panel',
@@ -34,7 +34,7 @@ export default defineDoc({
             <div className="grid gap-4 px-4">
               <div className="grid gap-2">
                 <Label htmlFor="sheet-name">Name</Label>
-                <Input id="sheet-name" defaultValue="Grace Hopper" />
+                <Input id="sheet-name" defaultValue="Dinesh Chugtai" />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="sheet-role">Role</Label>

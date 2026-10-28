@@ -9,7 +9,7 @@ import {
   CommandShortcut,
   Kbd,
 } from '@machine-ui/ui';
-import { FileText, Palette, Settings } from 'lucide-react';
+import { GitBranch, Settings, SquareTerminal } from 'lucide-react';
 import { useState } from 'react';
 import { defineDoc } from '../types.ts';
 
@@ -26,10 +26,10 @@ function Palette_() {
           <CommandEmpty>No results.</CommandEmpty>
           <CommandGroup heading="Actions">
             <CommandItem onSelect={() => setOpen(false)}>
-              <Palette aria-hidden /> Change theme
+              <SquareTerminal aria-hidden /> New session
             </CommandItem>
             <CommandItem onSelect={() => setOpen(false)}>
-              <FileText aria-hidden /> New document
+              <GitBranch aria-hidden /> Switch branch
             </CommandItem>
             <CommandItem onSelect={() => setOpen(false)}>
               <Settings aria-hidden /> Preferences <CommandShortcut>⌘,</CommandShortcut>
@@ -45,6 +45,6 @@ export default defineDoc({
   slug: 'command-palette',
   name: 'Command Palette',
   category: 'overlays',
-  description: 'Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.',
+  description: 'Command in a modal that opens from a button or a keyboard shortcut. Type to filter, use the arrow keys to move, Enter to run, and Escape to close.',
   examples: [{ name: 'Default', render: () => <Palette_ /> }],
 });

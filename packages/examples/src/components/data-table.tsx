@@ -9,13 +9,13 @@ interface Member {
 }
 
 const MEMBERS: Member[] = [
-  { name: 'Ada Lovelace', email: 'ada@northwind.dev', role: 'Owner', lastActive: 'Today' },
-  { name: 'Grace Hopper', email: 'grace@northwind.dev', role: 'Admin', lastActive: 'Today' },
-  { name: 'Katherine Johnson', email: 'kj@northwind.dev', role: 'Member', lastActive: 'Yesterday' },
-  { name: 'Margaret Hamilton', email: 'margaret@northwind.dev', role: 'Admin', lastActive: '3 days ago' },
-  { name: 'Radia Perlman', email: 'radia@northwind.dev', role: 'Member', lastActive: 'Last week' },
-  { name: 'Barbara Liskov', email: 'barbara@northwind.dev', role: 'Member', lastActive: 'Today' },
-  { name: 'Frances Allen', email: 'frances@northwind.dev', role: 'Member', lastActive: '2 days ago' },
+  { name: 'Richard Hendricks', email: 'richard@machine-co.dev', role: 'Owner', lastActive: 'Today' },
+  { name: 'Bertram Gilfoyle', email: 'gilfoyle@machine-co.dev', role: 'Admin', lastActive: 'Today' },
+  { name: 'Dinesh Chugtai', email: 'dinesh@machine-co.dev', role: 'Member', lastActive: 'Yesterday' },
+  { name: 'Monica Hall', email: 'monica@machine-co.dev', role: 'Admin', lastActive: '3 days ago' },
+  { name: 'Erlich Bachman', email: 'erlich@machine-co.dev', role: 'Member', lastActive: 'Last week' },
+  { name: 'Jared Dunn', email: 'jared@machine-co.dev', role: 'Member', lastActive: 'Today' },
+  { name: 'Nelson Bighetti', email: 'bighead@machine-co.dev', role: 'Member', lastActive: '2 days ago' },
 ];
 
 const columns: ColumnDef<Member>[] = [
@@ -34,7 +34,7 @@ export default defineDoc({
   slug: 'data-table',
   name: 'Data Table',
   category: 'data',
-  description: 'A table with sorting, filtering, row selection and pagination, built on TanStack Table.',
+  description: 'A table with sorting, filtering, row selection, and pagination, built on TanStack Table.',
   examples: [
     {
       name: 'Members',

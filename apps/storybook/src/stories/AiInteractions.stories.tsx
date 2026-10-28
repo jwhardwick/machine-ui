@@ -42,11 +42,11 @@ export const PromptBusyStops: Story = {
 export const ToolCallDiscloses: Story = {
   render: example('tool-call', 'States'),
   play: async ({ canvas }) => {
-    const failed = canvas.getByRole('button', { name: /github.create_issue/ });
+    const failed = canvas.getByRole('button', { name: /github.create_pull_request/ });
     await expect(failed).toHaveAttribute('aria-expanded', 'false');
     await userEvent.click(failed);
     await expect(failed).toHaveAttribute('aria-expanded', 'true');
-    await expect(canvas.getByText('403: token lacks repo scope')).toBeVisible();
+    await expect(canvas.getByText('403: token lacks write access to hooli/nucleus')).toBeVisible();
   },
 };
 
@@ -54,9 +54,9 @@ export const ApprovalConfirmsChoice: Story = {
   render: (args) => (
     <ApprovalCard
       className="max-w-md"
-      question="Archive 42 idle tickets?"
+      question="Delete 42 stale branches?"
       options={[
-        { value: 'archive', label: 'Archive them' },
+        { value: 'archive', label: 'Delete them' },
         { value: 'review', label: 'Show me first' },
       ]}
       onConfirm={args.onConfirm}

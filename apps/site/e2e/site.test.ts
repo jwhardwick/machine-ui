@@ -29,8 +29,8 @@ after(async () => {
 /** Tests must not depend on the network: web fonts are blocked and pages use their fallback stacks. */
 const OFFLINE_HOSTS = /fonts\.(googleapis|gstatic)\.com/;
 
-async function open(path: string, viewport = { width: 1280, height: 900 }): Promise<Page> {
-  const page = await browser.newPage({ viewport });
+async function open(path: string, viewport = { width: 1280, height: 900 }, on = browser): Promise<Page> {
+  const page = await on.newPage({ viewport });
   await page.route(OFFLINE_HOSTS, (route) => route.abort());
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
@@ -118,10 +118,10 @@ describe('navigation', () => {
       return nav.locator('[aria-current=page]').allTextContents();
     };
     assert.deepEqual(await current('All screens'), ['All screens']);
-    await nav.getByRole('link', { name: 'Store dashboard' }).click();
-    assert.deepEqual(await current('Store dashboard'), ['Store dashboard']);
-    await nav.getByRole('link', { name: 'Agent inbox' }).click();
-    assert.deepEqual(await current('Agent inbox'), ['Agent inbox']);
+    await nav.getByRole('link', { name: 'Usage dashboard' }).click();
+    assert.deepEqual(await current('Usage dashboard'), ['Usage dashboard']);
+    await nav.getByRole('link', { name: 'Coding agent' }).click();
+    assert.deepEqual(await current('Coding agent'), ['Coding agent']);
     await page.close();
   });
 
@@ -150,11 +150,30 @@ describe('bundle', () => {
 });
 
 describe('layout', () => {
+  test('opening a select doesn’t shift the page or the theme toolbar sideways', async () => {
+    // Headless Chromium hides scrollbars, which hides the bug: the select locks scrolling, the scrollbar goes, the page widens.
+    const withScrollbars = await chromium.launch({ ignoreDefaultArgs: ['--hide-scrollbars'] });
+    try {
+      const page = await open('/screens', undefined, withScrollbars);
+      // Radix hides everything outside an open select from the accessibility tree, so find these by selector.
+      const toolbar = page.locator('[role=toolbar][aria-label=Theme]');
+      const heading = page.locator('h1').first();
+      const x = async () => [(await toolbar.boundingBox())!.x, (await heading.boundingBox())!.x];
+      const before = await x();
+      await page.getByRole('combobox', { name: 'Permissions' }).first().click();
+      await page.getByRole('listbox').waitFor();
+      assert.deepEqual(await x(), before);
+    } finally {
+      await withScrollbars.close();
+    }
+  });
+
   for (const path of ['/', '/components', '/components/data-table', '/screens', '/themes', '/get-started']) {
     test(`${path} has no horizontal overflow on a phone`, async () => {
       const page = await open(path, { width: 390, height: 844 });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-      assert.equal(overflow, 0);
+      // Negative is fine: the page reserves a scrollbar gutter, so content can be narrower than the window.
+      assert.ok(overflow <= 0, `content overflows by ${overflow}px`);
       await page.close();
     });
   }

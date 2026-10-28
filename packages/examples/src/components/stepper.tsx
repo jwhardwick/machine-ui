@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'stepper',
   name: 'Stepper',
   category: 'navigation',
-  description: 'Progress through a fixed sequence of steps, with done, current and upcoming states.',
+  description: 'Progress through a fixed sequence of steps, with done, current, and upcoming states.',
   examples: [
     {
       name: 'Onboarding',
@@ -15,10 +15,10 @@ export default defineDoc({
           className="max-w-2xl"
           current={2}
           steps={[
-            { title: 'Account', description: 'Name and email' },
-            { title: 'Workspace', description: 'Invite your team' },
-            { title: 'Theme', description: 'Pick a starting point' },
-            { title: 'Install', description: 'Add to your app' },
+            { title: 'Connect GitHub', description: 'Pick your repositories' },
+            { title: 'Team', description: 'Invite your reviewers' },
+            { title: 'Permissions', description: 'Choose what the agent can do' },
+            { title: 'First session', description: 'Fix a starter issue' },
           ]}
         />
       ),

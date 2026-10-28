@@ -12,7 +12,7 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xs gap-2">
           <Label htmlFor="input-name">Workspace name</Label>
-          <Input id="input-name" defaultValue="Northwind" />
+          <Input id="input-name" defaultValue="machine-co" />
         </div>
       ),
     },
@@ -20,17 +20,17 @@ export default defineDoc({
       name: 'Invalid',
       render: () => (
         <div className="grid w-full max-w-xs gap-2">
-          <Label htmlFor="input-domain">Domain</Label>
-          <Input id="input-domain" aria-invalid defaultValue="northwind" aria-describedby="input-domain-error" />
-          <p id="input-domain-error" className="text-sm text-destructive">
-            Enter a full domain, like northwind.com.
+          <Label htmlFor="input-branch">Branch name</Label>
+          <Input id="input-branch" aria-invalid defaultValue="fix middle out" aria-describedby="input-branch-error" />
+          <p id="input-branch-error" className="text-sm text-destructive">
+            Branch names can’t contain spaces. Try fix/middle-out.
           </p>
         </div>
       ),
     },
     {
       name: 'Disabled',
-      render: () => <Input aria-label="Team ID" disabled defaultValue="team_8f2k" className="max-w-xs" />,
+      render: () => <Input aria-label="Session ID" disabled defaultValue="ses_8f2k" className="max-w-xs" />,
     },
   ],
 });

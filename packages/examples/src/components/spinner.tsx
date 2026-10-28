@@ -14,7 +14,7 @@ export default defineDoc({
           <Spinner />
           <Spinner className="size-6" />
           <Button disabled>
-            <Spinner /> Saving
+            <Spinner /> Running checks
           </Button>
         </div>
       ),

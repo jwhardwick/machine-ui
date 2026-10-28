@@ -12,16 +12,16 @@ export default defineDoc({
       render: () => (
         <ul className="grid gap-2 text-sm">
           <li className="flex items-center gap-2">
-            <StatusDot tone="online" pulse /> API operational
+            <StatusDot tone="online" pulse /> Agent runners operational
           </li>
           <li className="flex items-center gap-2">
-            <StatusDot tone="busy" /> Webhooks delayed
+            <StatusDot tone="busy" /> GitHub webhooks delayed
           </li>
           <li className="flex items-center gap-2">
-            <StatusDot tone="error" /> Search degraded
+            <StatusDot tone="error" /> Preview deploys degraded
           </li>
           <li className="flex items-center gap-2">
-            <StatusDot tone="offline" /> Legacy dashboard retired
+            <StatusDot tone="offline" /> Legacy runner retired
           </li>
         </ul>
       ),

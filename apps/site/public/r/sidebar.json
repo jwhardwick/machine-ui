@@ -3,7 +3,7 @@
   "name": "sidebar",
   "type": "registry:ui",
   "title": "Sidebar",
-  "description": "App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.",
+  "description": "App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it.",
   "dependencies": [
     "class-variance-authority@0.7.1",
     "lucide-react@1.59.0",

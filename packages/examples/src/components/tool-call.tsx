@@ -12,9 +12,9 @@ export default defineDoc({
       wide: true,
       render: () => (
         <div className="grid w-full max-w-md gap-2">
-          <ToolCall name="stripe.get_account" status="done" input={'{ "customer": "acme" }'} output={'{ "status": "active", "plan": "scale" }'} defaultOpen />
-          <ToolCall name="intercom.search" status="running" />
-          <ToolCall name="github.create_issue" status="error" output="403: token lacks repo scope" />
+          <ToolCall name="bash" status="done" input="pnpm test e2e/upload.spec.ts" output={'12 passed, 1 failed\nupload › rejects files over 2 GB'} defaultOpen />
+          <ToolCall name="read_file" status="running" input="src/upload/chunked-upload.ts" />
+          <ToolCall name="github.create_pull_request" status="error" output="403: token lacks write access to hooli/nucleus" />
         </div>
       ),
     },

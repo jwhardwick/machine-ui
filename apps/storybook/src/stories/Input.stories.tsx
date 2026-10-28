@@ -20,8 +20,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   play: async ({ canvas }) => {
     const input = canvas.getByLabelText('Email');
-    await userEvent.type(input, 'ada@example.com');
-    await expect(input).toHaveValue('ada@example.com');
+    await userEvent.type(input, 'jared@example.com');
+    await expect(input).toHaveValue('jared@example.com');
   },
 };
 

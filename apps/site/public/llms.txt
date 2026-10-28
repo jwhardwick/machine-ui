@@ -23,23 +23,23 @@ Add the registry once (see the install guide), then install components with `npx
 
 ### Forms and inputs
 
-- [Button](/components/button): Triggers an action. Six variants and four sizes, with icon, loading and disabled states. Install: `@machine-ui/button`
+- [Button](/components/button): Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states. Install: `@machine-ui/button`
 - [Button Group](/components/button-group): Joins related buttons into one row with shared edges, including split buttons. Install: `@machine-ui/button @machine-ui/button-group`
 - [Calendar](/components/calendar): A month grid for picking a single date or a range, with today marked and keyboard navigation. Install: `@machine-ui/calendar`
-- [Checkbox](/components/checkbox): Turns an option on or off. Supports an indeterminate state for "some selected". Install: `@machine-ui/checkbox @machine-ui/label`
-- [Combobox](/components/combobox): A select with a filter field: type to narrow the options, then pick one. Install: `@machine-ui/combobox @machine-ui/label`
-- [Copy Input](/components/copy-input): A read-only field with a copy button, for API keys, webhook URLs and share links. Install: `@machine-ui/copy-input @machine-ui/label`
+- [Checkbox](/components/checkbox): Turns an option on or off. It also has an indeterminate state for when only some items are selected. Install: `@machine-ui/checkbox @machine-ui/label`
+- [Combobox](/components/combobox): A select with a search field. Type to narrow the options, then pick one. Install: `@machine-ui/combobox @machine-ui/label`
+- [Copy Input](/components/copy-input): A read-only field with a copy button, for API keys, webhook URLs, and share links. Install: `@machine-ui/copy-input @machine-ui/label`
 - [Date Picker](/components/date-picker): A button that opens a Calendar and shows the chosen date in short form. Install: `@machine-ui/date-picker @machine-ui/label`
-- [Field](/components/field): Lays out a label, control, help text and error for one form field, so every form reads the same way. Install: `@machine-ui/field @machine-ui/input @machine-ui/switch`
+- [Field](/components/field): Lays out the label, control, help text, and error for one form field, so your forms look consistent. Install: `@machine-ui/field @machine-ui/input @machine-ui/switch`
 - [Input](/components/input): A single-line text field, with invalid and disabled states. Install: `@machine-ui/input @machine-ui/label`
 - [Input Group](/components/input-group): A text field with a fixed prefix, suffix or icon inside one border. Install: `@machine-ui/input-group @machine-ui/label`
-- [Input OTP](/components/input-otp): Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works. Install: `@machine-ui/input-otp @machine-ui/label`
+- [Input OTP](/components/input-otp): One box per character for one-time codes. Focus moves to the next box as you type, and you can paste the whole code. Install: `@machine-ui/input-otp @machine-ui/label`
 - [Label](/components/label): A text label for a form control. Clicking it focuses the control it names. Install: `@machine-ui/input @machine-ui/label`
-- [Native Select](/components/native-select): The browser’s own select, styled to match the theme. Best on mobile and for long option lists. Install: `@machine-ui/label @machine-ui/native-select`
+- [Native Select](/components/native-select): The browser’s own select, styled to match the theme. Works best on mobile and for long lists of options. Install: `@machine-ui/label @machine-ui/native-select`
 - [Radio Group](/components/radio-group): A set of options where exactly one is selected. Arrow keys move the selection. Install: `@machine-ui/label @machine-ui/radio-group`
 - [Search Input](/components/search-input): A search field with a shortcut hint, and a clear button once there is a value. Install: `@machine-ui/search-input`
 - [Select](/components/select): A dropdown for picking one value from a short list, with groups and separators. Install: `@machine-ui/label @machine-ui/select`
-- [Slider](/components/slider): Picks a number, or a range, by dragging. Arrow keys step through values. Install: `@machine-ui/label @machine-ui/slider`
+- [Slider](/components/slider): Picks a number or a range by dragging. The arrow keys move it one step at a time. Install: `@machine-ui/label @machine-ui/slider`
 - [Switch](/components/switch): Turns a setting on or off immediately, without a save step. Install: `@machine-ui/label @machine-ui/switch`
 - [Textarea](/components/textarea): A multi-line text field that resizes vertically. Use it for messages, notes and descriptions. Install: `@machine-ui/label @machine-ui/textarea`
 - [Toggle](/components/toggle): A button that stays pressed, for one on/off option such as a filter or formatting. Install: `@machine-ui/toggle`
@@ -47,45 +47,45 @@ Add the registry once (see the install guide), then install components with `npx
 
 ### Overlays
 
-- [Alert Dialog](/components/alert-dialog): A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape. Install: `@machine-ui/alert-dialog @machine-ui/button`
+- [Alert Dialog](/components/alert-dialog): A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key. Install: `@machine-ui/alert-dialog @machine-ui/button`
 - [Command](/components/command): A searchable list of actions with groups and shortcuts. Use CommandDialog to open it as a palette. Install: `@machine-ui/command`
-- [Command Palette](/components/command-palette): Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes. Install: `@machine-ui/button @machine-ui/command @machine-ui/kbd`
+- [Command Palette](/components/command-palette): Command in a modal that opens from a button or a keyboard shortcut. Type to filter, use the arrow keys to move, Enter to run, and Escape to close. Install: `@machine-ui/button @machine-ui/command @machine-ui/kbd`
 - [Context Menu](/components/context-menu): A menu of actions that opens at the pointer when its area is right-clicked or long-pressed. Install: `@machine-ui/context-menu`
 - [Dialog](/components/dialog): A modal window over the page. Focus moves inside, Escape closes it and focus returns to the trigger. Install: `@machine-ui/button @machine-ui/dialog @machine-ui/input @machine-ui/label`
 - [Drawer](/components/drawer): A bottom sheet with a drag handle, for mobile-first flows. Swipe down or press Escape to close. Install: `@machine-ui/button @machine-ui/drawer`
-- [Dropdown Menu](/components/dropdown-menu): A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style. Install: `@machine-ui/button @machine-ui/dropdown-menu`
-- [Hover Card](/components/hover-card): A floating preview shown while the pointer rests on, or focus is on, its trigger. Install: `@machine-ui/avatar @machine-ui/button @machine-ui/hover-card`
-- [Popover](/components/popover): A floating panel anchored to a trigger, for short forms, settings and details. Install: `@machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/popover`
-- [Sheet](/components/sheet): A panel that slides in from any edge over a scrim. Good for edit forms and detail views. Install: `@machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/sheet`
-- [Tooltip](/components/tooltip): A short label shown on hover or focus. Never put essential information only in a tooltip. Install: `@machine-ui/button @machine-ui/tooltip`
+- [Dropdown Menu](/components/dropdown-menu): A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style. Install: `@machine-ui/button @machine-ui/dropdown-menu`
+- [Hover Card](/components/hover-card): A floating preview that shows while the pointer is over its trigger, or while the trigger has focus. Install: `@machine-ui/avatar @machine-ui/button @machine-ui/hover-card`
+- [Popover](/components/popover): A floating panel anchored to a trigger, for short forms, settings, and details. Install: `@machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/popover`
+- [Sheet](/components/sheet): A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views. Install: `@machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/sheet`
+- [Tooltip](/components/tooltip): A short label shown on hover or focus. Don’t put anything essential only in a tooltip. Install: `@machine-ui/button @machine-ui/tooltip`
 
 ### Navigation
 
 - [Breadcrumb](/components/breadcrumb): Shows where a page sits in the hierarchy, with a collapsed middle for long trails. Install: `@machine-ui/breadcrumb`
-- [Menubar](/components/menubar): A row of menus like a desktop app bar. Open one, then arrow or hover across the others. Install: `@machine-ui/menubar`
+- [Menubar](/components/menubar): A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others. Install: `@machine-ui/menubar`
 - [Navigation Menu](/components/navigation-menu): Site navigation with dropdown panels of links, for marketing sites and docs. Install: `@machine-ui/navigation-menu`
 - [Pagination](/components/pagination): Moves through pages of results with numbered links, previous and next. Install: `@machine-ui/pagination`
-- [Sidebar](/components/sidebar): App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it. Install: `@machine-ui/sidebar`
-- [Stepper](/components/stepper): Progress through a fixed sequence of steps, with done, current and upcoming states. Install: `@machine-ui/stepper`
+- [Sidebar](/components/sidebar): App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it. Install: `@machine-ui/sidebar`
+- [Stepper](/components/stepper): Progress through a fixed sequence of steps, with done, current, and upcoming states. Install: `@machine-ui/stepper`
 - [Tabs](/components/tabs): Switches between views in the same context. Arrow keys move between tabs. Install: `@machine-ui/tabs`
 
 ### Data display
 
 - [Avatar](/components/avatar): Shows a person as a photo or initials, alone or as an overlapping group. Install: `@machine-ui/avatar`
-- [Badge](/components/badge): A small label for state or category, in primary, secondary, outline and destructive styles. Install: `@machine-ui/badge`
+- [Badge](/components/badge): A small label for state or category, in primary, secondary, outline, and destructive styles. Install: `@machine-ui/badge`
 - [Card](/components/card): Groups related content on a raised surface. Whether it uses a border or a shadow comes from the theme’s separation setting. Install: `@machine-ui/button @machine-ui/card`
-- [Chart](/components/chart): Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens. Install: `@machine-ui/chart @machine-ui/use-reduced-motion`
-- [Data Table](/components/data-table): A table with sorting, filtering, row selection and pagination, built on TanStack Table. Install: `@machine-ui/badge @machine-ui/data-table`
-- [Item](/components/item): A row with media, a title, a description and actions, for lists, settings and search results. Install: `@machine-ui/button @machine-ui/item @machine-ui/switch`
+- [Chart](/components/chart): Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens. Install: `@machine-ui/chart @machine-ui/use-reduced-motion`
+- [Data Table](/components/data-table): A table with sorting, filtering, row selection, and pagination, built on TanStack Table. Install: `@machine-ui/badge @machine-ui/data-table`
+- [Item](/components/item): A row with media, a title, a description and actions, for lists, settings, and search results. Install: `@machine-ui/button @machine-ui/item @machine-ui/switch`
 - [Kbd](/components/kbd): Shows a keyboard key or shortcut in a small keycap. Install: `@machine-ui/kbd`
-- [Stat](/components/stat): A labelled number with an optional change, marked up or down by icon and text, not colour alone. Install: `@machine-ui/card @machine-ui/stat`
+- [Stat](/components/stat): A labelled number with an optional change. Ups and downs show with an icon and text, not just colour. Install: `@machine-ui/card @machine-ui/stat`
 - [Table](/components/table): Composable table parts for simple tabular data. Use Data Table when you need sorting or selection. Install: `@machine-ui/badge @machine-ui/table`
-- [Typography](/components/typography): Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face. Install: `@machine-ui/typography`
+- [Typography](/components/typography): Text styles from the theme’s type scale. Headings use the display font and body text uses the text font. Install: `@machine-ui/typography`
 
 ### Feedback and status
 
-- [Alert](/components/alert): An inline banner with a title and a description, in default, success, warning and destructive variants. Install: `@machine-ui/alert`
-- [Empty](/components/empty): A placeholder for a view with nothing in it yet: what it is for, and the one action to start. Install: `@machine-ui/button @machine-ui/empty`
+- [Alert](/components/alert): An inline banner with a title and a description, in default, success, warning, and destructive variants. Install: `@machine-ui/alert`
+- [Empty](/components/empty): A placeholder for an empty view. It explains what goes there and offers one action to get started. Install: `@machine-ui/button @machine-ui/empty`
 - [Progress](/components/progress): Shows how far a task with a known length has come. Install: `@machine-ui/label @machine-ui/progress`
 - [Skeleton](/components/skeleton): Placeholder blocks that hold the shape of content while it loads. Install: `@machine-ui/skeleton`
 - [Spinner](/components/spinner): A spinning ring for work with no known length. Announced to screen readers as loading. Install: `@machine-ui/button @machine-ui/spinner`
@@ -94,26 +94,26 @@ Add the registry once (see the install guide), then install components with `npx
 
 ### Layout and utility
 
-- [Accordion](/components/accordion): A stack of headings that each reveal a section. One or several sections can be open. Install: `@machine-ui/accordion`
+- [Accordion](/components/accordion): A stack of headings that each open a section. You can allow one section or several to be open at once. Install: `@machine-ui/accordion`
 - [Aspect Ratio](/components/aspect-ratio): Keeps media at a fixed shape as its width changes. Install: `@machine-ui/aspect-ratio`
 - [Carousel](/components/carousel): A row of slides with previous and next buttons, swipe, and arrow-key support. Install: `@machine-ui/card @machine-ui/carousel`
 - [Collapsible](/components/collapsible): A single trigger that shows or hides the content beneath it. Install: `@machine-ui/button @machine-ui/collapsible`
-- [Resizable](/components/resizable): Panels the user can resize by dragging, or with arrow keys on the focused handle. Install: `@machine-ui/resizable`
+- [Resizable](/components/resizable): Panels you can resize by dragging, or with the arrow keys when a handle has focus. Install: `@machine-ui/resizable`
 - [Scroll Area](/components/scroll-area): A fixed-height container that scrolls its content with a thin, theme-coloured scrollbar. Install: `@machine-ui/scroll-area @machine-ui/separator`
 - [Separator](/components/separator): A hairline between groups of content, horizontal or vertical. Install: `@machine-ui/separator`
 
 ### AI elements
 
-- [Agent Glyph](/components/agent-glyph): The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour. Install: `@machine-ui/agent-glyph`
-- [Approval Card](/components/approval-card): The agent asks before it acts: a question, a few options and Confirm or Skip. Install: `@machine-ui/approval-card`
+- [Agent Glyph](/components/agent-glyph): The agent’s icon, used as its avatar next to messages and activity. It uses the theme’s primary colour. Install: `@machine-ui/agent-glyph`
+- [Approval Card](/components/approval-card): Lets the agent check with you before it acts, with a question, a few options, and Confirm and Skip buttons. Install: `@machine-ui/approval-card`
 - [Citations](/components/citation): Numbered markers in an answer that preview their source, and the list of sources underneath. Install: `@machine-ui/citation`
 - [Code Block](/components/code-block): Code with a filename header and a copy button, for agent output and docs. Install: `@machine-ui/code-block`
-- [Confidence Bar](/components/confidence-bar): How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal. Install: `@machine-ui/confidence-bar`
-- [Message](/components/message): One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions. Install: `@machine-ui/agent-glyph @machine-ui/button @machine-ui/message`
-- [Prompt Input](/components/prompt-input): The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works. Install: `@machine-ui/button @machine-ui/prompt-input`
-- [Streaming Text](/components/streaming-text): Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion. Install: `@machine-ui/streaming-text`
-- [Thinking Indicator](/components/thinking-indicator): A short label with pulsing dots while the agent works. Announced politely; still when motion is off. Install: `@machine-ui/thinking`
-- [Thinking Steps](/components/thinking-steps): The steps an agent is working through, with done, active and upcoming states. Install: `@machine-ui/thinking`
+- [Confidence Bar](/components/confidence-bar): Shows how sure the agent is with a bar and a word (high, medium, or low), so colour isn’t the only cue. Install: `@machine-ui/confidence-bar`
+- [Message](/components/message): One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions. Install: `@machine-ui/agent-glyph @machine-ui/button @machine-ui/message`
+- [Prompt Input](/components/prompt-input): The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop. Install: `@machine-ui/button @machine-ui/prompt-input`
+- [Streaming Text](/components/streaming-text): Types out a response with a cursor, then hides the cursor. If reduced motion is on, it shows the whole text at once. Install: `@machine-ui/streaming-text`
+- [Thinking Indicator](/components/thinking-indicator): A short label with pulsing dots that shows while the agent works. Screen readers announce it without interrupting, and the dots stay still if reduced motion is on. Install: `@machine-ui/thinking`
+- [Thinking Steps](/components/thinking-steps): The steps an agent is working through, with done, active, and upcoming states. Install: `@machine-ui/thinking`
 - [Tool Call](/components/tool-call): A tool the agent called, with its status and, on demand, its input and output. Install: `@machine-ui/tool-call`
 
 ## Themes

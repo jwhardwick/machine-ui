@@ -3,7 +3,7 @@
   "name": "message",
   "type": "registry:ui",
   "title": "Message",
-  "description": "One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.",
+  "description": "One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.",
   "dependencies": [],
   "registryDependencies": [
     "@machine-ui/machine-ui-base",

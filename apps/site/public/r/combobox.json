@@ -3,7 +3,7 @@
   "name": "combobox",
   "type": "registry:ui",
   "title": "Combobox",
-  "description": "A select with a filter field: type to narrow the options, then pick one.",
+  "description": "A select with a search field. Type to narrow the options, then pick one.",
   "dependencies": [
     "lucide-react@1.59.0"
   ],

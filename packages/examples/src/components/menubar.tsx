@@ -21,7 +21,7 @@ export default defineDoc({
   slug: 'menubar',
   name: 'Menubar',
   category: 'navigation',
-  description: 'A row of menus like a desktop app bar. Open one, then arrow or hover across the others.',
+  description: 'A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others.',
   examples: [
     {
       name: 'Editor',

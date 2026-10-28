@@ -11,7 +11,7 @@ export default defineDoc({
       name: 'Default',
       render: () => (
         <div className="grid gap-2">
-          <Label htmlFor="dp-launch">Launch date</Label>
+          <Label htmlFor="dp-launch">Code freeze</Label>
           <DatePicker id="dp-launch" defaultValue={new Date(2026, 10, 3)} />
         </div>
       ),

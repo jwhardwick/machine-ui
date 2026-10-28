@@ -25,11 +25,11 @@ export function HomePage() {
       <section className="grid grid-cols-1 gap-8" aria-labelledby="hero">
         <div className="grid grid-cols-1 max-w-2xl gap-5">
           <h1 id="hero" className="font-display text-4xl font-semibold leading-[1.05] text-balance">
-            Make it look like yours.
+            Make shadcn/ui look like your own
           </h1>
           <p className="text-lg text-muted-foreground">
-            A shadcn/ui kit that generates your theme from a handful of personality settings, then solves every colour pair
-            for contrast before you see it. Pick a starting point; the whole site changes with you.
+            machine-ui is an agent-first shadcn/ui kit with a theme generator. You set a few options, and it builds the colours, type, and
+            spacing, adjusting every colour pair until the contrast passes. Pick a theme to restyle this site.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3" role="group" aria-label="Themes">
@@ -43,11 +43,11 @@ export function HomePage() {
             <dd className="font-display text-3xl font-semibold tabular-nums">{COMPONENTS.length}</dd>
           </div>
           <div>
-            <dt className="text-sm text-muted-foreground">Starting themes</dt>
+            <dt className="text-sm text-muted-foreground">Themes</dt>
             <dd className="font-display text-3xl font-semibold tabular-nums">{REFERENCE_THEMES.length}</dd>
           </div>
           <div>
-            <dt className="text-sm text-muted-foreground">Contrast pairs passing</dt>
+            <dt className="text-sm text-muted-foreground">Contrast checks passed</dt>
             <dd className="font-display text-3xl font-semibold tabular-nums">
               {contrast.passed}/{contrast.total}
             </dd>
@@ -59,10 +59,10 @@ export function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="grid grid-cols-1 max-w-xl gap-2">
             <h2 id="screens" className="font-display text-3xl font-semibold">
-              Same kit, different product
+              Example screens
             </h2>
             <p className="text-muted-foreground">
-              Each screen is built only from the kit. Switch themes above or in the toolbar and it becomes someone else’s app.
+              These screens use only machine-ui components. Switch themes to see how different the same app can look.
             </p>
           </div>
           <div className="max-w-full overflow-x-auto">
@@ -75,7 +75,7 @@ export function HomePage() {
             </ToggleGroup>
           </div>
         </div>
-        <ScreenFrame title={`app.northwind.dev/${current.slug}`}>
+        <ScreenFrame title={`app.pied-piper.dev/${current.slug}`}>
           <Suspense fallback={<Loading className="h-full" />}>
             <current.Component />
           </Suspense>
@@ -85,7 +85,7 @@ export function HomePage() {
       <section className="grid grid-cols-1 gap-6" aria-labelledby="components">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 id="components" className="font-display text-3xl font-semibold">
-            Every shadcn component, plus the agent pieces
+            The shadcn/ui components, plus some for AI apps
           </h2>
           <Button asChild variant="outline">
             <Link to="/components">
@@ -115,11 +115,11 @@ export function HomePage() {
       <section className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-center" aria-labelledby="install">
         <div className="grid grid-cols-1 gap-3">
           <h2 id="install" className="font-display text-3xl font-semibold">
-            Three lines to adopt
+            Install
           </h2>
           <p className="text-muted-foreground">
-            Point the shadcn CLI at the registry, add your theme, then add components as source. Or copy the install prompt from
-            the toolbar and let your coding agent do it.
+            Add the registry to your shadcn/ui config, install your theme, then add components as you need them. You can also
+            copy the install prompt from the toolbar and give it to your coding agent.
           </p>
           <div>
             <Button asChild variant="link" className="px-0">

@@ -3,7 +3,7 @@
   "name": "alert-dialog",
   "type": "registry:ui",
   "title": "Alert Dialog",
-  "description": "A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.",
+  "description": "A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key.",
   "dependencies": [
     "radix-ui@1.8.1"
   ],

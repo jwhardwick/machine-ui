@@ -7,7 +7,7 @@ export function NotFoundPage() {
       <EmptyTitle>
         <h1>There’s no page here</h1>
       </EmptyTitle>
-      <EmptyDescription>The link may be old. Search with ⌘K, or start from the components index.</EmptyDescription>
+      <EmptyDescription>The link might be out of date. Press ⌘K to search, or browse the components.</EmptyDescription>
       <EmptyActions>
         <Button asChild>
           <Link to="/components">Browse components</Link>

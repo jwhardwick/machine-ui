@@ -9,21 +9,21 @@ export interface ScreenMeta {
 
 export const SCREEN_META: ScreenMeta[] = [
   {
-    slug: 'chat',
-    name: 'Agent inbox',
-    description: 'A support agent’s workspace: threads, a worked answer with sources and tools, and a live composer. Try sending a message.',
-    uses: ['sidebar', 'search-input', 'message', 'thinking-steps', 'tool-call', 'citation', 'confidence-bar', 'streaming-text', 'prompt-input', 'select', 'dropdown-menu'],
+    slug: 'coding-agent',
+    name: 'Coding agent',
+    description: 'A coding agent working through a flaky test. It shows its plan and tool calls, and asks before it pushes. Try approving the push or sending it a message.',
+    uses: ['sidebar', 'search-input', 'status-dot', 'message', 'thinking-steps', 'tool-call', 'approval-card', 'code-block', 'tabs', 'streaming-text', 'prompt-input', 'select', 'dropdown-menu'],
   },
   {
     slug: 'dashboard',
-    name: 'Store dashboard',
-    description: 'An analytics overview: stats, area and bar charts, a sortable orders table and system status.',
+    name: 'Usage dashboard',
+    description: 'How the agents are doing this week, with stats, area and bar charts, a sortable table of runs, and runner status.',
     uses: ['sidebar', 'breadcrumb', 'toggle-group', 'stat', 'chart', 'data-table', 'badge', 'status-dot', 'card'],
   },
   {
     slug: 'settings',
     name: 'Workspace settings',
-    description: 'Tabbed settings: a profile form, notification switches, billing usage, a team list and a confirmed delete.',
+    description: 'Workspace settings in tabs for profile, notifications, billing, and team. Deleting the workspace asks you to confirm first.',
     uses: ['tabs', 'field', 'input', 'textarea', 'native-select', 'select', 'copy-input', 'item', 'switch', 'progress', 'avatar', 'alert-dialog'],
   },
 ];

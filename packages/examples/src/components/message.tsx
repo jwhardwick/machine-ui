@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'message',
   name: 'Message',
   category: 'ai',
-  description: 'One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.',
+  description: 'One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.',
   examples: [
     {
       name: 'Exchange',
@@ -14,16 +14,16 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xl gap-6">
           <Message from="user">
-            <MessageContent>What happened with Acme’s outage, and what should I tell them?</MessageContent>
+            <MessageContent>Why is the upload test failing on main?</MessageContent>
           </Message>
           <Message from="assistant">
             <AgentGlyph className="size-7" />
             <MessageContent>
               <p>
-                The outage began after Tuesday’s deploy changed the sync interval. A fix ships Thursday. Until then, the workaround in
-                the help centre restores sync within a minute.
+                It started with #477, which put chunked uploads behind a flag. The test still sends a 3 GB file in one request, and
+                the server now turns down anything over 2 GB.
               </p>
-              <p>I’d send them the workaround now and promise an update Thursday.</p>
+              <p>I’d turn the flag on in the test. Want me to open a pull request?</p>
               <MessageActions>
                 <Button variant="ghost" size="icon" className="size-7" aria-label="Copy response">
                   <Copy aria-hidden />

@@ -9,10 +9,10 @@ type Story = StoryObj<typeof meta>;
 export const AccordionTogglesSections: Story = {
   render: example('accordion', 'FAQ'),
   play: async ({ canvas }) => {
-    const fonts = canvas.getByRole('button', { name: 'Can I use my own fonts?' });
-    await userEvent.click(fonts);
-    await expect(fonts).toHaveAttribute('aria-expanded', 'true');
-    await expect(canvas.getByRole('button', { name: 'How is contrast guaranteed?' })).toHaveAttribute('aria-expanded', 'false');
+    const checks = canvas.getByRole('button', { name: 'What happens when a check fails?' });
+    await userEvent.click(checks);
+    await expect(checks).toHaveAttribute('aria-expanded', 'true');
+    await expect(canvas.getByRole('button', { name: 'Can the agent push to main?' })).toHaveAttribute('aria-expanded', 'false');
   },
 };
 
@@ -79,10 +79,10 @@ export const DataTableSortsFiltersSelects: Story = {
   play: async ({ canvas }) => {
     const rows = () => within(canvas.getByRole('table')).getAllByRole('row').slice(1);
     await userEvent.click(canvas.getByRole('button', { name: /Name/ }));
-    await expect(rows()[0]).toHaveTextContent('Ada Lovelace');
+    await expect(rows()[0]).toHaveTextContent('Bertram Gilfoyle');
     await userEvent.click(canvas.getByRole('button', { name: /Name/ }));
-    await expect(rows()[0]).toHaveTextContent('Radia Perlman');
-    await userEvent.type(canvas.getByRole('textbox', { name: 'Filter by name…' }), 'grace');
+    await expect(rows()[0]).toHaveTextContent('Richard Hendricks');
+    await userEvent.type(canvas.getByRole('textbox', { name: 'Filter by name…' }), 'dinesh');
     await waitFor(() => expect(rows()).toHaveLength(1));
     await userEvent.click(within(rows()[0]!).getByRole('checkbox', { name: 'Select row' }));
     await expect(canvas.getByText('1 of 1 selected')).toBeVisible();

@@ -13,14 +13,14 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-sm gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="ig-site">Website</Label>
+            <Label htmlFor="ig-site">Repository</Label>
             <InputGroup>
               <InputGroupAddon>
-                <InputGroupText>https://</InputGroupText>
+                <InputGroupText>github.com/</InputGroupText>
               </InputGroupAddon>
-              <InputGroupInput id="ig-site" placeholder="northwind" className="pl-1" />
+              <InputGroupInput id="ig-site" placeholder="machine-co/web" className="pl-1" />
               <InputGroupAddon align="end">
-                <InputGroupText>.com</InputGroupText>
+                <InputGroupText>.git</InputGroupText>
               </InputGroupAddon>
             </InputGroup>
           </div>
@@ -30,13 +30,13 @@ export default defineDoc({
               <InputGroupAddon>
                 <AtSign aria-hidden />
               </InputGroupAddon>
-              <InputGroupInput id="ig-handle" placeholder="ada" />
+              <InputGroupInput id="ig-handle" placeholder="gilfoyle" />
             </InputGroup>
           </div>
           <div className="grid gap-2">
             <Label htmlFor="ig-invite">Invite by email</Label>
             <InputGroup>
-              <InputGroupInput id="ig-invite" type="email" placeholder="grace@northwind.dev" />
+              <InputGroupInput id="ig-invite" type="email" placeholder="dinesh@machine-co.dev" />
               <InputGroupAddon align="end">
                 <InputGroupButton variant="secondary">Send invite</InputGroupButton>
               </InputGroupAddon>

@@ -22,17 +22,17 @@ export default defineDoc({
   slug: 'dropdown-menu',
   name: 'Dropdown Menu',
   category: 'overlays',
-  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.',
+  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style.',
   examples: [
     {
       name: 'Account menu',
       render: () => (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Ada Lovelace</Button>
+            <Button variant="outline">Richard Hendricks</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="start">
-            <DropdownMenuLabel>ada@northwind.dev</DropdownMenuLabel>
+            <DropdownMenuLabel>richard@machine-co.dev</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
@@ -45,8 +45,8 @@ export default defineDoc({
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>Switch workspace</DropdownMenuSubTrigger>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Northwind</DropdownMenuItem>
-                <DropdownMenuItem>Lumen Labs</DropdownMenuItem>
+                <DropdownMenuItem>machine-co</DropdownMenuItem>
+                <DropdownMenuItem>Pied Piper</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
             <DropdownMenuCheckboxItem checked>Compact mode</DropdownMenuCheckboxItem>

@@ -11,7 +11,8 @@ export function ScreensPage() {
       <header className="grid grid-cols-1 max-w-2xl gap-4">
         <h1 className="font-display text-4xl font-semibold">Screens</h1>
         <p className="text-lg text-muted-foreground">
-          Complete screens built only from the kit, with no one-off styles. They follow whichever theme the site is wearing.
+          Full app screens built only from machine-ui components, with no custom styles. They use whichever theme you’ve
+          picked.
         </p>
       </header>
       {SCREENS.map((screen) => (
@@ -32,7 +33,7 @@ export function ScreensPage() {
               ))}
             </p>
           </div>
-          <ScreenFrame title={`app.northwind.dev/${screen.slug}`}>
+          <ScreenFrame title={`app.pied-piper.dev/${screen.slug}`}>
             <Suspense fallback={<Loading className="h-full" />}>
               <screen.Component />
             </Suspense>

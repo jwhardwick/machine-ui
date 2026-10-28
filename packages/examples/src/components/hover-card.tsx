@@ -5,23 +5,23 @@ export default defineDoc({
   slug: 'hover-card',
   name: 'Hover Card',
   category: 'overlays',
-  description: 'A floating preview shown while the pointer rests on, or focus is on, its trigger.',
+  description: 'A floating preview that shows while the pointer is over its trigger, or while the trigger has focus.',
   examples: [
     {
       name: 'Profile preview',
       render: () => (
         <HoverCard openDelay={150}>
           <HoverCardTrigger asChild>
-            <Button variant="link">@ada</Button>
+            <Button variant="link">@gilfoyle</Button>
           </HoverCardTrigger>
           <HoverCardContent>
             <div className="flex gap-3">
               <Avatar>
-                <AvatarFallback>AL</AvatarFallback>
+                <AvatarFallback>BG</AvatarFallback>
               </Avatar>
               <div className="grid gap-1 text-sm">
-                <p className="font-medium">Ada Lovelace</p>
-                <p className="text-muted-foreground">Design systems at Northwind. Maintains the theme engine.</p>
+                <p className="font-medium">Bertram Gilfoyle</p>
+                <p className="text-muted-foreground">Engineer at machine-co. Reviews most of the agent’s pull requests.</p>
               </div>
             </div>
           </HoverCardContent>

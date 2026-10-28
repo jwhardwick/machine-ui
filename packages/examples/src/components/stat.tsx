@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'stat',
   name: 'Stat',
   category: 'data',
-  description: 'A labelled number with an optional change, marked up or down by icon and text, not colour alone.',
+  description: 'A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.',
   examples: [
     {
       name: 'Row',
@@ -14,17 +14,17 @@ export default defineDoc({
         <div className="grid w-full max-w-2xl gap-4 sm:grid-cols-3">
           <Card>
             <CardContent className="pt-6">
-              <Stat label="Monthly revenue" value="$48.2k" change="12.4%" trend="up" />
+              <Stat label="PRs merged" value="126" change="12.4%" trend="up" />
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <Stat label="Active users" value="3,912" change="4.1%" trend="up" />
+              <Stat label="Agent minutes" value="9,412" change="4.1%" trend="up" />
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <Stat label="Churn" value="2.1%" change="0.3pt" trend="down" />
+              <Stat label="Revert rate" value="2.1%" change="0.3pt" trend="down" />
             </CardContent>
           </Card>
         </div>

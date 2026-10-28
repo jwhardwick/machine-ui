@@ -12,7 +12,7 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xs gap-2">
           <Label htmlFor="label-email">Email address</Label>
-          <Input id="label-email" type="email" placeholder="ada@example.com" />
+          <Input id="label-email" type="email" placeholder="jared@example.com" />
         </div>
       ),
     },

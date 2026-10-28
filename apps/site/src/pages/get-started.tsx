@@ -8,25 +8,25 @@ export function GetStartedPage() {
   const steps = [
     {
       title: 'Add the registry',
-      body: 'machine-ui installs as source through the shadcn CLI. Point your project at this registry (run `npx shadcn@latest init` first if you have no components.json).',
+      body: 'machine-ui components install as source code through the shadcn CLI. Add this registry to your components.json. If you don’t have that file yet, run npx shadcn@latest init first.',
       file: 'components.json',
       code: registryEntry(origin),
     },
     {
       title: 'Install your theme',
-      body: `This is the theme you’re looking at now (${seed.name}). It brings the token mapping, base styles and animations with it. Change it on the Themes page.`,
+      body: `This installs the theme you’re looking at now, ${seed.name}, along with the token mapping, base styles, and animations. To pick a different theme, go to the Themes page.`,
       file: 'terminal',
       code: `npx shadcn@latest add @machine-ui/theme-${seed.name}`,
     },
     {
       title: 'Load the fonts',
-      body: 'Each theme names its typefaces; load them however your framework prefers. Fallback stacks keep things readable if they don’t load.',
+      body: 'Each theme uses its own fonts. Load them the way you usually load fonts in your framework. If they don’t load, text falls back to system fonts.',
       file: 'index.html',
       code: fontsLink(seed),
     },
     {
       title: 'Add components',
-      body: 'Every component page shows its install command. Files land in your project, so you own them.',
+      body: 'Add components as you need them. Each component page has its install command. The files are copied into your project, so you can edit them.',
       file: 'terminal',
       code: 'npx shadcn@latest add @machine-ui/button @machine-ui/card @machine-ui/sidebar',
     },
@@ -36,7 +36,7 @@ export function GetStartedPage() {
     <article className="grid max-w-3xl grid-cols-1 gap-10">
       <header className="grid grid-cols-1 gap-4">
         <h1 className="font-display text-4xl font-semibold">Get started</h1>
-        <p className="text-lg text-muted-foreground">Add machine-ui to a React and Tailwind v4 project in four steps, by hand or with your coding agent.</p>
+        <p className="text-lg text-muted-foreground">Add machine-ui to a React and Tailwind v4 project in four steps. You can do it by hand or let your coding agent do it.</p>
       </header>
       <ol className="grid grid-cols-1 gap-8">
         {steps.map((step, i) => (
@@ -57,7 +57,8 @@ export function GetStartedPage() {
           With a coding agent
         </h2>
         <p className="text-muted-foreground">
-          Paste this into Claude Code, Cursor or any agent. It adds the registry, installs your current theme and sets the styling rules. Agents can also read{' '}
+          Paste this prompt into Claude Code, Cursor, or another coding agent. It adds the registry, installs your current theme, and
+          tells the agent how to style things. For the full component list, agents can read{' '}
           <a href="/llms.txt" className="text-link underline underline-offset-4">
             llms.txt
           </a>

@@ -5,7 +5,7 @@ export default defineDoc({
   slug: 'resizable',
   name: 'Resizable',
   category: 'layout',
-  description: 'Panels the user can resize by dragging, or with arrow keys on the focused handle.',
+  description: 'Panels you can resize by dragging, or with the arrow keys when a handle has focus.',
   examples: [
     {
       name: 'Editor layout',

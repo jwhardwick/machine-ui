@@ -13,7 +13,7 @@
 
 ## Accordion
 
-A stack of headings that each reveal a section. One or several sections can be open.
+A stack of headings that each open a section. You can allow one section or several to be open at once.
 
 Install: `npx shadcn@latest add @machine-ui/accordion`
 
@@ -27,25 +27,25 @@ export default defineDoc({
   slug: 'accordion',
   name: 'Accordion',
   category: 'layout',
-  description: 'A stack of headings that each reveal a section. One or several sections can be open.',
+  description: 'A stack of headings that each open a section. You can allow one section or several to be open at once.',
   examples: [
     {
       name: 'FAQ',
       render: () => (
-        <Accordion type="single" collapsible defaultValue="contrast" className="w-full max-w-md">
-          <AccordionItem value="contrast">
-            <AccordionTrigger>How is contrast guaranteed?</AccordionTrigger>
+        <Accordion type="single" collapsible defaultValue="main" className="w-full max-w-md">
+          <AccordionItem value="main">
+            <AccordionTrigger>Can the agent push to main?</AccordionTrigger>
             <AccordionContent>
-              The engine adjusts lightness until every text pair reaches 4.5:1 and every control boundary 3:1, in light and dark.
+              No. It works on its own branch, runs your checks, and opens a pull request for you to review.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="fonts">
-            <AccordionTrigger>Can I use my own fonts?</AccordionTrigger>
-            <AccordionContent>Yes. Set the typeface tokens after applying a theme, or add a pairing to the token package.</AccordionContent>
+          <AccordionItem value="checks">
+            <AccordionTrigger>What happens when a check fails?</AccordionTrigger>
+            <AccordionContent>It reads the failure, tries a fix, and runs the check again. After three tries it stops and asks you.</AccordionContent>
           </AccordionItem>
-          <AccordionItem value="shadcn">
-            <AccordionTrigger>Does it work with existing shadcn/ui code?</AccordionTrigger>
-            <AccordionContent>Colour variables use shadcn’s names, so existing components pick up the theme unchanged.</AccordionContent>
+          <AccordionItem value="secrets">
+            <AccordionTrigger>Can it see my secrets?</AccordionTrigger>
+            <AccordionContent>Only the ones you add to a session. They’re masked in logs and never written to the repo.</AccordionContent>
           </AccordionItem>
         </Accordion>
       ),
@@ -56,7 +56,7 @@ export default defineDoc({
 
 ## Agent Glyph
 
-The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.
+The agent’s icon, used as its avatar next to messages and activity. It uses the theme’s primary colour.
 
 Install: `npx shadcn@latest add @machine-ui/agent-glyph`
 
@@ -74,7 +74,7 @@ export default defineDoc({
   slug: 'agent-glyph',
   name: 'Agent Glyph',
   category: 'ai',
-  description: 'The agent’s mark, used as its avatar beside messages and activity. Takes the theme’s primary colour.',
+  description: 'The agent’s icon, used as its avatar next to messages and activity. It uses the theme’s primary colour.',
   examples: [
     {
       name: 'Sizes',
@@ -82,7 +82,7 @@ export default defineDoc({
         <div className="flex items-center gap-3">
           <AgentGlyph className="size-6" />
           <AgentGlyph />
-          <AgentGlyph className="size-12" label="Alpha, your assistant" />
+          <AgentGlyph className="size-12" label="Your coding agent" />
         </div>
       ),
     },
@@ -92,7 +92,7 @@ export default defineDoc({
 
 ## Alert
 
-An inline banner with a title and a description, in default, success, warning and destructive variants.
+An inline banner with a title and a description, in default, success, warning, and destructive variants.
 
 Install: `npx shadcn@latest add @machine-ui/alert`
 
@@ -111,7 +111,7 @@ export default defineDoc({
   slug: 'alert',
   name: 'Alert',
   category: 'feedback',
-  description: 'An inline banner with a title and a description, in default, success, warning and destructive variants.',
+  description: 'An inline banner with a title and a description, in default, success, warning, and destructive variants.',
   examples: [
     {
       name: 'Variants',
@@ -119,23 +119,23 @@ export default defineDoc({
         <div className="grid w-full max-w-lg gap-3">
           <Alert>
             <Info aria-hidden />
-            <AlertTitle>New version available</AlertTitle>
-            <AlertDescription>Reload to get the latest components.</AlertDescription>
+            <AlertTitle>Machine 4.1 is out</AlertTitle>
+            <AlertDescription>Restart your running sessions to use it.</AlertDescription>
           </Alert>
           <Alert variant="success">
             <CircleCheck aria-hidden />
-            <AlertTitle>Theme published</AlertTitle>
-            <AlertDescription>Everyone with the link now sees the new colours.</AlertDescription>
+            <AlertTitle>Pull request merged</AlertTitle>
+            <AlertDescription>Pull request #482 is on main, and its preview deploy has been cleaned up.</AlertDescription>
           </Alert>
           <Alert variant="warning">
             <TriangleAlert aria-hidden />
             <AlertTitle>Usage at 90%</AlertTitle>
-            <AlertDescription>You have 2,000 requests left this month.</AlertDescription>
+            <AlertDescription>You have 2,000 agent minutes left this month.</AlertDescription>
           </Alert>
           <Alert variant="destructive">
             <CircleAlert aria-hidden />
-            <AlertTitle>Deploy failed</AlertTitle>
-            <AlertDescription>The build stopped at step 3. Check the logs and retry.</AlertDescription>
+            <AlertTitle>Run failed</AlertTitle>
+            <AlertDescription>The agent stopped at pnpm typecheck. Check the logs and try again.</AlertDescription>
           </Alert>
         </div>
       ),
@@ -146,7 +146,7 @@ export default defineDoc({
 
 ## Alert Dialog
 
-A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.
+A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key.
 
 Install: `npx shadcn@latest add @machine-ui/alert-dialog @machine-ui/button`
 
@@ -181,7 +181,7 @@ export default defineDoc({
   slug: 'alert-dialog',
   name: 'Alert Dialog',
   category: 'overlays',
-  description: 'A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.',
+  description: 'A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key.',
   examples: [
     {
       name: 'Destructive',
@@ -192,9 +192,9 @@ export default defineDoc({
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Delete Northwind?</AlertDialogTitle>
+              <AlertDialogTitle>Delete machine-co?</AlertDialogTitle>
               <AlertDialogDescription>
-                This removes 14 projects, their themes and history for every member. It can’t be undone.
+                This removes 14 repositories’ sessions, agent memory, and run history for every member. You can’t undo this.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -211,7 +211,7 @@ export default defineDoc({
 
 ## Approval Card
 
-The agent asks before it acts: a question, a few options and Confirm or Skip.
+Lets the agent check with you before it acts, with a question, a few options, and Confirm and Skip buttons.
 
 Install: `npx shadcn@latest add @machine-ui/approval-card`
 
@@ -233,18 +233,18 @@ export default defineDoc({
   slug: 'approval-card',
   name: 'Approval Card',
   category: 'ai',
-  description: 'The agent asks before it acts: a question, a few options and Confirm or Skip.',
+  description: 'Lets the agent check with you before it acts, with a question, a few options, and Confirm and Skip buttons.',
   examples: [
     {
       name: 'Default',
       render: () => (
         <ApprovalCard
           className="max-w-md"
-          question="How should I reply to Acme?"
+          question="The migration fails on Hooli’s data. What should I do?"
           options={[
-            { value: 'workaround', label: 'Send the workaround', description: 'Restores sync now; fix lands Thursday.' },
-            { value: 'wait', label: 'Wait for the fix', description: 'Reply Thursday with the release note.' },
-            { value: 'escalate', label: 'Escalate to engineering' },
+            { value: 'default', label: 'Add a default value', description: 'Existing rows pass, and the column stays required.' },
+            { value: 'rollback', label: 'Roll back the migration', description: 'Safe now. The column comes back next release.' },
+            { value: 'ask', label: 'Ask the team in #eng' },
           ]}
         />
       ),
@@ -312,12 +312,12 @@ export default defineDoc({
       render: () => (
         <div className="flex items-center gap-4">
           <Avatar className="size-10">
-            <AvatarImage src={PORTRAIT} alt="Ada Lovelace" />
-            <AvatarFallback>AL</AvatarFallback>
+            <AvatarImage src={PORTRAIT} alt="Richard Hendricks" />
+            <AvatarFallback>RH</AvatarFallback>
           </Avatar>
           <Avatar className="size-10">
-            <AvatarImage src="/missing-photo.png" alt="Grace Hopper" />
-            <AvatarFallback>GH</AvatarFallback>
+            <AvatarImage src="/missing-photo.png" alt="Monica Hall" />
+            <AvatarFallback>MH</AvatarFallback>
           </Avatar>
         </div>
       ),
@@ -327,10 +327,10 @@ export default defineDoc({
       render: () => (
         <div className="flex items-center gap-6">
           <Avatar className="size-10">
-            <AvatarFallback>AL</AvatarFallback>
+            <AvatarFallback>RH</AvatarFallback>
           </Avatar>
           <AvatarGroup>
-            {['GH', 'KJ', 'MH', 'RB'].map((initials) => (
+            {['BG', 'DC', 'MH', 'JD'].map((initials) => (
               <Avatar key={initials}>
                 <AvatarFallback>{initials}</AvatarFallback>
               </Avatar>
@@ -345,7 +345,7 @@ export default defineDoc({
 
 ## Badge
 
-A small label for state or category, in primary, secondary, outline and destructive styles.
+A small label for state or category, in primary, secondary, outline, and destructive styles.
 
 Install: `npx shadcn@latest add @machine-ui/badge`
 
@@ -363,16 +363,16 @@ export default defineDoc({
   slug: 'badge',
   name: 'Badge',
   category: 'data',
-  description: 'A small label for state or category, in primary, secondary, outline and destructive styles.',
+  description: 'A small label for state or category, in primary, secondary, outline, and destructive styles.',
   examples: [
     {
       name: 'Variants',
       render: () => (
         <div className="flex flex-wrap gap-2">
-          <Badge>Live</Badge>
+          <Badge>Merged</Badge>
           <Badge variant="secondary">Draft</Badge>
           <Badge variant="outline">v2.4.0</Badge>
-          <Badge variant="destructive">3 failing</Badge>
+          <Badge variant="destructive">3 checks failing</Badge>
         </div>
       ),
     },
@@ -416,7 +416,7 @@ export default defineDoc({
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="#home">Home</BreadcrumbLink>
+              <BreadcrumbLink href="#home">machine-co</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -424,11 +424,11 @@ export default defineDoc({
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="#components">Components</BreadcrumbLink>
+              <BreadcrumbLink href="#pulls">Pull requests</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              <BreadcrumbPage>Fix flaky upload test</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -440,7 +440,7 @@ export default defineDoc({
 
 ## Button
 
-Triggers an action. Six variants and four sizes, with icon, loading and disabled states.
+Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states.
 
 Install: `npx shadcn@latest add @machine-ui/button`
 
@@ -461,9 +461,9 @@ export default defineDoc({
   slug: 'button',
   name: 'Button',
   category: 'forms',
-  description: 'Triggers an action. Six variants and four sizes, with icon, loading and disabled states.',
+  description: 'Runs an action. Comes in six variants and four sizes, with icon, loading, and disabled states.',
   examples: [
-    { name: 'Default', render: () => <Button>Send reply</Button> },
+    { name: 'Default', render: () => <Button>Run agent</Button> },
     {
       name: 'Variants',
       render: () => (
@@ -502,7 +502,7 @@ export default defineDoc({
       name: 'Loading',
       render: () => (
         <Button disabled>
-          <Loader2 aria-hidden className="animate-spin" /> Saving
+          <Loader2 aria-hidden className="animate-spin" /> Running tests
         </Button>
       ),
     },
@@ -542,19 +542,19 @@ export default defineDoc({
     {
       name: 'Default',
       render: () => (
-        <ButtonGroup aria-label="Message actions">
-          <Button variant="outline">Reply</Button>
-          <Button variant="outline">Assign</Button>
-          <Button variant="outline">Snooze</Button>
+        <ButtonGroup aria-label="Review actions">
+          <Button variant="outline">Approve</Button>
+          <Button variant="outline">Comment</Button>
+          <Button variant="outline">Request changes</Button>
         </ButtonGroup>
       ),
     },
     {
       name: 'Split button',
       render: () => (
-        <ButtonGroup aria-label="Deploy">
-          <Button>Deploy</Button>
-          <Button size="icon" aria-label="More deploy options" className="border-l border-primary-foreground/20">
+        <ButtonGroup aria-label="Merge">
+          <Button>Squash and merge</Button>
+          <Button size="icon" aria-label="More merge options" className="border-l border-primary-foreground/20">
             <ChevronDown aria-hidden />
           </Button>
         </ButtonGroup>
@@ -633,10 +633,10 @@ export default defineDoc({
       render: () => (
         <Card className="w-full max-w-sm">
           <CardHeader>
-            <CardTitle>Quarterly report</CardTitle>
-            <CardDescription>Revenue and retention for Q3.</CardDescription>
+            <CardTitle>Weekly agent report</CardTitle>
+            <CardDescription>Sessions and pull requests for week 43.</CardDescription>
           </CardHeader>
-          <CardContent className="text-sm">Net revenue grew 12% while churn held at 2.1%.</CardContent>
+          <CardContent className="text-sm">The agent opened 38 pull requests. 31 merged without changes.</CardContent>
           <CardFooter className="gap-2">
             <Button size="sm">Open report</Button>
             <Button size="sm" variant="ghost">
@@ -713,7 +713,7 @@ export default defineDoc({
 
 ## Chart
 
-Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.
+Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens.
 
 Install: `npx shadcn@latest add @machine-ui/chart @machine-ui/use-reduced-motion`
 
@@ -739,31 +739,31 @@ import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartToo
 import { defineDoc } from '../types.ts';
 
 const DATA = [
-  { month: 'May', visitors: 1860, signups: 420 },
-  { month: 'Jun', visitors: 3050, signups: 610 },
-  { month: 'Jul', visitors: 2370, signups: 530 },
-  { month: 'Aug', visitors: 2730, signups: 690 },
-  { month: 'Sep', visitors: 3490, signups: 880 },
-  { month: 'Oct', visitors: 4120, signups: 1020 },
+  { month: 'May', sessions: 1860, merged: 420 },
+  { month: 'Jun', sessions: 3050, merged: 610 },
+  { month: 'Jul', sessions: 2370, merged: 530 },
+  { month: 'Aug', sessions: 2730, merged: 690 },
+  { month: 'Sep', sessions: 3490, merged: 880 },
+  { month: 'Oct', sessions: 4120, merged: 1020 },
 ];
 
 const config = {
-  visitors: { label: 'Visitors', color: 'var(--chart-1)' },
-  signups: { label: 'Sign-ups', color: 'var(--chart-2)' },
+  sessions: { label: 'Sessions', color: 'var(--chart-1)' },
+  merged: { label: 'PRs merged', color: 'var(--chart-2)' },
 } satisfies ChartConfig;
 
 // Chart animations run in JavaScript, so they follow the reduced-motion preference explicitly.
 function BarExample() {
   const animate = !useReducedMotion();
   return (
-    <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Visitors and sign-ups by month, May to October">
+    <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Agent sessions and merged pull requests by month, May to October">
       <Recharts.BarChart data={DATA} accessibilityLayer>
         <Recharts.CartesianGrid vertical={false} />
         <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
         <ChartLegend content={<ChartLegendContent />} />
-        <Recharts.Bar isAnimationActive={animate} dataKey="visitors" fill="var(--color-visitors)" radius={4} />
-        <Recharts.Bar isAnimationActive={animate} dataKey="signups" fill="var(--color-signups)" radius={4} />
+        <Recharts.Bar isAnimationActive={animate} dataKey="sessions" fill="var(--color-sessions)" radius={4} />
+        <Recharts.Bar isAnimationActive={animate} dataKey="merged" fill="var(--color-merged)" radius={4} />
       </Recharts.BarChart>
     </ChartContainer>
   );
@@ -772,12 +772,12 @@ function BarExample() {
 function AreaExample() {
   const animate = !useReducedMotion();
   return (
-    <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Visitors by month, rising from 1,860 to 4,120">
+    <ChartContainer config={config} className="h-64 w-full max-w-2xl" role="img" aria-label="Agent sessions by month, rising from 1,860 to 4,120">
       <Recharts.AreaChart data={DATA} margin={{ left: 12, right: 12 }}>
         <Recharts.CartesianGrid vertical={false} />
         <Recharts.XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} interval={0} minTickGap={0} />
         <ChartTooltip content={<ChartTooltipContent />} />
-        <Recharts.Area isAnimationActive={animate} dataKey="visitors" type="monotone" fill="var(--color-visitors)" fillOpacity={0.15} stroke="var(--color-visitors)" strokeWidth={2} />
+        <Recharts.Area isAnimationActive={animate} dataKey="sessions" type="monotone" fill="var(--color-sessions)" fillOpacity={0.15} stroke="var(--color-sessions)" strokeWidth={2} />
       </Recharts.AreaChart>
     </ChartContainer>
   );
@@ -787,7 +787,7 @@ export default defineDoc({
   slug: 'chart',
   name: 'Chart',
   category: 'data',
-  description: 'Recharts with theme colours, gridlines and tooltips. Series colours come from the chart tokens.',
+  description: 'Recharts charts with theme colours, gridlines, and tooltips. Series colours come from the chart tokens.',
   examples: [
     {
       name: 'Bar',
@@ -805,7 +805,7 @@ export default defineDoc({
 
 ## Checkbox
 
-Turns an option on or off. Supports an indeterminate state for "some selected".
+Turns an option on or off. It also has an indeterminate state for when only some items are selected.
 
 Install: `npx shadcn@latest add @machine-ui/checkbox @machine-ui/label`
 
@@ -819,7 +819,7 @@ export default defineDoc({
   slug: 'checkbox',
   name: 'Checkbox',
   category: 'forms',
-  description: 'Turns an option on or off. Supports an indeterminate state for "some selected".',
+  description: 'Turns an option on or off. It also has an indeterminate state for when only some items are selected.',
   examples: [
     {
       name: 'States',
@@ -827,19 +827,19 @@ export default defineDoc({
         <div className="grid gap-3">
           <div className="flex items-center gap-2">
             <Checkbox id="cb-1" />
-            <Label htmlFor="cb-1">Email me about new releases</Label>
+            <Label htmlFor="cb-1">Run tests before every commit</Label>
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id="cb-2" defaultChecked />
-            <Label htmlFor="cb-2">Share anonymous usage data</Label>
+            <Label htmlFor="cb-2">Let the agent install dependencies</Label>
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id="cb-3" checked="indeterminate" />
-            <Label htmlFor="cb-3">Some teams selected</Label>
+            <Label htmlFor="cb-3">Some repositories selected</Label>
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id="cb-4" disabled />
-            <Label htmlFor="cb-4">Requires admin</Label>
+            <Label htmlFor="cb-4">Push to protected branches (admins only)</Label>
           </div>
         </div>
       ),
@@ -871,8 +871,8 @@ import { Citation, Sources } from '@machine-ui/ui';
 import { defineDoc } from '../types.ts';
 
 const SOURCES = [
-  { title: 'Intercom thread #8812', url: 'https://app.intercom.example/t/8812', snippet: 'Customer reports sync stopped at 14:02 UTC.' },
-  { title: 'Changelog v2.14', url: 'https://northwind.example/changelog/2-14', snippet: 'Sync interval moved to a server setting.' },
+  { title: 'Issue #8812', url: 'https://github.com/machine-co/web/issues/8812', snippet: 'Hooli reports uploads over 2 GB fail since Tuesday.' },
+  { title: 'Changelog v2.14', url: 'https://machine-co.example/changelog/2-14', snippet: 'Chunked uploads now need the middle-out flag.' },
 ];
 
 export default defineDoc({
@@ -887,8 +887,8 @@ export default defineDoc({
       render: () => (
         <div className="grid max-w-xl gap-4 text-sm leading-relaxed">
           <p>
-            Sync stopped at 14:02 UTC
-            <Citation index={1} source={SOURCES[0]!} /> after the interval became a server setting in 2.14
+            Uploads over 2 GB started failing for Hooli on Tuesday
+            <Citation index={1} source={SOURCES[0]!} />, after 2.14 put chunked uploads behind a flag
             <Citation index={2} source={SOURCES[1]!} />.
           </p>
           <Sources sources={SOURCES} />
@@ -993,7 +993,7 @@ export default defineDoc({
 
 ## Combobox
 
-A select with a filter field: type to narrow the options, then pick one.
+A select with a search field. Type to narrow the options, then pick one.
 
 Install: `npx shadcn@latest add @machine-ui/combobox @machine-ui/label`
 
@@ -1028,7 +1028,7 @@ export default defineDoc({
   slug: 'combobox',
   name: 'Combobox',
   category: 'forms',
-  description: 'A select with a filter field: type to narrow the options, then pick one.',
+  description: 'A select with a search field. Type to narrow the options, then pick one.',
   examples: [
     {
       name: 'Default',
@@ -1053,7 +1053,7 @@ Example:
 
 ```tsx
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from '@machine-ui/ui';
-import { CreditCard, FileText, Palette, Settings, User } from 'lucide-react';
+import { CreditCard, GitBranch, Settings, SquareTerminal, User } from 'lucide-react';
 import { defineDoc } from '../types.ts';
 
 export default defineDoc({
@@ -1071,10 +1071,10 @@ export default defineDoc({
             <CommandEmpty>No results.</CommandEmpty>
             <CommandGroup heading="Suggestions">
               <CommandItem>
-                <Palette aria-hidden /> Change theme
+                <SquareTerminal aria-hidden /> New session
               </CommandItem>
               <CommandItem>
-                <FileText aria-hidden /> New document
+                <GitBranch aria-hidden /> Switch branch
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
@@ -1099,7 +1099,7 @@ export default defineDoc({
 
 ## Command Palette
 
-Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.
+Command in a modal that opens from a button or a keyboard shortcut. Type to filter, use the arrow keys to move, Enter to run, and Escape to close.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/command @machine-ui/kbd`
 
@@ -1128,7 +1128,7 @@ import {
   CommandShortcut,
   Kbd,
 } from '@machine-ui/ui';
-import { FileText, Palette, Settings } from 'lucide-react';
+import { GitBranch, Settings, SquareTerminal } from 'lucide-react';
 import { useState } from 'react';
 import { defineDoc } from '../types.ts';
 
@@ -1145,10 +1145,10 @@ function Palette_() {
           <CommandEmpty>No results.</CommandEmpty>
           <CommandGroup heading="Actions">
             <CommandItem onSelect={() => setOpen(false)}>
-              <Palette aria-hidden /> Change theme
+              <SquareTerminal aria-hidden /> New session
             </CommandItem>
             <CommandItem onSelect={() => setOpen(false)}>
-              <FileText aria-hidden /> New document
+              <GitBranch aria-hidden /> Switch branch
             </CommandItem>
             <CommandItem onSelect={() => setOpen(false)}>
               <Settings aria-hidden /> Preferences <CommandShortcut>⌘,</CommandShortcut>
@@ -1164,14 +1164,14 @@ export default defineDoc({
   slug: 'command-palette',
   name: 'Command Palette',
   category: 'overlays',
-  description: 'Command in a modal, opened from a button or a shortcut. Typing filters, arrows move, Enter runs, Escape closes.',
+  description: 'Command in a modal that opens from a button or a keyboard shortcut. Type to filter, use the arrow keys to move, Enter to run, and Escape to close.',
   examples: [{ name: 'Default', render: () => <Palette_ /> }],
 });
 ```
 
 ## Confidence Bar
 
-How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.
+Shows how sure the agent is with a bar and a word (high, medium, or low), so colour isn’t the only cue.
 
 Install: `npx shadcn@latest add @machine-ui/confidence-bar`
 
@@ -1190,15 +1190,15 @@ export default defineDoc({
   slug: 'confidence-bar',
   name: 'Confidence Bar',
   category: 'ai',
-  description: 'How sure the agent is, as a bar plus a word (high, medium, low), so colour is never the only signal.',
+  description: 'Shows how sure the agent is with a bar and a word (high, medium, or low), so colour isn’t the only cue.',
   examples: [
     {
       name: 'Levels',
       render: () => (
         <div className="grid w-full max-w-xs gap-4">
           <ConfidenceBar value={92} label="Root cause" />
-          <ConfidenceBar value={64} label="Ships Thursday" />
-          <ConfidenceBar value={31} label="Affects other accounts" />
+          <ConfidenceBar value={64} label="Fix covers every caller" />
+          <ConfidenceBar value={31} label="Safe to auto-merge" />
         </div>
       ),
     },
@@ -1296,7 +1296,7 @@ export default defineDoc({
 
 ## Copy Input
 
-A read-only field with a copy button, for API keys, webhook URLs and share links.
+A read-only field with a copy button, for API keys, webhook URLs, and share links.
 
 Install: `npx shadcn@latest add @machine-ui/copy-input @machine-ui/label`
 
@@ -1314,14 +1314,14 @@ export default defineDoc({
   slug: 'copy-input',
   name: 'Copy Input',
   category: 'forms',
-  description: 'A read-only field with a copy button, for API keys, webhook URLs and share links.',
+  description: 'A read-only field with a copy button, for API keys, webhook URLs, and share links.',
   examples: [
     {
       name: 'Default',
       render: () => (
         <div className="grid w-full max-w-sm gap-2">
           <Label htmlFor="copy-webhook">Webhook URL</Label>
-          <CopyInput id="copy-webhook" value="https://hooks.northwind.dev/t/8f2k1x" />
+          <CopyInput id="copy-webhook" value="https://hooks.machine-co.dev/agent/8f2k1x" />
         </div>
       ),
     },
@@ -1331,7 +1331,7 @@ export default defineDoc({
 
 ## Data Table
 
-A table with sorting, filtering, row selection and pagination, built on TanStack Table.
+A table with sorting, filtering, row selection, and pagination, built on TanStack Table.
 
 Install: `npx shadcn@latest add @machine-ui/badge @machine-ui/data-table`
 
@@ -1368,13 +1368,13 @@ interface Member {
 }
 
 const MEMBERS: Member[] = [
-  { name: 'Ada Lovelace', email: 'ada@northwind.dev', role: 'Owner', lastActive: 'Today' },
-  { name: 'Grace Hopper', email: 'grace@northwind.dev', role: 'Admin', lastActive: 'Today' },
-  { name: 'Katherine Johnson', email: 'kj@northwind.dev', role: 'Member', lastActive: 'Yesterday' },
-  { name: 'Margaret Hamilton', email: 'margaret@northwind.dev', role: 'Admin', lastActive: '3 days ago' },
-  { name: 'Radia Perlman', email: 'radia@northwind.dev', role: 'Member', lastActive: 'Last week' },
-  { name: 'Barbara Liskov', email: 'barbara@northwind.dev', role: 'Member', lastActive: 'Today' },
-  { name: 'Frances Allen', email: 'frances@northwind.dev', role: 'Member', lastActive: '2 days ago' },
+  { name: 'Richard Hendricks', email: 'richard@machine-co.dev', role: 'Owner', lastActive: 'Today' },
+  { name: 'Bertram Gilfoyle', email: 'gilfoyle@machine-co.dev', role: 'Admin', lastActive: 'Today' },
+  { name: 'Dinesh Chugtai', email: 'dinesh@machine-co.dev', role: 'Member', lastActive: 'Yesterday' },
+  { name: 'Monica Hall', email: 'monica@machine-co.dev', role: 'Admin', lastActive: '3 days ago' },
+  { name: 'Erlich Bachman', email: 'erlich@machine-co.dev', role: 'Member', lastActive: 'Last week' },
+  { name: 'Jared Dunn', email: 'jared@machine-co.dev', role: 'Member', lastActive: 'Today' },
+  { name: 'Nelson Bighetti', email: 'bighead@machine-co.dev', role: 'Member', lastActive: '2 days ago' },
 ];
 
 const columns: ColumnDef<Member>[] = [
@@ -1393,7 +1393,7 @@ export default defineDoc({
   slug: 'data-table',
   name: 'Data Table',
   category: 'data',
-  description: 'A table with sorting, filtering, row selection and pagination, built on TanStack Table.',
+  description: 'A table with sorting, filtering, row selection, and pagination, built on TanStack Table.',
   examples: [
     {
       name: 'Members',
@@ -1436,7 +1436,7 @@ export default defineDoc({
       name: 'Default',
       render: () => (
         <div className="grid gap-2">
-          <Label htmlFor="dp-launch">Launch date</Label>
+          <Label htmlFor="dp-launch">Code freeze</Label>
           <DatePicker id="dp-launch" defaultValue={new Date(2026, 10, 3)} />
         </div>
       ),
@@ -1490,16 +1490,16 @@ export default defineDoc({
       render: () => (
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="outline">Rename project</Button>
+            <Button variant="outline">Rename session</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Rename project</DialogTitle>
-              <DialogDescription>The new name appears in links and notifications.</DialogDescription>
+              <DialogTitle>Rename session</DialogTitle>
+              <DialogDescription>The new name shows in the sidebar and becomes the pull request title.</DialogDescription>
             </DialogHeader>
             <div className="grid gap-2">
               <Label htmlFor="dialog-name">Name</Label>
-              <Input id="dialog-name" defaultValue="Northwind web" />
+              <Input id="dialog-name" defaultValue="Middle-out compression spike" />
             </div>
             <DialogFooter>
               <DialogClose asChild>
@@ -1544,17 +1544,17 @@ export default defineDoc({
       render: () => (
         <Drawer>
           <DrawerTrigger asChild>
-            <Button variant="outline">Set a goal</Button>
+            <Button variant="outline">Set a budget</Button>
           </DrawerTrigger>
           <DrawerContent>
             <div className="mx-auto w-full max-w-sm">
               <DrawerHeader>
-                <DrawerTitle>Daily goal</DrawerTitle>
-                <DrawerDescription>How many minutes a day do you want to practise?</DrawerDescription>
+                <DrawerTitle>Session budget</DrawerTitle>
+                <DrawerDescription>How many minutes can the agent spend on this session?</DrawerDescription>
               </DrawerHeader>
-              <p className="py-6 text-center font-display text-6xl font-semibold tabular-nums">25</p>
+              <p className="py-6 text-center font-display text-6xl font-semibold tabular-nums">45</p>
               <DrawerFooter>
-                <Button>Save goal</Button>
+                <Button>Save budget</Button>
                 <DrawerClose asChild>
                   <Button variant="outline">Cancel</Button>
                 </DrawerClose>
@@ -1570,7 +1570,7 @@ export default defineDoc({
 
 ## Dropdown Menu
 
-A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.
+A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/dropdown-menu`
 
@@ -1620,17 +1620,17 @@ export default defineDoc({
   slug: 'dropdown-menu',
   name: 'Dropdown Menu',
   category: 'overlays',
-  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus and a destructive style.',
+  description: 'A menu of actions below a trigger, with icons, shortcuts, checkbox items, submenus, and a destructive style.',
   examples: [
     {
       name: 'Account menu',
       render: () => (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline">Ada Lovelace</Button>
+            <Button variant="outline">Richard Hendricks</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="start">
-            <DropdownMenuLabel>ada@northwind.dev</DropdownMenuLabel>
+            <DropdownMenuLabel>richard@machine-co.dev</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
@@ -1643,8 +1643,8 @@ export default defineDoc({
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>Switch workspace</DropdownMenuSubTrigger>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>Northwind</DropdownMenuItem>
-                <DropdownMenuItem>Lumen Labs</DropdownMenuItem>
+                <DropdownMenuItem>machine-co</DropdownMenuItem>
+                <DropdownMenuItem>Pied Piper</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
             <DropdownMenuCheckboxItem checked>Compact mode</DropdownMenuCheckboxItem>
@@ -1668,7 +1668,7 @@ export default defineDoc({
 
 ## Empty
 
-A placeholder for a view with nothing in it yet: what it is for, and the one action to start.
+A placeholder for an empty view. It explains what goes there and offers one action to get started.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/empty`
 
@@ -1682,27 +1682,27 @@ Example:
 
 ```tsx
 import { Button, Empty, EmptyActions, EmptyDescription, EmptyMedia, EmptyTitle } from '@machine-ui/ui';
-import { FolderOpen } from 'lucide-react';
+import { SquareTerminal } from 'lucide-react';
 import { defineDoc } from '../types.ts';
 
 export default defineDoc({
   slug: 'empty',
   name: 'Empty',
   category: 'feedback',
-  description: 'A placeholder for a view with nothing in it yet: what it is for, and the one action to start.',
+  description: 'A placeholder for an empty view. It explains what goes there and offers one action to get started.',
   examples: [
     {
       name: 'Default',
       render: () => (
         <Empty className="max-w-md">
           <EmptyMedia>
-            <FolderOpen aria-hidden />
+            <SquareTerminal aria-hidden />
           </EmptyMedia>
-          <EmptyTitle>No projects yet</EmptyTitle>
-          <EmptyDescription>Projects hold your themes and components. Create one to get started.</EmptyDescription>
+          <EmptyTitle>No sessions yet</EmptyTitle>
+          <EmptyDescription>Start a session and the agent can fix a bug, write tests, or review a pull request.</EmptyDescription>
           <EmptyActions>
-            <Button>Create project</Button>
-            <Button variant="ghost">Import from Figma</Button>
+            <Button>New session</Button>
+            <Button variant="ghost">Browse open issues</Button>
           </EmptyActions>
         </Empty>
       ),
@@ -1713,7 +1713,7 @@ export default defineDoc({
 
 ## Field
 
-Lays out a label, control, help text and error for one form field, so every form reads the same way.
+Lays out the label, control, help text, and error for one form field, so your forms look consistent.
 
 Install: `npx shadcn@latest add @machine-ui/field @machine-ui/input @machine-ui/switch`
 
@@ -1731,28 +1731,28 @@ export default defineDoc({
   slug: 'field',
   name: 'Field',
   category: 'forms',
-  description: 'Lays out a label, control, help text and error for one form field, so every form reads the same way.',
+  description: 'Lays out the label, control, help text, and error for one form field, so your forms look consistent.',
   examples: [
     {
       name: 'Form',
       render: () => (
         <FieldSet className="w-full max-w-sm">
-          <FieldLegend>Billing contact</FieldLegend>
+          <FieldLegend>Commit author</FieldLegend>
           <FieldGroup>
             <Field>
-              <FieldLabel htmlFor="field-name">Full name</FieldLabel>
-              <Input id="field-name" defaultValue="Ada Lovelace" />
+              <FieldLabel htmlFor="field-name">Name</FieldLabel>
+              <Input id="field-name" defaultValue="machine-co agent" />
             </Field>
             <Field data-invalid>
               <FieldLabel htmlFor="field-email">Email</FieldLabel>
-              <Input id="field-email" aria-invalid defaultValue="ada@" aria-describedby="field-email-error" />
-              <FieldError id="field-email-error">Enter an email like ada@example.com.</FieldError>
+              <Input id="field-email" aria-invalid defaultValue="agent@" aria-describedby="field-email-error" />
+              <FieldError id="field-email-error">Enter an email like agent@machine-co.dev.</FieldError>
             </Field>
             <Field orientation="horizontal">
-              <FieldLabel htmlFor="field-receipts">Email receipts</FieldLabel>
-              <Switch id="field-receipts" defaultChecked />
+              <FieldLabel htmlFor="field-sign">Sign commits</FieldLabel>
+              <Switch id="field-sign" defaultChecked />
             </Field>
-            <FieldDescription>Receipts go to the billing contact, not the account owner.</FieldDescription>
+            <FieldDescription>The agent signs with the workspace key, not yours.</FieldDescription>
           </FieldGroup>
         </FieldSet>
       ),
@@ -1763,7 +1763,7 @@ export default defineDoc({
 
 ## Hover Card
 
-A floating preview shown while the pointer rests on, or focus is on, its trigger.
+A floating preview that shows while the pointer is over its trigger, or while the trigger has focus.
 
 Install: `npx shadcn@latest add @machine-ui/avatar @machine-ui/button @machine-ui/hover-card`
 
@@ -1783,23 +1783,23 @@ export default defineDoc({
   slug: 'hover-card',
   name: 'Hover Card',
   category: 'overlays',
-  description: 'A floating preview shown while the pointer rests on, or focus is on, its trigger.',
+  description: 'A floating preview that shows while the pointer is over its trigger, or while the trigger has focus.',
   examples: [
     {
       name: 'Profile preview',
       render: () => (
         <HoverCard openDelay={150}>
           <HoverCardTrigger asChild>
-            <Button variant="link">@ada</Button>
+            <Button variant="link">@gilfoyle</Button>
           </HoverCardTrigger>
           <HoverCardContent>
             <div className="flex gap-3">
               <Avatar>
-                <AvatarFallback>AL</AvatarFallback>
+                <AvatarFallback>BG</AvatarFallback>
               </Avatar>
               <div className="grid gap-1 text-sm">
-                <p className="font-medium">Ada Lovelace</p>
-                <p className="text-muted-foreground">Design systems at Northwind. Maintains the theme engine.</p>
+                <p className="font-medium">Bertram Gilfoyle</p>
+                <p className="text-muted-foreground">Engineer at machine-co. Reviews most of the agent’s pull requests.</p>
               </div>
             </div>
           </HoverCardContent>
@@ -1833,7 +1833,7 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xs gap-2">
           <Label htmlFor="input-name">Workspace name</Label>
-          <Input id="input-name" defaultValue="Northwind" />
+          <Input id="input-name" defaultValue="machine-co" />
         </div>
       ),
     },
@@ -1841,17 +1841,17 @@ export default defineDoc({
       name: 'Invalid',
       render: () => (
         <div className="grid w-full max-w-xs gap-2">
-          <Label htmlFor="input-domain">Domain</Label>
-          <Input id="input-domain" aria-invalid defaultValue="northwind" aria-describedby="input-domain-error" />
-          <p id="input-domain-error" className="text-sm text-destructive">
-            Enter a full domain, like northwind.com.
+          <Label htmlFor="input-branch">Branch name</Label>
+          <Input id="input-branch" aria-invalid defaultValue="fix middle out" aria-describedby="input-branch-error" />
+          <p id="input-branch-error" className="text-sm text-destructive">
+            Branch names can’t contain spaces. Try fix/middle-out.
           </p>
         </div>
       ),
     },
     {
       name: 'Disabled',
-      render: () => <Input aria-label="Team ID" disabled defaultValue="team_8f2k" className="max-w-xs" />,
+      render: () => <Input aria-label="Session ID" disabled defaultValue="ses_8f2k" className="max-w-xs" />,
     },
   ],
 });
@@ -1891,14 +1891,14 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-sm gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="ig-site">Website</Label>
+            <Label htmlFor="ig-site">Repository</Label>
             <InputGroup>
               <InputGroupAddon>
-                <InputGroupText>https://</InputGroupText>
+                <InputGroupText>github.com/</InputGroupText>
               </InputGroupAddon>
-              <InputGroupInput id="ig-site" placeholder="northwind" className="pl-1" />
+              <InputGroupInput id="ig-site" placeholder="machine-co/web" className="pl-1" />
               <InputGroupAddon align="end">
-                <InputGroupText>.com</InputGroupText>
+                <InputGroupText>.git</InputGroupText>
               </InputGroupAddon>
             </InputGroup>
           </div>
@@ -1908,13 +1908,13 @@ export default defineDoc({
               <InputGroupAddon>
                 <AtSign aria-hidden />
               </InputGroupAddon>
-              <InputGroupInput id="ig-handle" placeholder="ada" />
+              <InputGroupInput id="ig-handle" placeholder="gilfoyle" />
             </InputGroup>
           </div>
           <div className="grid gap-2">
             <Label htmlFor="ig-invite">Invite by email</Label>
             <InputGroup>
-              <InputGroupInput id="ig-invite" type="email" placeholder="grace@northwind.dev" />
+              <InputGroupInput id="ig-invite" type="email" placeholder="dinesh@machine-co.dev" />
               <InputGroupAddon align="end">
                 <InputGroupButton variant="secondary">Send invite</InputGroupButton>
               </InputGroupAddon>
@@ -1929,7 +1929,7 @@ export default defineDoc({
 
 ## Input OTP
 
-Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.
+One box per character for one-time codes. Focus moves to the next box as you type, and you can paste the whole code.
 
 Install: `npx shadcn@latest add @machine-ui/input-otp @machine-ui/label`
 
@@ -1947,7 +1947,7 @@ export default defineDoc({
   slug: 'input-otp',
   name: 'Input OTP',
   category: 'forms',
-  description: 'Single-character boxes for a one-time code. Focus moves forward as each box fills, and pasting works.',
+  description: 'One box per character for one-time codes. Focus moves to the next box as you type, and you can paste the whole code.',
   examples: [
     {
       name: 'Six digits',
@@ -1976,7 +1976,7 @@ export default defineDoc({
 
 ## Item
 
-A row with media, a title, a description and actions, for lists, settings and search results.
+A row with media, a title, a description and actions, for lists, settings, and search results.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/item @machine-ui/switch`
 
@@ -2003,7 +2003,7 @@ export default defineDoc({
   slug: 'item',
   name: 'Item',
   category: 'data',
-  description: 'A row with media, a title, a description and actions, for lists, settings and search results.',
+  description: 'A row with media, a title, a description and actions, for lists, settings, and search results.',
   examples: [
     {
       name: 'Settings list',
@@ -2028,11 +2028,11 @@ export default defineDoc({
               <Bell aria-hidden />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>Deploy notifications</ItemTitle>
-              <ItemDescription>Email me when a deploy fails.</ItemDescription>
+              <ItemTitle>Failed run alerts</ItemTitle>
+              <ItemDescription>Email me when an agent run fails.</ItemDescription>
             </ItemContent>
             <ItemActions>
-              <Switch aria-label="Deploy notifications" defaultChecked />
+              <Switch aria-label="Failed run alerts" defaultChecked />
             </ItemActions>
           </Item>
         </ItemGroup>
@@ -2078,6 +2078,10 @@ export default defineDoc({
               <Kbd>B</Kbd>
             </KbdGroup>
           </p>
+          <p className="flex items-center gap-2">
+            Stop the agent
+            <Kbd>Esc</Kbd>
+          </p>
         </div>
       ),
     },
@@ -2108,7 +2112,7 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xs gap-2">
           <Label htmlFor="label-email">Email address</Label>
-          <Input id="label-email" type="email" placeholder="ada@example.com" />
+          <Input id="label-email" type="email" placeholder="jared@example.com" />
         </div>
       ),
     },
@@ -2118,7 +2122,7 @@ export default defineDoc({
 
 ## Menubar
 
-A row of menus like a desktop app bar. Open one, then arrow or hover across the others.
+A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others.
 
 Install: `npx shadcn@latest add @machine-ui/menubar`
 
@@ -2152,7 +2156,7 @@ export default defineDoc({
   slug: 'menubar',
   name: 'Menubar',
   category: 'navigation',
-  description: 'A row of menus like a desktop app bar. Open one, then arrow or hover across the others.',
+  description: 'A row of menus like the menu bar in a desktop app. Once a menu is open, use the arrow keys or hover to move to the others.',
   examples: [
     {
       name: 'Editor',
@@ -2213,7 +2217,7 @@ export default defineDoc({
 
 ## Message
 
-One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.
+One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.
 
 Install: `npx shadcn@latest add @machine-ui/agent-glyph @machine-ui/button @machine-ui/message`
 
@@ -2242,7 +2246,7 @@ export default defineDoc({
   slug: 'message',
   name: 'Message',
   category: 'ai',
-  description: 'One turn in a conversation. User turns sit right in a bubble; assistant turns read as plain text with actions.',
+  description: 'One turn in a conversation. User messages sit in a bubble on the right. Assistant messages are plain text with actions.',
   examples: [
     {
       name: 'Exchange',
@@ -2250,16 +2254,16 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-xl gap-6">
           <Message from="user">
-            <MessageContent>What happened with Acme’s outage, and what should I tell them?</MessageContent>
+            <MessageContent>Why is the upload test failing on main?</MessageContent>
           </Message>
           <Message from="assistant">
             <AgentGlyph className="size-7" />
             <MessageContent>
               <p>
-                The outage began after Tuesday’s deploy changed the sync interval. A fix ships Thursday. Until then, the workaround in
-                the help centre restores sync within a minute.
+                It started with #477, which put chunked uploads behind a flag. The test still sends a 3 GB file in one request, and
+                the server now turns down anything over 2 GB.
               </p>
-              <p>I’d send them the workaround now and promise an update Thursday.</p>
+              <p>I’d turn the flag on in the test. Want me to open a pull request?</p>
               <MessageActions>
                 <Button variant="ghost" size="icon" className="size-7" aria-label="Copy response">
                   <Copy aria-hidden />
@@ -2285,7 +2289,7 @@ export default defineDoc({
 
 ## Native Select
 
-The browser’s own select, styled to match the theme. Best on mobile and for long option lists.
+The browser’s own select, styled to match the theme. Works best on mobile and for long lists of options.
 
 Install: `npx shadcn@latest add @machine-ui/label @machine-ui/native-select`
 
@@ -2299,7 +2303,7 @@ export default defineDoc({
   slug: 'native-select',
   name: 'Native Select',
   category: 'forms',
-  description: 'The browser’s own select, styled to match the theme. Best on mobile and for long option lists.',
+  description: 'The browser’s own select, styled to match the theme. Works best on mobile and for long lists of options.',
   examples: [
     {
       name: 'Default',
@@ -2456,7 +2460,7 @@ export default defineDoc({
 
 ## Popover
 
-A floating panel anchored to a trigger, for short forms, settings and details.
+A floating panel anchored to a trigger, for short forms, settings, and details.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/popover`
 
@@ -2476,25 +2480,25 @@ export default defineDoc({
   slug: 'popover',
   name: 'Popover',
   category: 'overlays',
-  description: 'A floating panel anchored to a trigger, for short forms, settings and details.',
+  description: 'A floating panel anchored to a trigger, for short forms, settings, and details.',
   examples: [
     {
       name: 'Settings',
       render: () => (
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="outline">Dimensions</Button>
+            <Button variant="outline">Limits</Button>
           </PopoverTrigger>
           <PopoverContent>
             <div className="grid gap-3">
-              <p className="text-sm font-medium">Export size</p>
+              <p className="text-sm font-medium">Session limits</p>
               <div className="grid grid-cols-3 items-center gap-2">
-                <Label htmlFor="pop-w">Width</Label>
-                <Input id="pop-w" defaultValue="1440" className="col-span-2" />
+                <Label htmlFor="pop-w">Minutes</Label>
+                <Input id="pop-w" defaultValue="45" className="col-span-2" />
               </div>
               <div className="grid grid-cols-3 items-center gap-2">
-                <Label htmlFor="pop-h">Height</Label>
-                <Input id="pop-h" defaultValue="900" className="col-span-2" />
+                <Label htmlFor="pop-h">Files</Label>
+                <Input id="pop-h" defaultValue="30" className="col-span-2" />
               </div>
             </div>
           </PopoverContent>
@@ -2528,7 +2532,7 @@ export default defineDoc({
       render: () => (
         <div className="grid w-full max-w-sm gap-2">
           <div className="flex justify-between text-sm">
-            <Label id="progress-upload">Uploading brand assets</Label>
+            <Label id="progress-upload">Indexing the repository</Label>
             <span className="tabular-nums text-muted-foreground">64%</span>
           </div>
           <Progress aria-labelledby="progress-upload" value={64} />
@@ -2541,7 +2545,7 @@ export default defineDoc({
 
 ## Prompt Input
 
-The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.
+The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/prompt-input`
 
@@ -2577,17 +2581,17 @@ export default defineDoc({
   slug: 'prompt-input',
   name: 'Prompt Input',
   category: 'ai',
-  description: 'The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.',
+  description: 'The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.',
   examples: [
     {
       name: 'With suggestions',
       wide: true,
       render: () => (
         <div className="grid w-full max-w-xl gap-3">
-          <PromptSuggestions suggestions={['What’s open with Acme?', 'Close tickets idle over 30 days', 'Summarise overnight tickets']} />
+          <PromptSuggestions suggestions={['Why is CI red on main?', 'Write tests for the upload handler', 'Review my open pull request']} />
           <PromptInput
-            placeholder="Ask Alpha about your inbox…"
-            hint="Alpha can make mistakes. Check important replies before sending."
+            placeholder="Ask the agent to change something…"
+            hint="The agent can make mistakes. Review the diff before you merge."
             tools={
               <Button type="button" variant="ghost" size="sm" className="text-muted-foreground">
                 <Paperclip aria-hidden /> Attach
@@ -2600,7 +2604,7 @@ export default defineDoc({
     {
       name: 'Busy',
       wide: true,
-      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="Alpha is replying…" />,
+      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="The agent is working…" />,
     },
   ],
 });
@@ -2647,7 +2651,7 @@ export default defineDoc({
 
 ## Resizable
 
-Panels the user can resize by dragging, or with arrow keys on the focused handle.
+Panels you can resize by dragging, or with the arrow keys when a handle has focus.
 
 Install: `npx shadcn@latest add @machine-ui/resizable`
 
@@ -2665,7 +2669,7 @@ export default defineDoc({
   slug: 'resizable',
   name: 'Resizable',
   category: 'layout',
-  description: 'Panels the user can resize by dragging, or with arrow keys on the focused handle.',
+  description: 'Panels you can resize by dragging, or with the arrow keys when a handle has focus.',
   examples: [
     {
       name: 'Editor layout',
@@ -2779,11 +2783,11 @@ export default defineDoc({
   examples: [
     {
       name: 'Default',
-      render: () => <SearchInput aria-label="Search threads" placeholder="Search threads" shortcut="⌘K" className="max-w-xs" />,
+      render: () => <SearchInput aria-label="Search sessions" placeholder="Search sessions" shortcut="⌘K" className="max-w-xs" />,
     },
     {
       name: 'With value',
-      render: () => <SearchInput aria-label="Search threads" defaultValue="refund" className="max-w-xs" />,
+      render: () => <SearchInput aria-label="Search sessions" defaultValue="flaky test" className="max-w-xs" />,
     },
   ],
 });
@@ -2881,7 +2885,7 @@ export default defineDoc({
 
 ## Sheet
 
-A panel that slides in from any edge over a scrim. Good for edit forms and detail views.
+A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/input @machine-ui/label @machine-ui/sheet`
 
@@ -2917,7 +2921,7 @@ export default defineDoc({
   slug: 'sheet',
   name: 'Sheet',
   category: 'overlays',
-  description: 'A panel that slides in from any edge over a scrim. Good for edit forms and detail views.',
+  description: 'A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views.',
   examples: [
     {
       name: 'Edit panel',
@@ -2934,7 +2938,7 @@ export default defineDoc({
             <div className="grid gap-4 px-4">
               <div className="grid gap-2">
                 <Label htmlFor="sheet-name">Name</Label>
-                <Input id="sheet-name" defaultValue="Grace Hopper" />
+                <Input id="sheet-name" defaultValue="Dinesh Chugtai" />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="sheet-role">Role</Label>
@@ -2957,7 +2961,7 @@ export default defineDoc({
 
 ## Sidebar
 
-App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.
+App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it.
 
 Install: `npx shadcn@latest add @machine-ui/sidebar`
 
@@ -3005,13 +3009,13 @@ import {
   SidebarSeparator,
   SidebarTrigger,
 } from '@machine-ui/ui';
-import { BarChart3, Home, Inbox, Settings, Users } from 'lucide-react';
+import { BarChart3, GitPullRequest, Settings, SquareTerminal, Users } from 'lucide-react';
 import { defineDoc } from '../types.ts';
 
 const NAV = [
-  { label: 'Home', icon: Home, active: true },
-  { label: 'Inbox', icon: Inbox, badge: '12' },
-  { label: 'Analytics', icon: BarChart3 },
+  { label: 'Sessions', icon: SquareTerminal, active: true },
+  { label: 'Pull requests', icon: GitPullRequest, badge: '12' },
+  { label: 'Usage', icon: BarChart3 },
   { label: 'Team', icon: Users },
 ];
 
@@ -3019,7 +3023,7 @@ export default defineDoc({
   slug: 'sidebar',
   name: 'Sidebar',
   category: 'navigation',
-  description: 'App navigation that collapses to icons on desktop and becomes a sheet on mobile. Ctrl/⌘+B toggles it.',
+  description: 'App navigation that collapses to icons on desktop and becomes a sheet on mobile. Press Ctrl+B or ⌘B to show or hide it.',
   examples: [
     {
       name: 'App shell',
@@ -3029,7 +3033,7 @@ export default defineDoc({
           <SidebarProvider className="h-full">
             <Sidebar>
               <SidebarHeader>
-                <div className="flex h-8 items-center gap-2 px-2 font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">Northwind</div>
+                <div className="flex h-8 items-center gap-2 px-2 font-display font-semibold group-data-[collapsible=icon]/sidebar:hidden">machine-co</div>
               </SidebarHeader>
               <SidebarContent>
                 <SidebarGroup>
@@ -3064,7 +3068,7 @@ export default defineDoc({
             <SidebarInset>
               <header className="flex h-12 items-center gap-2 border-b px-3">
                 <SidebarTrigger />
-                <span className="text-sm font-medium">Home</span>
+                <span className="text-sm font-medium">Sessions</span>
               </header>
               <div className="p-4 text-sm text-muted-foreground">Your content goes here.</div>
             </SidebarInset>
@@ -3112,7 +3116,7 @@ export default defineDoc({
 
 ## Slider
 
-Picks a number, or a range, by dragging. Arrow keys step through values.
+Picks a number or a range by dragging. The arrow keys move it one step at a time.
 
 Install: `npx shadcn@latest add @machine-ui/label @machine-ui/slider`
 
@@ -3126,14 +3130,14 @@ export default defineDoc({
   slug: 'slider',
   name: 'Slider',
   category: 'forms',
-  description: 'Picks a number, or a range, by dragging. Arrow keys step through values.',
+  description: 'Picks a number or a range by dragging. The arrow keys move it one step at a time.',
   examples: [
     {
       name: 'Single',
       render: () => (
         <div className="grid w-full max-w-xs gap-3">
-          <Label id="slider-volume">Volume</Label>
-          <Slider aria-labelledby="slider-volume" defaultValue={[60]} max={100} step={1} />
+          <Label id="slider-coverage">Coverage target (%)</Label>
+          <Slider aria-labelledby="slider-coverage" defaultValue={[80]} max={100} step={1} />
         </div>
       ),
     },
@@ -3141,8 +3145,8 @@ export default defineDoc({
       name: 'Range',
       render: () => (
         <div className="grid w-full max-w-xs gap-3">
-          <Label id="slider-price">Price range</Label>
-          <Slider aria-labelledby="slider-price" defaultValue={[20, 75]} max={100} step={5} />
+          <Label id="slider-diff">Lines changed before review is required</Label>
+          <Slider aria-labelledby="slider-diff" defaultValue={[20, 75]} max={100} step={5} />
         </div>
       ),
     },
@@ -3181,7 +3185,7 @@ export default defineDoc({
           <Spinner />
           <Spinner className="size-6" />
           <Button disabled>
-            <Spinner /> Saving
+            <Spinner /> Running checks
           </Button>
         </div>
       ),
@@ -3192,7 +3196,7 @@ export default defineDoc({
 
 ## Stat
 
-A labelled number with an optional change, marked up or down by icon and text, not colour alone.
+A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.
 
 Install: `npx shadcn@latest add @machine-ui/card @machine-ui/stat`
 
@@ -3213,7 +3217,7 @@ export default defineDoc({
   slug: 'stat',
   name: 'Stat',
   category: 'data',
-  description: 'A labelled number with an optional change, marked up or down by icon and text, not colour alone.',
+  description: 'A labelled number with an optional change. Ups and downs show with an icon and text, not just colour.',
   examples: [
     {
       name: 'Row',
@@ -3222,17 +3226,17 @@ export default defineDoc({
         <div className="grid w-full max-w-2xl gap-4 sm:grid-cols-3">
           <Card>
             <CardContent className="pt-6">
-              <Stat label="Monthly revenue" value="$48.2k" change="12.4%" trend="up" />
+              <Stat label="PRs merged" value="126" change="12.4%" trend="up" />
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <Stat label="Active users" value="3,912" change="4.1%" trend="up" />
+              <Stat label="Agent minutes" value="9,412" change="4.1%" trend="up" />
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <Stat label="Churn" value="2.1%" change="0.3pt" trend="down" />
+              <Stat label="Revert rate" value="2.1%" change="0.3pt" trend="down" />
             </CardContent>
           </Card>
         </div>
@@ -3270,16 +3274,16 @@ export default defineDoc({
       render: () => (
         <ul className="grid gap-2 text-sm">
           <li className="flex items-center gap-2">
-            <StatusDot tone="online" pulse /> API operational
+            <StatusDot tone="online" pulse /> Agent runners operational
           </li>
           <li className="flex items-center gap-2">
-            <StatusDot tone="busy" /> Webhooks delayed
+            <StatusDot tone="busy" /> GitHub webhooks delayed
           </li>
           <li className="flex items-center gap-2">
-            <StatusDot tone="error" /> Search degraded
+            <StatusDot tone="error" /> Preview deploys degraded
           </li>
           <li className="flex items-center gap-2">
-            <StatusDot tone="offline" /> Legacy dashboard retired
+            <StatusDot tone="offline" /> Legacy runner retired
           </li>
         </ul>
       ),
@@ -3290,7 +3294,7 @@ export default defineDoc({
 
 ## Stepper
 
-Progress through a fixed sequence of steps, with done, current and upcoming states.
+Progress through a fixed sequence of steps, with done, current, and upcoming states.
 
 Install: `npx shadcn@latest add @machine-ui/stepper`
 
@@ -3309,7 +3313,7 @@ export default defineDoc({
   slug: 'stepper',
   name: 'Stepper',
   category: 'navigation',
-  description: 'Progress through a fixed sequence of steps, with done, current and upcoming states.',
+  description: 'Progress through a fixed sequence of steps, with done, current, and upcoming states.',
   examples: [
     {
       name: 'Onboarding',
@@ -3319,10 +3323,10 @@ export default defineDoc({
           className="max-w-2xl"
           current={2}
           steps={[
-            { title: 'Account', description: 'Name and email' },
-            { title: 'Workspace', description: 'Invite your team' },
-            { title: 'Theme', description: 'Pick a starting point' },
-            { title: 'Install', description: 'Add to your app' },
+            { title: 'Connect GitHub', description: 'Pick your repositories' },
+            { title: 'Team', description: 'Invite your reviewers' },
+            { title: 'Permissions', description: 'Choose what the agent can do' },
+            { title: 'First session', description: 'Fix a starter issue' },
           ]}
         />
       ),
@@ -3333,7 +3337,7 @@ export default defineDoc({
 
 ## Streaming Text
 
-Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.
+Types out a response with a cursor, then hides the cursor. If reduced motion is on, it shows the whole text at once.
 
 Install: `npx shadcn@latest add @machine-ui/streaming-text`
 
@@ -3353,13 +3357,13 @@ export default defineDoc({
   slug: 'streaming-text',
   name: 'Streaming Text',
   category: 'ai',
-  description: 'Types a response out with a cursor, then hides the cursor. Shows the whole text at once under reduced motion.',
+  description: 'Types out a response with a cursor, then hides the cursor. If reduced motion is on, it shows the whole text at once.',
   examples: [
     {
       name: 'Default',
       render: () => (
         <p className="max-w-md text-sm leading-relaxed">
-          <StreamingText text="Acme’s outage started after Tuesday’s deploy. The fix ships Thursday; until then, the workaround in the help centre restores sync." />
+          <StreamingText text="Found it. The upload test sends 3 GB in one request, but #477 capped single requests at 2 GB. I’ll switch the test to chunked uploads." />
         </p>
       ),
     },
@@ -3391,15 +3395,15 @@ export default defineDoc({
         <div className="grid gap-3">
           <div className="flex items-center gap-2">
             <Switch id="sw-1" defaultChecked />
-            <Label htmlFor="sw-1">Weekly digest</Label>
+            <Label htmlFor="sw-1">Fix lint errors automatically</Label>
           </div>
           <div className="flex items-center gap-2">
             <Switch id="sw-2" />
-            <Label htmlFor="sw-2">Product updates</Label>
+            <Label htmlFor="sw-2">Pick up new issues labelled agent</Label>
           </div>
           <div className="flex items-center gap-2">
             <Switch id="sw-3" disabled />
-            <Label htmlFor="sw-3">Billing alerts (owner only)</Label>
+            <Label htmlFor="sw-3">Auto-merge when checks pass (owners only)</Label>
           </div>
         </div>
       ),
@@ -3424,11 +3428,11 @@ Example:
 import { Badge, Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@machine-ui/ui';
 import { defineDoc } from '../types.ts';
 
-const INVOICES = [
-  ['INV-2041', 'Paid', 'Card', '$1,250.00'],
-  ['INV-2042', 'Pending', 'Bank transfer', '$480.00'],
-  ['INV-2043', 'Overdue', 'Card', '$2,300.00'],
-  ['INV-2044', 'Paid', 'Card', '$96.00'],
+const RUNS = [
+  ['Run 1041', 'Passed', 'Push', '4m 12s'],
+  ['Run 1042', 'Running', 'Agent', '1m 03s'],
+  ['Run 1043', 'Failed', 'Schedule', '7m 48s'],
+  ['Run 1044', 'Passed', 'Pull request', '3m 30s'],
 ] as const;
 
 export default defineDoc({
@@ -3438,35 +3442,35 @@ export default defineDoc({
   description: 'Composable table parts for simple tabular data. Use Data Table when you need sorting or selection.',
   examples: [
     {
-      name: 'Invoices',
+      name: 'CI runs',
       wide: true,
       render: () => (
         <Table className="max-w-2xl">
-          <TableCaption>Invoices for October 2026.</TableCaption>
+          <TableCaption>CI runs on fix/upload-race.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead>Invoice</TableHead>
+              <TableHead>Run</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Method</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
+              <TableHead>Trigger</TableHead>
+              <TableHead className="text-right">Duration</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {INVOICES.map(([id, status, method, amount]) => (
+            {RUNS.map(([id, status, trigger, duration]) => (
               <TableRow key={id}>
                 <TableCell className="font-medium">{id}</TableCell>
                 <TableCell>
-                  <Badge variant={status === 'Overdue' ? 'destructive' : status === 'Paid' ? 'secondary' : 'outline'}>{status}</Badge>
+                  <Badge variant={status === 'Failed' ? 'destructive' : status === 'Passed' ? 'secondary' : 'outline'}>{status}</Badge>
                 </TableCell>
-                <TableCell>{method}</TableCell>
-                <TableCell className="text-right tabular-nums">{amount}</TableCell>
+                <TableCell>{trigger}</TableCell>
+                <TableCell className="text-right tabular-nums">{duration}</TableCell>
               </TableRow>
             ))}
           </TableBody>
           <TableFooter>
             <TableRow>
               <TableCell colSpan={3}>Total</TableCell>
-              <TableCell className="text-right tabular-nums">$4,126.00</TableCell>
+              <TableCell className="text-right tabular-nums">16m 33s</TableCell>
             </TableRow>
           </TableFooter>
         </Table>
@@ -3504,13 +3508,13 @@ export default defineDoc({
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
           <TabsContent value="overview" className="text-sm text-muted-foreground">
-            42 deploys this week, 2 rolled back.
+            42 agent sessions this week. 2 pull requests were reverted.
           </TabsContent>
           <TabsContent value="activity" className="text-sm text-muted-foreground">
             Nothing new since yesterday.
           </TabsContent>
           <TabsContent value="settings" className="text-sm text-muted-foreground">
-            Notifications are on for failed deploys.
+            Notifications are on for failed runs.
           </TabsContent>
         </Tabs>
       ),
@@ -3541,8 +3545,8 @@ export default defineDoc({
       name: 'Default',
       render: () => (
         <div className="grid w-full max-w-sm gap-2">
-          <Label htmlFor="ta-feedback">What should we improve?</Label>
-          <Textarea id="ta-feedback" placeholder="The export panel could remember my last format…" />
+          <Label htmlFor="ta-task">Task for the agent</Label>
+          <Textarea id="ta-task" placeholder="Run the Weissman score benchmark on every pull request…" />
         </div>
       ),
     },
@@ -3556,7 +3560,7 @@ export default defineDoc({
 
 ## Thinking Indicator
 
-A short label with pulsing dots while the agent works. Announced politely; still when motion is off.
+A short label with pulsing dots that shows while the agent works. Screen readers announce it without interrupting, and the dots stay still if reduced motion is on.
 
 Install: `npx shadcn@latest add @machine-ui/thinking`
 
@@ -3574,7 +3578,7 @@ export default defineDoc({
   slug: 'thinking-indicator',
   name: 'Thinking Indicator',
   category: 'ai',
-  description: 'A short label with pulsing dots while the agent works. Announced politely; still when motion is off.',
+  description: 'A short label with pulsing dots that shows while the agent works. Screen readers announce it without interrupting, and the dots stay still if reduced motion is on.',
   examples: [
     {
       name: 'Default',
@@ -3591,7 +3595,7 @@ export default defineDoc({
 
 ## Thinking Steps
 
-The steps an agent is working through, with done, active and upcoming states.
+The steps an agent is working through, with done, active, and upcoming states.
 
 Install: `npx shadcn@latest add @machine-ui/thinking`
 
@@ -3609,7 +3613,7 @@ export default defineDoc({
   slug: 'thinking-steps',
   name: 'Thinking Steps',
   category: 'ai',
-  description: 'The steps an agent is working through, with done, active and upcoming states.',
+  description: 'The steps an agent is working through, with done, active, and upcoming states.',
   examples: [
     {
       name: 'In progress',
@@ -3617,10 +3621,10 @@ export default defineDoc({
         <ThinkingSteps
           className="max-w-sm"
           steps={[
-            { label: 'Read the Intercom thread', detail: 'ticket #8812', state: 'done' },
-            { label: 'Check the changelog', detail: 'last 2 releases', state: 'done' },
-            { label: 'Pull Stripe account status', state: 'active' },
-            { label: 'Draft a reply', state: 'upcoming' },
+            { label: 'Read the failing test', detail: 'e2e/upload.spec.ts', state: 'done' },
+            { label: 'Bisect recent merges', detail: 'PRs #470 to #477', state: 'done' },
+            { label: 'Patch the chunking flag', state: 'active' },
+            { label: 'Run the suite again', state: 'upcoming' },
           ]}
         />
       ),
@@ -3658,15 +3662,15 @@ export default defineDoc({
       render: () => (
         <div className="flex flex-wrap gap-2">
           <Toaster position="bottom-right" />
-          <Button variant="outline" onClick={() => toast('Theme saved', { description: 'Share the link to preview it.' })}>
+          <Button variant="outline" onClick={() => toast('Session started', { description: 'The agent is reading the repository.' })}>
             Default
           </Button>
-          <Button variant="outline" onClick={() => toast.success('Published', { description: 'Version 2.4.0 is live.' })}>
+          <Button variant="outline" onClick={() => toast.success('Merged', { description: 'Pull request #482 is on main.' })}>
             Success
           </Button>
           <Button
             variant="outline"
-            onClick={() => toast.error('Deploy failed', { description: 'Step 3 timed out.', action: { label: 'Retry', onClick: () => {} } })}
+            onClick={() => toast.error('Run failed', { description: 'pnpm test timed out after 10 minutes.', action: { label: 'Retry', onClick: () => {} } })}
           >
             Error with action
           </Button>
@@ -3712,7 +3716,7 @@ export default defineDoc({
             <Italic aria-hidden />
           </Toggle>
           <Toggle variant="outline">
-            <Star aria-hidden /> Starred only
+            <Star aria-hidden /> My pull requests
           </Toggle>
         </div>
       ),
@@ -3811,9 +3815,9 @@ export default defineDoc({
       wide: true,
       render: () => (
         <div className="grid w-full max-w-md gap-2">
-          <ToolCall name="stripe.get_account" status="done" input={'{ "customer": "acme" }'} output={'{ "status": "active", "plan": "scale" }'} defaultOpen />
-          <ToolCall name="intercom.search" status="running" />
-          <ToolCall name="github.create_issue" status="error" output="403: token lacks repo scope" />
+          <ToolCall name="bash" status="done" input="pnpm test e2e/upload.spec.ts" output={'12 passed, 1 failed\nupload › rejects files over 2 GB'} defaultOpen />
+          <ToolCall name="read_file" status="running" input="src/upload/chunked-upload.ts" />
+          <ToolCall name="github.create_pull_request" status="error" output="403: token lacks write access to hooli/nucleus" />
         </div>
       ),
     },
@@ -3823,7 +3827,7 @@ export default defineDoc({
 
 ## Tooltip
 
-A short label shown on hover or focus. Never put essential information only in a tooltip.
+A short label shown on hover or focus. Don’t put anything essential only in a tooltip.
 
 Install: `npx shadcn@latest add @machine-ui/button @machine-ui/tooltip`
 
@@ -3844,7 +3848,7 @@ export default defineDoc({
   slug: 'tooltip',
   name: 'Tooltip',
   category: 'overlays',
-  description: 'A short label shown on hover or focus. Never put essential information only in a tooltip.',
+  description: 'A short label shown on hover or focus. Don’t put anything essential only in a tooltip.',
   examples: [
     {
       name: 'Icon button',
@@ -3855,7 +3859,7 @@ export default defineDoc({
               <Bell aria-hidden />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>3 unread notifications</TooltipContent>
+          <TooltipContent>3 pull requests need your review</TooltipContent>
         </Tooltip>
       ),
     },
@@ -3865,7 +3869,7 @@ export default defineDoc({
 
 ## Typography
 
-Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.
+Text styles from the theme’s type scale. Headings use the display font and body text uses the text font.
 
 Install: `npx shadcn@latest add @machine-ui/typography`
 
@@ -3879,7 +3883,7 @@ export default defineDoc({
   slug: 'typography',
   name: 'Typography',
   category: 'data',
-  description: 'Text styles on the theme’s fluid type scale: headings use the display face, body uses the text face.',
+  description: 'Text styles from the theme’s type scale. Headings use the display font and body text uses the text font.',
   examples: [
     {
       name: 'Article',

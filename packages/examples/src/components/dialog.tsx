@@ -24,16 +24,16 @@ export default defineDoc({
       render: () => (
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="outline">Rename project</Button>
+            <Button variant="outline">Rename session</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Rename project</DialogTitle>
-              <DialogDescription>The new name appears in links and notifications.</DialogDescription>
+              <DialogTitle>Rename session</DialogTitle>
+              <DialogDescription>The new name shows in the sidebar and becomes the pull request title.</DialogDescription>
             </DialogHeader>
             <div className="grid gap-2">
               <Label htmlFor="dialog-name">Name</Label>
-              <Input id="dialog-name" defaultValue="Northwind web" />
+              <Input id="dialog-name" defaultValue="Middle-out compression spike" />
             </div>
             <DialogFooter>
               <DialogClose asChild>

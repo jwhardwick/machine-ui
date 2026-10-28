@@ -16,7 +16,7 @@ export default defineDoc({
   slug: 'alert-dialog',
   name: 'Alert Dialog',
   category: 'overlays',
-  description: 'A modal that interrupts to confirm a consequential action. It only closes through its buttons or Escape.',
+  description: 'A modal that asks you to confirm an important action. It closes only from its buttons or the Escape key.',
   examples: [
     {
       name: 'Destructive',
@@ -27,9 +27,9 @@ export default defineDoc({
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Delete Northwind?</AlertDialogTitle>
+              <AlertDialogTitle>Delete machine-co?</AlertDialogTitle>
               <AlertDialogDescription>
-                This removes 14 projects, their themes and history for every member. It can’t be undone.
+                This removes 14 repositories’ sessions, agent memory, and run history for every member. You can’t undo this.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

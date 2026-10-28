@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'tooltip',
   name: 'Tooltip',
   category: 'overlays',
-  description: 'A short label shown on hover or focus. Never put essential information only in a tooltip.',
+  description: 'A short label shown on hover or focus. Don’t put anything essential only in a tooltip.',
   examples: [
     {
       name: 'Icon button',
@@ -17,7 +17,7 @@ export default defineDoc({
               <Bell aria-hidden />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>3 unread notifications</TooltipContent>
+          <TooltipContent>3 pull requests need your review</TooltipContent>
         </Tooltip>
       ),
     },

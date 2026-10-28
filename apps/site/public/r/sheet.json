@@ -3,7 +3,7 @@
   "name": "sheet",
   "type": "registry:ui",
   "title": "Sheet",
-  "description": "A panel that slides in from any edge over a scrim. Good for edit forms and detail views.",
+  "description": "A panel that slides in from any edge over a dimmed page. Useful for edit forms and detail views.",
   "dependencies": [
     "lucide-react@1.59.0",
     "radix-ui@1.8.1"

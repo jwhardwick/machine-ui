@@ -6,7 +6,7 @@ export default defineDoc({
   slug: 'item',
   name: 'Item',
   category: 'data',
-  description: 'A row with media, a title, a description and actions, for lists, settings and search results.',
+  description: 'A row with media, a title, a description and actions, for lists, settings, and search results.',
   examples: [
     {
       name: 'Settings list',
@@ -31,11 +31,11 @@ export default defineDoc({
               <Bell aria-hidden />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>Deploy notifications</ItemTitle>
-              <ItemDescription>Email me when a deploy fails.</ItemDescription>
+              <ItemTitle>Failed run alerts</ItemTitle>
+              <ItemDescription>Email me when an agent run fails.</ItemDescription>
             </ItemContent>
             <ItemActions>
-              <Switch aria-label="Deploy notifications" defaultChecked />
+              <Switch aria-label="Failed run alerts" defaultChecked />
             </ItemActions>
           </Item>
         </ItemGroup>

@@ -25,6 +25,10 @@ export default defineDoc({
               <Kbd>B</Kbd>
             </KbdGroup>
           </p>
+          <p className="flex items-center gap-2">
+            Stop the agent
+            <Kbd>Esc</Kbd>
+          </p>
         </div>
       ),
     },

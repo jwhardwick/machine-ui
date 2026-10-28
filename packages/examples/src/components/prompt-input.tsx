@@ -6,17 +6,17 @@ export default defineDoc({
   slug: 'prompt-input',
   name: 'Prompt Input',
   category: 'ai',
-  description: 'The composer: auto-growing text, tools and a send button. Enter sends, Shift+Enter adds a line, and it becomes a stop button while the agent works.',
+  description: 'The message box for a chat, with a text field that grows as you type, tools, and a send button. Enter sends and Shift+Enter adds a line. While the agent works, send becomes stop.',
   examples: [
     {
       name: 'With suggestions',
       wide: true,
       render: () => (
         <div className="grid w-full max-w-xl gap-3">
-          <PromptSuggestions suggestions={['What’s open with Acme?', 'Close tickets idle over 30 days', 'Summarise overnight tickets']} />
+          <PromptSuggestions suggestions={['Why is CI red on main?', 'Write tests for the upload handler', 'Review my open pull request']} />
           <PromptInput
-            placeholder="Ask Alpha about your inbox…"
-            hint="Alpha can make mistakes. Check important replies before sending."
+            placeholder="Ask the agent to change something…"
+            hint="The agent can make mistakes. Review the diff before you merge."
             tools={
               <Button type="button" variant="ghost" size="sm" className="text-muted-foreground">
                 <Paperclip aria-hidden /> Attach
@@ -29,7 +29,7 @@ export default defineDoc({
     {
       name: 'Busy',
       wide: true,
-      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="Alpha is replying…" />,
+      render: () => <PromptInput className="w-full max-w-xl" busy placeholder="The agent is working…" />,
     },
   ],
 });

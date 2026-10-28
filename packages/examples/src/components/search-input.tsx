@@ -9,11 +9,11 @@ export default defineDoc({
   examples: [
     {
       name: 'Default',
-      render: () => <SearchInput aria-label="Search threads" placeholder="Search threads" shortcut="⌘K" className="max-w-xs" />,
+      render: () => <SearchInput aria-label="Search sessions" placeholder="Search sessions" shortcut="⌘K" className="max-w-xs" />,
     },
     {
       name: 'With value',
-      render: () => <SearchInput aria-label="Search threads" defaultValue="refund" className="max-w-xs" />,
+      render: () => <SearchInput aria-label="Search sessions" defaultValue="flaky test" className="max-w-xs" />,
     },
   ],
 });

@@ -3,7 +3,7 @@
   "name": "accordion",
   "type": "registry:ui",
   "title": "Accordion",
-  "description": "A stack of headings that each reveal a section. One or several sections can be open.",
+  "description": "A stack of headings that each open a section. You can allow one section or several to be open at once.",
   "dependencies": [
     "lucide-react@1.59.0",
     "radix-ui@1.8.1"
