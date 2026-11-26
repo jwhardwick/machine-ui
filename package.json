@@ -23,7 +23,10 @@
     "registry:build": "node tooling/registry/src/cli.ts",
     "test:registry-install": "node tooling/registry/src/install-smoke.ts",
     "docs:build": "node tooling/registry/src/docs-cli.ts",
-    "eval:run": "node tooling/eval/src/run.ts"
+    "eval:run": "node tooling/eval/src/run.ts",
+    "figma:extract": "pnpm --filter @machine-ui/storybook figma:extract",
+    "figma:build": "pnpm --filter @machine-ui/figma build",
+    "figma": "pnpm figma:extract && pnpm figma:build"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
