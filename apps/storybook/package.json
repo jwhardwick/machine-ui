@@ -10,7 +10,8 @@
     "typecheck": "pnpm gen && tsc --noEmit -p .",
     "gen": "node scripts/gen-stories.ts",
     "test:visual": "vitest run --config vitest.visual.config.ts",
-    "test:visual:update": "vitest run --config vitest.visual.config.ts --update"
+    "test:visual:update": "vitest run --config vitest.visual.config.ts --update",
+    "figma:extract": "vitest run --config vitest.figma.config.ts"
   },
   "dependencies": {
     "@machine-ui/theme-engine": "workspace:*",
@@ -19,7 +20,8 @@
     "lucide-react": "1.59.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "@machine-ui/examples": "workspace:*"
+    "@machine-ui/examples": "workspace:*",
+    "@machine-ui/figma": "workspace:*"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.6.2",
