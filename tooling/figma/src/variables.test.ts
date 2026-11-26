@@ -1,6 +1,15 @@
 import { COLOR_ROLES, REFERENCE_THEMES } from '@machine-ui/tokens';
 import { describe, expect, it } from 'vitest';
-import { buildVariables, COLOR_COLLECTION, colorVariableName, cssColorToRgba, cssLengthToPx, primaryFamily, THEME_COLLECTION } from './variables.ts';
+import {
+  buildVariables,
+  COLOR_COLLECTION,
+  colorVariableName,
+  cssColorToRgba,
+  cssLengthToPx,
+  INVALID_NAME_CHARS,
+  primaryFamily,
+  THEME_COLLECTION,
+} from './variables.ts';
 
 describe('cssLengthToPx', () => {
   it('converts rem, px and vw', () => {
@@ -63,6 +72,14 @@ describe('buildVariables', () => {
       const names = collection.variables.map((v) => v.name);
       expect(new Set(names).size).toBe(names.length);
     }
+  });
+
+  it('uses only names Figma accepts', () => {
+    for (const collection of doc.collections) {
+      expect(collection.name).not.toMatch(INVALID_NAME_CHARS);
+      for (const v of collection.variables) expect(v.name).not.toMatch(INVALID_NAME_CHARS);
+    }
+    expect(theme.variables.map((v) => v.name)).toContain('space/1_5');
   });
 
   it('hides raw light/dark colours from pickers', () => {

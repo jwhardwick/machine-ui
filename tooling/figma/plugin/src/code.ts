@@ -21,6 +21,8 @@ const THEME_COLLECTION = 'machine-ui/Theme';
 
 const warnings: string[] = [];
 
+const errorText = (error: unknown) => (error instanceof Error ? error.message : String(error));
+
 // ---- Variables ----
 
 /** Collection name → variable name → Variable. Filled by syncVariables, read when building. */
@@ -61,10 +63,14 @@ async function syncVariables(collections: CollectionDef[]): Promise<void> {
         variable.remove();
         variable = undefined;
       }
-      variable ??= figma.variables.createVariable(v.name, collection, v.type);
-      variable.scopes = v.scopes;
-      variable.description = v.description ?? '';
-      variable.hiddenFromPublishing = v.scopes.length === 0;
+      try {
+        variable ??= figma.variables.createVariable(v.name, collection, v.type);
+        variable.scopes = v.scopes;
+        variable.description = v.description ?? '';
+        variable.hiddenFromPublishing = v.scopes.length === 0;
+      } catch (error) {
+        throw new Error(`Variable "${v.name}" in ${def.name}: ${errorText(error)}`, { cause: error });
+      }
       map.set(v.name, variable);
       pending.push({ def: v, variable, collection: def.name });
     }
@@ -77,12 +83,16 @@ async function syncVariables(collections: CollectionDef[]): Promise<void> {
     for (const [mode, value] of Object.entries(def.values)) {
       const modeId = modes.get(mode);
       if (!modeId) continue;
-      if (value.kind === 'alias') {
-        const target = vars.get(value.collection)?.get(value.name);
-        if (!target) throw new Error(`Alias target missing: ${value.collection} / ${value.name}`);
-        variable.setValueForMode(modeId, figma.variables.createVariableAlias(target));
-      } else {
-        variable.setValueForMode(modeId, value.value);
+      try {
+        if (value.kind === 'alias') {
+          const target = vars.get(value.collection)?.get(value.name);
+          if (!target) throw new Error(`alias target ${value.collection} / ${value.name} is missing`);
+          variable.setValueForMode(modeId, figma.variables.createVariableAlias(target));
+        } else {
+          variable.setValueForMode(modeId, value.value);
+        }
+      } catch (error) {
+        throw new Error(`Setting "${def.name}" for mode ${mode}: ${errorText(error)}`, { cause: error });
       }
     }
   }
@@ -396,5 +406,5 @@ async function run(): Promise<void> {
 
 run().catch((error: unknown) => {
   console.error(error);
-  figma.closePlugin(`machine-ui failed: ${error instanceof Error ? error.message : String(error)}`);
+  figma.closePlugin(`machine-ui failed: ${errorText(error)}`);
 });

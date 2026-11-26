@@ -23,6 +23,12 @@ const ROOT_PX = 16;
 /** Spacing multiples worth a variable: Tailwind's `p-4` is `calc(var(--space-unit) * 4)`. */
 export const SPACE_STEPS = [0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16] as const;
 
+/** Figma rejects `.` (and `$`, `{`, `}`) in variable names, so `p-1.5` becomes `space/1_5`. */
+export const spaceVariableName = (n: number) => `space/${String(n).replace('.', '_')}`;
+
+/** Characters Figma refuses in a variable name. */
+export const INVALID_NAME_CHARS = /[.${}]/;
+
 const toRgb = converter('rgb');
 
 export function cssColorToRgba(css: string): Rgba {
@@ -117,7 +123,7 @@ export function buildVariables(seeds: readonly ThemeSeed[] = REFERENCE_THEMES): 
   }
   for (const n of SPACE_STEPS) {
     themeVars.push({
-      name: `space/${n}`,
+      name: spaceVariableName(n),
       type: 'FLOAT',
       scopes: ['GAP', 'WIDTH_HEIGHT'],
       values: perTheme((t) => ({ kind: 'number', value: round(cssLengthToPx(t.shared['space-unit']) * n, 2) })),

@@ -5,7 +5,7 @@
 // length token in the active theme, and each measured value is matched back to a token name. Class
 // names only break ties, e.g. `card-foreground` and `foreground` resolving to the same colour.
 
-import { colorVariableName, cssColorToRgba, SPACE_STEPS } from '@machine-ui/figma/variables';
+import { colorVariableName, cssColorToRgba, SPACE_STEPS, spaceVariableName } from '@machine-ui/figma/variables';
 import { COLOR_ROLES, TYPE_STEPS } from '@machine-ui/tokens';
 import type { FrameNode, Num, Paint, Rgba, SceneNode, Shadow, TextNode, VectorNode } from '@machine-ui/figma/schema';
 
@@ -36,7 +36,7 @@ export function buildProbes(scope: HTMLElement): Probes {
   const corner = new Map<string, number>();
   for (const s of ['sm', 'md', 'lg', 'xl']) corner.set(`corner/${s}`, px(`var(--corner-${s})`));
   const space = new Map<string, number>();
-  for (const n of SPACE_STEPS) space.set(`space/${n}`, px(`calc(var(--space-unit) * ${n})`));
+  for (const n of SPACE_STEPS) space.set(spaceVariableName(n), px(`calc(var(--space-unit) * ${n})`));
   const type = new Map<string, number>();
   for (const s of TYPE_STEPS) type.set(`type/${s}`, px(`var(--type-${s})`));
   const families = new Map<string, string>();
