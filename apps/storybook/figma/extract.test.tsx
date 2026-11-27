@@ -1,4 +1,4 @@
-import type { ComponentDef, ComponentsDoc, FrameNode } from '@machine-ui/figma/schema';
+import type { ComponentDef, ComponentsDoc } from '@machine-ui/figma/schema';
 import { MEASURE_VIEWPORT } from '@machine-ui/figma/variables';
 import { applyTheme } from '@machine-ui/theme-engine';
 import { DEFAULT_SEED, TYPE_PAIRS } from '@machine-ui/tokens';
@@ -6,7 +6,7 @@ import { expect, test } from 'vitest';
 import { page, server } from 'vitest/browser';
 import { render } from 'vitest-browser-react';
 import { combinations, FIGMA_SPECS } from './specs.tsx';
-import { buildProbes, rootSizing, walk } from './walk.ts';
+import { buildProbes, renderedRoot, walkRoot } from './walk.ts';
 import './styles.css';
 
 const MODE = 'light' as const;
@@ -47,10 +47,8 @@ test('extract components for Figma', async () => {
       host.style.display = 'flow-root';
       scope.appendChild(host);
       const screen = await render(<>{spec.render(props)}</>, { container: host });
-      const el = host.firstElementChild as HTMLElement;
-      const root = walk(el, probes) as FrameNode;
-      expect(root.type, `${spec.key} ${JSON.stringify(props)} root`).toBe('frame');
-      rootSizing(el, root);
+      const root = walkRoot(renderedRoot(host), probes);
+      expect(root.children.length + (root.fill ? 1 : 0) + (root.stroke ? 1 : 0), `${spec.key} ${JSON.stringify(props)} drew nothing`).toBeGreaterThan(0);
       root.name = spec.name;
       variants.push({ props, root });
       await screen.unmount();

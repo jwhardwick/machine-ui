@@ -199,6 +199,14 @@ const rel = (r: DOMRect, parent: DOMRect | null): Box => ({
 
 const slotName = (el: Element) => (el as HTMLElement).dataset?.slot ?? el.tagName.toLowerCase();
 
+/** A background or border: something visible even with no content. */
+function drawsBox(cs: CSSStyleDeclaration): boolean {
+  return (
+    cssColorToRgba(cs.backgroundColor).a > 0 ||
+    (['Top', 'Right', 'Bottom', 'Left'] as const).some((side) => cs[`border${side}Style`] !== 'none' && pxOf(cs[`border${side}Width`]) > 0)
+  );
+}
+
 function hasBox(cs: CSSStyleDeclaration): boolean {
   return (
     cssColorToRgba(cs.backgroundColor).a > 0 ||
@@ -208,20 +216,50 @@ function hasBox(cs: CSSStyleDeclaration): boolean {
   );
 }
 
-const INLINE_TEXT = new Set(['SPAN', 'STRONG', 'EM', 'B', 'I', 'A', 'CODE', 'KBD', 'SMALL', 'MARK', 'ABBR']);
-
-/** An element whose content is only text and plain inline elements: it becomes one text layer. */
-function isTextLeaf(el: Element): boolean {
-  if (!el.textContent?.trim()) return false;
-  return [...el.childNodes].every(
-    (n) => n.nodeType === Node.TEXT_NODE || (n instanceof HTMLElement && INLINE_TEXT.has(n.tagName) && !hasBox(getComputedStyle(n)) && isTextLeafOrEmpty(n)),
-  );
+/** Screen-reader-only content (`sr-only`): clipped to a 1px box. Never drawn. */
+function srOnly(el: Element, cs = getComputedStyle(el)): boolean {
+  const r = el.getBoundingClientRect();
+  return cs.position === 'absolute' && r.width <= 1 && r.height <= 1 && (cs.overflow === 'hidden' || cs.clip !== 'auto' || cs.clipPath !== 'none');
 }
-const isTextLeafOrEmpty = (el: Element) => [...el.childNodes].every((n) => n.nodeType === Node.TEXT_NODE || (n instanceof Element && isTextLeaf(n)));
+
+const isLayoutContainer = (cs: CSSStyleDeclaration) => /flex|grid/.test(cs.display);
+
+/**
+ * An element whose content is only text and plain inline elements: it becomes one text layer.
+ * Children of a flex or grid container are layout items, not inline runs, so those never merge.
+ * Inline children must really be inline (`display: inline`) with no box of their own: a ghost
+ * link styled as `inline-flex` is a button, not a word.
+ */
+function isTextLeaf(el: Element): boolean {
+  if (!visibleText(el).trim()) return false;
+  const merges = !isLayoutContainer(getComputedStyle(el));
+  return [...el.childNodes].every((n) => {
+    if (n.nodeType === Node.TEXT_NODE) return true;
+    if (!(n instanceof HTMLElement)) return n.nodeType === Node.COMMENT_NODE;
+    const cs = getComputedStyle(n);
+    if (cs.display === 'none' || srOnly(n, cs)) return true;
+    return merges && cs.display === 'inline' && !hasBox(cs) && [...n.childNodes].every((c) => c.nodeType === Node.TEXT_NODE || (c instanceof Element && isTextLeaf(c)));
+  });
+}
+
+/** Text as drawn: hidden and screen-reader-only descendants left out. */
+function visibleText(el: Element): string {
+  let out = '';
+  for (const n of el.childNodes) {
+    if (n.nodeType === Node.TEXT_NODE) out += n.textContent ?? '';
+    else if (n instanceof HTMLElement) {
+      const cs = getComputedStyle(n);
+      if (cs.display !== 'none' && cs.visibility !== 'hidden' && !srOnly(n, cs)) out += visibleText(n);
+    }
+  }
+  return out;
+}
 
 function visible(el: Element): boolean {
   const cs = getComputedStyle(el);
-  if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+  if (cs.display === 'none' || cs.visibility === 'hidden' || srOnly(el, cs)) return false;
+  // Form fields some libraries overlay invisibly (input-otp): transparent text, nothing drawn.
+  if ((el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) && cssColorToRgba(cs.color).a === 0 && !drawsBox(cs)) return false;
   const r = el.getBoundingClientRect();
   return r.width > 0 || r.height > 0;
 }
@@ -262,7 +300,12 @@ function textNode(
   };
 }
 
-const collapse = (s: string) => s.replace(/\s+/g, ' ').trim();
+/** Collapse whitespace the way the browser drew it: `pre` keeps its line breaks. */
+function textFor(raw: string, styleEl: Element): string {
+  const ws = getComputedStyle(styleEl).whiteSpace;
+  if (/pre|break-spaces/.test(ws)) return raw.replace(/\n$/, '');
+  return raw.replace(/\s+/g, ' ').trim();
+}
 
 function vectorNode(svg: SVGSVGElement, parentRect: DOMRect, probes: Probes): VectorNode {
   const r = svg.getBoundingClientRect();
@@ -376,9 +419,9 @@ export function walk(el: HTMLElement, probes: Probes, parentRect: DOMRect | null
   };
 
   // Form fields: the value or placeholder isn't a DOM node, so make one.
-  if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
-    const placeholder = !el.value;
-    const characters = el.value || el.placeholder;
+  if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement || el instanceof HTMLSelectElement) {
+    const placeholder = !el.value || (el instanceof HTMLSelectElement && el.selectedOptions[0]?.disabled === true);
+    const characters = el instanceof HTMLSelectElement ? (el.selectedOptions[0]?.text ?? '') : el.value || el.placeholder;
     const content = contentBox();
     frame.layout = {
       direction: 'HORIZONTAL',
@@ -389,7 +432,7 @@ export function walk(el: HTMLElement, probes: Probes, parentRect: DOMRect | null
       cross: el instanceof HTMLTextAreaElement ? 'MIN' : 'CENTER',
     };
     if (characters) {
-      const colorCss = placeholder ? getComputedStyle(el, '::placeholder').color : undefined;
+      const colorCss = placeholder && !(el instanceof HTMLSelectElement) ? getComputedStyle(el, '::placeholder').color : undefined;
       const lh = cs.lineHeight === 'normal' ? pxOf(cs.fontSize) * 1.2 : pxOf(cs.lineHeight);
       const text = textNode(placeholder ? 'placeholder' : 'value', characters, el, { x: content.x, y: round(content.y + (content.height - lh) / 2), width: content.width, height: round(lh) }, probes, colorCss);
       text.wraps = false;
@@ -401,8 +444,9 @@ export function walk(el: HTMLElement, probes: Probes, parentRect: DOMRect | null
 
   // Text-only element with no box of its own: just a text layer.
   if (isTextLeaf(el)) {
-    const characters = collapse(el.textContent ?? '');
-    if (!hasBox(cs)) return textNode(name, characters, el, box, probes);
+    const characters = textFor(visibleText(el), el);
+    // A boxless flex item (a ghost icon button, say) still lays its text out: keep the frame.
+    if (!hasBox(cs) && !isLayoutContainer(cs)) return textNode(name, characters, el, box, probes);
     const range = document.createRange();
     range.selectNodeContents(el);
     const text = textNode('label', characters, el, rel(range.getBoundingClientRect(), rect), probes);
@@ -415,23 +459,27 @@ export function walk(el: HTMLElement, probes: Probes, parentRect: DOMRect | null
     return frame;
   }
 
-  const children = flowChildren(el);
+  const children: Child[] = [];
   const nodes: SceneNode[] = [];
   const outOfFlow = new Set<SceneNode>();
-  for (const child of children) {
+  for (const child of flowChildren(el)) {
     if (child.kind === 'text') {
+      children.push(child);
       const range = document.createRange();
       range.selectNodeContents(child.node);
       const r = range.getBoundingClientRect();
-      nodes.push(textNode('text', collapse(child.node.textContent ?? ''), el, rel(r, rect), probes));
+      nodes.push(textNode('text', textFor(child.node.textContent ?? '', el), el, rel(r, rect), probes));
       continue;
     }
     const node = walk(child.el as HTMLElement, probes, rect);
     const pos = getComputedStyle(child.el).position;
     if (pos === 'absolute' || pos === 'fixed') {
+      // An empty overlay that draws nothing (a wrapper for a hidden input, say) isn't worth a layer.
+      if (node.type === 'frame' && !node.children.length && !node.fill && !node.stroke && !node.shadows) continue;
       node.absolute = true;
       outOfFlow.add(node);
     }
+    children.push(child);
     nodes.push(node);
   }
   frame.children = nodes;
@@ -483,8 +531,39 @@ export function walk(el: HTMLElement, probes: Probes, parentRect: DOMRect | null
   return frame;
 }
 
+/** The element a spec rendered: skips `<noscript>` and friends that some libraries emit first. */
+export function renderedRoot(host: HTMLElement): HTMLElement {
+  const el = [...host.children].find((c) => !['NOSCRIPT', 'SCRIPT', 'STYLE', 'TEMPLATE'].includes(c.tagName) && visible(c));
+  if (!el) throw new Error('Spec rendered nothing visible');
+  return el as HTMLElement;
+}
+
+/** Walk a component root. A root that's an icon or bare text gets a hugging frame around it. */
+export function walkRoot(el: HTMLElement, probes: Probes): FrameNode {
+  const node = walk(el, probes);
+  if (node.type === 'frame') {
+    rootSizing(el, node);
+    return node;
+  }
+  const { width, height } = node;
+  node.x = 0;
+  node.y = 0;
+  node.sizing = { horizontal: node.type === 'text' && node.wraps ? 'FILL' : node.type === 'text' ? 'HUG' : 'FIXED', vertical: node.type === 'text' ? 'HUG' : 'FIXED' };
+  return {
+    type: 'frame',
+    name: node.name,
+    x: 0,
+    y: 0,
+    width,
+    height,
+    layout: { direction: 'HORIZONTAL', wrap: false, gap: { value: 0 }, padding: [{ value: 0 }, { value: 0 }, { value: 0 }, { value: 0 }], main: 'MIN', cross: 'MIN' },
+    sizing: { horizontal: node.type === 'text' && node.wraps ? 'FIXED' : 'HUG', vertical: 'HUG' },
+    children: [node],
+  };
+}
+
 /** Root sizing: hug when content-sized, fixed otherwise. */
-export function rootSizing(el: HTMLElement, node: SceneNode): void {
+function rootSizing(el: HTMLElement, node: SceneNode): void {
   const layout = node.type === 'frame' && !!node.layout;
   node.sizing = {
     horizontal: layout && hugs(el, 'width') ? 'HUG' : 'FIXED',
