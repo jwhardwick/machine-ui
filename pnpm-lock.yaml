@@ -130,6 +130,9 @@ importers:
       '@machine-ui/examples':
         specifier: workspace:*
         version: link:../../packages/examples
+      '@machine-ui/figma':
+        specifier: workspace:*
+        version: link:../../tooling/figma
       '@machine-ui/theme-engine':
         specifier: workspace:*
         version: link:../../packages/theme-engine
@@ -373,6 +376,34 @@ importers:
       '@types/node':
         specifier: 26.6.5
         version: 26.6.5
+      vitest:
+        specifier: 5.0.5
+        version: 5.0.5(@types/node@26.6.5)(@vitest/browser-playwright@5.0.5)(@vitest/ui@5.0.5)(jsdom@30.1.3)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
+
+  tooling/figma:
+    dependencies:
+      '@machine-ui/theme-engine':
+        specifier: workspace:*
+        version: link:../../packages/theme-engine
+      '@machine-ui/tokens':
+        specifier: workspace:*
+        version: link:../../packages/tokens
+      culori:
+        specifier: 4.0.2
+        version: 4.0.2
+    devDependencies:
+      '@figma/plugin-typings':
+        specifier: 1.142.0
+        version: 1.142.0
+      '@types/culori':
+        specifier: 4.0.1
+        version: 4.0.1
+      '@types/node':
+        specifier: 26.6.5
+        version: 26.6.5
+      esbuild:
+        specifier: 0.28.2
+        version: 0.28.2
       vitest:
         specifier: 5.0.5
         version: 5.0.5(@types/node@26.6.5)(@vitest/browser-playwright@5.0.5)(@vitest/ui@5.0.5)(jsdom@30.1.3)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1))
@@ -919,6 +950,9 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
+
+  '@figma/plugin-typings@1.142.0':
+    resolution: {integrity: sha512-Loa9P4bUZi/pQejic8OYQSU4Zz9izJdIiDUkkKddq5Bfc5JPRV6pCeg3C8owovbX9lKshaFym86PlMhKZgLeBw==}
 
   '@floating-ui/core@1.8.0':
     resolution: {integrity: sha512-0CIZ5itps/8x7BG8dEIhs53BvCUH2PCoogtakwRTut+Arm58sJooJ0AuZhLw2HJYIR5cMLNPBSS728sPho2khQ==}
@@ -5288,6 +5322,8 @@ snapshots:
       levn: 0.4.1
 
   '@exodus/bytes@1.16.0': {}
+
+  '@figma/plugin-typings@1.142.0': {}
 
   '@floating-ui/core@1.8.0':
     dependencies:
