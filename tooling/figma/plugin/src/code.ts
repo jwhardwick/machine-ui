@@ -333,7 +333,8 @@ async function buildComponents(defs: ComponentDef[]): Promise<number> {
   let y = 0;
   let count = 0;
   for (const def of defs) {
-    const existing = page.children.find((n): n is ComponentSetNode => n.type === 'COMPONENT_SET' && n.getPluginData(KEY) === def.key);
+    const sets = page.children.filter((n): n is ComponentSetNode => n.type === 'COMPONENT_SET');
+    const existing = sets.find((n) => n.getPluginData(KEY) === def.key) ?? sets.find((n) => n.name === def.name);
     const byName = new Map(existing?.children.filter((c): c is ComponentNode => c.type === 'COMPONENT').map((c) => [c.name, c]) ?? []);
     const components: ComponentNode[] = [];
 
@@ -364,16 +365,7 @@ async function buildComponents(defs: ComponentDef[]): Promise<number> {
     }
     set.name = def.name;
     set.description = def.description ?? '';
-    // Lay variants out in a wrapping grid so the set stays readable.
-    set.layoutMode = 'HORIZONTAL';
-    set.layoutWrap = 'WRAP';
-    set.itemSpacing = 24;
-    set.counterAxisSpacing = 24;
-    set.paddingTop = set.paddingRight = set.paddingBottom = set.paddingLeft = 32;
-    set.counterAxisAlignItems = 'MIN';
-    set.resize(Math.max(400, Math.min(1400, maxWidth(def) * 6 + 32 * 2 + 24 * 5)), set.height);
-    set.primaryAxisSizingMode = 'FIXED';
-    set.counterAxisSizingMode = 'AUTO';
+    layoutVariants(set, def, components);
     set.x = 0;
     set.y = y;
     y += set.height + 120;
@@ -381,9 +373,148 @@ async function buildComponents(defs: ComponentDef[]): Promise<number> {
   return count;
 }
 
-const maxWidth = (def: ComponentDef) => Math.max(...def.variants.map((v) => v.root.width));
+const SET_PADDING = 32;
+const SET_GAP = 24;
+
+/**
+ * Grid the variants: one row per value of the first axis, the remaining combinations as columns,
+ * so e.g. Button reads as variant × (size, state). Single-axis sets are one row. The set gets the
+ * theme's background so ghost and link variants are visible and a mode switch shows the whole look.
+ */
+function layoutVariants(set: ComponentSetNode, def: ComponentDef, components: ComponentNode[]): void {
+  set.layoutMode = 'NONE';
+  const axes = Object.keys(def.variants[0]?.props ?? {});
+  const rowKey = (props: Record<string, string>) => (axes.length > 1 ? props[axes[0]!]! : '');
+  const rows: ComponentNode[][] = [];
+  const rowIndex = new Map<string, number>();
+  def.variants.forEach((variant, i) => {
+    const key = rowKey(variant.props);
+    if (!rowIndex.has(key)) {
+      rowIndex.set(key, rows.length);
+      rows.push([]);
+    }
+    rows[rowIndex.get(key)!]!.push(components[i]!);
+  });
+
+  const colWidths: number[] = [];
+  for (const row of rows) row.forEach((c, ci) => (colWidths[ci] = Math.max(colWidths[ci] ?? 0, c.width)));
+  let y = SET_PADDING;
+  for (const row of rows) {
+    let x = SET_PADDING;
+    const height = Math.max(...row.map((c) => c.height));
+    row.forEach((c, ci) => {
+      c.x = x;
+      c.y = y;
+      x += colWidths[ci]! + SET_GAP;
+    });
+    y += height + SET_GAP;
+  }
+  const width = SET_PADDING * 2 + colWidths.reduce((a, w) => a + w, 0) + SET_GAP * Math.max(0, colWidths.length - 1);
+  set.resizeWithoutConstraints(Math.max(1, width), Math.max(1, y - SET_GAP + SET_PADDING));
+  set.fills = [solid({ color: { r: 1, g: 1, b: 1, a: 1 }, token: 'background' })];
+  set.cornerRadius = 12;
+}
 
 // ---- Entry ----
+
+// ---- Themes page ----
+
+const THEMES_PAGE = 'Themes';
+
+/** Variant to show from each set on the Themes page, by set name. Missing sets are skipped. */
+const SHOWCASE: { set: string; variants: string[] }[] = [
+  { set: 'Button', variants: ['variant=default, size=md, state=default', 'variant=secondary, size=md, state=default', 'variant=outline, size=md, state=default', 'variant=ghost, size=md, state=default', 'variant=destructive, size=md, state=default'] },
+  { set: 'Badge', variants: ['variant=default', 'variant=secondary', 'variant=outline', 'variant=destructive'] },
+  { set: 'Input', variants: ['state=filled'] },
+  { set: 'Alert', variants: ['variant=success'] },
+  { set: 'Card', variants: ['footer=true'] },
+];
+
+/** Every font any theme can switch text to, in every weight the components use. */
+async function preloadThemeFonts(defs: ComponentDef[]): Promise<void> {
+  const weights = new Set<number>();
+  const collect = (n: NodeDef) => {
+    if (n.type === 'text') weights.add(n.font.weight);
+    if (n.type === 'frame') n.children.forEach(collect);
+  };
+  for (const def of defs) for (const v of def.variants) collect(v.root);
+  const theme = data.variables.collections.find((c) => c.name === THEME_COLLECTION);
+  const families = new Set<string>();
+  for (const v of theme?.variables ?? []) {
+    if (v.type !== 'STRING') continue;
+    for (const value of Object.values(v.values)) if (value.kind === 'string') families.add(value.value);
+  }
+  for (const family of families) for (const w of weights) await resolveFont(family, w, false);
+}
+
+/** An empty auto-layout frame that hugs its content. */
+function stack(direction: 'HORIZONTAL' | 'VERTICAL', name: string, gap: number): FrameNode {
+  const frame = figma.createFrame();
+  frame.name = name;
+  frame.layoutMode = direction;
+  frame.primaryAxisSizingMode = 'AUTO';
+  frame.counterAxisSizingMode = 'AUTO';
+  frame.itemSpacing = gap;
+  frame.fills = [];
+  return frame;
+}
+
+async function buildThemesPage(defs: ComponentDef[]): Promise<number> {
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const theme = collections.find((c) => c.name === THEME_COLLECTION);
+  const color = collections.find((c) => c.name === COLOR_COLLECTION);
+  if (!theme || !color) return 0;
+  await preloadThemeFonts(defs);
+
+  const components = figma.root.children.find((p) => p.name === PAGE_NAME);
+  if (!components) return 0;
+  const sets = components.children.filter((n): n is ComponentSetNode => n.type === 'COMPONENT_SET');
+
+  let page = figma.root.children.find((p) => p.name === THEMES_PAGE);
+  if (!page) {
+    page = figma.createPage();
+    page.name = THEMES_PAGE;
+  }
+  await page.loadAsync();
+  await figma.setCurrentPageAsync(page);
+  for (const child of [...page.children]) child.remove();
+
+  const label = fontCache.values().next().value ?? FALLBACK;
+  let count = 0;
+  theme.modes.forEach((themeMode, row) => {
+    color.modes.forEach((colorMode, col) => {
+      const frame = stack('VERTICAL', `${themeMode.name} / ${colorMode.name}`, 24);
+      frame.paddingTop = frame.paddingBottom = frame.paddingLeft = frame.paddingRight = 32;
+      frame.fills = [solid({ color: { r: 1, g: 1, b: 1, a: 1 }, token: 'background' })];
+      frame.setExplicitVariableModeForCollection(theme, themeMode.modeId);
+      frame.setExplicitVariableModeForCollection(color, colorMode.modeId);
+
+      const title = figma.createText();
+      title.fontName = label;
+      title.characters = `${themeMode.name} · ${colorMode.name.toLowerCase()}`;
+      title.fontSize = 20;
+      title.fills = [solid({ color: { r: 0, g: 0, b: 0, a: 1 }, token: 'foreground' })];
+      frame.appendChild(title);
+
+      for (const { set: name, variants } of SHOWCASE) {
+        const set = sets.find((s) => s.name === name);
+        if (!set) continue;
+        const rowFrame = stack('HORIZONTAL', name, 12);
+        rowFrame.counterAxisAlignItems = 'CENTER';
+        for (const v of variants) {
+          const component = set.children.find((c): c is ComponentNode => c.type === 'COMPONENT' && c.name === v);
+          if (component) rowFrame.appendChild(component.createInstance());
+        }
+        if (rowFrame.children.length) frame.appendChild(rowFrame);
+        else rowFrame.remove();
+      }
+      frame.x = col * 900;
+      frame.y = row * 900;
+      count++;
+    });
+  });
+  return count;
+}
 
 async function run(): Promise<void> {
   const command = figma.command || 'all';
@@ -397,6 +528,8 @@ async function run(): Promise<void> {
     if (!data.components) throw new Error('No component data in this build. Run `pnpm figma:extract` before `pnpm figma:build`.');
     const n = await buildComponents(data.components.components);
     done.push(`${n} component variants`);
+    const frames = await buildThemesPage(data.components.components);
+    if (frames) done.push(`${frames} theme previews`);
   }
   const unique = [...new Set(warnings)];
   if (unique.length) console.warn(unique.join('\n'));

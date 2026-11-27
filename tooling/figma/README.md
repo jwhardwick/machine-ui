@@ -18,8 +18,9 @@ Then, in the Figma desktop app:
 
 You get:
 
-- **Variables.** `machine-ui/Theme` has one mode per reference theme. `machine-ui/Color` has Light and Dark modes. To re-theme a frame, set both modes on it in the right panel's Layer section.
-- **A Components page** with one component set per spec in `apps/storybook/figma/specs.tsx`. Fills, strokes, corners, padding, gaps, font sizes and typefaces are bound to Variables.
+- **Variables.** `machine-ui/Theme` has one mode per reference theme. `machine-ui/Color` has Light and Dark modes. To re-theme a frame, select it and use the variable mode button in the header of the right panel's Appearance section.
+- **A Components page** with one component set per spec in `apps/storybook/figma/specs.tsx`. Fills, strokes, corners, padding, gaps, font sizes and typefaces are bound to Variables. Each set is a grid: one row per value of its first property. The set's background is the theme's `background`, so switching modes on a set shows the whole look.
+- **A Themes page** with a sample of components in every theme, in light and dark. It's rebuilt from scratch on every sync, so don't edit it; make your own page for experiments.
 
 Re-run **Sync everything** after `pnpm figma` whenever code changes. Components update in place.
 
@@ -32,5 +33,7 @@ render function, then run `pnpm figma`.
 
 - Grid layouts that aren't one row or column come in absolutely positioned (Alert, for now).
 - Mixed-style text (a bold word in a sentence) comes in as one style.
+- Anything rendered through a portal (dialogs, menus, popovers, tooltips) isn't extracted yet.
+- Screen-reader-only text (`sr-only`) is left out, as it's never drawn.
 - Shadows are literal, not bound.
 - Hover and focus states aren't extracted; add them as a `state` axis if you need them.
